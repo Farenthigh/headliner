@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Threading.Tasks;
 
 public class SelectCharacter : MonoBehaviour
 {
@@ -22,20 +21,10 @@ public class SelectCharacter : MonoBehaviour
         selectedCharacter = character;
     }
 
-    private async void HandleStart()
+    private void HandleStart()
     {
         string playerName = inputName.text;
-        Debug.Log("Starting game with character " + selectedCharacter + " and name " + playerName);
-        try
-        {
-            await APIManager.Instance.ChooseCharacter(selectedCharacter, playerName);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SelectGame");
-        }
-
-        catch (System.Exception ex)
-        {
-            Debug.Log("Character selection failed: " + ex.Message);
-        }
+        Debug.Log($"Starting game with Character: {selectedCharacter} and Name: {playerName}");
     }
 
 
