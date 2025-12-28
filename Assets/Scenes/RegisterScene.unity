@@ -343,7 +343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 161, y: -263.9375}
+  m_AnchoredPosition: {x: 176.2, y: -263.9375}
   m_SizeDelta: {x: 200, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &437599019
@@ -862,7 +862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.79998, y: -221.43}
+  m_AnchoredPosition: {x: 0.0000078082, y: -221.43}
   m_SizeDelta: {x: 226.5399, y: 85.0639}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &588939068
@@ -1159,6 +1159,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621911449}
   m_CullTransparentMesh: 1
+--- !u!1 &662134835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 662134837}
+  - component: {fileID: 662134836}
+  m_Layer: 0
+  m_Name: Authmanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &662134836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662134835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2dab34649ee4669bd8ab2f403bb246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Register
+  emailInput: {fileID: 0}
+  passwordInput: {fileID: 0}
+  confirmpasswordInput: {fileID: 0}
+  loginButton: {fileID: 0}
+  registerButton: {fileID: 0}
+--- !u!4 &662134837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662134835}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &929406299
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,7 +2065,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -65, y: -263.9375}
+  m_AnchoredPosition: {x: -21.599987, y: -264.7}
   m_SizeDelta: {x: 200, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323964200
@@ -3035,7 +3084,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: password
+  m_text: 'confirm password
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a52b55f2745764312a9e0c31bab2e350, type: 2}
   m_sharedMaterial: {fileID: -9176257989279766728, guid: a52b55f2745764312a9e0c31bab2e350, type: 2}
@@ -3273,3 +3324,4 @@ SceneRoots:
   - {fileID: 1477486332}
   - {fileID: 1314693678}
   - {fileID: 537583141}
+  - {fileID: 662134837}
