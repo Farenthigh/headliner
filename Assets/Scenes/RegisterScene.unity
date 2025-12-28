@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 437599020}
   - component: {fileID: 437599019}
   m_Layer: 5
-  m_Name: registerbutton
+  m_Name: loginbtr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1188,11 +1188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2dab34649ee4669bd8ab2f403bb246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Register
-  emailInput: {fileID: 0}
-  passwordInput: {fileID: 0}
-  confirmpasswordInput: {fileID: 0}
-  loginButton: {fileID: 0}
-  registerButton: {fileID: 0}
+  emailInput: {fileID: 1054367927}
+  passwordInput: {fileID: 477363474}
+  confirmpasswordInput: {fileID: 594900151}
+  loginButton: {fileID: 437599019}
+  registerButton: {fileID: 437599019}
 --- !u!4 &662134837
 Transform:
   m_ObjectHideFlags: 0
