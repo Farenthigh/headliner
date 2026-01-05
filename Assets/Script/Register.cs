@@ -1,16 +1,23 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+public class Register : MonoBehaviour{
+    [SerializeField] private TMP_InputField emailInput;
+    [SerializeField] private TMP_InputField passwordInput;
+    [SerializeField] private TMP_InputField confirmpasswordInput;
+    [SerializeField] private Button loginButton;
+    [SerializeField] private Button registerButton;
 
-public class Register : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    private void Start(){
+        registerButton.onClick.AddListener(HandleRegister);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void HandleRegister(){
+        string email = emailInput.text;
+        string password = passwordInput.text;
+        string confirmpass = confirmpasswordInput.text;
+
+        Debug.Log($"Register with email: {email} and password: {password}");
     }
+
 }
