@@ -1,5 +1,7 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SavingGameUIManager : MonoBehaviour
 {
@@ -9,9 +11,10 @@ public class SavingGameUIManager : MonoBehaviour
     [SerializeField] private TMP_InputField amountInput;
     [SerializeField] private TMP_Text bankNameText;
     [SerializeField] private GameObject bankPanel;
+    [SerializeField] private Button depositButton;
+    [SerializeField] private Button withdrawButton;
 
-    private int balance = 0;
-    private string bankName = "Default Bank";
+    private BankScript bankScript;
     private void Awake()
     {
         if (Instance == null)
@@ -24,16 +27,23 @@ public class SavingGameUIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+        depositButton.onClick.AddListener(OnDepositButton);
+        //TODO:withdrawButton.onClick.AddListener(OnWithdrawButton);
+
+    }
 
     private void Update()
     {
-        bankNameText.text = bankName;
-        BalanceText.text = "เหรียญทองคงเหลือ " + balance.ToString("F2");
+        if (bankScript == null) return;
+        bankNameText.text = bankScript.name;
+        BalanceText.text = "เหรียญทองคงเหลือ " + bankScript.GetBalance().ToString("F2");
     }
 
-    public void OnOpenBankPanel(string bankName)
+    public void OnOpenBankPanel(BankScript bankScript)
     {
-        this.bankName = bankName;
+        this.bankScript = bankScript;
         bankPanel.SetActive(true);
     }
     public bool GetBankPanel()
@@ -43,5 +53,26 @@ public class SavingGameUIManager : MonoBehaviour
     public void OnCloseBankPanel()
     {
         bankPanel.SetActive(false);
+    }
+    public void OnDepositButton()
+    {
+        if (float.TryParse(amountInput.text, out float amount))
+        {
+            bankScript.Deposit(amount);
+        }
+    }
+    public void OnWithdrawButton()
+    {
+        //TODO: Implement withdraw functionality //eve
+    }
+    public void UpdateRoundTime()
+    {
+        //TODO: Time in one round - fulltimeinseconds //kf
+        //Update call UpdateRoundtime
+    }
+    public void UpdateGoalBar()
+    {
+        //TODO: create serializafield in logicmanager for goal amount //kf
+        //create function GetAllAssets in logicmanager //kf
     }
 }
