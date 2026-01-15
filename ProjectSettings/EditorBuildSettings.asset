@@ -11,6 +11,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SelectCharacterScene.unity
     guid: 32648d2329b4e4aecb568f779b914fde
+  - enabled: 1
+    path: Assets/Scenes/TaxGameMap.unity
+    guid: 4adf255d421464a3d8e699a69f43f6b6
+  - enabled: 1
+    path: Assets/Scenes/SelectGame.unity
+    guid: 02b1c663f33b9415eb683947ce13a6a7
+  - enabled: 1
+    path: Assets/Scenes/SavingGameMap.unity
+    guid: 567ada11d64094a98b5ca953830531d2
+  - enabled: 1
+    path: Assets/Scenes/RegisterScene.unity
+    guid: 2c5929d6784ff45cead67942a37471bc
+  - enabled: 1
+    path: Assets/Scenes/InvestGameMap.unity
+    guid: 4b16bebf88715445a8a5e553e20c4810
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
   m_UseUCBPForAssetBundles: 0
