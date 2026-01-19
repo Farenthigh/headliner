@@ -75,4 +75,15 @@ public class SavingGameUIManager : MonoBehaviour
         //TODO: create serializafield in logicmanager for goal amount //kf
         //create function GetAllAssets in logicmanager //kf
     }
+
+    public void ResetUI()
+    {  
+        if (amountInput != null){
+            amountInput = "" ;
+        }
+        if (bankPanel != null){
+            bankPanel.SetActive = false;
+        }
+        bankScript = null;
+    }
 }
