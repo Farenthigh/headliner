@@ -13,6 +13,7 @@ public class SavingGameUIManager : MonoBehaviour
     [SerializeField] private GameObject bankPanel;
     [SerializeField] private Button depositButton;
     [SerializeField] private Button withdrawButton;
+    [SerializeField] private Button closeButton;
 
     private BankScript bankScript;
     private void Awake()
@@ -31,6 +32,7 @@ public class SavingGameUIManager : MonoBehaviour
     {
         depositButton.onClick.AddListener(OnDepositButton);
         withdrawButton.onClick.AddListener(OnWithdrawButton);
+        closeButton.onClick.AddListener(OnCloseBankPanel);
 
     }
 
@@ -38,7 +40,7 @@ public class SavingGameUIManager : MonoBehaviour
     {
         if (bankScript == null) return;
         bankNameText.text = bankScript.name;
-        BalanceText.text = "เหรียญทองคงเหลือ " + bankScript.GetBalance().ToString("F2");
+        BalanceText.text = bankScript.GetBalance().ToString("F2");
     }
 
     public void OnOpenBankPanel(BankScript bankScript)
@@ -52,8 +54,10 @@ public class SavingGameUIManager : MonoBehaviour
     }
     public void OnCloseBankPanel()
     {
-        if (amountInput != null){
-            amountInput.text = "" ;
+        Debug.Log("Closing Bank Panel");
+        if (amountInput != null)
+        {
+            amountInput.text = "";
         }
         bankScript = null;
         bankPanel.SetActive(false);
@@ -68,9 +72,9 @@ public class SavingGameUIManager : MonoBehaviour
     public void OnWithdrawButton()
     {
         //TODO: Implement withdraw functionality //eve
-        
+
         if (bankScript == null) return;
-        
+
         if (float.TryParse(amountInput.text, out float amount))
         {
             bankScript.Withdraw(amount);
