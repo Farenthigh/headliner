@@ -729,15 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9e3ef7d56914d3cb066db4a3d84496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
-  interests:
-  - rate: 1.2
-    investMonths: 3
-  - rate: 1.25
-    investMonths: 6
-  - rate: 1.6
-    investMonths: 12
-  conditions: []
-  withdrawPenalty: 0
+  bankName: 
 --- !u!61 &311653202
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2383,27 +2375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9e3ef7d56914d3cb066db4a3d84496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
-  interests:
-  - rate: 0.85
-    investMonths: 3
-  - rate: 0.9
-    investMonths: 6
-  - rate: 1.2
-    investMonths: 12
-  conditions:
-  - transactionType: 0
-    compareType: 0
-    amount: 500
-    durationMonths: 0
-  - transactionType: 0
-    compareType: 1
-    amount: 10000
-    durationMonths: 0
-  - transactionType: 1
-    compareType: 1
-    amount: 0
-    durationMonths: 3
-  withdrawPenalty: 0
+  bankName: 
 --- !u!61 &1310717040
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2554,6 +2526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736c8a794004d4ac5a7f1e0a3f5ceeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGameLogicManager
+  secondsInOneMonth: 5
+  startingCash: 1000
+  cashPerMonth: 100
 --- !u!4 &1409727651
 Transform:
   m_ObjectHideFlags: 0
@@ -3222,19 +3197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9e3ef7d56914d3cb066db4a3d84496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
-  interests:
-  - rate: 0.3
-    investMonths: 12
-  conditions:
-  - transactionType: 0
-    compareType: 0
-    amount: 499
-    durationMonths: 0
-  - transactionType: 0
-    compareType: 1
-    amount: 10001
-    durationMonths: 0
-  withdrawPenalty: 0
+  bankName: 
 --- !u!1 &1747382783
 GameObject:
   m_ObjectHideFlags: 0
@@ -3615,11 +3578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9e3ef7d56914d3cb066db4a3d84496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
-  interests:
-  - rate: 1
-    investMonths: 12
-  conditions: []
-  withdrawPenalty: 0
+  bankName: 
 --- !u!61 &2056247570
 BoxCollider2D:
   m_ObjectHideFlags: 0

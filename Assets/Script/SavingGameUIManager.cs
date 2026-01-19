@@ -52,6 +52,10 @@ public class SavingGameUIManager : MonoBehaviour
     }
     public void OnCloseBankPanel()
     {
+        if (amountInput != null){
+            amountInput.text = "" ;
+        }
+        bankScript = null;
         bankPanel.SetActive(false);
     }
     public void OnDepositButton()
