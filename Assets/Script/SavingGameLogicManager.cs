@@ -39,7 +39,7 @@ public class SavingGameLogicManager : MonoBehaviour
     private void Update()
     {
         currentTime += Time.deltaTime;
-        Debug.Log("Current Time: " + GetFullTimeInSeconds());
+        // Debug.Log("Current Time: " + GetFullTimeInSeconds());
         if (currentTime >= secondsInOneMonth)
         {
             AdvanceMonth();
