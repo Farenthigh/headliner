@@ -64,6 +64,8 @@ public class SavingGameLogicManager : MonoBehaviour
         Debug.Log($"📅 New Month: Year {currentYear}, Month {currentMonth}");
 
         OnNewMonth?.Invoke(currentYear, currentMonth);
+
+        SavingGameUIManager.Instance.OnCloseBankPanel();
     }
     public int GetCurrentMonth()
     {
