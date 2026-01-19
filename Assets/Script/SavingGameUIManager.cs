@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -95,4 +96,5 @@ public class SavingGameUIManager : MonoBehaviour
         //TODO: create serializafield in logicmanager for goal amount //kf
         //create function GetAllAssets in logicmanager //kf
     }
+
 }

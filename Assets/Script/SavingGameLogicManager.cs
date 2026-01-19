@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class SavingGameLogicManager : MonoBehaviour
 {
@@ -53,6 +54,12 @@ public class SavingGameLogicManager : MonoBehaviour
         //call function OncloseBankPanel in SavingGameUIManager //kf
         currentMonth++;
         cash += cashPerMonth;
+        List<BankScript> allBanks = GetAllBank();
+        foreach (BankScript bank in allBanks)
+        {
+            bank.SetIsContractBroken(false);
+        }
+
         Debug.Log($"💰 Received monthly cash: {cashPerMonth}. Current cash: {cash}");
 
         if (currentMonth > 12)
@@ -99,5 +106,10 @@ public class SavingGameLogicManager : MonoBehaviour
     public float GetFullTimeInSeconds()
     {
         return (currentYear * 12 + currentMonth - 1) * secondsInOneMonth + currentTime;
+    }
+    public List<BankScript> GetAllBank()
+    {
+        List<BankScript> allBanks = new List<BankScript>(FindObjectsByType<BankScript>(FindObjectsSortMode.None));
+        return allBanks;
     }
 }
