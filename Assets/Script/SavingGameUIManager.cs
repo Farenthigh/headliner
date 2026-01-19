@@ -97,4 +97,16 @@ public class SavingGameUIManager : MonoBehaviour
         //create function GetAllAssets in logicmanager //kf
     }
 
+    public void ResetUI()
+    {
+        if (amountInput != null)
+        {
+            amountInput = "";
+        }
+        if (bankPanel != null)
+        {
+            bankPanel.SetActive = false;
+        }
+        bankScript = null;
+    }
 }
