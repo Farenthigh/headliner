@@ -30,7 +30,7 @@ public class SavingGameUIManager : MonoBehaviour
     private void Start()
     {
         depositButton.onClick.AddListener(OnDepositButton);
-        //TODO:withdrawButton.onClick.AddListener(OnWithdrawButton);
+        withdrawButton.onClick.AddListener(OnWithdrawButton);
 
     }
 
@@ -64,6 +64,18 @@ public class SavingGameUIManager : MonoBehaviour
     public void OnWithdrawButton()
     {
         //TODO: Implement withdraw functionality //eve
+        
+        if (bankScript == null) return;
+        
+        if (float.TryParse(amountInput.text, out float amount))
+        {
+            bankScript.Withdraw(amount);
+            amountInput.text = "";
+        }
+        else
+        {
+            Debug.LogWarning("Invalid withdraw amount");
+        }
     }
     public void UpdateRoundTime()
     {
