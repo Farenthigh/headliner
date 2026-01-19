@@ -33,6 +33,11 @@ public class EventManager : MonoBehaviour
             if (roll <= randomEvent.probability)
             {
                 randomEvent.TriggerEvent();
+
+                if (EventDisplay.Instance != null)
+                {
+                    EventDisplay.Instance.ShowEvent(randomEvent);
+                }
                 activeEvents.Add(randomEvent);
                 eventsTriggered++;
             }
