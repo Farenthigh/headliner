@@ -80,8 +80,8 @@ public class SavingGameLogicManager : MonoBehaviour
     public void AddCash(float amount)
     {
         cash += amount;
-        if (currentGold < 0) currentGold = 0;
-        Debug.Log($"Player Gold Updated: {currentGold}");
+        if (cash < 0) cash = 0;
+        Debug.Log($"Player Gold Updated: {cash}");
     }
     public bool DeductCash(float amount)
     {
