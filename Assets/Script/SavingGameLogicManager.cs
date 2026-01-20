@@ -11,8 +11,8 @@ public class SavingGameLogicManager : MonoBehaviour
     public static event Action<int, int> OnNewMonth;
     // year, month
 
-    private int currentMonth;
-    private int currentYear;
+    private int currentMonth = 1;
+    private int currentYear = 0;
     private float currentTime;
     private float cash;
     private void Awake()
@@ -54,11 +54,16 @@ public class SavingGameLogicManager : MonoBehaviour
         //call function OncloseBankPanel in SavingGameUIManager //kf
         currentMonth++;
         cash += cashPerMonth;
+
         List<BankScript> allBanks = GetAllBank();
         foreach (BankScript bank in allBanks)
         {
             bank.SetIsContractBroken(false);
+            bank.UpdateTransactionCurrentCurrentMonth();
+            bank.PayInterest();
         }
+
+
 
         Debug.Log($"💰 Received monthly cash: {cashPerMonth}. Current cash: {cash}");
 
