@@ -23,9 +23,9 @@ public class MoneyEvent : Event
         }
 
         // Manage Actual Gold Change
-        if (PlayerStats.Instance != null)
+        if (SavingGameLogicManager.Instance != null)
         {
-            PlayerStats.Instance.UpdateGold(goldAmount);
+            SavingGameLogicManager.Instance.UpdateGold(goldAmount);
         }
     }
 }
