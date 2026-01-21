@@ -25,7 +25,7 @@ public class MoneyEvent : Event
         // Manage Actual Gold Change
         if (SavingGameLogicManager.Instance != null)
         {
-            SavingGameLogicManager.Instance.UpdateGold(goldAmount);
+            SavingGameLogicManager.Instance.AddCash(goldAmount);
         }
     }
 }
