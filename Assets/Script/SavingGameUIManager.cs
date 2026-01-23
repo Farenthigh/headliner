@@ -13,6 +13,11 @@ public class SavingGameUIManager : MonoBehaviour
     [SerializeField] private GameObject bankPanel;
     [SerializeField] private Button depositButton;
     [SerializeField] private Button withdrawButton;
+    [SerializeField] private Image roundTimeImage;
+    [SerializeField] private TMP_Text roundTimeText;
+    [SerializeField] private Image goalBarFill;
+    [SerializeField] private TMP_Text goalTextMoney;
+    [SerializeField] private TMP_Text roundMonthText;
 
     private BankScript bankScript;
     private void Awake()
@@ -31,6 +36,7 @@ public class SavingGameUIManager : MonoBehaviour
     {
         depositButton.onClick.AddListener(OnDepositButton);
         withdrawButton.onClick.AddListener(OnWithdrawButton);
+        UpdateGoalBar();
 
     }
 
@@ -63,6 +69,8 @@ public class SavingGameUIManager : MonoBehaviour
         if (float.TryParse(amountInput.text, out float amount))
         {
             bankScript.Deposit(amount);
+            amountInput.text = "";
+            UpdateGoalBar();
         }
     }
     public void OnWithdrawButton()
@@ -75,20 +83,45 @@ public class SavingGameUIManager : MonoBehaviour
         {
             bankScript.Withdraw(amount);
             amountInput.text = "";
+            UpdateGoalBar();
         }
         else
         {
             Debug.LogWarning("Invalid withdraw amount");
         }
     }
-    public void UpdateRoundTime()
-    {
-        //TODO: Time in one round - fulltimeinseconds //kf
-        //Update call UpdateRoundtime
-    }
+  public void UpdateRoundTime(float currentTime, float fullTime)
+{
+    // วงกลม
+    float fill = 1f - (currentTime / fullTime);
+    fill = Mathf.Clamp01(fill);
+    roundTimeImage.fillAmount = fill;
+
+    // เลข (ถ้ามี)
+    float remainingTime = fullTime - currentTime;
+    int countdown = Mathf.CeilToInt(remainingTime);
+    if (countdown < 0) countdown = 0;
+    roundTimeText.text = countdown.ToString();
+}
+
+
     public void UpdateGoalBar()
+{
+    float current = SavingGameLogicManager.Instance.GetAllAssets();
+    float goal = SavingGameLogicManager.Instance.GetGoalAmount();
+
+    // แถบสีเขียว
+    goalBarFill.fillAmount = Mathf.Clamp01(current / goal);
+
+    // ข้อความ 2,000 / 10,000
+    goalTextMoney.text = $"{current:N0} / {goal:N0}";
+}
+
+   public void UpdateRoundMonth()
     {
-        //TODO: create serializafield in logicmanager for goal amount //kf
-        //create function GetAllAssets in logicmanager //kf
+    int currentMonth = SavingGameLogicManager.Instance.GetCurrentMonth();
+    int goal = SavingGameLogicManager.Instance.GetGoalMonth();
+    roundMonthText.text = $"{currentMonth}/{goal}";
     }
+
 }
