@@ -40,18 +40,18 @@ public class SavingGameLogicManager : MonoBehaviour
     private void Update()
     {
         currentTime += Time.deltaTime;
-        // Debug.Log("Current Time: " + GetFullTimeInSeconds());
-        if (currentTime >= secondsInOneMonth)
+
+        while (currentTime >= secondsInOneMonth)
         {
+            currentTime -= secondsInOneMonth;
+
             AdvanceMonth();
-            currentTime = 0f;
+            EventManager.Instance.RandomEvent();
         }
     }
 
     private void AdvanceMonth()
     {
-        //TODO: clear UI notifications for new month //kf
-        //call function OncloseBankPanel in SavingGameUIManager //kf
         currentMonth++;
         cash += cashPerMonth;
 
@@ -78,6 +78,8 @@ public class SavingGameLogicManager : MonoBehaviour
         OnNewMonth?.Invoke(currentYear, currentMonth);
 
         SavingGameUIManager.Instance.OnCloseBankPanel();
+        EventManager.Instance.ResetEventTrigger();
+
     }
     public int GetCurrentMonth()
     {
