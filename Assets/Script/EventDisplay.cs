@@ -19,10 +19,21 @@ public class EventDisplay : MonoBehaviour
 
     private bool isWaitingForInput = false;
 
-    private void Awake() => Instance = this;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void ShowEvent(Event eventData)
     {
+        Debug.Log("Showing Event: " + eventData.eventName);
         // Set Front card details but hide it
         nameText.text = eventData.eventName;
         descriptionText.text = eventData.description;

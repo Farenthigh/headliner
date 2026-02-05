@@ -101,11 +101,11 @@ public class SavingGameUIManager : MonoBehaviour
     {
         if (amountInput != null)
         {
-            amountInput = "";
+            amountInput.text = "";
         }
         if (bankPanel != null)
         {
-            bankPanel.SetActive = false;
+            bankPanel.SetActive(false);
         }
         bankScript = null;
     }
