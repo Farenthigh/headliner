@@ -96,11 +96,11 @@ public class Examlogic : MonoBehaviour
     {
         if(playercurrentheart <= 0)
         {
-            Debug.Log("u lose");
+            Debug.Log("u losee");
         } 
         else if(enemycurrentheart <= 0)
         {
-            Debug.Log("u win");
+            Debug.Log("u winn");
         }
     }
 }
