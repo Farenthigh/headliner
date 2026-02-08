@@ -31,7 +31,7 @@ public class EventDisplay : MonoBehaviour
         }
     }
 
-    public void ShowEvent(Event eventData)
+    public void ShowEvent(RandomEvent eventData)
     {
         Debug.Log("Showing Event: " + eventData.eventName);
         // Set Front card details but hide it
