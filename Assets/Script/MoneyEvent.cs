@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewMoneyEvent", menuName = "Random Event/Money Event")]
-public class MoneyEvent : Event
+public class MoneyEvent : RandomEvent
 {
     [Header("Money Setting")]
     [Tooltip("Amount of money to add or subtract")]
