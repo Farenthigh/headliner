@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    [SerializeField] private List<Event> events;
+    [SerializeField] private List<RandomEvent> events;
     [SerializeField] private int maxEventsPerMonth = 1;
-    private List<Event> activeEvents = new List<Event>();
+    private List<RandomEvent> activeEvents = new List<RandomEvent>();
     public static EventManager Instance;
     bool eventTriggeredThisMonth = false;
 
@@ -27,7 +27,7 @@ public class EventManager : MonoBehaviour
         eventTriggeredThisMonth = true;
         activeEvents.Clear();
         int eventsTriggered = 0;
-        foreach (Event randomEvent in events)
+        foreach (RandomEvent randomEvent in events)
         {
             if (eventsTriggered >= maxEventsPerMonth)
                 break;
