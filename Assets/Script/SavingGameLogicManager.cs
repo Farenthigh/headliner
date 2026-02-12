@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using System;
 
@@ -30,19 +31,24 @@ public class SavingGameLogicManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return null;
         currentMonth = 1;
         currentYear = 0;
         currentTime = 0f;
         cash = startingCash;
-        SavingGameUIManager.Instance.UpdateGoalBar();
+        // SavingGameUIManager.Instance.UpdateGoalBar(); 
+        if (SavingGameUIManager.Instance != null)
+        {
+            SavingGameUIManager.Instance.UpdateGoalBar();
+        }
     }
 
     private void Update()
     {
         currentTime += Time.deltaTime;
-        Debug.Log("Current Time: " + GetFullTimeInSeconds());
+        // Debug.Log("Current Time: " + GetFullTimeInSeconds());
 
         SavingGameUIManager.Instance.UpdateRoundTime(currentTime, secondsInOneMonth); //ใช้ทำUpdateRoundTimeg
         SavingGameUIManager.Instance.UpdateRoundMonth();
@@ -64,12 +70,13 @@ public class SavingGameLogicManager : MonoBehaviour
         if(EventManager.Instance != null)
         {
             EventManager.Instance.RandomEvent();
+            Time.timeScale = 0f; // Pause the game when event is triggered
         }
         
         SavingGameUIManager.Instance.UpdateGoalBar();
         SavingGameUIManager.Instance.UpdateRoundMonth();
 
-        Debug.Log($"💰 Received monthly cash: {cashPerMonth}. Current cash: {cash}");
+        // Debug.Log($"💰 Received monthly cash: {cashPerMonth}. Current cash: {cash}");
 
         if (currentMonth > 12)
         {
@@ -77,7 +84,7 @@ public class SavingGameLogicManager : MonoBehaviour
             currentYear++;
         }
 
-        Debug.Log($"📅 New Month: Year {currentYear}, Month {currentMonth}");
+        // Debug.Log($"📅 New Month: Year {currentYear}, Month {currentMonth}");
 
         OnNewMonth?.Invoke(currentYear, currentMonth);
 
@@ -99,7 +106,7 @@ public class SavingGameLogicManager : MonoBehaviour
     {
         cash += amount;
         if (cash < 0) cash = 0;
-        Debug.Log($"Player Gold Updated: {cash}");
+        // Debug.Log($"Player Gold Updated: {cash}");
     }
     public bool DeductCash(float amount)
     {
@@ -110,7 +117,7 @@ public class SavingGameLogicManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Not enough cash!");
+            // Debug.LogWarning("Not enough cash!");
             return false;
         }
     }
@@ -132,7 +139,7 @@ public class SavingGameLogicManager : MonoBehaviour
             currentTime = 0f; // Prevent going to previous month for simplicity
         }
 
-        Debug.Log($"[Event] Time Modified: {seconds}s. Current Time in month: {currentTime}s");
+        // Debug.Log($"[Event] Time Modified: {seconds}s. Current Time in month: {currentTime}s");
     }
     public float GetGoalAmount()
     {

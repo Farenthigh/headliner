@@ -18,6 +18,12 @@ public class EventDisplay : MonoBehaviour
     public Sprite rareFrame;
     public Image cardFrame;
 
+    [Header("Rarity Back Sprites")]
+    public Sprite commonBack;
+    public Sprite uncommonBack;
+    public Sprite rareBack;
+    public Image cardBackImage;
+
     [Header("UI Elements")]
     public Image iconImage;
     public TextMeshProUGUI nameText;
@@ -38,15 +44,18 @@ public class EventDisplay : MonoBehaviour
         {
             if(eventData.rarity == EventRarity.Common)
             {
-                cardFrame.sprite = commonFrame;
+                if(cardFrame != null) cardFrame.sprite = commonFrame;
+                if(cardBackImage != null) cardBackImage.sprite = commonBack;
             }
             else if(eventData.rarity == EventRarity.Uncommon)
             {
-                cardFrame.sprite = uncommonFrame;
+                if(cardFrame != null) cardFrame.sprite = uncommonFrame;
+                if(cardBackImage != null) cardBackImage.sprite = uncommonBack;
             }
             else if(eventData.rarity == EventRarity.Rare)
             {
-                cardFrame.sprite = rareFrame;
+                if(cardFrame != null) cardFrame.sprite = rareFrame;
+                if(cardBackImage != null) cardBackImage.sprite = rareBack;
             }
         }
 
@@ -64,17 +73,25 @@ public class EventDisplay : MonoBehaviour
         // yield return new WaitForSeconds(1f);
 
         // wait for player click to flip the card
-        isWaitingForInput = true;
-        while (isWaitingForInput)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                isWaitingForInput = false;
+        yield return StartCoroutine(WaitPointerClick());
+        // Flip the card to reveal front
+        RevealCard();
+        Debug.Log("Card Revealed!");
+
+        yield return new WaitForSeconds(0.2f);
+
+        yield return StartCoroutine(WaitPointerClick());
+        ClosePanel();
+        Debug.Log("Closing Panel Now...");
+    }
+
+    IEnumerator WaitPointerClick(){
+        while(true){
+            if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)){
+                yield break;
             }
             yield return null;
         }
-        // Flip the card to reveal front
-        RevealCard();
     }
 
     void RevealCard()
@@ -87,5 +104,6 @@ public class EventDisplay : MonoBehaviour
     public void ClosePanel()
     {
         panel.SetActive(false);
+        Time.timeScale = 1f; // Resume the game
     }
 }
