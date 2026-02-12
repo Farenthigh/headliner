@@ -29,7 +29,7 @@ public class BankScript : MonoBehaviour
     [SerializeField] private string bankName;
     private List<Transaction> transactions = new List<Transaction>();
     private void OnMouseDown()
-    {
+    {   
         if (SavingGameUIManager.Instance.GetBankPanel() != true)
             SavingGameUIManager.Instance.OnOpenBankPanel(this);
     }
@@ -59,5 +59,37 @@ public class BankScript : MonoBehaviour
     {
         //TODO: Implement withdraw functionality //eve
         //wallet += withdraw
+        // ตรวจสอบจำนวนเงิน
+
+        if (amount <= 0f)
+            return;
+
+        // ตรวจสอบว่าเงินในธนาคารพอไหม
+        float balance = GetBalance();
+
+        if (amount > balance)
+        {
+            Debug.LogWarning("Not enough balance in bank");
+            return;
+        }
+
+        // สร้าง Transaction แบบถอนเงิน
+        Transaction newTransaction = new Transaction(
+            Transaction.TransactionType.Withdraw,
+            amount,
+            0,
+            SavingGameLogicManager.Instance.GetCurrentMonth(),
+            SavingGameLogicManager.Instance.GetCurrentYear(),
+            SavingGameLogicManager.Instance.GetCurrentMonth()
+        );
+
+        // เพิ่มเงินกลับเข้ากระเป๋าผู้เล่น (wallet)
+        SavingGameLogicManager.Instance.AddCash(amount);
+        
+
+        //บันทึก transaction
+        transactions.Add(newTransaction);
+        
+    
     }
 }
