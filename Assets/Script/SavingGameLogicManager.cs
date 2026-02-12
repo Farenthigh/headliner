@@ -8,6 +8,9 @@ public class SavingGameLogicManager : MonoBehaviour
     [SerializeField] private int secondsInOneMonth = 5;
     [SerializeField] private float startingCash = 1000f;
     [SerializeField] private float cashPerMonth = 100f;
+    [SerializeField] private float goalAmount = 10000f;
+    [SerializeField] private int goalMonth = 12;
+    [SerializeField] private BankScript[] banks;
     public static event Action<int, int> OnNewMonth;
     // year, month
 
@@ -34,14 +37,18 @@ public class SavingGameLogicManager : MonoBehaviour
         currentYear = 0;
         currentTime = 0f;
         cash = startingCash;
-
+        SavingGameUIManager.Instance.UpdateGoalBar();
     }
 
     private void Update()
     {
         currentTime += Time.deltaTime;
+        Debug.Log("Current Time: " + GetFullTimeInSeconds());
 
-        while (currentTime >= secondsInOneMonth)
+        SavingGameUIManager.Instance.UpdateRoundTime(currentTime, secondsInOneMonth); //ใช้ทำUpdateRoundTimeg
+        SavingGameUIManager.Instance.UpdateRoundMonth();
+
+        if (currentTime >= secondsInOneMonth)
         {
             currentTime -= secondsInOneMonth;
 
@@ -54,17 +61,8 @@ public class SavingGameLogicManager : MonoBehaviour
     {
         currentMonth++;
         cash += cashPerMonth;
-
-        List<BankScript> allBanks = GetAllBank();
-        foreach (BankScript bank in allBanks)
-        {
-            bank.SetIsContractBroken(false);
-            bank.UpdateTransactionCurrentCurrentMonth();
-            bank.PayInterest();
-        }
-
-
-
+        SavingGameUIManager.Instance.UpdateGoalBar();
+        SavingGameUIManager.Instance.UpdateRoundMonth();
         Debug.Log($"💰 Received monthly cash: {cashPerMonth}. Current cash: {cash}");
 
         if (currentMonth > 12)
@@ -116,9 +114,26 @@ public class SavingGameLogicManager : MonoBehaviour
     {
         return (currentYear * 12 + currentMonth - 1) * secondsInOneMonth + currentTime;
     }
-    public List<BankScript> GetAllBank()
+    public float GetGoalAmount()
     {
-        List<BankScript> allBanks = new List<BankScript>(FindObjectsByType<BankScript>(FindObjectsSortMode.None));
-        return allBanks;
+        return goalAmount;
+    }
+
+    public float GetAllAssets()
+    {
+        float total = cash; // เงินสด
+
+        foreach (BankScript bank in banks)
+        {
+            if (bank != null)
+                total += bank.GetBalance();
+        }
+
+        return total;
+    }
+
+    public int GetGoalMonth()
+    {
+        return goalMonth;
     }
 }
