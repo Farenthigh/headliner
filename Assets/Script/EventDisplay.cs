@@ -12,6 +12,12 @@ public class EventDisplay : MonoBehaviour
     public GameObject cardBack;
     public GameObject cardFront;
 
+    [Header("Rarity Sprites")]
+    public Sprite commonFrame;
+    public Sprite uncommonFrame;
+    public Sprite rareFrame;
+    public Image cardFrame;
+
     [Header("UI Elements")]
     public Image iconImage;
     public TextMeshProUGUI nameText;
@@ -27,6 +33,22 @@ public class EventDisplay : MonoBehaviour
         nameText.text = eventData.eventName;
         descriptionText.text = eventData.description;
         iconImage.sprite = eventData.icon;
+
+        if(cardFrame != null)
+        {
+            if(eventData.rarity == EventRarity.Common)
+            {
+                cardFrame.sprite = commonFrame;
+            }
+            else if(eventData.rarity == EventRarity.Uncommon)
+            {
+                cardFrame.sprite = uncommonFrame;
+            }
+            else if(eventData.rarity == EventRarity.Rare)
+            {
+                cardFrame.sprite = rareFrame;
+            }
+        }
 
         // Show panel and animate card flip start with back to front
         panel.SetActive(true);

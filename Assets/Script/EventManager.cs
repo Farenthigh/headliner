@@ -4,7 +4,7 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     [SerializeField] private List<Event> events;
-    [SerializeField] private int maxEventsPerMonth = 1;
+    // [SerializeField] private int maxEventsPerMonth = 1;
     private List<Event> activeEvents = new List<Event>();
     public static EventManager Instance;
 
@@ -20,27 +20,41 @@ public class EventManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void RandomEvent()
     {
-        activeEvents.Clear();
-        int eventsTriggered = 0;
-        foreach (Event randomEvent in events)
+        // Randomly select an event based on rarity
+        float roll = Random.Range(0f, 1f);
+        EventRarity selectedRarity;
+
+        if(roll <= 0.05f)
         {
-            if (eventsTriggered >= maxEventsPerMonth)
-                break;
+            selectedRarity = EventRarity.Rare;
+        }
+        else if(roll <= 0.35f)
+        {
+            selectedRarity = EventRarity.Uncommon;
+        }
+        else{
+            selectedRarity = EventRarity.Common;
+        }
 
-            float roll = Random.Range(0f, 1f);
-            if (roll <= randomEvent.probability)
+        // Create a pool of events matching the selected rarity
+        List<Event> pool = events.FindAll(e => e.rarity == selectedRarity);
+
+        if(pool.Count > 0)
+        {
+            int randomIndex = Random.Range(0, pool.Count);
+            Event finalEvent = pool[randomIndex];
+
+            finalEvent.TriggerEvent();
+            if(EventDisplay.Instance != null)
             {
-                randomEvent.TriggerEvent();
-
-                if (EventDisplay.Instance != null)
-                {
-                    EventDisplay.Instance.ShowEvent(randomEvent);
-                }
-                activeEvents.Add(randomEvent);
-                eventsTriggered++;
+                EventDisplay.Instance.ShowEvent(finalEvent);
             }
+        }
+        else{
+            Debug.LogWarning($"No events found for rarity: {selectedRarity}");
         }
     }
 }

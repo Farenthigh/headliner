@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9113d818e8249f5819762222a42be4, type: 3}
+  m_Name: EvTCm_MuscleAche
+  m_EditorClassIdentifier: Assembly-CSharp::TimeEvent
+  eventType: 0
+  rarity: 0
+  icon: {fileID: 0}
+  eventName: Muscle Ache
+  description: "\u0E01\u0E32\u0E23\u0E40\u0E14\u0E34\u0E19\u0E19\u0E32\u0E19\u0E46
+    \u0E17\u0E33\u0E43\u0E2B\u0E49\u0E04\u0E38\u0E13\u0E23\u0E39\u0E49\u0E2A\u0E36\u0E01\u0E25\u0E49\u0E32"
+  timeChange: -10

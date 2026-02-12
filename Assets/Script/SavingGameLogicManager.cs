@@ -53,6 +53,12 @@ public class SavingGameLogicManager : MonoBehaviour
         //call function OncloseBankPanel in SavingGameUIManager //kf
         currentMonth++;
         cash += cashPerMonth;
+
+        if(EventManager.Instance != null)
+        {
+            EventManager.Instance.RandomEvent();
+        }
+        
         Debug.Log($"💰 Received monthly cash: {cashPerMonth}. Current cash: {cash}");
 
         if (currentMonth > 12)
@@ -99,5 +105,21 @@ public class SavingGameLogicManager : MonoBehaviour
     public float GetFullTimeInSeconds()
     {
         return (currentYear * 12 + currentMonth - 1) * secondsInOneMonth + currentTime;
+    }
+
+    public void ModifyTime(float seconds)
+    {
+        currentTime += seconds;
+        if (currentTime >= secondsInOneMonth)
+        {
+            AdvanceMonth();
+            currentTime = 0f;
+        }
+        else if(currentTime < 0 )
+        {
+            currentTime = 0f; // Prevent going to previous month for simplicity
+        }
+
+        Debug.Log($"[Event] Time Modified: {seconds}s. Current Time in month: {currentTime}s");
     }
 }

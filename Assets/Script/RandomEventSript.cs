@@ -1,22 +1,21 @@
 using UnityEngine;
 
+public enum EventType {Money, Time, Round}
+public enum EventRarity {Common,Uncommon,Rare}
+
 [CreateAssetMenu(fileName = "NewEvent", menuName = "Random Event/General")]
 public class Event : ScriptableObject
 {
+    public EventType eventType;
+    public EventRarity rarity;
     public Sprite icon;
     public string eventName;
     [TextArea] public string description; // TextArea ใช้สำหรับข้อความยาว
-    public float probability; // Probability of the event occurring (0 to 1)
-
-    // public virtual void ExecuteAction() // Can be Override
-    // {
-    //     Debug.Log($"Executing Action for Event: {eventName}");
-    //     // Default implementation of the action
-    // }
+    
 
     public virtual void TriggerEvent() // Cannot Override 
     {
-        Debug.Log($"Event Triggered: {eventName} - {description}");
+        Debug.Log($"Event Triggered: {eventName} - {description} Rarity: {rarity}");
         // Implement event effects here
     }
 }
