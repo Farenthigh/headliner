@@ -14,17 +14,7 @@ public enum InterestPayType
     Target
 }
 
-[System.Serializable]
-public class Interest
-{
-    public float interestRate; // e.g., 0.05 for 5%
-    public int durationInMonths; // e.g., 12 for 1 year
-}
-public enum InterestPayType
-{
-    Roundly,
-    Target
-}
+
 
 public class BankScript : MonoBehaviour
 {
