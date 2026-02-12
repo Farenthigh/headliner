@@ -913,7 +913,11 @@ MonoBehaviour:
   bankPanel: {fileID: 110018049}
   depositButton: {fileID: 102365827}
   withdrawButton: {fileID: 1647355113}
-  closeButton: {fileID: 299631781}
+  roundTimeImage: {fileID: 0}
+  roundTimeText: {fileID: 0}
+  goalBarFill: {fileID: 0}
+  goalTextMoney: {fileID: 0}
+  roundMonthText: {fileID: 0}
 --- !u!1 &248245227
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,6 +2629,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844568151}
   m_CullTransparentMesh: 1
+--- !u!1 &866763762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 866763763}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &866763763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866763762}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1041.5532, y: 342.19745, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &899125577
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4278,6 +4313,9 @@ MonoBehaviour:
   secondsInOneMonth: 10
   startingCash: 10000
   cashPerMonth: 100
+  goalAmount: 10000
+  goalMonth: 12
+  banks: []
 --- !u!4 &1409727651
 Transform:
   m_ObjectHideFlags: 0
@@ -6403,3 +6441,4 @@ SceneRoots:
   - {fileID: 1712637758}
   - {fileID: 1196576263}
   - {fileID: 915401326}
+  - {fileID: 866763763}
