@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class SavingGameLogicManager : MonoBehaviour
 {
@@ -11,11 +12,14 @@ public class SavingGameLogicManager : MonoBehaviour
     [SerializeField] private float goalAmount = 10000f;
     [SerializeField] private int goalMonth = 12;
     [SerializeField] private BankScript[] banks;
+    [SerializeField] private float goalAmount = 10000f;
+    [SerializeField] private int goalMonth = 12;
+    [SerializeField] private BankScript[] banks;
     public static event Action<int, int> OnNewMonth;
     // year, month
 
-    private int currentMonth;
-    private int currentYear;
+    private int currentMonth = 1;
+    private int currentYear = 0;
     private float currentTime;
     private float cash;
     private void Awake()
@@ -55,15 +59,15 @@ public class SavingGameLogicManager : MonoBehaviour
         
         if (currentTime >= secondsInOneMonth)
         {
+            currentTime -= secondsInOneMonth;
+
             AdvanceMonth();
-            currentTime = 0f;
+            EventManager.Instance.RandomEvent();
         }
     }
 
     private void AdvanceMonth()
     {
-        //TODO: clear UI notifications for new month //kf
-        //call function OncloseBankPanel in SavingGameUIManager //kf
         currentMonth++;
         cash += cashPerMonth;
 
@@ -89,6 +93,8 @@ public class SavingGameLogicManager : MonoBehaviour
         OnNewMonth?.Invoke(currentYear, currentMonth);
 
         SavingGameUIManager.Instance.OnCloseBankPanel();
+        EventManager.Instance.ResetEventTrigger();
+
     }
     public int GetCurrentMonth()
     {

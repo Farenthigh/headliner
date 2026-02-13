@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -44,7 +45,7 @@ public class SavingGameUIManager : MonoBehaviour
     {
         if (bankScript == null) return;
         bankNameText.text = bankScript.name;
-        BalanceText.text = "เหรียญทองคงเหลือ " + bankScript.GetBalance().ToString("F2");
+        BalanceText.text = bankScript.GetBalance().ToString("F2");
     }
 
     public void OnOpenBankPanel(BankScript bankScript)
@@ -58,8 +59,10 @@ public class SavingGameUIManager : MonoBehaviour
     }
     public void OnCloseBankPanel()
     {
-        if (amountInput != null){
-            amountInput.text = "" ;
+        Debug.Log("Closing Bank Panel");
+        if (amountInput != null)
+        {
+            amountInput.text = "";
         }
         bankScript = null;
         bankPanel.SetActive(false);
@@ -76,9 +79,9 @@ public class SavingGameUIManager : MonoBehaviour
     public void OnWithdrawButton()
     {
         //TODO: Implement withdraw functionality //eve
-        
+
         if (bankScript == null) return;
-        
+
         if (float.TryParse(amountInput.text, out float amount))
         {
             bankScript.Withdraw(amount);
@@ -90,38 +93,38 @@ public class SavingGameUIManager : MonoBehaviour
             Debug.LogWarning("Invalid withdraw amount");
         }
     }
-  public void UpdateRoundTime(float currentTime, float fullTime)
-{
-    // วงกลม
-    float fill = 1f - (currentTime / fullTime);
-    fill = Mathf.Clamp01(fill);
-    roundTimeImage.fillAmount = fill;
+    public void UpdateRoundTime(float currentTime, float fullTime)
+    {
+        // วงกลม
+        float fill = 1f - (currentTime / fullTime);
+        fill = Mathf.Clamp01(fill);
+        roundTimeImage.fillAmount = fill;
 
-    // เลข (ถ้ามี)
-    float remainingTime = fullTime - currentTime;
-    int countdown = Mathf.CeilToInt(remainingTime);
-    if (countdown < 0) countdown = 0;
-    roundTimeText.text = countdown.ToString();
-}
+        // เลข (ถ้ามี)
+        float remainingTime = fullTime - currentTime;
+        int countdown = Mathf.CeilToInt(remainingTime);
+        if (countdown < 0) countdown = 0;
+        roundTimeText.text = countdown.ToString();
+    }
 
 
     public void UpdateGoalBar()
-{
-    float current = SavingGameLogicManager.Instance.GetAllAssets();
-    float goal = SavingGameLogicManager.Instance.GetGoalAmount();
-
-    // แถบสีเขียว
-    goalBarFill.fillAmount = Mathf.Clamp01(current / goal);
-
-    // ข้อความ 2,000 / 10,000
-    goalTextMoney.text = $"{current:N0} / {goal:N0}";
-}
-
-   public void UpdateRoundMonth()
     {
-    int currentMonth = SavingGameLogicManager.Instance.GetCurrentMonth();
-    int goal = SavingGameLogicManager.Instance.GetGoalMonth();
-    roundMonthText.text = $"{currentMonth}/{goal}";
+        float current = SavingGameLogicManager.Instance.GetAllAssets();
+        float goal = SavingGameLogicManager.Instance.GetGoalAmount();
+
+        // แถบสีเขียว
+        goalBarFill.fillAmount = Mathf.Clamp01(current / goal);
+
+        // ข้อความ 2,000 / 10,000
+        goalTextMoney.text = $"{current:N0} / {goal:N0}";
+    }
+
+    public void UpdateRoundMonth()
+    {
+        int currentMonth = SavingGameLogicManager.Instance.GetCurrentMonth();
+        int goal = SavingGameLogicManager.Instance.GetGoalMonth();
+        roundMonthText.text = $"{currentMonth}/{goal}";
     }
 
 }

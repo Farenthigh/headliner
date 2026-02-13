@@ -7,6 +7,7 @@ public class EventManager : MonoBehaviour
     // [SerializeField] private int maxEventsPerMonth = 1;
     private List<Event> activeEvents = new List<Event>();
     public static EventManager Instance;
+    bool eventTriggeredThisMonth = false;
 
     private void Awake()
     {
@@ -56,5 +57,9 @@ public class EventManager : MonoBehaviour
         else{
             Debug.LogWarning($"No events found for rarity: {selectedRarity}");
         }
+    }
+    public void ResetEventTrigger()
+    {
+        eventTriggeredThisMonth = false;
     }
 }
