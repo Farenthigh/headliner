@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EvMR_EternalCurse
   m_EditorClassIdentifier: Assembly-CSharp::MoneyEvent
   eventType: 0
-  rarity: 0
-  icon: {fileID: 0}
-  eventName: 
-  description: 
-  goldAmount: 0
+  rarity: 2
+  icon: {fileID: 4574721065055085092, guid: af94e81a233804846a310a6cf98ee87b, type: 3}
+  eventName: Eternal Curse
+  description: "\u0E04\u0E38\u0E13\u0E44\u0E1B\u0E41\u0E15\u0E30\u0E15\u0E49\u0E2D\u0E07\u0E27\u0E31\u0E15\u0E16\u0E38\u0E42\u0E1A\u0E23\u0E32\u0E13\u0E15\u0E49\u0E2D\u0E07\u0E04\u0E33\u0E2A\u0E32\u0E1B"
+  goldAmount: -500

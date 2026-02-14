@@ -759,8 +759,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
   bankName: 
-  interestOptions: []
-  interestPayType: 0
 --- !u!1 &166773152
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,11 +911,6 @@ MonoBehaviour:
   bankPanel: {fileID: 110018049}
   depositButton: {fileID: 102365827}
   withdrawButton: {fileID: 1647355113}
-  roundTimeImage: {fileID: 0}
-  roundTimeText: {fileID: 0}
-  goalBarFill: {fileID: 0}
-  goalTextMoney: {fileID: 0}
-  roundMonthText: {fileID: 0}
 --- !u!1 &248245227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,8 +1446,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
   bankName: 
-  interestOptions: []
-  interestPayType: 0
 --- !u!61 &311653202
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2803,6 +2794,10 @@ MonoBehaviour:
   panel: {fileID: 311397370}
   cardBack: {fileID: 1528485503}
   cardFront: {fileID: 377208937}
+  commonFrame: {fileID: 2040593383014832805, guid: 640a372326fc24a4b9b7099af4ec2e99, type: 3}
+  uncommonFrame: {fileID: 2957237373258384390, guid: aaa368995fc0a42ec819d7c4a9904c17, type: 3}
+  rareFrame: {fileID: 5604223034115033642, guid: bb7868d96b18f43af80a5a67b691eaee, type: 3}
+  cardFrame: {fileID: 0}
   iconImage: {fileID: 0}
   nameText: {fileID: 0}
   descriptionText: {fileID: 0}
@@ -3213,8 +3208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
   bankName: 
-  interestOptions: []
-  interestPayType: 0
 --- !u!1 &1104857258
 GameObject:
   m_ObjectHideFlags: 0
@@ -3565,8 +3558,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventManager
   events:
-  - {fileID: 11400000, guid: 07bf6f422ffa74f55afe2d23fc74011a, type: 2}
-  maxEventsPerMonth: 1
+  - {fileID: 11400000, guid: b1b0df524519448688a65dd233855e7a, type: 2}
+  - {fileID: 11400000, guid: 2359b402b1d694c53a92e31801634303, type: 2}
+  - {fileID: 11400000, guid: 9270bc969a6b940548956aa8c4da5209, type: 2}
+  - {fileID: 11400000, guid: c3bc7167a9bbc42eeaaa023e82b0a750, type: 2}
+  - {fileID: 11400000, guid: 8ed24396194224eda9ed1e23197cbe12, type: 2}
+  - {fileID: 11400000, guid: b880c3a4c57ab4b9093d31ce5ed5864e, type: 2}
+  - {fileID: 11400000, guid: bb7681982b53c43708273fc9da621344, type: 2}
+  - {fileID: 11400000, guid: c01223846f56b4b2aa22fdae2da3a938, type: 2}
+  - {fileID: 11400000, guid: 129ac7412625f48b399af6ba015aae7f, type: 2}
+  - {fileID: 11400000, guid: cd4d70d6630384601b74769d4ef85bea, type: 2}
+  - {fileID: 11400000, guid: 6e5f33d9f1b7a44548e44a0b609c7b53, type: 2}
+  - {fileID: 11400000, guid: c5b840aa44f784a06867a1ea5a265014, type: 2}
+  - {fileID: 11400000, guid: 7912db752440049aba9300020fc8a169, type: 2}
+  - {fileID: 11400000, guid: bbead3b72213b4c3a8e82bab6c7e513d, type: 2}
+  - {fileID: 11400000, guid: 41785e8629aa64511a43445b81913e6e, type: 2}
+  - {fileID: 11400000, guid: ab2df6f3e8a9645efbfa86e8f6ba6f0a, type: 2}
+  - {fileID: 11400000, guid: e97e5def6756148968d2e1fee6a946d6, type: 2}
 --- !u!4 &1196576263
 Transform:
   m_ObjectHideFlags: 0
@@ -3816,7 +3824,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1845032211}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180.368}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4297,8 +4305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
   bankName: 
-  interestOptions: []
-  interestPayType: 0
 --- !u!61 &1310717040
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4452,9 +4458,6 @@ MonoBehaviour:
   secondsInOneMonth: 10
   startingCash: 10000
   cashPerMonth: 100
-  goalAmount: 10000
-  goalMonth: 12
-  banks: []
 --- !u!4 &1409727651
 Transform:
   m_ObjectHideFlags: 0
@@ -5147,8 +5150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
   bankName: 
-  interestOptions: []
-  interestPayType: 0
 --- !u!1 &1695166882
 GameObject:
   m_ObjectHideFlags: 0
@@ -5404,8 +5405,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
   bankName: 
-  interestOptions: []
-  interestPayType: 0
 --- !u!1 &1744082778
 GameObject:
   m_ObjectHideFlags: 0
@@ -6376,8 +6375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
   bankName: 
-  interestOptions: []
-  interestPayType: 0
 --- !u!61 &2056247570
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6581,3 +6578,4 @@ SceneRoots:
   - {fileID: 1196576263}
   - {fileID: 915401326}
   - {fileID: 866763763}
+  - {fileID: 1247555395}

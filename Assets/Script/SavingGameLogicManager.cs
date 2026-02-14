@@ -12,9 +12,6 @@ public class SavingGameLogicManager : MonoBehaviour
     [SerializeField] private float goalAmount = 10000f;
     [SerializeField] private int goalMonth = 12;
     [SerializeField] private BankScript[] banks;
-    [SerializeField] private float goalAmount = 10000f;
-    [SerializeField] private int goalMonth = 12;
-    [SerializeField] private BankScript[] banks;
     public static event Action<int, int> OnNewMonth;
     // year, month
 

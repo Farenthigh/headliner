@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoneyEvent
   eventType: 0
   rarity: 0
-  icon: {fileID: 0}
+  icon: {fileID: -9162993137599089106, guid: 90427a67bb1084d4383d60beb7613e51, type: 3}
   eventName: Broken Sole
   description: "\u0E2A\u0E32\u0E22\u0E23\u0E2D\u0E07\u0E40\u0E17\u0E49\u0E32\u0E02\u0E2D\u0E07\u0E04\u0E38\u0E13\u0E02\u0E32\u0E14\u0E01\u0E30\u0E17\u0E31\u0E19\u0E2B\u0E31\u0E19"
   goldAmount: -10

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoneyEvent
   eventType: 0
   rarity: 0
-  icon: {fileID: 0}
+  icon: {fileID: 6855963223334433300, guid: ec67b495b213b41d3bdd970101c7dbe5, type: 3}
   eventName: Kind Merchant
   description: "\u0E1E\u0E48\u0E2D\u0E04\u0E49\u0E32\u0E40\u0E14\u0E34\u0E19\u0E17\u0E32\u0E07\u0E41\u0E27\u0E30\u0E17\u0E31\u0E01\u0E17\u0E32\u0E22\u0E41\u0E25\u0E30\u0E21\u0E2D\u0E1A\u0E02\u0E19\u0E21\u0E43\u0E2B\u0E49\n\n"
   goldAmount: 10

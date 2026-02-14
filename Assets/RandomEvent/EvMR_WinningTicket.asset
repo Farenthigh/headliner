@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EvMR_WinningTicket
   m_EditorClassIdentifier: Assembly-CSharp::MoneyEvent
   eventType: 0
-  rarity: 0
-  icon: {fileID: 0}
-  eventName: 
-  description: 
-  goldAmount: 0
+  rarity: 2
+  icon: {fileID: -7188658415396004017, guid: 5a81632e83a4f45a5b71a7fb6817b8bd, type: 3}
+  eventName: Winning Ticket
+  description: "\u0E40\u0E25\u0E02\u0E17\u0E35\u0E48\u0E04\u0E38\u0E13\u0E0B\u0E37\u0E49\u0E2D\u0E44\u0E27\u0E49\u0E16\u0E39\u0E01\u0E23\u0E32\u0E07\u0E27\u0E31\u0E25\u0E43\u0E2B\u0E0D\u0E48\n\n"
+  goldAmount: 10000

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EvMUcm_InnocentScammer
   m_EditorClassIdentifier: Assembly-CSharp::MoneyEvent
   eventType: 0
-  rarity: 0
-  icon: {fileID: 0}
-  eventName: 
-  description: 
-  goldAmount: 0
+  rarity: 1
+  icon: {fileID: -7792450770894005925, guid: f8c9e585a4f384e909d7d5669c25aacb, type: 3}
+  eventName: Innocent Scammer
+  description: "\u0E21\u0E35\u0E04\u0E19\u0E21\u0E32\u0E2B\u0E25\u0E2D\u0E01\u0E02\u0E32\u0E22\u0E02\u0E2D\u0E07\u0E1B\u0E25\u0E2D\u0E21\u0E43\u0E2B\u0E49\u0E04\u0E38\u0E13"
+  goldAmount: -150

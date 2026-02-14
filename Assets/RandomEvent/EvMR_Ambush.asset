@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EvMR_Ambush
   m_EditorClassIdentifier: Assembly-CSharp::MoneyEvent
   eventType: 0
-  rarity: 0
-  icon: {fileID: 0}
-  eventName: 
-  description: 
-  goldAmount: 0
+  rarity: 2
+  icon: {fileID: 8580089753507832943, guid: bd64ea01b020244d09cbc4a58ced4285, type: 3}
+  eventName: Ambush
+  description: "\u0E04\u0E38\u0E13\u0E16\u0E39\u0E01\u0E14\u0E31\u0E01\u0E1B\u0E25\u0E49\u0E19\u0E01\u0E25\u0E32\u0E07\u0E1B\u0E48\u0E32"
+  goldAmount: -2000

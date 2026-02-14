@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: EvMUcm_LeakyPouch
   m_EditorClassIdentifier: Assembly-CSharp::MoneyEvent
   eventType: 0
-  rarity: 0
-  icon: {fileID: 0}
-  eventName: 
-  description: 
-  goldAmount: 0
+  rarity: 1
+  icon: {fileID: 3692519020086302851, guid: 7f5806056383d425cabfa7aaf9936c3c, type: 3}
+  eventName: Leaky Pouch
+  description: "\u0E01\u0E23\u0E30\u0E40\u0E1B\u0E4B\u0E32\u0E15\u0E31\u0E07\u0E04\u0E4C\u0E04\u0E38\u0E13\u0E02\u0E32\u0E14
+    \u0E40\u0E07\u0E34\u0E19\u0E44\u0E2B\u0E25\u0E2D\u0E2D\u0E01\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E15\u0E31\u0E27"
+  goldAmount: -200

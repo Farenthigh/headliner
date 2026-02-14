@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9113d818e8249f5819762222a42be4, type: 3}
   m_Name: EvTUcm_BurstOfSpirit
   m_EditorClassIdentifier: Assembly-CSharp::TimeEvent
-  eventType: 0
-  rarity: 0
-  icon: {fileID: 0}
-  eventName: 
-  description: 
-  timeChange: 0
+  eventType: 1
+  rarity: 1
+  icon: {fileID: 7515357072684481883, guid: fd870dce7ba4546f681f117b4bc47c22, type: 3}
+  eventName: Burst of Spirit
+  description: "\u0E04\u0E38\u0E13\u0E19\u0E36\u0E01\u0E16\u0E36\u0E07\u0E40\u0E1B\u0E49\u0E32\u0E2B\u0E21\u0E32\u0E22\u0E41\u0E25\u0E49\u0E27\u0E21\u0E35\u0E41\u0E23\u0E07\u0E2E\u0E36\u0E14"
+  timeChange: 10

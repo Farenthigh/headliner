@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoneyEvent
   eventType: 0
   rarity: 0
-  icon: {fileID: 0}
+  icon: {fileID: 7736286018213460100, guid: d991fba815545476ba22166395662e5d, type: 3}
   eventName: Minor Donation
   description: "\u0E04\u0E38\u0E13\u0E1A\u0E23\u0E34\u0E08\u0E32\u0E04\u0E40\u0E07\u0E34\u0E19\u0E43\u0E2B\u0E49\u0E27\u0E13\u0E34\u0E1E\u0E01\u0E02\u0E49\u0E32\u0E07\u0E17\u0E32\u0E07"
   goldAmount: -50

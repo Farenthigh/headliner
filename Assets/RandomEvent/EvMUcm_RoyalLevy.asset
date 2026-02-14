@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EvMUcm_RoyalLevy
   m_EditorClassIdentifier: Assembly-CSharp::MoneyEvent
   eventType: 0
-  rarity: 0
-  icon: {fileID: 0}
-  eventName: 
-  description: 
-  goldAmount: 0
+  rarity: 1
+  icon: {fileID: 71420511171701985, guid: 726b1587ec03943abaaf654221057e19, type: 3}
+  eventName: Royal Levy
+  description: "\u0E17\u0E32\u0E07\u0E01\u0E32\u0E23\u0E40\u0E23\u0E35\u0E22\u0E01\u0E40\u0E01\u0E47\u0E1A\u0E20\u0E32\u0E29\u0E35\u0E1A\u0E33\u0E23\u0E38\u0E07\u0E17\u0E49\u0E2D\u0E07\u0E17\u0E35\u0E48\n\n"
+  goldAmount: -1000

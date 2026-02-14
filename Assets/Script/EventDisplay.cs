@@ -12,7 +12,7 @@ public class EventDisplay : MonoBehaviour
     public GameObject cardBack;
     public GameObject cardFront;
 
-    [Header("Rarity Sprites")]
+    [Header("Rarity Front Sprites")]
     public Sprite commonFrame;
     public Sprite uncommonFrame;
     public Sprite rareFrame;

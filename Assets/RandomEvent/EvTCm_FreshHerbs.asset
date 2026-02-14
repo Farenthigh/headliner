@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeEvent
   eventType: 1
   rarity: 0
-  icon: {fileID: 0}
+  icon: {fileID: -8355721609301751361, guid: 470b5757ba1164add93ca9e96c67c56c, type: 3}
   eventName: 'Fresh Herbs  '
   description: "\u0E04\u0E38\u0E13\u0E1E\u0E1A\u0E41\u0E1B\u0E25\u0E07\u0E1C\u0E31\u0E01\u0E1B\u0E48\u0E32\u0E17\u0E35\u0E48\u0E01\u0E34\u0E19\u0E44\u0E14\u0E49\u0E23\u0E30\u0E2B\u0E27\u0E48\u0E32\u0E07\u0E17\u0E32\u0E07
     \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E40\u0E27\u0E25\u0E32 10 \u0E27\u0E34\u0E43\u0E19\u0E23\u0E2D\u0E1A\u0E19\u0E35\u0E49"

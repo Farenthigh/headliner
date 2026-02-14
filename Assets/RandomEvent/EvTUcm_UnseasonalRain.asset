@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9113d818e8249f5819762222a42be4, type: 3}
   m_Name: EvTUcm_UnseasonalRain
   m_EditorClassIdentifier: Assembly-CSharp::TimeEvent
-  eventType: 0
-  rarity: 0
-  icon: {fileID: 0}
-  eventName: 
-  description: 
-  timeChange: 0
+  eventType: 1
+  rarity: 1
+  icon: {fileID: -476301353544536886, guid: d0a070cec0d614c9f8e4ba48c034e12a, type: 3}
+  eventName: Unseasonal Rain
+  description: "\u0E1D\u0E19\u0E15\u0E01\u0E2B\u0E19\u0E31\u0E01\u0E17\u0E33\u0E43\u0E2B\u0E49\u0E04\u0E38\u0E13\u0E15\u0E49\u0E2D\u0E07\u0E2B\u0E22\u0E38\u0E14\u0E1E\u0E31\u0E01"
+  timeChange: -60
