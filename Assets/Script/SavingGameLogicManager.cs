@@ -12,6 +12,7 @@ public class SavingGameLogicManager : MonoBehaviour
     [SerializeField] private float goalAmount = 10000f;
     [SerializeField] private int goalMonth = 12;
     [SerializeField] private BankScript[] banks;
+    [SerializeField] private int star = 1;
     public static event Action<int, int> OnNewMonth;
     // year, month
 
@@ -39,6 +40,9 @@ public class SavingGameLogicManager : MonoBehaviour
         currentYear = 0;
         currentTime = 0f;
         cash = startingCash;
+        SavingGameUIManager.Instance.UpdateGoalBar();
+        SavingGameUIManager.Instance.UpdateVictory();
+        SavingGameUIManager.Instance.UpdateDefeat();
         // SavingGameUIManager.Instance.UpdateGoalBar(); 
         if (SavingGameUIManager.Instance != null)
         {
@@ -53,6 +57,8 @@ public class SavingGameLogicManager : MonoBehaviour
 
         SavingGameUIManager.Instance.UpdateRoundTime(currentTime, secondsInOneMonth); //ใช้ทำUpdateRoundTimeg
         SavingGameUIManager.Instance.UpdateRoundMonth();
+        SavingGameUIManager.Instance.UpdateVictory(); // ให้แสดงนห้า ui victory 
+        SavingGameUIManager.Instance.UpdateDefeat();
         
         if (currentTime >= secondsInOneMonth)
         {
@@ -78,6 +84,8 @@ public class SavingGameLogicManager : MonoBehaviour
         SavingGameUIManager.Instance.UpdateRoundMonth();
 
         // Debug.Log($"💰 Received monthly cash: {cashPerMonth}. Current cash: {cash}");
+       
+        Debug.Log($"💰 Received monthly cash: {cashPerMonth}. Current cash: {cash}");
 
         if (currentMonth > 12)
         {
@@ -90,6 +98,8 @@ public class SavingGameLogicManager : MonoBehaviour
         OnNewMonth?.Invoke(currentYear, currentMonth);
 
         SavingGameUIManager.Instance.OnCloseBankPanel();
+        SavingGameUIManager.Instance.UpdateVictory();
+        SavingGameUIManager.Instance.UpdateDefeat();
         EventManager.Instance.ResetEventTrigger();
 
     }
@@ -166,4 +176,10 @@ public float GetAllAssets()
     {
     return goalMonth;
     }
+    
+public int GetStar()
+{
+    return star;
+}
+
 }
