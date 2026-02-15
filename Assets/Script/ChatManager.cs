@@ -3,53 +3,74 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviour
 {
     [Header("UI References")]
     public Transform chatContent;       
     public TMP_InputField messageInput; 
-    public Button sendButton;
-    public ScrollRect scrollRect;       
+    public Button sendButton;           
+    public ScrollRect scrollRect;     
 
     [Header("Prefabs")]
-    public GameObject userBubblePrefab; 
-    public GameObject aiBubblePrefab;   
+    public GameObject userBubblePrefab;
+    public GameObject aiBubblePrefab;
+
+    public GameObject chatWindow;
+    public Button openButton;
+    public Button closeButton;
+    public static ChatManager instance;
 
     private string apiUrl = "http://localhost:8080/api/chat"; 
 
     [System.Serializable]
     public class ChatRequest { public string player_id; public string message; }
+
     [System.Serializable]
     public class ChatResponse { public string answer; public string status; }
 
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
-        sendButton.onClick.AddListener(SendMessageToAI);
+        sendButton.onClick.AddListener(OnSendClick);
+
+        openButton.onClick.AddListener(OpenChat);
+        closeButton.onClick.AddListener(CloseChat);
+
+        CloseChat();
     }
 
-    public void SendMessageToAI()
+    void OnSendClick()
     {
         if (string.IsNullOrEmpty(messageInput.text)) return;
 
-        string userMessage = messageInput.text;
-        
-        CreateChatBubble(userBubblePrefab, userMessage);
-        
-        messageInput.text = "";
+        string msg = messageInput.text;
+        CreateBubble(userBubblePrefab, msg);
+        messageInput.text = ""; 
 
-        StartCoroutine(PostRequest(userMessage));
+        StartCoroutine(PostRequest(msg));
     }
 
     IEnumerator PostRequest(string message)
     {
-        GameObject aiBubble = CreateChatBubble(aiBubblePrefab, "...");
-        TMP_Text aiBubbleText = aiBubble.GetComponentInChildren<TMP_Text>();
+        GameObject aiBubble = CreateBubble(aiBubblePrefab, "กำลังค้นข้อมูล...");
+        TMP_Text aiText = aiBubble.GetComponentInChildren<TMP_Text>();
 
-        ChatRequest reqData = new ChatRequest { player_id = "Tester001", message = message };
-        string json = JsonUtility.ToJson(reqData);
+        ChatRequest req = new ChatRequest { player_id = "Player01", message = message };
+        string json = JsonUtility.ToJson(req);
 
         using (UnityWebRequest request = new UnityWebRequest(apiUrl, "POST"))
         {
@@ -62,32 +83,56 @@ public class ChatManager : MonoBehaviour
 
             if (request.result != UnityWebRequest.Result.Success)
             {
-                aiBubbleText.text = "<color=red>Error connecting to AI</color>";
+                aiText.text = "<color=red>Error: " + request.error + "</color>";
             }
             else
             {
-                var response = JsonUtility.FromJson<ChatResponse>(request.downloadHandler.text);
-                
-                aiBubbleText.text = response.answer;
-                
-                aiBubbleText.richText = true; 
+                try 
+                {
+                    ChatResponse res = JsonUtility.FromJson<ChatResponse>(request.downloadHandler.text);
+                    aiText.text = res.answer;
+                }
+                catch
+                {
+                    aiText.text = request.downloadHandler.text;
+                }
             }
         }
-        
-        Canvas.ForceUpdateCanvases();
-        scrollRect.verticalNormalizedPosition = 0f;
+
+        StartCoroutine(ForceScrollDown());
     }
 
-    GameObject CreateChatBubble(GameObject prefab, string text)
+    GameObject CreateBubble(GameObject prefab, string text)
     {
         GameObject newBubble = Instantiate(prefab, chatContent);
-        
         TMP_Text bubbleText = newBubble.GetComponentInChildren<TMP_Text>();
         bubbleText.text = text;
 
-        Canvas.ForceUpdateCanvases();
-        scrollRect.verticalNormalizedPosition = 0f;
+        StartCoroutine(ForceScrollDown());
 
         return newBubble;
+    }
+
+    IEnumerator ForceScrollDown()
+    {
+        yield return new WaitForEndOfFrame();
+        
+        LayoutRebuilder.ForceRebuildLayoutImmediate(chatContent.GetComponent<RectTransform>());
+        
+        yield return new WaitForEndOfFrame();
+        
+        scrollRect.verticalNormalizedPosition = 0f;
+    }
+
+    void OpenChat()
+    {
+        chatWindow.SetActive(true);
+        openButton.gameObject.SetActive(false);
+    }
+
+    void CloseChat()
+    {
+        chatWindow.SetActive(false);
+        openButton.gameObject.SetActive(true);
     }
 }
