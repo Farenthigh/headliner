@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class SavingGameLogicManager : MonoBehaviour
 {
@@ -7,11 +8,14 @@ public class SavingGameLogicManager : MonoBehaviour
     [SerializeField] private int secondsInOneMonth = 5;
     [SerializeField] private float startingCash = 1000f;
     [SerializeField] private float cashPerMonth = 100f;
+    [SerializeField] private float goalAmount = 10000f;
+    [SerializeField] private int goalMonth = 12;
+    [SerializeField] private BankScript[] banks;
     public static event Action<int, int> OnNewMonth;
     // year, month
 
-    private int currentMonth;
-    private int currentYear;
+    private int currentMonth = 1;
+    private int currentYear = 0;
     private float currentTime;
     private float cash;
     private void Awake()
@@ -33,26 +37,32 @@ public class SavingGameLogicManager : MonoBehaviour
         currentYear = 0;
         currentTime = 0f;
         cash = startingCash;
-
+        SavingGameUIManager.Instance.UpdateGoalBar();
     }
 
     private void Update()
     {
         currentTime += Time.deltaTime;
         Debug.Log("Current Time: " + GetFullTimeInSeconds());
+
+        SavingGameUIManager.Instance.UpdateRoundTime(currentTime, secondsInOneMonth); //ใช้ทำUpdateRoundTimeg
+        SavingGameUIManager.Instance.UpdateRoundMonth();
+
         if (currentTime >= secondsInOneMonth)
         {
+            currentTime -= secondsInOneMonth;
+
             AdvanceMonth();
-            currentTime = 0f;
+            EventManager.Instance.RandomEvent();
         }
     }
 
     private void AdvanceMonth()
     {
-        //TODO: clear UI notifications for new month //kf
-        //call function OncloseBankPanel in SavingGameUIManager //kf
         currentMonth++;
         cash += cashPerMonth;
+        SavingGameUIManager.Instance.UpdateGoalBar();
+        SavingGameUIManager.Instance.UpdateRoundMonth();
         Debug.Log($"💰 Received monthly cash: {cashPerMonth}. Current cash: {cash}");
 
         if (currentMonth > 12)
@@ -64,6 +74,10 @@ public class SavingGameLogicManager : MonoBehaviour
         Debug.Log($"📅 New Month: Year {currentYear}, Month {currentMonth}");
 
         OnNewMonth?.Invoke(currentYear, currentMonth);
+
+        SavingGameUIManager.Instance.OnCloseBankPanel();
+        EventManager.Instance.ResetEventTrigger();
+
     }
     public int GetCurrentMonth()
     {
@@ -99,5 +113,27 @@ public class SavingGameLogicManager : MonoBehaviour
     public float GetFullTimeInSeconds()
     {
         return (currentYear * 12 + currentMonth - 1) * secondsInOneMonth + currentTime;
+    }
+    public float GetGoalAmount()
+    {
+        return goalAmount;
+    }
+
+    public float GetAllAssets()
+    {
+        float total = cash; // เงินสด
+
+        foreach (BankScript bank in banks)
+        {
+            if (bank != null)
+                total += bank.GetBalance();
+        }
+
+        return total;
+    }
+
+    public int GetGoalMonth()
+    {
+        return goalMonth;
     }
 }
