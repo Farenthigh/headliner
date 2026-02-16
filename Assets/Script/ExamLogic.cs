@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class Examlogic : MonoBehaviour
 {
@@ -14,12 +15,24 @@ public class Examlogic : MonoBehaviour
     public GameObject[] playerhearts;
     public GameObject[] enemyhearts;
     public GameObject choicePanel; 
+    public GameObject questionPanel;
     public Text[] choicebuttontextUI;
     public GameObject inputPanel; 
-    public InputField answerInputField; 
+    public TMP_InputField answerInputField; 
+    public StoryManager storyManager;
     
-    void Start() 
+    public void StartExam() 
     {
+        this.gameObject.SetActive(true);
+        if(questionPanel != null) questionPanel.SetActive(true);
+
+        //Set Auto Open SuperClass Heart
+        if (playerhearts.Length > 0 && playerhearts[0].transform.parent != null)
+        playerhearts[0].transform.parent.gameObject.SetActive(true);
+    
+        if (enemyhearts.Length > 0 && enemyhearts[0].transform.parent != null)
+            enemyhearts[0].transform.parent.gameObject.SetActive(true);
+            
         playercurrentheart = maxheart;
         enemycurrentheart = maxheart;
         questionindex = 0; 
@@ -104,15 +117,33 @@ public class Examlogic : MonoBehaviour
     void updateHeartUI()
     {
         for(int i = 0 ; i < playerhearts.Length; i++)
-            playerhearts[i].SetActive(i < playercurrentheart);
+        {
+            if(playerhearts[i] != null)
+            {
+                // ถ้าลำดับ i น้อยกว่าเลือดที่มี ให้เปิดดวงนั้น
+                playerhearts[i].SetActive(i < playercurrentheart);
+            }
+        }
 
+        // อัปเดตฝั่งศัตรู
         for(int i = 0 ; i < enemyhearts.Length; i++)
-            enemyhearts[i].SetActive(i < enemycurrentheart);
+        {
+            if(enemyhearts[i] != null)
+            {
+                enemyhearts[i].SetActive(i < enemycurrentheart);
+            }
+        }
     }
 
     void CheckGameEnd()
     {
         if(playercurrentheart <= 0) Debug.Log("คุณแพ้");
-        else if(enemycurrentheart <= 0) Debug.Log("คุณชนะ");
+        else if(enemycurrentheart <= 0) 
+        {
+            Debug.Log("คุณชนะ");
+            if(questionPanel != null) questionPanel.SetActive(false);
+            this.gameObject.SetActive(false);
+            if(storyManager != null) storyManager.OnClickNext();
+        }
     }
 }

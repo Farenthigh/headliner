@@ -8,10 +8,16 @@ public class StoryManager : MonoBehaviour
     public Text dialogueTextUI;
     public Text speakerNameUI;
     public Image backgroundImageUI;
-    public Image characterImageUI;
+    public Image characterLeftUI;
+    public Image characterCenterUI;
+    public Image characterRightUI;
+    public Image speechBubbleUI;
     public GameObject nextButton; 
     public List<StoryPage> allPages; 
     private int currentIndex = 0;
+
+    [Header("Quiz UI")]
+    public Examlogic examSystem;
 
     void Start()
     {
@@ -36,22 +42,73 @@ public class StoryManager : MonoBehaviour
     {
         StoryPage currentPage = allPages[currentIndex];
 
-        dialogueTextUI.text = currentPage.dialogueText;
-        speakerNameUI.text = currentPage.speakerName;
+        if (dialogueTextUI != null) dialogueTextUI.text = currentPage.dialogueText;
+        if (speakerNameUI != null) speakerNameUI.text = currentPage.speakerName;
 
-        if (currentPage.background != null)
+        if (backgroundImageUI != null && currentPage.background != null)
         {
             backgroundImageUI.sprite = currentPage.background;
         }
 
-        if (currentPage.character != null)
+        if (speechBubbleUI != null)
         {
-            characterImageUI.sprite = currentPage.character;
-            characterImageUI.gameObject.SetActive(true);
+            if (currentPage.speechBubble != null)
+            {
+                speechBubbleUI.gameObject.SetActive(true);
+                speechBubbleUI.sprite = currentPage.speechBubble;
+            }
+            else
+            {
+                // ถ้าหน้าไหนไม่ใส่รูปกรอบคำพูดมา ให้ซ่อนกรอบไปเลย
+                speechBubbleUI.gameObject.SetActive(false);
+            }
+        }
+        HandleCharacterLayout(currentPage);
+
+        // --- ส่วนของระบบ Quiz ---
+        if (currentPage.isChoicePage)
+        {
+            if (nextButton != null) nextButton.SetActive(false);
+            if (examSystem != null) 
+            {
+                examSystem.gameObject.SetActive(true);
+                examSystem.StartExam();
+            }
         }
         else
         {
-            characterImageUI.gameObject.SetActive(false); 
+            if (nextButton != null) nextButton.SetActive(true);
+            if (examSystem != null) examSystem.gameObject.SetActive(false);
         }
+    }
+
+    void HandleCharacterLayout(StoryPage page)
+    {
+        if (characterLeftUI != null) characterLeftUI.gameObject.SetActive(false);
+        if (characterCenterUI != null) characterCenterUI.gameObject.SetActive(false);
+        if (characterRightUI != null) characterRightUI.gameObject.SetActive(false);
+
+        if (page.characterCenter != null && characterCenterUI != null)
+        {
+            SetupCharacter(characterCenterUI, page.characterCenter);
+        }
+        else
+        {
+            if (page.characterLeft != null && characterLeftUI != null)
+            {
+                SetupCharacter(characterLeftUI, page.characterLeft);
+            }
+            
+            if (page.characterRight != null && characterRightUI != null)
+            {
+                SetupCharacter(characterRightUI, page.characterRight);
+            }
+        }
+    }
+
+    void SetupCharacter(Image characterUI, Sprite characterSprite)
+    {
+        characterUI.sprite = characterSprite;
+        characterUI.gameObject.SetActive(true);
     }
 }
