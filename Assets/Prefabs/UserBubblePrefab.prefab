@@ -30,7 +30,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5334431773815770259}
+  - {fileID: 127236389510914034}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!1001 &8252889149555998534
+--- !u!1001 &4128564224108555303
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -152,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075638485433545685, guid: 9d659e3f70c5b41a4830303a25968b7d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15
+      value: -38.405
       objectReference: {fileID: 0}
     - target: {fileID: 4075638485433545685, guid: 9d659e3f70c5b41a4830303a25968b7d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -199,8 +199,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d659e3f70c5b41a4830303a25968b7d, type: 3}
---- !u!224 &5334431773815770259 stripped
+--- !u!224 &127236389510914034 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4075638485433545685, guid: 9d659e3f70c5b41a4830303a25968b7d, type: 3}
-  m_PrefabInstance: {fileID: 8252889149555998534}
+  m_PrefabInstance: {fileID: 4128564224108555303}
   m_PrefabAsset: {fileID: 0}
