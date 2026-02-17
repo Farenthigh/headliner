@@ -9,6 +9,7 @@ public class Examlogic : MonoBehaviour
     public int playercurrentheart;
     public int enemycurrentheart;
     private int questionindex = 0;
+    private bool isProcessing = false;
     public List<QuestionStore> allquestions;
     private QuestionStore currentquestion;
     public Text questiontextUI;
@@ -35,7 +36,6 @@ public class Examlogic : MonoBehaviour
             
         playercurrentheart = maxheart;
         enemycurrentheart = maxheart;
-        questionindex = 0; 
 
         updateHeartUI();
         loadQuestion();
@@ -92,6 +92,7 @@ public class Examlogic : MonoBehaviour
     void ProcessResult(bool isCorrect)
     {
         if(playercurrentheart <= 0 || enemycurrentheart <= 0) return;
+        isProcessing = true;
 
         if(isCorrect)
         {
@@ -105,9 +106,23 @@ public class Examlogic : MonoBehaviour
         }
 
         updateHeartUI();
+        Invoke("HandleNextStep", 0.5f);
+        // CheckGameEnd();
+
+        // if(playercurrentheart > 0 && enemycurrentheart > 0)
+        // {
+        //     questionindex++;
+        //     loadQuestion();
+        // }
+    }
+
+    void HandleNextStep()
+    {
+        isProcessing = false; // ปลดล็อก
         CheckGameEnd();
 
-        if(playercurrentheart > 0 && enemycurrentheart > 0)
+        // ถ้ายังไม่จบเกม ให้โหลดข้อถัดไป
+        if (playercurrentheart > 0 && enemycurrentheart > 0 && questionindex < allquestions.Count - 1)
         {
             questionindex++;
             loadQuestion();
@@ -137,13 +152,36 @@ public class Examlogic : MonoBehaviour
 
     void CheckGameEnd()
     {
-        if(playercurrentheart <= 0) Debug.Log("คุณแพ้");
-        else if(enemycurrentheart <= 0) 
+        if(playercurrentheart <= 0) 
+        {
+            Debug.Log("คุณแพ้");
+            isProcessing = false;
+            CloseExamUI();
+        }
+        else if(enemycurrentheart <= 0 || questionindex >= allquestions.Count - 1) 
         {
             Debug.Log("คุณชนะ");
+            CloseExamUI();
             if(questionPanel != null) questionPanel.SetActive(false);
             this.gameObject.SetActive(false);
             if(storyManager != null) storyManager.OnClickNext();
         }
+    }
+
+    void CloseExamUI()
+    {
+        if (questionPanel != null) questionPanel.SetActive(false);
+
+        if (inputPanel != null) inputPanel.SetActive(false);
+
+        if (choicePanel != null) choicePanel.SetActive(false);
+        
+        if (playerhearts.Length > 0 && playerhearts[0].transform.parent != null)
+            playerhearts[0].transform.parent.gameObject.SetActive(false);
+            
+        if (enemyhearts.Length > 0 && enemyhearts[0].transform.parent != null)
+            enemyhearts[0].transform.parent.gameObject.SetActive(false);
+
+        this.gameObject.SetActive(false);
     }
 }
