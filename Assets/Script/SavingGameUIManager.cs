@@ -15,6 +15,7 @@ public class SavingGameUIManager : MonoBehaviour
     [SerializeField] private GameObject bankPanel;
     [SerializeField] private Button depositButton;
     [SerializeField] private Button withdrawButton;
+    [SerializeField] private Button closeBankPanelButton;
     [SerializeField] private Image roundTimeImage;
     [SerializeField] private TMP_Text roundTimeText;
     [SerializeField] private Image goalBarFill;
@@ -39,6 +40,7 @@ public class SavingGameUIManager : MonoBehaviour
         depositButton.onClick.AddListener(OnDepositButton);
         withdrawButton.onClick.AddListener(OnWithdrawButton);
         UpdateGoalBar();
+        closeBankPanelButton.onClick.AddListener(OnCloseBankPanel);
 
     }
 

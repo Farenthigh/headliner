@@ -21,7 +21,7 @@ public class EventDisplay : MonoBehaviour
 
     private void Awake() => Instance = this;
 
-    public void ShowEvent(Event eventData)
+    public void ShowEvent(RandomEvent eventData)
     {
         // Set Front card details but hide it
         nameText.text = eventData.eventName;
