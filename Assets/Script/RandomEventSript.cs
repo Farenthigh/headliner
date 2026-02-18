@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewEvent", menuName = "Random Event/General")]
-public class RandomEvent : ScriptableObject
+public class Event : ScriptableObject
 {
     public Sprite icon;
     public string eventName;
