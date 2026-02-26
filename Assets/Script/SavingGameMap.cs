@@ -19,6 +19,12 @@ public class SavingGameMap : MonoBehaviour
 
     private int unlockedLevel = 1;
 
+    public GameObject stageInfoPrefab;//ใส่Prefab SateinfoUI
+    public Transform canvasParent;//ทำให้รู้ว่าต้องสร้าง Uiใน canva
+
+    [Header("Stage Data")]
+    public StageData[] stages;//กำหนดว่ามีกี่ด่าน
+    
     void Start()
     {
         unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
@@ -67,6 +73,9 @@ public class SavingGameMap : MonoBehaviour
     void OnLevelClick(int level)
     {
         Debug.Log("เลือกด่าน " + level);
+        GameObject obj = Instantiate(stageInfoPrefab, canvasParent);// สร้าง stage_ui
+        StageInfoUI ui = obj.GetComponent<StageInfoUI>();// สร้าง stage_ui
+        ui.Setup(stages[level - 1], level);
 
         // ทดลองปลดล็อกด่านถัดไป
         if (level == unlockedLevel && unlockedLevel < levelButtons.Length)
