@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -45,6 +46,19 @@ public struct CharacterStruct
     public int character;
 }
 
+[Serializable]
+public struct LeaderBoardEntry
+{
+    public string username; // Join from user table
+    public int saving_game_score;
+    public int tax_game_score;   
+}
+
+[Serializable]
+public struct LeaderBoardData
+{
+    public List<LeaderBoardEntry> leaderBoard;
+}
 
 public class APIManager : MonoBehaviour
 {
@@ -116,5 +130,17 @@ public class APIManager : MonoBehaviour
         myData = jsonResponse.data;
         response.EnsureSuccessStatusCode();
         return response.Headers.Location;
+    }
+
+    public async Task<List<LeaderBoardEntry>> GetLeaderBoardData()
+    {
+        HttpResponseMessage response = await client.GetAsync("leaderboard/");
+        if (response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            var jsonResponse = JsonUtility.FromJson<ApiResponse<LeaderBoardData>>(content);
+            return jsonResponse.data.leaderBoard;
+        }
+        return new List<LeaderBoardEntry>();
     }
 }
