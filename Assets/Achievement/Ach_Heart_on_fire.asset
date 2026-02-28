@@ -17,5 +17,5 @@ MonoBehaviour:
   description: won the game without losing any life
   icon: {fileID: -5882268080932716463, guid: 0064ef1365e914d6d8fdd8da9ac694f1, type: 3}
   gameType: 0
-  isUnlocked: 0
-  unlockDate: 
+  isUnlocked: 1
+  unlockDate: 01/03/2026

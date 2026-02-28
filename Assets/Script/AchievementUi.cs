@@ -6,7 +6,6 @@ public class AchievementSlotUI : MonoBehaviour
 {
     public Image iconImage;
     public TextMeshProUGUI nameText;
-    public TextMeshProUGUI descriptionText;
     public TextMeshProUGUI dateText;
     public GameObject lockedOverlay;
 
@@ -17,7 +16,6 @@ public class AchievementSlotUI : MonoBehaviour
         myData = data;
 
         nameText.text = data.achievementName;
-        descriptionText.text = data.description;
         iconImage.sprite = data.icon;
 
         if (data.isUnlocked)
@@ -42,7 +40,7 @@ public class AchievementSlotUI : MonoBehaviour
         }
         else
         {
-            Debug.Log("ยังไม่ปลดล็อก: " + myData.description);
+            Debug.Log("ยังไม่ปลดล็อก: ");
         }
     }
 }
