@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee818a639afe48a6bed3ab334b65d55, type: 3}
   m_Name: Ach_Risk Taker
   m_EditorClassIdentifier: Assembly-CSharp::AchievementData
-  id: 
-  achievementName: 
-  description: 
-  icon: {fileID: 0}
+  id: 8
+  achievementName: Risk Taker
+  description: "\u0E25\u0E07\u0E17\u0E38\u0E19\u0E43\u0E19\u0E2B\u0E38\u0E49\u0E19\u0E2B\u0E23\u0E37\u0E2D\u0E17\u0E2D\u0E07\u0E40\u0E01\u0E34\u0E19
+    50% \u0E02\u0E2D\u0E07\u0E40\u0E07\u0E34\u0E19\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14\u0E43\u0E19
+    1 \u0E40\u0E17\u0E34\u0E23\u0E4C\u0E19 \u0E41\u0E25\u0E30\u0E22\u0E31\u0E07\u0E1C\u0E48\u0E32\u0E19\u0E14\u0E48\u0E32\u0E19\u0E44\u0E14\u0E49"
+  icon: {fileID: -5622530538208286821, guid: 3bbeb181191374fdfb0441a228acc8c1, type: 3}
   gameType: 0
   isUnlocked: 0
   unlockDate: 

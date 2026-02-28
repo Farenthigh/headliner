@@ -3,6 +3,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public class AchievementManager : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class AchievementManager : MonoBehaviour
     public uint currentUserId = 1; 
     public List<AchievementData> allAchievements;
     public GameObject popupPanel;         
-    public Text popupNameText;             
-    public Text popupDescriptionText;      
-    public Text popupDateText;             
+    public TextMeshProUGUI popupNameText;             
+    public TextMeshProUGUI popupDescriptionText;      
+    public TextMeshProUGUI popupDateText;             
     public Image popupIconImage;
+    public GameObject achievementPrefab;   
+    public Transform achievementContainer;
+
 
     void Awake()
     {
@@ -24,26 +28,48 @@ public class AchievementManager : MonoBehaviour
 
     void Start()
     {
+        if (popupPanel != null) popupPanel.SetActive(false);
+
         StartCoroutine(LoadDataFromBackendRoutine());
     }
 
     IEnumerator LoadDataFromBackendRoutine()
     {
         string url = backendUrl + "/achievements/user/" + currentUserId;
-        Debug.Log("กำลังโหลดข้อมูลจาก: " + url);
-
+        
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
             yield return webRequest.SendWebRequest();
 
-            if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
+            if (webRequest.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError("Error โหลดข้อมูล: " + webRequest.error);
             }
             else
             {
                 string jsonResponse = webRequest.downloadHandler.text;
-                Debug.Log("ได้ข้อมูล: " + jsonResponse);
+                
+                AchievementListResponse response = JsonUtility.FromJson<AchievementListResponse>(jsonResponse);
+
+                foreach (var ach in allAchievements) 
+                {
+                    ach.isUnlocked = false; 
+                    ach.unlockDate = "";
+                }
+
+                if (response != null && response.data != null)
+                {
+                    foreach (var backendData in response.data)
+                    {
+                        AchievementData ach = allAchievements.Find(a => a.id == backendData.achievement_id.ToString());
+                        if (ach != null)
+                        {
+                            ach.isUnlocked = true;
+                            ach.unlockDate = backendData.unlocked_at.Split('T')[0]; 
+                        }
+                    }
+                }
+                GenerateAchievementUI();
             }
         }
     }
@@ -100,6 +126,31 @@ public class AchievementManager : MonoBehaviour
     public void ClosePopup()
     {
         popupPanel.SetActive(false);
+    }
+
+    public void GenerateAchievementUI()
+    {
+        foreach (Transform child in achievementContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (AchievementData ach in allAchievements)
+        {
+            GameObject newSlot = Instantiate(achievementPrefab, achievementContainer);
+            
+            AchievementSlotUI slotUI = newSlot.GetComponent<AchievementSlotUI>();
+            slotUI.SetupSlot(ach);
+        }
+    }
+
+    [ContextMenu("Test Unlock to Real DB!")]
+    public void TestUnlockToDB()
+    {
+        UnlockAchievement(1, "1"); 
+        UnlockAchievement(2, "2"); 
+
+        GenerateAchievementUI(); 
     }
 }
 

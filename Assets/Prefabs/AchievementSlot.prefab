@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.1, y: -207.6}
+  m_AnchoredPosition: {x: -39, y: -221}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2517167626671823359
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -80.66232, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -337,7 +337,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8572784478576943405}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4076605486234160097}
+        m_TargetAssemblyTypeName: AchievementSlotUI, Assembly-CSharp
+        m_MethodName: OnClickSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4076605486234160097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +364,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AchievementSlotUI
   iconImage: {fileID: 6288612594655570497}
   nameText: {fileID: 5977595945006894606}
-  descriptionText: {fileID: 0}
   dateText: {fileID: 5816571494943775487}
   lockedOverlay: {fileID: 3903945562066408317}
 --- !u!1 &3818329796161221945
@@ -389,7 +400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.7, y: -233}
+  m_AnchoredPosition: {x: 8.7, y: -249}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5417671468021897310
