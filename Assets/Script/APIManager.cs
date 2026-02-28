@@ -45,6 +45,18 @@ public struct CharacterStruct
     public int character;
 }
 
+[Serializable]
+public struct UpdateUsernameStruct
+{
+    public string username;
+}
+
+[Serializable]
+public struct UpdatePasswordStruct
+{
+    public string current_password;
+    public string new_password;
+}
 
 public class APIManager : MonoBehaviour
 {
@@ -116,5 +128,54 @@ public class APIManager : MonoBehaviour
         myData = jsonResponse.data;
         response.EnsureSuccessStatusCode();
         return response.Headers.Location;
+    }
+
+        public async Task UpdateUsername(string newUsername)
+    {
+        UpdateUsernameStruct data = new UpdateUsernameStruct
+        {
+            username = newUsername
+        };
+
+        HttpResponseMessage response = await client.PutAsync(
+            "users/updateusername/",
+            new StringContent(
+                JsonUtility.ToJson(data),
+                System.Text.Encoding.UTF8,
+                "application/json"));
+
+        response.EnsureSuccessStatusCode();
+    }
+
+        public async Task<bool> UpdatePassword(string currentPassword, string newPassword)
+    {
+        try
+        {
+            UpdatePasswordStruct data = new UpdatePasswordStruct
+            {
+                current_password = currentPassword,
+                new_password = newPassword
+            };
+
+            HttpResponseMessage response = await client.PutAsync(
+                "users/updatepassword/",
+                new StringContent(
+                    JsonUtility.ToJson(data),
+                    System.Text.Encoding.UTF8,
+                    "application/json"));
+
+            return response.IsSuccessStatusCode;
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Update password error: " + e.Message);
+            return false;
+        }
+    }
+
+        public async Task DeleteAccount()
+    {
+        HttpResponseMessage response = await client.DeleteAsync("users/delete/");
+        response.EnsureSuccessStatusCode();
     }
 }
