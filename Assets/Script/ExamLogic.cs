@@ -21,7 +21,8 @@ public class Examlogic : MonoBehaviour
     public GameObject inputPanel; 
     public TMP_InputField answerInputField; 
     public StoryManager storyManager;
-    
+    public GameResult gameResult;
+
     public void StartExam() 
     {
         this.gameObject.SetActive(true);
@@ -157,14 +158,14 @@ public class Examlogic : MonoBehaviour
             Debug.Log("คุณแพ้");
             isProcessing = false;
             CloseExamUI();
+            if (gameResult != null) gameResult.TriggerDefeat();
         }
         else if(enemycurrentheart <= 0 || questionindex >= allquestions.Count - 1) 
         {
             Debug.Log("คุณชนะ");
             CloseExamUI();
-            if(questionPanel != null) questionPanel.SetActive(false);
-            this.gameObject.SetActive(false);
-            if(storyManager != null) storyManager.OnClickNext();
+            if (gameResult != null)
+                gameResult.TriggerVictory(storyManager);
         }
     }
 
