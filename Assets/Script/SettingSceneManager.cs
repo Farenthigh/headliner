@@ -35,6 +35,9 @@ public class SettingSceneManager : MonoBehaviour
 
     private void Start()
     {   
+        //#if UNITY_EDITOR
+        APIManager.Token = "TEST_TOKEN";
+        //#endif
         // ถ้าไม่มี Token ให้กลับหน้า Login
         if (string.IsNullOrEmpty(APIManager.Token))
         {
@@ -51,8 +54,15 @@ public class SettingSceneManager : MonoBehaviour
     // =========================
     void LoadProfileData()
     {
-        playerNameText.text = APIManager.myData.username;
-        emailText.text = APIManager.myData.email;
+        if (!string.IsNullOrEmpty(APIManager.myData.username))
+            playerNameText.text = APIManager.myData.username;
+        else
+            playerNameText.text = "Player Name";
+
+        if (!string.IsNullOrEmpty(APIManager.myData.email))
+            emailText.text = APIManager.myData.email;
+        else
+            emailText.text = "E-mail";
     }
     // =========================
     // เปลี่ยนหน้า
