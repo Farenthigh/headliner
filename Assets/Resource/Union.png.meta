@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 4257bedeac9444a1ea9afa75e9cd35d3
-=======
-guid: 0d33244b1b728407f8d544935f2c138f
->>>>>>> 4d6728050eebe79ee33ec438e48ca6284276f1e0
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -120,17 +116,10 @@ TextureImporter:
       name: Union_0
       rect:
         serializedVersion: 2
-<<<<<<< HEAD
         x: 3
         y: 4
         width: 87
         height: 87
-=======
-        x: 0
-        y: 0
-        width: 932
-        height: 108
->>>>>>> 4d6728050eebe79ee33ec438e48ca6284276f1e0
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
