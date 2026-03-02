@@ -160,7 +160,7 @@ public class Examlogic : MonoBehaviour
             CloseExamUI();
             if (gameResult != null) gameResult.TriggerDefeat();
         }
-        else if(enemycurrentheart <= 0 || questionindex >= allquestions.Count - 1) 
+        else if(enemycurrentheart <= 0 /*|| questionindex >= allquestions.Count - 1*/) //ปิดเงื่อนไขที่ถึงข้อท้ายแล้วผ่านด่าน
         {
             Debug.Log("คุณชนะ");
             CloseExamUI();
