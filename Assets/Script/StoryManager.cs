@@ -89,7 +89,9 @@ public class StoryManager : MonoBehaviour
                 Debug.Log("คุณชนะ");
                 if (gameResult != null)
                 {
-                    gameResult.ShowVictoryResultDirect(2); // ใส่จำนวนดาวที่ต้องการ
+                    int stars = Manager.Instance.GetStarsFromExam();
+                    gameResult.ShowVictoryResultDirect(stars);
+                    // gameResult.ShowVictoryResultDirect(2); // ใส่จำนวนดาวที่ต้องการ
                 }
                 
                 if (nextButton != null) nextButton.SetActive(false);
