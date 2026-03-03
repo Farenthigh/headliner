@@ -45,6 +45,13 @@ public struct CharacterStruct
     public int character;
 }
 
+[Serializable]
+public struct GameResultStruct
+{
+    public int user_id;
+    public int stars;
+    public int stage;
+}
 
 public class APIManager : MonoBehaviour
 {
@@ -116,5 +123,22 @@ public class APIManager : MonoBehaviour
         myData = jsonResponse.data;
         response.EnsureSuccessStatusCode();
         return response.Headers.Location;
+    }
+
+    public async Task SaveGameResult(int stars, int stage)
+    {
+        GameResultStruct result = new GameResultStruct
+        {
+            user_id = myData.id,
+            stars = stars,
+            stage = stage
+        };
+
+        Debug.Log("MOCK SEND RESULT:");
+        Debug.Log(JsonUtility.ToJson(result));
+
+        await Task.Delay(1000);
+
+        Debug.Log("MOCK RESPONSE: Save success (200 OK)");
     }
 }

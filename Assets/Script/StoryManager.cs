@@ -20,6 +20,8 @@ public class StoryManager : MonoBehaviour
     [Header("Quiz UI")]
     public Examlogic examSystem;
 
+    [Header("Stage Info")]
+    [SerializeField] private int currentStage = 1;
     void Start()
     {
         currentIndex = 0;
@@ -92,6 +94,8 @@ public class StoryManager : MonoBehaviour
                     int stars = Manager.Instance.GetStarsFromExam();
                     gameResult.ShowVictoryResultDirect(stars);
                     // gameResult.ShowVictoryResultDirect(2); // ใส่จำนวนดาวที่ต้องการ
+                    // 🔥 ส่งคะแนนเข้า API ตรงนี้
+                    SendResult(stars);
                 }
                 
                 if (nextButton != null) nextButton.SetActive(false);
@@ -128,5 +132,10 @@ public class StoryManager : MonoBehaviour
     {
         characterUI.sprite = characterSprite;
         characterUI.gameObject.SetActive(true);
+    }   
+
+    private async void SendResult(int stars)
+    {
+        await APIManager.Instance.SaveGameResult(stars, currentStage);
     }
 }
