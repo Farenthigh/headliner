@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 public class login : MonoBehaviour
 {
-    [SerializeField] private TMP_InputField usernameInput;
+    [SerializeField] private TMP_InputField emailInput;
     [SerializeField] private TMP_InputField passwordInput;
     [SerializeField] private Button loginButton;
     [SerializeField] private Button registerButton;
@@ -11,12 +11,29 @@ public class login : MonoBehaviour
     private void Start()
     {
         loginButton.onClick.AddListener(HandleLogin);
+        registerButton.onClick.AddListener(HandleRegister);
     }
-    private void HandleLogin()
+    private async void HandleLogin()
     {
-        string username = usernameInput.text;
+        string email = emailInput.text;
         string password = passwordInput.text;
+        try
+        {
+            await APIManager.Instance.Login(email, password);
+            await APIManager.Instance.GetMyData();
+            if (APIManager.myData.character == 0 && APIManager.myData.username == "")
+                UnityEngine.SceneManagement.SceneManager.LoadScene("SelectCharacterScene");
+            else
+                UnityEngine.SceneManagement.SceneManager.LoadScene("SelectGame");
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log("Login failed: " + ex.Message);
+        }
+    }
 
-        Debug.Log($"Attempting login with Username: {username} and Password: {password}");
+    private void HandleRegister()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("RegisterScene");
     }
 }
