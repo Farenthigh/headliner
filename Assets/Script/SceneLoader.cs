@@ -5,10 +5,12 @@ public class SceneLoader : MonoBehaviour
     public GameObject saving;
     public GameObject taxGameTips;
     public GameObject icon;
+    public GameObject bg;
 
 
     void Start()
-    {
+    {   
+        bg.SetActive(false);
         icon.SetActive(true);
         saving.SetActive(false);
         taxGameTips.SetActive(false);
@@ -35,7 +37,7 @@ public class SceneLoader : MonoBehaviour
     public void OpenTips()
     {
         icon.SetActive(false);
-
+        bg.SetActive(true);
         saving.SetActive(false);       // เปิดหน้าแรก
         taxGameTips.SetActive(true);
     }
@@ -44,7 +46,7 @@ public class SceneLoader : MonoBehaviour
     public void ExitTips()
     {
         icon.SetActive(true);
-
+        bg.SetActive(false);
         saving.SetActive(false);
         taxGameTips.SetActive(false);
     }
