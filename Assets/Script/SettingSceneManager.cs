@@ -13,6 +13,12 @@ public class SettingSceneManager : MonoBehaviour
     public GameObject helpPage;
     public GameObject contactPage;
 
+    [Header("Sidebar Highlight")]
+    public GameObject profileHighlight;
+    public GameObject audioHighlight;
+    public GameObject contactHighlight;
+    public GameObject helpHighlight;
+
     [Header("Profile Display")]
     public TMP_Text playerNameText;
     public TMP_Text emailText;
@@ -33,12 +39,25 @@ public class SettingSceneManager : MonoBehaviour
     [Header("Delete Confirm")]
     public GameObject deleteConfirmPanel;
 
+    [Header("Logout Confirm")]
+    public GameObject logoutConfirmPanel;
+
+    [Header("Success Popup")]
+    public GameObject usernameSuccessPanel;
+    
+
     private void Start()
     {   
-        //#if UNITY_EDITOR
+    #if UNITY_EDITOR
         APIManager.Token = "TEST_TOKEN";
-        //#endif
-        // ถ้าไม่มี Token ให้กลับหน้า Login
+
+        APIManager.myData = new UserData
+        {
+            username = "TestPlayer",
+            email = "test@email.com",
+            character = 1
+        };
+    #endif
         if (string.IsNullOrEmpty(APIManager.Token))
         {
             SceneManager.LoadScene("LoginScene");
@@ -48,7 +67,17 @@ public class SettingSceneManager : MonoBehaviour
         LoadProfileData();
         LoadAudioSetting();
     }
+    // =========================
+    // Highlight Control
+    // =========================
 
+    void ResetHighlight()
+    {
+        profileHighlight.SetActive(false);
+        audioHighlight.SetActive(false);
+        contactHighlight.SetActive(false);
+        helpHighlight.SetActive(false);
+    }
     // =========================
     // โหลดข้อมูลโปรไฟล์
     // =========================
@@ -80,37 +109,55 @@ public class SettingSceneManager : MonoBehaviour
     public void ShowProfile()
     {
         HideAllPages();
+        ResetHighlight();
+
         profilePage.SetActive(true);
+        profileHighlight.SetActive(true);
     }
 
     public void ShowChangeUsername()
     {
         HideAllPages();
+        ResetHighlight();
+
         changeUsernamePage.SetActive(true);
+        profileHighlight.SetActive(true);
     }
 
     public void ShowChangePassword()
     {
         HideAllPages();
+        ResetHighlight();
+
         changePasswordPage.SetActive(true);
+        profileHighlight.SetActive(true);
     }
 
     public void ShowAudio()
     {
         HideAllPages();
+        ResetHighlight();
+
         audioPage.SetActive(true);
+        audioHighlight.SetActive(true);
     }
 
     public void ShowHelp()
     {
         HideAllPages();
+        ResetHighlight();
+
         helpPage.SetActive(true);
+        helpHighlight.SetActive(true);
     }
 
     public void ShowContact()
     {
         HideAllPages();
+        ResetHighlight();
+
         contactPage.SetActive(true);
+        contactHighlight.SetActive(true);
     }
 
     // =========================
@@ -123,8 +170,13 @@ public class SettingSceneManager : MonoBehaviour
             await APIManager.Instance.UpdateUsername(newUsernameInput.text);
             await APIManager.Instance.GetMyData();
             LoadProfileData();
-            ShowProfile();
+            usernameSuccessPanel.SetActive(true);
         }
+    }
+    public void CloseUsernameSuccess()
+    {
+        usernameSuccessPanel.SetActive(false);
+        ShowProfile();
     }
 
     // =========================
@@ -181,15 +233,36 @@ public class SettingSceneManager : MonoBehaviour
         SceneManager.LoadScene("LoginScene");
     }
 
-    // =========================
-    // Logout
-    // =========================
+
+// =========================
+// Logout Confirm
+// =========================
+
+// เปิด popup
+    public void OpenLogoutConfirm()
+    {
+        logoutConfirmPanel.SetActive(true);
+    }
+
+// กดยกเลิก
+    public void CancelLogout()
+{
+    logoutConfirmPanel.SetActive(false);
+}
+
+// กดยืนยัน
+    public void ConfirmLogout()
+    {
+        logoutConfirmPanel.SetActive(false);
+        Logout();
+    }
+
+// ฟังก์ชัน logout จริง
     public void Logout()
     {
         APIManager.Token = null;
         SceneManager.LoadScene("LoginScene");
     }
-
     // =========================
     // ปุ่ม close
     // =========================
