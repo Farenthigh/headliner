@@ -14,10 +14,10 @@ public class ProfileUI : MonoBehaviour
 
     void ShowUserData()
     {
-        usernameText.text = "Username: " + APIManager.myData.username;
-        emailText.text = "Email: " + APIManager.myData.email;
+        usernameText.text = APIManager.myData.username;
+        emailText.text = APIManager.myData.email;
 
         // ไม่ควรโชว์รหัสผ่านจริง
-        passwordText.text = "Password: ********";
+        passwordText.text = "********";
     }
 }

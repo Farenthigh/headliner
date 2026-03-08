@@ -8,12 +8,35 @@ public class ChangePasswordUI : MonoBehaviour
     public TMP_InputField newPasswordInput;
     public TMP_InputField repeatPasswordInput;
 
-    public GameObject profilePage;   // หน้า Profile
-    public GameObject passwordPage;  // หน้า Change Password
+    [Header("Pages")]
+    public GameObject profilePage;
+    public GameObject passwordPage;
+
+    [Header("Popups")]
+    public GameObject successPopup;
+
+    [Header("Error Messages")]
+    public GameObject currentPasswordError;
+    public GameObject repeatPasswordError;
+
+    void Start()
+    {
+        // ซ่อน error ตอนเริ่ม
+        currentPasswordError.SetActive(false);
+        repeatPasswordError.SetActive(false);
+
+        // ให้ error หายเมื่อเริ่มพิมพ์
+        currentPasswordInput.onValueChanged.AddListener(delegate { HideErrors(); });
+        newPasswordInput.onValueChanged.AddListener(delegate { HideErrors(); });
+        repeatPasswordInput.onValueChanged.AddListener(delegate { HideErrors(); });
+    }
 
     public async void SavePassword()
     {
-        // 🔹 เช็คว่ากรอกครบไหม
+        // ซ่อน error ก่อนตรวจ
+        currentPasswordError.SetActive(false);
+        repeatPasswordError.SetActive(false);
+
         if (string.IsNullOrEmpty(currentPasswordInput.text) ||
             string.IsNullOrEmpty(newPasswordInput.text) ||
             string.IsNullOrEmpty(repeatPasswordInput.text))
@@ -22,35 +45,48 @@ public class ChangePasswordUI : MonoBehaviour
             return;
         }
 
-        // 🔹 เช็ครหัสใหม่ตรงกันไหม
+        // 🔴 ตรวจ repeat password
         if (newPasswordInput.text != repeatPasswordInput.text)
         {
-            Debug.Log("Password not match");
+            repeatPasswordError.SetActive(true);
             return;
         }
 
-        // 🔹 เรียก API
-        bool success = await APIManager.Instance.UpdatePassword(
+        bool success = true;
+
+#if UNITY_EDITOR
+        Debug.Log("Password updated (TEST MODE)");
+#else
+        success = await APIManager.Instance.UpdatePassword(
             currentPasswordInput.text,
             newPasswordInput.text
         );
+#endif
 
         if (success)
         {
-            Debug.Log("Password updated successfully");
-
-            // เคลียร์ช่องกรอก
             currentPasswordInput.text = "";
             newPasswordInput.text = "";
             repeatPasswordInput.text = "";
 
-            // กลับหน้า Profile
-            passwordPage.SetActive(false);
-            profilePage.SetActive(true);
+            successPopup.SetActive(true);
         }
         else
         {
-            Debug.Log("Update failed");
+            currentPasswordError.SetActive(true);
         }
+    }
+
+    public void GoToProfile()
+    {
+        successPopup.SetActive(false);
+        passwordPage.SetActive(false);
+        profilePage.SetActive(true);
+    }
+
+    void HideErrors()
+    {
+        currentPasswordError.SetActive(false);
+        repeatPasswordError.SetActive(false);
     }
 }
