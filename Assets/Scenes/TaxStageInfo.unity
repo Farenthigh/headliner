@@ -405,6 +405,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1872157946}
     m_Modifications:
+    - target: {fileID: 1487169696531374118, guid: c293578428a7347a8818c78531a13617, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1511964817723246895, guid: c293578428a7347a8818c78531a13617, type: 3}
       propertyPath: m_Name
       value: StageInfoPanel
