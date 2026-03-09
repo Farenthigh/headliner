@@ -1,0 +1,36 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class TaxMapManager : MonoBehaviour
+{
+
+    public void OpenStage1()
+    {
+        StageData.selectedStage = 1;
+        SceneManager.LoadScene("TaxStageInfo");
+    }
+
+    public void OpenStage2()
+    {
+        StageData.selectedStage = 2;
+        SceneManager.LoadScene("TaxStageInfo");
+    }
+
+    public void OpenStage3()
+    {
+        StageData.selectedStage = 3;
+        SceneManager.LoadScene("TaxStageInfo");
+    }
+
+    public void OpenStage4()
+    {
+        StageData.selectedStage = 4;
+        SceneManager.LoadScene("TaxStageInfo");
+    }
+
+    public void OpenStage5()
+    {
+        StageData.selectedStage = 5;
+        SceneManager.LoadScene("TaxStageInfo");
+    }
+}
