@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 12
   achievementName: The Tax Novice
   description: "\u0E17\u0E33\u0E04\u0E27\u0E32\u0E21\u0E23\u0E39\u0E49\u0E08\u0E31\u0E01\u0E01\u0E31\u0E1A\u0E20\u0E32\u0E29\u0E35\u0E40\u0E1A\u0E37\u0E49\u0E2D\u0E07\u0E15\u0E49\u0E19"
-  icon: {fileID: 0}
+  icon: {fileID: 8686231133220742094, guid: 00906d4ca90f74933a2ad60b6f112dd0, type: 3}
   gameType: 0
-  isUnlocked: 0
-  unlockDate: 
+  isUnlocked: 1
+  unlockDate: 11/03/2026

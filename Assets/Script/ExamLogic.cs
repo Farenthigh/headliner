@@ -170,7 +170,7 @@ public class Examlogic : MonoBehaviour
             if(achievementIdToUnlock > 0 && !string.IsNullOrEmpty(achievementCodeToUnlock)){
                 AchievementManager.Instance.UnlockAchievement((uint)achievementIdToUnlock, achievementCodeToUnlock);
             }
-            
+
             if (gameResult != null)
                 gameResult.TriggerVictory(storyManager);
         }
