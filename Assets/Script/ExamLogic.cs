@@ -21,7 +21,10 @@ public class Examlogic : MonoBehaviour
     public GameObject inputPanel; 
     public TMP_InputField answerInputField; 
     public StoryManager storyManager;
-    
+    public GameResult gameResult;
+    public int achievementIdToUnlock;
+    public string achievementCodeToUnlock;
+
     public void StartExam() 
     {
         this.gameObject.SetActive(true);
@@ -157,14 +160,19 @@ public class Examlogic : MonoBehaviour
             Debug.Log("คุณแพ้");
             isProcessing = false;
             CloseExamUI();
+            if (gameResult != null) gameResult.TriggerDefeat();
         }
-        else if(enemycurrentheart <= 0 || questionindex >= allquestions.Count - 1) 
+        else if(enemycurrentheart <= 0 /*|| questionindex >= allquestions.Count - 1*/) //ปิดเงื่อนไขที่ถึงข้อท้ายแล้วผ่านด่าน
         {
             Debug.Log("คุณชนะ");
             CloseExamUI();
-            if(questionPanel != null) questionPanel.SetActive(false);
-            this.gameObject.SetActive(false);
-            if(storyManager != null) storyManager.OnClickNext();
+
+            if(achievementIdToUnlock > 0 && !string.IsNullOrEmpty(achievementCodeToUnlock)){
+                AchievementManager.Instance.UnlockAchievement((uint)achievementIdToUnlock, achievementCodeToUnlock);
+            }
+            
+            if (gameResult != null)
+                gameResult.TriggerVictory(storyManager);
         }
     }
 
