@@ -81,6 +81,7 @@ public class AchievementManager : MonoBehaviour
             ach.isUnlocked = true;
             ach.unlockDate = System.DateTime.Now.ToString("dd/MM/yyyy");
             Debug.Log($"ปลดล็อก UI: {ach.achievementName}!");
+            ShowNotification(ach);
 
             StartCoroutine(SaveToBackendRoutine(backendAchievementId));
         }
@@ -151,6 +152,59 @@ public class AchievementManager : MonoBehaviour
         UnlockAchievement(2, "2"); 
 
         GenerateAchievementUI(); 
+    }
+
+    // 1. ฟังก์ชันนี้เอาไว้ถูกเรียกตอนปลดล็อกสำเร็จ
+    // 1. เปลี่ยนให้รับข้อมูลมาทั้งก้อน (AchievementData)
+    public void ShowNotification(AchievementData data)
+    {
+        StartCoroutine(SlideNotificationRoutine(data));
+    }
+
+    // 2. ระบบแอนิเมชันสไลด์ขึ้น-ลง
+    private System.Collections.IEnumerator SlideNotificationRoutine(AchievementData data)
+    {
+        // ใส่ชื่อถ้วยรางวัล
+        if (popupNameText != null) popupNameText.text = data.achievementName;
+        
+        // +++ เพิ่มบรรทัดนี้ เพื่อเปลี่ยนรูปไอคอน! +++
+        if (popupIconImage != null && data.icon != null) 
+        {
+            popupIconImage.sprite = data.icon;
+        }
+        
+        // เปิดหน้าต่างขึ้นมา
+        if (popupPanel != null) popupPanel.SetActive(true);
+
+        // --- เตรียมทำแอนิเมชันสไลด์ ---
+        RectTransform rect = popupPanel.GetComponent<RectTransform>();
+        
+        Vector2 hiddenPos = new Vector2(rect.anchoredPosition.x, -150f); 
+        Vector2 showPos = new Vector2(rect.anchoredPosition.x, 20f);
+
+        rect.anchoredPosition = hiddenPos;
+
+        float time = 0;
+        while(time < 0.5f) 
+        {
+            rect.anchoredPosition = Vector2.Lerp(hiddenPos, showPos, time / 0.5f);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        rect.anchoredPosition = showPos;
+
+        yield return new WaitForSeconds(3f);
+
+        time = 0;
+        while(time < 0.5f) 
+        {
+            rect.anchoredPosition = Vector2.Lerp(showPos, hiddenPos, time / 0.5f);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        rect.anchoredPosition = hiddenPos;
+
+        popupPanel.SetActive(false);
     }
 }
 
