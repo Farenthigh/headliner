@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee818a639afe48a6bed3ab334b65d55, type: 3}
+  m_Name: Ach_gold_getter
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementData
+  id: 4
+  achievementName: Goal Getter
+  description: "\u0E17\u0E33 Goal Saving \u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08\u0E04\u0E23\u0E1A\u0E40\u0E1B\u0E49\u0E32\u0E2B\u0E21\u0E32\u0E22\u0E04\u0E23\u0E31\u0E49\u0E07\u0E41\u0E23\u0E01"
+  icon: {fileID: -1886156388885881694, guid: f0cfe9e8be2e7451da0d9a4849275955, type: 3}
+  gameType: 0
+  isUnlocked: 0
+  unlockDate: 
