@@ -82,5 +82,9 @@ public class StageInfoManager : MonoBehaviour
         SceneManager.LoadScene(nextScene);
     }
 
+    public void CloseStageInfo()
+    {
+        SceneManager.LoadScene("TaxGameMap");
+    }
 
 }
