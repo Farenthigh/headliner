@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 675469a210a224883a6df150a3769636
+guid: 0dc0a9164349c4094a8a8b4a015287d7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5860749687561172507
-    second: Rectangle 189_0
+      213: -4488438890206182870
+    second: Headliner Rectangle 190_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rectangle 189_0
+      name: Headliner Rectangle 190_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 307
-        height: 43
+        width: 1381
+        height: 805
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 24, y: 0, z: 20, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b16b09c0ac0955150800000000000000
-      internalID: 5860749687561172507
+      spriteID: a2246313c9cd5b1c0800000000000000
+      internalID: -4488438890206182870
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d0e701e273be046c7a4578af892a72a5
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -146,11 +146,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Rectangle 189_0: 5860749687561172507
+      Headliner Rectangle 190_0: -4488438890206182870
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -401,13 +401,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 110018050}
+  - component: {fileID: 110018051}
   m_Layer: 5
   m_Name: BankPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &110018050
 RectTransform:
   m_ObjectHideFlags: 0
@@ -429,6 +430,28 @@ RectTransform:
   m_AnchoredPosition: {x: 59, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &110018051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110018049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0971530efc2f542de84668276fde25ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BankPanelUI
+  BalanceText: {fileID: 2140061019}
+  amountInput: {fileID: 1744082780}
+  bankNameText: {fileID: 1877040729}
+  bankPanel: {fileID: 110018049}
+  depositButton: {fileID: 102365827}
+  withdrawButton: {fileID: 1647355113}
+  closeBankPanelButton: {fileID: 299631781}
+  descriptionParent: {fileID: 697324074}
+  descriptionText: {fileID: 5051348126395700699, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
+  FailedText: {fileID: 1587467615}
 --- !u!1 &133727742
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +785,7 @@ MonoBehaviour:
   interestOptions:
     interestRate: 0
     durationInMonths: 0
+  minimumDeposit: 0
   interestPayType: 0
   targetAmountForInterest: 0
   withdrawPenalty: 0
@@ -926,6 +950,44 @@ MonoBehaviour:
   goalBarFill: {fileID: 429618046}
   goalTextMoney: {fileID: 2134979984}
   roundMonthText: {fileID: 1247555393}
+--- !u!1 &233891993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 233891994}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &233891994
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233891993}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1778855004}
+  - {fileID: 456269758}
+  - {fileID: 2140061017}
+  m_Father: {fileID: 1635658056}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0001049, y: -170}
+  m_SizeDelta: {x: 313.46, y: 31.746}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &248245227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,10 +1157,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 697324074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 298.5, y: -150}
-  m_SizeDelta: {x: 597, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &261827171
 MonoBehaviour:
@@ -1474,8 +1536,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BankScript
   bankName: "\u0E1D\u0E32\u0E01\u0E1B\u0E23\u0E30\u0E08\u0E33 3 \u0E40\u0E14\u0E37\u0E2D\u0E19"
   interestOptions:
-    interestRate: 0.05
-    durationInMonths: 3
+    interestRate: 0.01
+    durationInMonths: 1
+  minimumDeposit: 500
   interestPayType: 0
   targetAmountForInterest: 0
   withdrawPenalty: 0
@@ -1713,11 +1776,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1635658056}
+  m_Father: {fileID: 233891994}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95.3, y: -205.8}
+  m_AnchoredPosition: {x: 113.86427, y: 0.9599762}
   m_SizeDelta: {x: 28.644, y: 26.944}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &456269759
@@ -2273,8 +2336,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.4891, y: 115.68532}
-  m_SizeDelta: {x: 1092.3721, y: 342.5093}
+  m_AnchoredPosition: {x: 9, y: 105.55999}
+  m_SizeDelta: {x: 1092.3721, y: 307.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &697324075
 MonoBehaviour:
@@ -2747,10 +2810,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 697324074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 298.5, y: -250}
-  m_SizeDelta: {x: 597, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &899125578
 MonoBehaviour:
@@ -3289,6 +3352,7 @@ MonoBehaviour:
   interestOptions:
     interestRate: 0
     durationInMonths: 0
+  minimumDeposit: 0
   interestPayType: 0
   targetAmountForInterest: 0
   withdrawPenalty: 0
@@ -4245,6 +4309,7 @@ MonoBehaviour:
   interestOptions:
     interestRate: 0
     durationInMonths: 0
+  minimumDeposit: 0
   interestPayType: 0
   targetAmountForInterest: 0
   withdrawPenalty: 0
@@ -4892,6 +4957,143 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1587467613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1587467614}
+  - component: {fileID: 1587467616}
+  - component: {fileID: 1587467615}
+  m_Layer: 5
+  m_Name: FailedText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1587467614
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587467613}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1635658056}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0015297, y: -214.0899}
+  m_SizeDelta: {x: 313.46, y: 56.44}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1587467615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587467613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "\u0E44\u0E21\u0E48\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E1D\u0E32\u0E01\u0E44\u0E14\u0E49\u0E40\u0E19\u0E37\u0E48\u0E2D\u0E07\u0E08\u0E32\u0E01\u0E2B\u0E01\u0E1F\u0E01\u0E44\u0E1F\u0E2B\u0E01\u0E44\u0E1F\u0E01\u0E2B\u0E44\u0E1F\u0E2B\u0E01\u0E44\u0E1F\u0E2B\u0E01\u0E1F\u0E01\u0E44\u0E1F"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: bcb65ffa513ea4dbb9bb3a478510585c, type: 2}
+  m_sharedMaterial: {fileID: -9183635877813099305, guid: bcb65ffa513ea4dbb9bb3a478510585c, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 16
+  m_fontSizeBase: 16
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1587467616
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587467613}
+  m_CullTransparentMesh: 1
 --- !u!1 &1635658055
 GameObject:
   m_ObjectHideFlags: 0
@@ -4926,14 +5128,13 @@ RectTransform:
   - {fileID: 1737476486}
   - {fileID: 586363909}
   - {fileID: 1500527997}
-  - {fileID: 456269758}
   - {fileID: 1647355110}
   - {fileID: 102365826}
   - {fileID: 299631780}
   - {fileID: 1744082779}
-  - {fileID: 1778855004}
-  - {fileID: 2140061017}
+  - {fileID: 233891994}
   - {fileID: 697324074}
+  - {fileID: 1587467614}
   m_Father: {fileID: 110018050}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5256,6 +5457,7 @@ MonoBehaviour:
   interestOptions:
     interestRate: 0
     durationInMonths: 0
+  minimumDeposit: 0
   interestPayType: 0
   targetAmountForInterest: 0
   withdrawPenalty: 0
@@ -5518,6 +5720,7 @@ MonoBehaviour:
   interestOptions:
     interestRate: 0
     durationInMonths: 0
+  minimumDeposit: 0
   interestPayType: 0
   targetAmountForInterest: 0
   withdrawPenalty: 0
@@ -5633,7 +5836,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -139}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 313.463, y: 103.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1744082780
@@ -5937,16 +6140,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778855003}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1635658056}
+  m_Father: {fileID: 233891994}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -89.125, y: -206.76}
+  m_AnchoredPosition: {x: -99.104, y: 0.000015258789}
   m_SizeDelta: {x: 115.251, y: 31.746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1778855005
@@ -6570,6 +6773,7 @@ MonoBehaviour:
   interestOptions:
     interestRate: 0
     durationInMonths: 0
+  minimumDeposit: 0
   interestPayType: 0
   targetAmountForInterest: 0
   withdrawPenalty: 0
@@ -6782,16 +6986,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140061016}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1635658056}
+  m_Father: {fileID: 233891994}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: -206.76}
+  m_AnchoredPosition: {x: 24.8, y: 0.000015258789}
   m_SizeDelta: {x: 115.251, y: 31.746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2140061018
@@ -6920,7 +7124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6091987930695014853, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6091987930695014853, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
       propertyPath: m_AnchorMin.x
@@ -6928,11 +7132,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6091987930695014853, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6091987930695014853, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 597
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6091987930695014853, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
       propertyPath: m_SizeDelta.y
@@ -6968,11 +7172,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6091987930695014853, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 298.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6091987930695014853, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6091987930695014853, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
