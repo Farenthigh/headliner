@@ -59,17 +59,15 @@ public class APIManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            client.BaseAddress = new Uri("http://localhost:8080/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-    private void Start()
-    {
-        client.BaseAddress = new Uri("http://localhost:8080/");
-        client.DefaultRequestHeaders.Accept.Clear();
-        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }
     public async Task<Uri> Register(RegisterStruct register)
     {
@@ -93,7 +91,7 @@ public class APIManager : MonoBehaviour
         var postResponse = await response.Content.ReadAsStringAsync();
         var jsonResponse = JsonUtility.FromJson<ApiResponse<TokenData>>(postResponse);
         Token = jsonResponse.data.token;
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(Token);
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",Token);
         return response.Headers.Location;
     }
     public async Task<Uri> ChooseCharacter(int character, string name)

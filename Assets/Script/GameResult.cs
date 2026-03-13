@@ -137,6 +137,7 @@ public void TriggerDefeat()
     public void OnClickExit()
     {
         Debug.Log("Victory Exit Clicked");
+        SceneManager.LoadScene("TaxGameMap");
     }
 
     public void OnClickPlayAgain()

@@ -5,7 +5,10 @@ public class HomeMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("SelectCharacterScene");
+        if (APIManager.myData.character == 0 && APIManager.myData.username == "")
+                UnityEngine.SceneManagement.SceneManager.LoadScene("SelectCharacterScene");
+            else
+                UnityEngine.SceneManagement.SceneManager.LoadScene("SelectGame");
     }
 
     public void OpenSettings()

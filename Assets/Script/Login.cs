@@ -24,7 +24,7 @@ public class login : MonoBehaviour
             if (APIManager.myData.character == 0 && APIManager.myData.username == "")
                 UnityEngine.SceneManagement.SceneManager.LoadScene("SelectCharacterScene");
             else
-                UnityEngine.SceneManagement.SceneManager.LoadScene("SelectGame");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("HomeScene");
         }
         catch (System.Exception ex)
         {
