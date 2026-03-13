@@ -50,9 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TipsPageController
   pages:
   - {fileID: 896235320211867590}
-  - {fileID: 96626837838488670}
   - {fileID: 1676259751801781457}
-  - {fileID: 2329685855252655048}
   - {fileID: 4994784239422667376}
   - {fileID: 4307854270857629394}
 --- !u!1 &73031647960135566
@@ -203,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &662751090198130156
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1289,7 +1287,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1810352433478466326
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2241,7 +2239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &937815482905640541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3919,7 +3917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2031719973006847275
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4412,7 +4410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8518801597762504895
 RectTransform:
   m_ObjectHideFlags: 0
