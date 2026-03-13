@@ -8,8 +8,7 @@ using TMPro;
 public class AchievementManager : MonoBehaviour
 {
     public static AchievementManager Instance;
-    public string backendUrl = "http://localhost:8080"; 
-    public uint currentUserId = 1; 
+    public string backendUrl = "http://localhost:8080";
     public List<AchievementData> allAchievements;
     public GameObject popupPanel;         
     public TextMeshProUGUI popupNameText;             
@@ -35,10 +34,13 @@ public class AchievementManager : MonoBehaviour
 
     IEnumerator LoadDataFromBackendRoutine()
     {
-        string url = backendUrl + "/achievements/user/" + currentUserId;
+        uint myUserId = (uint)APIManager.myData.id;
+        string url = backendUrl + "/achievements/user/" + myUserId;
         
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
+            webRequest.SetRequestHeader("Authorization", "Bearer " + APIManager.Token);
+
             yield return webRequest.SendWebRequest();
 
             if (webRequest.result != UnityWebRequest.Result.Success)
@@ -47,6 +49,7 @@ public class AchievementManager : MonoBehaviour
             }
             else
             {
+                // ... (โค้ดดึง JSON ข้างในเหมือนเดิม ปล่อยไว้เลยครับ) ...
                 string jsonResponse = webRequest.downloadHandler.text;
                 
                 AchievementListResponse response = JsonUtility.FromJson<AchievementListResponse>(jsonResponse);
@@ -91,7 +94,9 @@ public class AchievementManager : MonoBehaviour
     {
         string url = backendUrl + "/achievements/unlock";
 
-        UnlockRequest req = new UnlockRequest { user_id = currentUserId, achievement_id = achievementId };
+        uint myUserId = (uint)APIManager.myData.id;
+        UnlockRequest req = new UnlockRequest { user_id = myUserId, achievement_id = achievementId };
+        
         string jsonData = JsonUtility.ToJson(req);
 
         using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
@@ -99,7 +104,10 @@ public class AchievementManager : MonoBehaviour
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
             webRequest.uploadHandler = new UploadHandlerRaw(bodyRaw);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
+            
             webRequest.SetRequestHeader("Content-Type", "application/json");
+            
+            webRequest.SetRequestHeader("Authorization", "Bearer " + APIManager.Token);
 
             yield return webRequest.SendWebRequest();
 
@@ -109,7 +117,7 @@ public class AchievementManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("บันทึกลง Backend");
+                Debug.Log("บันทึกลง Backend สำเร็จ ของ User ID: " + myUserId);
             }
         }
     }
@@ -205,6 +213,28 @@ public class AchievementManager : MonoBehaviour
         rect.anchoredPosition = hiddenPos;
 
         popupPanel.SetActive(false);
+    }
+
+    [Header("Main UI")]
+    public GameObject mainAchievementPanel; // ลาก MainAchievementPanel มาใส่ช่องนี้
+
+    // สั่งเปิดหน้าต่างรวมถ้วยรางวัล
+    public void OpenAchievementUI()
+    {
+        if (mainAchievementPanel != null)
+        {
+            GenerateAchievementUI(); // สั่งรีเฟรชข้อมูลให้ล่าสุดก่อนโชว์
+            mainAchievementPanel.SetActive(true);
+        }
+    }
+
+    // สั่งปิดหน้าต่าง
+    public void CloseAchievementUI()
+    {
+        if (mainAchievementPanel != null)
+        {
+            mainAchievementPanel.SetActive(false);
+        }
     }
 }
 

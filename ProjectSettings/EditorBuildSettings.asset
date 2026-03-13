@@ -41,6 +41,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TaxGameStage5.unity
     guid: 1dc36b1ede5e049d89530a7a7153a67a
+  - enabled: 1
+    path: Assets/Scenes/Achievement.unity
+    guid: a618b490c5afd44d19546fe6e56505d1
+  - enabled: 1
+    path: Assets/Scenes/Chatbot.unity
+    guid: e4878ac31f5794f9c91d34e08435845a
+  - enabled: 1
+    path: Assets/Scenes/HomeScene.unity
+    guid: 07c26f300d46d43ff9f701b1528c85cc
+  - enabled: 1
+    path: Assets/Scenes/LeaderBoardScene.unity
+    guid: 5b1b9fd2d7ff942479b4399eab6ab7f2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3590b91b4603b465dbb4216d601bff33, type: 3}
   m_UseUCBPForAssetBundles: 0
