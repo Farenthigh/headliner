@@ -15,18 +15,10 @@ public class StoryManager : MonoBehaviour
     public GameObject nextButton; 
     public List<StoryPage> allPages; 
     private int currentIndex = 0;
+    public GameResult gameResult;
 
     [Header("Quiz UI")]
     public Examlogic examSystem;
-    [System.Serializable]
-    public class TipBook
-    {
-        public GameObject tipBookUI;
-        public int tipPageIndex;
-    }
-    [Header("Tip Books")]
-    public List<TipBook> tipBooks;
-    public GameObject icon;
 
     void Start()
     {
@@ -58,7 +50,7 @@ public class StoryManager : MonoBehaviour
         {
             backgroundImageUI.sprite = currentPage.background;
         }
-
+       
         if (speechBubbleUI != null)
         {
             if (currentPage.speechBubble != null)
@@ -89,33 +81,23 @@ public class StoryManager : MonoBehaviour
             if (nextButton != null) nextButton.SetActive(true);
             if (examSystem != null) examSystem.gameObject.SetActive(false);
         }
-        bool isTipShowing = false;
 
-        // ปิด tip ทุกอันก่อน
-        foreach (TipBook tip in tipBooks)
-        {
-            if (tip.tipBookUI != null)
-                tip.tipBookUI.SetActive(false);
-        }
 
-        // ตรวจว่า page นี้ต้องเปิด tip ไหม
-        foreach (TipBook tip in tipBooks)
-        {
-            if (currentIndex == tip.tipPageIndex)
+         if(currentIndex == allPages.Count - 1)
             {
-                if (tip.tipBookUI != null)
+                Debug.Log("นี่คือหน้าสุดท้าย");
+                Debug.Log("คุณชนะ");
+                if (gameResult != null)
                 {
-                    tip.tipBookUI.SetActive(true);
-                    isTipShowing = true;
+                    int stars = Manager.Instance.GetStarsFromExam();
+                    gameResult.ShowVictoryResultDirect(stars);
+                    // gameResult.ShowVictoryResultDirect(2); // ใส่จำนวนดาวที่ต้องการ
                 }
+                
+                if (nextButton != null) nextButton.SetActive(false);
+                // if (nextButton != null)
+                //     nextButton.SetActive(false);
             }
-        }
-
-        // ควบคุม icon
-        if (icon != null)
-        {
-            icon.SetActive(!isTipShowing);
-        }
     }
 
     void HandleCharacterLayout(StoryPage page)
@@ -147,6 +129,4 @@ public class StoryManager : MonoBehaviour
         characterUI.sprite = characterSprite;
         characterUI.gameObject.SetActive(true);
     }
-
-     
 }
