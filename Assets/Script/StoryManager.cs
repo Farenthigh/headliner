@@ -20,6 +20,17 @@ public class StoryManager : MonoBehaviour
     [Header("Quiz UI")]
     public Examlogic examSystem;
 
+    [System.Serializable]
+    public class TipBook
+    {
+        public GameObject tipBookUI;
+        public int tipPageIndex;
+    }
+
+    [Header("Tip Books")]
+    public List<TipBook> tipBooks;
+    private bool isTipShowing = false;
+
     void Start()
     {
         currentIndex = 0;
@@ -98,6 +109,29 @@ public class StoryManager : MonoBehaviour
                 // if (nextButton != null)
                 //     nextButton.SetActive(false);
             }
+
+                // รีเซ็ตก่อน
+        isTipShowing = false;
+
+        // ปิด tip ทุกอันก่อน
+        foreach (TipBook tip in tipBooks)
+        {
+            if (tip.tipBookUI != null)
+                tip.tipBookUI.SetActive(false);
+        }
+
+        // ตรวจว่า page นี้ต้องเปิด tip ไหม
+        foreach (TipBook tip in tipBooks)
+        {
+            if (currentIndex == tip.tipPageIndex)
+            {
+                if (tip.tipBookUI != null)
+                {
+                    tip.tipBookUI.SetActive(true);
+                    isTipShowing = true;
+                }
+            }
+        }    
     }
 
     void HandleCharacterLayout(StoryPage page)
