@@ -1811,6 +1811,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TipsTaxGame (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1603058641269299270, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2582,7 +2586,7 @@ MonoBehaviour:
   tipBooks:
   - tipBookUI: {fileID: 3726308389109575358}
     tipPageIndex: 24
-  icon: {fileID: 3726308389109575358}
+  icon: {fileID: 1981021367}
 --- !u!4 &1360646095
 Transform:
   m_ObjectHideFlags: 0
@@ -4712,6 +4716,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!1 &1981021367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1603058641269299270, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 1179628830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2044256158
 GameObject:
   m_ObjectHideFlags: 0
