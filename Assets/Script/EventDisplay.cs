@@ -35,9 +35,9 @@ public class EventDisplay : MonoBehaviour
     {
         Debug.Log("Showing Event: " + eventData.eventName);
         // Set Front card details but hide it
-        nameText.text = eventData.eventName;
-        descriptionText.text = eventData.description;
-        iconImage.sprite = eventData.icon;
+        // nameText.text = eventData.eventName;
+        // descriptionText.text = eventData.description;
+        // iconImage.sprite = eventData.icon;
 
         // Show panel and animate card flip start with back to front
         panel.SetActive(true);
@@ -54,14 +54,23 @@ public class EventDisplay : MonoBehaviour
 
         // wait for player click to flip the card
         isWaitingForInput = true;
+
+        // Add a listener to the cardBack button to set isWaitingForInput to false when clicked
+        Button cardBackButton = cardBack.GetComponent<Button>();
+        void OnCardBackClicked()
+        {
+            isWaitingForInput = false;
+        }
+        cardBackButton.onClick.AddListener(OnCardBackClicked);
+
         while (isWaitingForInput)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                isWaitingForInput = false;
-            }
             yield return null;
         }
+
+        // Remove the listener after input is received
+        cardBackButton.onClick.RemoveListener(OnCardBackClicked);
+
         // Flip the card to reveal front
         RevealCard();
     }
@@ -70,11 +79,21 @@ public class EventDisplay : MonoBehaviour
     {
         cardBack.SetActive(false);
         cardFront.SetActive(true);
+        Button cardFrontButton = cardFront.GetComponent<Button>();
+        cardFrontButton.onClick.AddListener(OnCardFrontClicked);
+
         //Sound effect can be added here like "ฟึ่บ"
     }
 
     public void ClosePanel()
     {
         panel.SetActive(false);
+    }
+    public void OnCardFrontClicked()
+    {
+        // Close the panel and trigger the event effect
+        Debug.Log("Card front clicked, closing panel and triggering event effect.");
+        ClosePanel();
+        SavingGameLogicManager.Instance.SetIsPaused(false);
     }
 }
