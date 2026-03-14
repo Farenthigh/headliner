@@ -87,6 +87,7 @@ public class SavingGameLogicManager : MonoBehaviour
 
         BankPanelUI.Instance.OnCloseBankPanel();
         EventManager.Instance.ResetEventTrigger();
+        EventManager.Instance.RandomEvent();
 
     }
     public int GetCurrentMonth()
