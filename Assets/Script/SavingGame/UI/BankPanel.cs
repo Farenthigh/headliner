@@ -16,7 +16,7 @@ public class BankPanelUI : MonoBehaviour
     [SerializeField] private Button closeBankPanelButton;
     [SerializeField] private Transform descriptionParent;
     [SerializeField] private GameObject descriptionText;
-    [SerializeField] private TMP_Text FailedText;
+    // [SerializeField] private TMP_Text FailedText;
     private BankScript bankScript;
     private void Awake()
     {
@@ -36,7 +36,7 @@ public class BankPanelUI : MonoBehaviour
         withdrawButton.onClick.AddListener(OnWithdrawButton);
         closeBankPanelButton.onClick.AddListener(OnCloseBankPanel);
         bankPanel.SetActive(false);
-        FailedText.gameObject.SetActive(false);
+        // FailedText.gameObject.SetActive(false);
     }
     private void Update()
     {
@@ -115,7 +115,8 @@ public class BankPanelUI : MonoBehaviour
     }
     public void OnFailedAction(string message)
     {
-        FailedText.text = message;
-        FailedText.gameObject.SetActive(true);
+        // FailedText.text = message;
+        /* The line `FailedText.gameObject.SetActive(true);` is attempting to set the `gameObject` property of the `FailedText` object to be active, making it visible in the UI. However, it seems that the `FailedText` variable is currently commented out in the code, so this line will result in an error because `FailedText` is not defined or accessible in the current context. */
+        // FailedText.gameObject.SetActive(true);
     }
 }
