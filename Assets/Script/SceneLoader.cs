@@ -36,7 +36,7 @@ public class SceneLoader : MonoBehaviour
     // กด icon เพื่อเปิด Tips
     public void OpenTips()
     {
-        icon.SetActive(false);
+        // icon.SetActive(false);
         bg.SetActive(true);
         saving.SetActive(false);       // เปิดหน้าแรก
         taxGameTips.SetActive(true);
