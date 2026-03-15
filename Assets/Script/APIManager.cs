@@ -126,19 +126,26 @@ public class APIManager : MonoBehaviour
     }
 
     public async Task SaveGameResult(int stars, int stage)
+{
+    GameResultStruct result = new GameResultStruct
     {
-        GameResultStruct result = new GameResultStruct
-        {
-            user_id = myData.id,
-            stars = stars,
-            stage = stage
-        };
+        user_id = myData.id,
+        stars = stars,
+        stage = stage
+    };
 
-        Debug.Log("MOCK SEND RESULT:");
-        Debug.Log(JsonUtility.ToJson(result));
+    string json = JsonUtility.ToJson(result);
+    Debug.Log("Sending: " + json);
 
-        await Task.Delay(1000);
+    HttpResponseMessage response = await client.PostAsync(
+        "/stage/save",
+        new StringContent(json, System.Text.Encoding.UTF8, "application/json")
+    );
 
-        Debug.Log("MOCK RESPONSE: Save success (200 OK)");
-    }
+    Debug.Log("Status: " + response.StatusCode);
+
+    response.EnsureSuccessStatusCode();
+}
+
+
 }

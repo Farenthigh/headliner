@@ -2451,6 +2451,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1353792414}
     m_Modifications:
     - target: {fileID: 2287979810010689411, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: stageID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2287979810010689411, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
       propertyPath: nextSceneName
       value: TaxGameStage3
       objectReference: {fileID: 0}
