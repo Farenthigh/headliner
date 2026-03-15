@@ -22,6 +22,8 @@ public class Examlogic : MonoBehaviour
     public TMP_InputField answerInputField; 
     public StoryManager storyManager;
     public GameResult gameResult;
+    public int achievementIdToUnlock;
+    public string achievementCodeToUnlock;
 
     public void StartExam() 
     {
@@ -164,6 +166,11 @@ public class Examlogic : MonoBehaviour
         {
             Debug.Log("คุณชนะ");
             CloseExamUI();
+
+            if(achievementIdToUnlock > 0 && !string.IsNullOrEmpty(achievementCodeToUnlock)){
+                AchievementManager.Instance.UnlockAchievement((uint)achievementIdToUnlock, achievementCodeToUnlock);
+            }
+
             if (gameResult != null)
                 gameResult.TriggerVictory(storyManager);
         }
