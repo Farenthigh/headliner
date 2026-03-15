@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee818a639afe48a6bed3ab334b65d55, type: 3}
+  m_Name: Ach_Economic Survivor
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementData
+  id: 9
+  achievementName: Economic Survivor
+  description: "\u0E1C\u0E48\u0E32\u0E19\u0E14\u0E48\u0E32\u0E19\u0E22\u0E32\u0E01\u0E42\u0E14\u0E22\u0E44\u0E21\u0E48\u0E25\u0E49\u0E21\u0E40\u0E2B\u0E25\u0E27\u0E08\u0E32\u0E01\n\u0E40\u0E2B\u0E15\u0E38\u0E01\u0E32\u0E23\u0E13\u0E4C\u0E2A\u0E38\u0E48\u0E21"
+  icon: {fileID: 1698748045657734085, guid: 25eecaace36464bb596a6bb570e384c2, type: 3}
+  gameType: 0
+  isUnlocked: 0
+  unlockDate: 
