@@ -94,6 +94,11 @@ public class BankPanelUI : MonoBehaviour
             OnFailedAction($"ไม่สามารถฝากได้ เนื่องจากยอดฝากขั้นต่ำคือ {bankScript.GetMinimumDeposit()}");
             return;
         }
+        if (bankScript.GetMaximumDeposit() < amount)
+        {
+            OnFailedAction($"ไม่สามารถฝากได้ เนื่องจากยอดฝากขั้นสูงคือ {bankScript.GetMaximumDeposit()}");
+            return;
+        }
         bankScript.Deposit(amount);
         amountInput.text = "";
     }

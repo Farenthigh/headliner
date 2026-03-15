@@ -113,7 +113,7 @@ public class SavingGameUIManager : MonoBehaviour
     public void UpdateRoundMonth()
     {
         int currentMonth = SavingGameLogicManager.Instance.GetCurrentMonth();
-        int goal = SavingGameLogicManager.Instance.GetGoalMonth();
+        int goal = SavingGoalManager.Instance.GetGoalMonth();
         roundMonthText.text = $"{currentMonth}/{goal}";
     }
 
