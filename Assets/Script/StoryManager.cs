@@ -15,6 +15,7 @@ public class StoryManager : MonoBehaviour
     public GameObject nextButton; 
     public List<StoryPage> allPages; 
     private int currentIndex = 0;
+    public GameResult gameResult;
 
     [Header("Quiz UI")]
     public Examlogic examSystem;
@@ -49,7 +50,7 @@ public class StoryManager : MonoBehaviour
         {
             backgroundImageUI.sprite = currentPage.background;
         }
-
+       
         if (speechBubbleUI != null)
         {
             if (currentPage.speechBubble != null)
@@ -80,6 +81,23 @@ public class StoryManager : MonoBehaviour
             if (nextButton != null) nextButton.SetActive(true);
             if (examSystem != null) examSystem.gameObject.SetActive(false);
         }
+
+
+         if(currentIndex == allPages.Count - 1)
+            {
+                Debug.Log("นี่คือหน้าสุดท้าย");
+                Debug.Log("คุณชนะ");
+                if (gameResult != null)
+                {
+                    int stars = Manager.Instance.GetStarsFromExam();
+                    gameResult.ShowVictoryResultDirect(stars);
+                    // gameResult.ShowVictoryResultDirect(2); // ใส่จำนวนดาวที่ต้องการ
+                }
+                
+                if (nextButton != null) nextButton.SetActive(false);
+                // if (nextButton != null)
+                //     nextButton.SetActive(false);
+            }
     }
 
     void HandleCharacterLayout(StoryPage page)
