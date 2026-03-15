@@ -8,9 +8,8 @@ public class SavingGameLogicManager : MonoBehaviour
     [SerializeField] private int secondsInOneMonth = 5;
     [SerializeField] private float startingCash = 1000f;
     [SerializeField] private float cashPerMonth = 1000f;
-    [SerializeField] private float goalAmount = 10000f;
     [SerializeField] private int goalMonth = 12;
-    [SerializeField] private BankScript[] banks;
+    [SerializeField] public BankScript[] banks;
     public static event Action<int, int> OnNewMonth;
     // year, month
 
@@ -84,7 +83,7 @@ public class SavingGameLogicManager : MonoBehaviour
                 bank.PayInterest();
             }
         }
-
+        HomePanel.Instance.CloseHomePanel();
         BankPanelUI.Instance.OnCloseBankPanel();
         EventManager.Instance.ResetEventTrigger();
         EventManager.Instance.RandomEvent();
@@ -125,11 +124,6 @@ public class SavingGameLogicManager : MonoBehaviour
     {
         return (currentYear * 12 + currentMonth - 1) * secondsInOneMonth + currentTime;
     }
-    public float GetGoalAmount()
-    {
-        return goalAmount;
-    }
-
     public float GetAllAssets()
     {
         float total = cash; // เงินสด
