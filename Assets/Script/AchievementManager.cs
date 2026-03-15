@@ -64,6 +64,7 @@ public class AchievementManager : MonoBehaviour
                 {
                     foreach (var backendData in response.data)
                     {
+                        if (backendData.user_id != myUserId) continue;
                         AchievementData ach = allAchievements.Find(a => a.id == backendData.achievement_id.ToString());
                         if (ach != null)
                         {

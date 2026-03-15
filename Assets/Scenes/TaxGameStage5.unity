@@ -820,6 +820,168 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &383728139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 383728141}
+  - component: {fileID: 383728140}
+  m_Layer: 0
+  m_Name: StoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &383728140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383728139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29832a15318a453ca30c1e87c26d9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StoryManager
+  dialogueTextUI: {fileID: 1788431608}
+  speakerNameUI: {fileID: 662390057}
+  backgroundImageUI: {fileID: 249493819}
+  characterLeftUI: {fileID: 1484533580}
+  characterCenterUI: {fileID: 1588605984}
+  characterRightUI: {fileID: 1448623987}
+  speechBubbleUI: {fileID: 1788710556}
+  nextButton: {fileID: 941330054}
+  allPages:
+  - dialogueText: 
+    speakerName: 
+    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    speechBubble: {fileID: 0}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E15\u0E34\u0E4A\u0E01... \u0E15\u0E48\u0E2D\u0E01... \u0E15\u0E34\u0E4A\u0E01...
+      \u0E15\u0E48\u0E2D\u0E01... \u0E0A\u0E49\u0E32\u0E08\u0E23\u0E34\u0E07\u0E40\u0E0A\u0E35\u0E22\u0E27!
+      \u0E02\u0E49\u0E32\u0E0A\u0E2D\u0E1A\u0E40\u0E27\u0E25\u0E32\u0E17\u0E35\u0E48\u0E21\u0E19\u0E38\u0E29\u0E22\u0E4C\u0E25\u0E19\u0E25\u0E32\u0E19\u0E17\u0E33\u0E2D\u0E30\u0E44\u0E23\u0E44\u0E21\u0E48\u0E17\u0E31\u0E19 "
+    speakerName: "\u0E08\u0E2D\u0E21\u0E21\u0E32\u0E23"
+    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E1E\u0E27\u0E01\u0E40\u0E08\u0E49\u0E32\u0E23\u0E39\u0E49\u0E44\u0E2B\u0E21\u0E27\u0E48\u0E32\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E02\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32\u0E04\u0E37\u0E2D\u0E2D\u0E30\u0E44\u0E23?
+      \u0E04\u0E37\u0E2D\u0E01\u0E32\u0E23\u0E40\u0E2B\u0E47\u0E19\u0E1E\u0E27\u0E01\u0E40\u0E08\u0E49\u0E32\u0E25\u0E37\u0E21\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35
+      \u0E41\u0E25\u0E49\u0E27\u0E42\u0E14\u0E19 '\u0E04\u0E48\u0E32\u0E1B\u0E23\u0E31\u0E1A'
+      (Fine) \u0E41\u0E25\u0E30 '\u0E40\u0E07\u0E34\u0E19\u0E40\u0E1E\u0E34\u0E48\u0E21'
+      (Surcharge) \u0E01\u0E34\u0E19\u0E08\u0E19\u0E2B\u0E21\u0E14\u0E15\u0E31\u0E27\u0E44\u0E07\u0E25\u0E48\u0E30!
+      \u0E2E\u0E48\u0E32\u0E46\u0E46!"
+    speakerName: "\u0E08\u0E2D\u0E21\u0E21\u0E32\u0E23"
+    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E0A\u0E48\u0E27\u0E22\u0E14\u0E49\u0E27\u0E22\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
+      \u0E21\u0E31\u0E19\u0E2A\u0E32\u0E1B\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E02\u0E22\u0E31\u0E1A\u0E15\u0E31\u0E27\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49
+      \u0E21\u0E31\u0E19\u0E08\u0E30\u0E22\u0E36\u0E14\u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23\u0E19\u0E35\u0E49\u0E14\u0E49\u0E27\u0E22\u0E14\u0E2D\u0E01\u0E40\u0E1A\u0E35\u0E49\u0E22\u0E04\u0E48\u0E32\u0E1B\u0E23\u0E31\u0E1A!"
+    speakerName: "\u0E1E\u0E23\u0E30\u0E23\u0E32\u0E0A\u0E32"
+    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
+      \u0E19\u0E35\u0E48\u0E04\u0E37\u0E2D '\u0E08\u0E2D\u0E21\u0E21\u0E32\u0E23\u0E40\u0E14\u0E14\u0E44\u0E25\u0E19\u0E4C'
+      \u0E1B\u0E35\u0E28\u0E32\u0E08\u0E41\u0E2B\u0E48\u0E07\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E31\u0E14\u0E27\u0E31\u0E19\u0E1B\u0E23\u0E30\u0E01\u0E31\u0E19\u0E1E\u0E23\u0E38\u0E48\u0E07!
+      \u0E17\u0E32\u0E07\u0E40\u0E14\u0E35\u0E22\u0E27\u0E17\u0E35\u0E48\u0E08\u0E30\u0E0A\u0E19\u0E30\u0E21\u0E31\u0E19\u0E04\u0E37\u0E2D
+      '\u0E22\u0E37\u0E48\u0E19\u0E41\u0E1A\u0E1A\u0E43\u0E2B\u0E49\u0E16\u0E39\u0E01
+      \u0E41\u0E25\u0E30\u0E22\u0E37\u0E48\u0E19\u0E43\u0E2B\u0E49\u0E17\u0E31\u0E19\u0E40\u0E27\u0E25\u0E32'!"
+    speakerName: Chatbot
+    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E15\u0E31\u0E49\u0E07\u0E2A\u0E15\u0E34\u0E43\u0E2B\u0E49\u0E14\u0E35\u0E19\u0E30\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
+      \u0E19\u0E35\u0E48\u0E04\u0E37\u0E2D\u0E04\u0E32\u0E16\u0E32\u0E1A\u0E17\u0E2A\u0E38\u0E14\u0E17\u0E49\u0E32\u0E22!"
+    speakerName: Chatbot
+    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: TIps
+    speakerName: Tips
+    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: 
+    speakerName: 
+    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    speechBubble: {fileID: 0}
+    characterLeft: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 3259746109679490442, guid: 337a9edbde97f4619b3412916b4d7864, type: 3}
+    isChoicePage: 1
+  - dialogueText: "\u0E02\u0E2D\u0E1A\u0E43\u0E08\u0E40\u0E08\u0E49\u0E32\u0E21\u0E32\u0E01!
+      \u0E15\u0E2D\u0E19\u0E19\u0E35\u0E49\u0E23\u0E30\u0E1A\u0E1A\u0E01\u0E32\u0E23\u0E40\u0E07\u0E34\u0E19\u0E02\u0E2D\u0E07\u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23\u0E01\u0E25\u0E31\u0E1A\u0E21\u0E32\u0E2A\u0E21\u0E1A\u0E39\u0E23\u0E13\u0E4C\u0E41\u0E25\u0E49\u0E27
+      \u0E1B\u0E23\u0E30\u0E0A\u0E32\u0E0A\u0E19\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35\u0E04\u0E23\u0E1A\u0E16\u0E49\u0E27\u0E19
+      \u0E41\u0E25\u0E30\u0E23\u0E31\u0E10\u0E01\u0E47\u0E19\u0E33\u0E40\u0E07\u0E34\u0E19\u0E21\u0E32\u0E1E\u0E31\u0E12\u0E19\u0E32\u0E40\u0E21\u0E37\u0E2D\u0E07\u0E44\u0E14\u0E49\u0E41\u0E25\u0E49\u0E27!"
+    speakerName: Chatbot
+    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E20\u0E32\u0E23\u0E01\u0E34\u0E08\u0E40\u0E2A\u0E23\u0E47\u0E08\u0E2A\u0E34\u0E49\u0E19!"
+    speakerName: Chatbot
+    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: 
+    speakerName: 
+    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    speechBubble: {fileID: 0}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  gameResult: {fileID: 142996851}
+  examSystem: {fileID: 1915187673}
+  typingSpeed: 0.03
+--- !u!4 &383728141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383728139}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &405451057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,7 +1724,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1915187674}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StoryManager, Assembly-CSharp
         m_MethodName: OnClickNext
         m_Mode: 1
@@ -3288,6 +3450,7 @@ MonoBehaviour:
   popupIconImage: {fileID: 154219623}
   achievementPrefab: {fileID: 0}
   achievementContainer: {fileID: 0}
+  mainAchievementPanel: {fileID: 0}
 --- !u!4 &1607627187
 Transform:
   m_ObjectHideFlags: 0
@@ -3387,14 +3550,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1128641245}
     m_Modifications:
+    - target: {fileID: 243685174663886332, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+    - target: {fileID: 602149587871376632, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+    - target: {fileID: 639348024178139328, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
     - target: {fileID: 662837496958603935, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 701555804904039436, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+    - target: {fileID: 857118392238431607, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
     - target: {fileID: 2287979810010689411, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
       propertyPath: nextSceneName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2537536871218113606, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
     - target: {fileID: 2921818050391590138, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -241
@@ -4158,7 +4345,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1915187675}
-  - component: {fileID: 1915187674}
   - component: {fileID: 1915187673}
   m_Layer: 0
   m_Name: GameManager
@@ -4242,139 +4428,10 @@ MonoBehaviour:
   - {fileID: 1370377290}
   inputPanel: {fileID: 868391249}
   answerInputField: {fileID: 2027322315}
-  storyManager: {fileID: 1915187674}
+  storyManager: {fileID: 383728140}
   gameResult: {fileID: 142996851}
   achievementIdToUnlock: 16
   achievementCodeToUnlock: 16
---- !u!114 &1915187674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915187672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f29832a15318a453ca30c1e87c26d9f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StoryManager
-  dialogueTextUI: {fileID: 1788431608}
-  speakerNameUI: {fileID: 662390057}
-  backgroundImageUI: {fileID: 249493819}
-  characterLeftUI: {fileID: 1484533580}
-  characterCenterUI: {fileID: 1588605984}
-  characterRightUI: {fileID: 1448623987}
-  speechBubbleUI: {fileID: 1788710556}
-  nextButton: {fileID: 941330054}
-  allPages:
-  - dialogueText: 
-    speakerName: 
-    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
-    speechBubble: {fileID: 0}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E15\u0E34\u0E4A\u0E01... \u0E15\u0E48\u0E2D\u0E01... \u0E15\u0E34\u0E4A\u0E01...
-      \u0E15\u0E48\u0E2D\u0E01... \u0E0A\u0E49\u0E32\u0E08\u0E23\u0E34\u0E07\u0E40\u0E0A\u0E35\u0E22\u0E27!
-      \u0E02\u0E49\u0E32\u0E0A\u0E2D\u0E1A\u0E40\u0E27\u0E25\u0E32\u0E17\u0E35\u0E48\u0E21\u0E19\u0E38\u0E29\u0E22\u0E4C\u0E25\u0E19\u0E25\u0E32\u0E19\u0E17\u0E33\u0E2D\u0E30\u0E44\u0E23\u0E44\u0E21\u0E48\u0E17\u0E31\u0E19 "
-    speakerName: "\u0E08\u0E2D\u0E21\u0E21\u0E32\u0E23"
-    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E1E\u0E27\u0E01\u0E40\u0E08\u0E49\u0E32\u0E23\u0E39\u0E49\u0E44\u0E2B\u0E21\u0E27\u0E48\u0E32\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E02\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E32\u0E04\u0E37\u0E2D\u0E2D\u0E30\u0E44\u0E23?
-      \u0E04\u0E37\u0E2D\u0E01\u0E32\u0E23\u0E40\u0E2B\u0E47\u0E19\u0E1E\u0E27\u0E01\u0E40\u0E08\u0E49\u0E32\u0E25\u0E37\u0E21\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35
-      \u0E41\u0E25\u0E49\u0E27\u0E42\u0E14\u0E19 '\u0E04\u0E48\u0E32\u0E1B\u0E23\u0E31\u0E1A'
-      (Fine) \u0E41\u0E25\u0E30 '\u0E40\u0E07\u0E34\u0E19\u0E40\u0E1E\u0E34\u0E48\u0E21'
-      (Surcharge) \u0E01\u0E34\u0E19\u0E08\u0E19\u0E2B\u0E21\u0E14\u0E15\u0E31\u0E27\u0E44\u0E07\u0E25\u0E48\u0E30!
-      \u0E2E\u0E48\u0E32\u0E46\u0E46!"
-    speakerName: "\u0E08\u0E2D\u0E21\u0E21\u0E32\u0E23"
-    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E0A\u0E48\u0E27\u0E22\u0E14\u0E49\u0E27\u0E22\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
-      \u0E21\u0E31\u0E19\u0E2A\u0E32\u0E1B\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E02\u0E22\u0E31\u0E1A\u0E15\u0E31\u0E27\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49
-      \u0E21\u0E31\u0E19\u0E08\u0E30\u0E22\u0E36\u0E14\u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23\u0E19\u0E35\u0E49\u0E14\u0E49\u0E27\u0E22\u0E14\u0E2D\u0E01\u0E40\u0E1A\u0E35\u0E49\u0E22\u0E04\u0E48\u0E32\u0E1B\u0E23\u0E31\u0E1A!"
-    speakerName: "\u0E1E\u0E23\u0E30\u0E23\u0E32\u0E0A\u0E32"
-    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
-      \u0E19\u0E35\u0E48\u0E04\u0E37\u0E2D '\u0E08\u0E2D\u0E21\u0E21\u0E32\u0E23\u0E40\u0E14\u0E14\u0E44\u0E25\u0E19\u0E4C'
-      \u0E1B\u0E35\u0E28\u0E32\u0E08\u0E41\u0E2B\u0E48\u0E07\u0E01\u0E32\u0E23\u0E1C\u0E25\u0E31\u0E14\u0E27\u0E31\u0E19\u0E1B\u0E23\u0E30\u0E01\u0E31\u0E19\u0E1E\u0E23\u0E38\u0E48\u0E07!
-      \u0E17\u0E32\u0E07\u0E40\u0E14\u0E35\u0E22\u0E27\u0E17\u0E35\u0E48\u0E08\u0E30\u0E0A\u0E19\u0E30\u0E21\u0E31\u0E19\u0E04\u0E37\u0E2D
-      '\u0E22\u0E37\u0E48\u0E19\u0E41\u0E1A\u0E1A\u0E43\u0E2B\u0E49\u0E16\u0E39\u0E01
-      \u0E41\u0E25\u0E30\u0E22\u0E37\u0E48\u0E19\u0E43\u0E2B\u0E49\u0E17\u0E31\u0E19\u0E40\u0E27\u0E25\u0E32'!"
-    speakerName: Chatbot
-    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E15\u0E31\u0E49\u0E07\u0E2A\u0E15\u0E34\u0E43\u0E2B\u0E49\u0E14\u0E35\u0E19\u0E30\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
-      \u0E19\u0E35\u0E48\u0E04\u0E37\u0E2D\u0E04\u0E32\u0E16\u0E32\u0E1A\u0E17\u0E2A\u0E38\u0E14\u0E17\u0E49\u0E32\u0E22!"
-    speakerName: Chatbot
-    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: TIps
-    speakerName: Tips
-    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: 
-    speakerName: 
-    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
-    speechBubble: {fileID: 0}
-    characterLeft: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 3259746109679490442, guid: 337a9edbde97f4619b3412916b4d7864, type: 3}
-    isChoicePage: 1
-  - dialogueText: "\u0E02\u0E2D\u0E1A\u0E43\u0E08\u0E40\u0E08\u0E49\u0E32\u0E21\u0E32\u0E01!
-      \u0E15\u0E2D\u0E19\u0E19\u0E35\u0E49\u0E23\u0E30\u0E1A\u0E1A\u0E01\u0E32\u0E23\u0E40\u0E07\u0E34\u0E19\u0E02\u0E2D\u0E07\u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23\u0E01\u0E25\u0E31\u0E1A\u0E21\u0E32\u0E2A\u0E21\u0E1A\u0E39\u0E23\u0E13\u0E4C\u0E41\u0E25\u0E49\u0E27
-      \u0E1B\u0E23\u0E30\u0E0A\u0E32\u0E0A\u0E19\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35\u0E04\u0E23\u0E1A\u0E16\u0E49\u0E27\u0E19
-      \u0E41\u0E25\u0E30\u0E23\u0E31\u0E10\u0E01\u0E47\u0E19\u0E33\u0E40\u0E07\u0E34\u0E19\u0E21\u0E32\u0E1E\u0E31\u0E12\u0E19\u0E32\u0E40\u0E21\u0E37\u0E2D\u0E07\u0E44\u0E14\u0E49\u0E41\u0E25\u0E49\u0E27!"
-    speakerName: Chatbot
-    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E20\u0E32\u0E23\u0E01\u0E34\u0E08\u0E40\u0E2A\u0E23\u0E47\u0E08\u0E2A\u0E34\u0E49\u0E19!"
-    speakerName: Chatbot
-    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: 
-    speakerName: 
-    background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
-    speechBubble: {fileID: 0}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  gameResult: {fileID: 142996851}
-  examSystem: {fileID: 1915187673}
 --- !u!4 &1915187675
 Transform:
   m_ObjectHideFlags: 0
@@ -5037,3 +5094,4 @@ SceneRoots:
   - {fileID: 1915187675}
   - {fileID: 1699182134}
   - {fileID: 1607627187}
+  - {fileID: 383728141}
