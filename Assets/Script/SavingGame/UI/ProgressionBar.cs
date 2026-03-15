@@ -12,7 +12,7 @@ public class ProgressionBar : MonoBehaviour
     }
     public void Update()
     {
-        UpdateProgression(SavingGameLogicManager.Instance.GetCurrentCash(), SavingGameLogicManager.Instance.GetGoalAmount());
+        UpdateProgression(SavingGameLogicManager.Instance.GetCurrentCash(), SavingGoalManager.Instance.GetGoalAmount());
     }
     public void UpdateProgression(float current, float target)
     {

@@ -22,6 +22,7 @@ public class BankScript : MonoBehaviour
     [SerializeField] private string bankName;
     [SerializeField] private Interest interestOptions;
     [SerializeField] private float minimumDeposit;
+    [SerializeField] private float maximumDeposit;
     [SerializeField] private InterestPayType interestPayType;
     [SerializeField] private float targetAmountForInterest;
     [SerializeField] private float withdrawPenalty;
@@ -30,7 +31,7 @@ public class BankScript : MonoBehaviour
     private bool isContractBroken = false;
     private void OnMouseDown()
     {
-        if (BankPanelUI.Instance.GetBankPanel()) return;
+        if (HomePanel.Instance.GetHomePanel() || BankPanelUI.Instance.GetBankPanel()) return;
         BankPanelUI.Instance.OnOpenBankPanel(this);
     }
     public List<string> GetDescription()
@@ -40,6 +41,10 @@ public class BankScript : MonoBehaviour
     public float GetMinimumDeposit()
     {
         return minimumDeposit;
+    }
+    public float GetMaximumDeposit()
+    {
+        return maximumDeposit;
     }
     public float GetBalance()
     {
