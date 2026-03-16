@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 04e7d6f1b3f3c438db2a139428a4820d
+guid: 523ce892aaf8d43958db898e498f1d81
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8080987843187276795
-    second: logout 1_0
-  - first:
-      213: 8701853473993704694
-    second: logout 1_1
+      213: -5877474888300940307
+    second: Chevron down_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: logout 1_0
+      name: Chevron down_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 0
-        width: 110
-        height: 150
+        x: 9
+        y: 15
+        width: 30
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bfb7d63e0af652070800000000000000
-      internalID: 8080987843187276795
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: logout 1_1
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 64
-        width: 68
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6f4c4e451a133c870800000000000000
-      internalID: 8701853473993704694
+      spriteID: de33b82bab30f6ea0800000000000000
+      internalID: -5877474888300940307
       vertices: []
       indices: 
       edges: []
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      logout 1_0: 8080987843187276795
-      logout 1_1: 8701853473993704694
+      Chevron down_0: -5877474888300940307
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,25 +1,28 @@
 fileFormatVersion: 2
-guid: 51823eb03a06a4b498758b20ec94b951
+guid: 472ddd33eb93e4df283a69458d48823c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4086895658025638556
-    second: Audio_0
+      213: 1536458441065289963
+    second: LOG OUT_0
   - first:
-      213: -5679096538048898286
-    second: Audio_1
+      213: -5871981690748650677
+    second: LOG OUT_1
   - first:
-      213: 2356825303544215458
-    second: Audio_2
+      213: -7196546124443057017
+    second: LOG OUT_2
   - first:
-      213: -4934120510291018132
-    second: Audio_3
+      213: -6094984568102982345
+    second: LOG OUT_3
   - first:
-      213: 7065629912824699882
-    second: Audio_4
+      213: 7380247620256593053
+    second: LOG OUT_4
   - first:
-      213: 2343412016128477021
-    second: Audio_5
+      213: -632731122261218034
+    second: LOG OUT_5
+  - first:
+      213: -5775042864914638441
+    second: LOG OUT_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -115,13 +118,145 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Audio_0
+      name: LOG OUT_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 7
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be8d8d7cfc8925510800000000000000
+      internalID: 1536458441065289963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOG OUT_1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 6
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4b345b63c7828ea0800000000000000
+      internalID: -5871981690748650677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOG OUT_2
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 6
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7848bd2cd6bb02c90800000000000000
+      internalID: -7196546124443057017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOG OUT_3
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 6
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73debb2f3d34a6ba0800000000000000
+      internalID: -6094984568102982345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOG OUT_4
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 6
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d94f0dfbb18eb6660800000000000000
+      internalID: 7380247620256593053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOG OUT_5
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 6
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0d294b85661837f0800000000000000
+      internalID: -632731122261218034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOG OUT_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 26
-        height: 29
+        width: 201
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,118 +265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c9a54ba92f197b830800000000000000
-      internalID: 4086895658025638556
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Audio_1
-      rect:
-        serializedVersion: 2
-        x: 27
-        y: 0
-        width: 21
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 21bd17ca9cbcf21b0800000000000000
-      internalID: -5679096538048898286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Audio_2
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 0
-        width: 21
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2a7b767602025b020800000000000000
-      internalID: 2356825303544215458
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Audio_3
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 21
-        width: 10
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c6e7229b98b768bb0800000000000000
-      internalID: -4934120510291018132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Audio_4
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 0
-        width: 8
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aeb5a4c68f82e0260800000000000000
-      internalID: 7065629912824699882
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Audio_5
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 0
-        width: 20
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d5748bf00d8758020800000000000000
-      internalID: 2343412016128477021
+      spriteID: 799db12ac1deadfa0800000000000000
+      internalID: -5775042864914638441
       vertices: []
       indices: 
       edges: []
@@ -260,12 +285,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Audio_0: 4086895658025638556
-      Audio_1: -5679096538048898286
-      Audio_2: 2356825303544215458
-      Audio_3: -4934120510291018132
-      Audio_4: 7065629912824699882
-      Audio_5: 2343412016128477021
+      LOG OUT_0: 1536458441065289963
+      LOG OUT_1: -5871981690748650677
+      LOG OUT_2: -7196546124443057017
+      LOG OUT_3: -6094984568102982345
+      LOG OUT_4: 7380247620256593053
+      LOG OUT_5: -632731122261218034
+      LOG OUT_6: -5775042864914638441
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

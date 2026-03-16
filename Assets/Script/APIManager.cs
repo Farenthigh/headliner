@@ -61,6 +61,7 @@ public struct UpdatePasswordStruct
 public class APIManager : MonoBehaviour
 {
     public static APIManager Instance { get; private set; }
+    public static bool IsRequestRunning = false;
     public static string Token;
     public static UserData myData;
     static HttpClient client = new HttpClient();
@@ -130,23 +131,35 @@ public class APIManager : MonoBehaviour
         return response.Headers.Location;
     }
 
-        public async Task UpdateUsername(string newUsername)
+        public async Task<bool> UpdateUsername(string newUsername)
     {
-        UpdateUsernameStruct data = new UpdateUsernameStruct
+        try
         {
-            username = newUsername
-        };
+            UpdateUsernameStruct data = new UpdateUsernameStruct
+            {
+                username = newUsername
+            };
 
-        HttpResponseMessage response = await client.PutAsync(
-            "users/updateusername/",
-            new StringContent(
-                JsonUtility.ToJson(data),
-                System.Text.Encoding.UTF8,
-                "application/json"));
+            HttpResponseMessage response = await client.PutAsync(
+                "users/updateusername/",
+                new StringContent(
+                    JsonUtility.ToJson(data),
+                    System.Text.Encoding.UTF8,
+                    "application/json"));
 
-        response.EnsureSuccessStatusCode();
+            if (response.IsSuccessStatusCode)
+            {
+                myData.username = newUsername;   // ⭐ เพิ่มตรงนี้
+            }
+
+            return response.IsSuccessStatusCode;
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Update username error: " + e.Message);
+            return false;
+        }
     }
-
         public async Task<bool> UpdatePassword(string currentPassword, string newPassword)
     {
         try
@@ -173,9 +186,17 @@ public class APIManager : MonoBehaviour
         }
     }
 
-        public async Task DeleteAccount()
+        public async Task<bool> DeleteAccount()
     {
-        HttpResponseMessage response = await client.DeleteAsync("users/delete/");
-        response.EnsureSuccessStatusCode();
+        try
+        {
+            HttpResponseMessage response = await client.DeleteAsync("users/delete/");
+            return response.IsSuccessStatusCode;
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Delete account error: " + e.Message);
+            return false;
+        }
     }
 }
