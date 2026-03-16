@@ -18,6 +18,10 @@ public class StoryManager : MonoBehaviour
     private int currentIndex = 0;
     public GameResult gameResult;
 
+    [Header("Character Asset")]
+    public Sprite chatbotSprite;
+    public Sprite[] playerSprites;
+
     [Header("Quiz UI")]
     public Examlogic examSystem;
 
@@ -61,16 +65,20 @@ public class StoryManager : MonoBehaviour
     {
         StoryPage currentPage = allPages[currentIndex];
 
+        // ดึงข้อความที่แทนชื่อมาใช้
+        string finalDialogue = ReplacePlaceholders(currentPage.dialogueText);
+        string finalSpeaker = ReplacePlaceholders(currentPage.speakerName);
+
         // +++ 4. สั่งให้เริ่มพิมพ์ข้อความแทนการยัดข้อความใส่ตรงๆ +++
         if (dialogueTextUI != null) 
         {
             // ถ้ามีตัวเก่ากำลังพิมพ์อยู่ ให้หยุดก่อน
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
             // สั่งเริ่มพิมพ์ประโยคของหน้าปัจจุบัน
-            typingCoroutine = StartCoroutine(TypeSentence(currentPage.dialogueText));
+            typingCoroutine = StartCoroutine(TypeSentence(finalDialogue));
         }
 
-        if (speakerNameUI != null) speakerNameUI.text = currentPage.speakerName;
+        if (speakerNameUI != null) speakerNameUI.text = finalSpeaker;
 
         if (backgroundImageUI != null && currentPage.background != null)
         {
@@ -150,9 +158,24 @@ public class StoryManager : MonoBehaviour
 
     void HandleCharacterLayout(StoryPage page)
     {
-        if (characterLeftUI != null) characterLeftUI.gameObject.SetActive(false);
-        if (characterCenterUI != null) characterCenterUI.gameObject.SetActive(false);
-        if (characterRightUI != null) characterRightUI.gameObject.SetActive(false);
+        characterLeftUI.gameObject.SetActive(false);
+        characterCenterUI.gameObject.SetActive(false);
+        characterRightUI.gameObject.SetActive(false);
+
+        if (page.useChatbotCharacter)
+        {
+            SetupCharacter(characterCenterUI, chatbotSprite);
+        }
+        else if(page.usePlayerCharacter)
+        {
+            int id = UserManager.Instance != null ? UserManager.Instance.CharacterId : 0;
+            // ป้องกัน Error ถ้าลืมใส่รูปใน Array
+            if(playerSprites.Length > id) 
+                SetupCharacter(characterCenterUI, playerSprites[id]);
+        }
+        else if (page.characterCenter != null) {
+            SetupCharacter(characterCenterUI, page.characterCenter);
+        }
 
         if (page.characterCenter != null && characterCenterUI != null)
         {
@@ -176,5 +199,17 @@ public class StoryManager : MonoBehaviour
     {
         characterUI.sprite = characterSprite;
         characterUI.gameObject.SetActive(true);
+    }
+
+    private string ReplacePlaceholders(string text)
+    {
+        if (string.IsNullOrEmpty(text)) return "";
+        string processedText = text;
+        if (UserManager.Instance != null)
+        {
+            processedText = processedText.Replace("{player_name}", UserManager.Instance.Username);
+            processedText = processedText.Replace("{chatbot_name}", UserManager.Instance.ChatbotName);
+        }
+        return processedText;
     }
 }

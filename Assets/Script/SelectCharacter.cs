@@ -19,7 +19,9 @@ public class SelectCharacter : MonoBehaviour
     }
     private void SelectCharacterOption(int character)
     {
-        selectedCharacter = character;
+        // ปรับให้เป็น 0-based index เพื่อให้ตรงกับ Array ใน Unity (0=ชาย, 1=หญิง)
+        // หรือถ้าหลังบ้านเริ่มที่ 1 ก็คงไว้ตามเดิม แต่ต้องเช็คให้ตรงกันครับ
+        selectedCharacter = character - 1; 
     }
 
     private async void HandleStart()
@@ -37,6 +39,4 @@ public class SelectCharacter : MonoBehaviour
             Debug.Log("Character selection failed: " + ex.Message);
         }
     }
-
-
 }

@@ -25,6 +25,7 @@ public struct UserData
     public string email;
     public string username;
     public int character;
+    public string chatbot_name;
 }
 
 public struct RegisterStruct
@@ -106,7 +107,7 @@ public class APIManager : MonoBehaviour
         return response.Headers.Location;
     }
 
-public async Task<Uri> GetMyData()
+    public async Task<Uri> GetMyData()
     {
         // +++ 1. แนบตั๋ว VIP (Token) ก่อนส่ง Request ทุกครั้ง +++
         client.DefaultRequestHeaders.Remove("Authorization");
@@ -136,6 +137,13 @@ public async Task<Uri> GetMyData()
         // 3. ถ้าสำเร็จ ค่อยเอาข้อความมาแกะเป็น JSON อย่างปลอดภัย
         var jsonResponse = JsonUtility.FromJson<ApiResponse<UserData>>(getResponse);
         myData = jsonResponse.data;
+
+        if (UserManager.Instance != null)
+        {
+            UserManager.Instance.Username = myData.username;
+            UserManager.Instance.CharacterId = myData.character;
+            UserManager.Instance.ChatbotName = myData.chatbot_name; // บรรทัดนี้จะไม่ Error แล้ว
+        }
         
         return response.Headers.Location;
     }
@@ -152,5 +160,20 @@ public async Task<Uri> GetMyData()
         client.DefaultRequestHeaders.Add("Accept", "application/json");
 
         Debug.Log("ออกจากระบบ และล้างความทรงจำ HttpClient เรียบร้อย!");
+    }
+
+    [Serializable]
+    public struct ChatbotNameStruct{public string chatbot_name;}
+
+    public async Task SetChatbotName(string name)
+    {
+        string json = JsonUtility.ToJson(new ChatbotNameStruct { chatbot_name = name });
+        HttpResponseMessage response = await client.PostAsync(
+            "users/set-chatbot-name/", new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+        
+        response.EnsureSuccessStatusCode();
+
+        // อัปเดตข้อมูลในเครื่องด้วย
+        if (UserManager.Instance != null) UserManager.Instance.ChatbotName = name;
     }
 }

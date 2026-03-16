@@ -10,6 +10,7 @@ public class UserManager : MonoBehaviour
     public string Username = "";    // เก็บชื่อผู้เล่น
     public string Email = "";       // เก็บอีเมล
     public int CharacterId = 0;     // เก็บตัวละครที่เลือก
+    public string ChatbotName = "";
 
     void Awake()
     {
@@ -39,5 +40,6 @@ public class UserManager : MonoBehaviour
         Username = "";
         Email = "";
         CharacterId = 0;
+        ChatbotName = "";
     }
 }

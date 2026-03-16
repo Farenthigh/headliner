@@ -11,6 +11,10 @@ public class StoryPage
     public Sprite characterCenter;
     public Sprite characterRight;
 
+    [Header("Dynamic Character Display")]
+    public bool usePlayerCharacter;
+    public bool useChatbotCharacter;
+
     [Header("Quiz Settings")]
     public bool isChoicePage;  
-}
+} 
