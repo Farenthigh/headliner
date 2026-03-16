@@ -683,6 +683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageInfoPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 3683789811629157398, guid: c293578428a7347a8818c78531a13617, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4815476061570213978, guid: 9e7cc7393b686434ab065071836ec4cf, type: 3}
     - target: {fileID: 4497617144706757915, guid: c293578428a7347a8818c78531a13617, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -763,6 +767,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5286674213804715933, guid: c293578428a7347a8818c78531a13617, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4815476061570213978, guid: 9e7cc7393b686434ab065071836ec4cf, type: 3}
+    - target: {fileID: 7462476141987026058, guid: c293578428a7347a8818c78531a13617, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4815476061570213978, guid: 9e7cc7393b686434ab065071836ec4cf, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

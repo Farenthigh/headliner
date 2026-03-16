@@ -41,6 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TaxGameStage5.unity
     guid: 1dc36b1ede5e049d89530a7a7153a67a
+  - enabled: 1
     path: Assets/Scenes/TaxStageInfo.unity
     guid: 7e7500e110eab43c4a6ac0de661e45a6
   m_configObjects:
