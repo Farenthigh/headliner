@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class SettingSceneManager : MonoBehaviour
 {
     [Header("Pages")]
     public GameObject profilePage;
-    public GameObject changeUsernamePage;
-    public GameObject changePasswordPage;
+    public GameObject editProfilePage;
     public GameObject audioPage;
     public GameObject helpPage;
     public GameObject contactPage;
@@ -23,13 +23,15 @@ public class SettingSceneManager : MonoBehaviour
     public TMP_Text playerNameText;
     public TMP_Text emailText;
 
-    [Header("Change Username")]
+    [Header("Edit Profile")]
     public TMP_InputField newUsernameInput;
-
-    [Header("Change Password")]
+    public TMP_InputField emailInput; 
     public TMP_InputField currentPasswordInput;
     public TMP_InputField newPasswordInput;
     public TMP_InputField repeatPasswordInput;
+   
+
+    public TMP_Text errorText;
 
     [Header("Audio Sliders")]
     public Slider musicSlider;
@@ -44,11 +46,10 @@ public class SettingSceneManager : MonoBehaviour
 
     [Header("Success Popup")]
     public GameObject usernameSuccessPanel;
-    
 
     private void Start()
-    {   
-    #if UNITY_EDITOR
+    {
+#if UNITY_EDITOR
         APIManager.Token = "TEST_TOKEN";
 
         APIManager.myData = new UserData
@@ -57,16 +58,19 @@ public class SettingSceneManager : MonoBehaviour
             email = "test@email.com",
             character = 1
         };
-    #endif
+#endif
+
         if (string.IsNullOrEmpty(APIManager.Token))
         {
             SceneManager.LoadScene("LoginScene");
             return;
         }
+
         ShowProfile();
         LoadProfileData();
         LoadAudioSetting();
     }
+
     // =========================
     // Highlight Control
     // =========================
@@ -78,9 +82,11 @@ public class SettingSceneManager : MonoBehaviour
         contactHighlight.SetActive(false);
         helpHighlight.SetActive(false);
     }
+
     // =========================
     // โหลดข้อมูลโปรไฟล์
     // =========================
+
     void LoadProfileData()
     {
         if (!string.IsNullOrEmpty(APIManager.myData.username))
@@ -93,14 +99,15 @@ public class SettingSceneManager : MonoBehaviour
         else
             emailText.text = "E-mail";
     }
+
     // =========================
     // เปลี่ยนหน้า
     // =========================
+
     void HideAllPages()
     {
         profilePage.SetActive(false);
-        changeUsernamePage.SetActive(false);
-        changePasswordPage.SetActive(false);
+        editProfilePage.SetActive(false);
         audioPage.SetActive(false);
         helpPage.SetActive(false);
         contactPage.SetActive(false);
@@ -115,22 +122,22 @@ public class SettingSceneManager : MonoBehaviour
         profileHighlight.SetActive(true);
     }
 
-    public void ShowChangeUsername()
+    public void ShowEditProfile()
     {
         HideAllPages();
         ResetHighlight();
 
-        changeUsernamePage.SetActive(true);
+        editProfilePage.SetActive(true);
         profileHighlight.SetActive(true);
-    }
+        
+        errorText.text = "";
+        newUsernameInput.text = APIManager.myData.username;
+        emailInput.text = APIManager.myData.email;
 
-    public void ShowChangePassword()
-    {
-        HideAllPages();
-        ResetHighlight();
-
-        changePasswordPage.SetActive(true);
-        profileHighlight.SetActive(true);
+        currentPasswordInput.text = "";
+        newPasswordInput.text = "";
+        repeatPasswordInput.text = "";
+        
     }
 
     public void ShowAudio()
@@ -161,111 +168,138 @@ public class SettingSceneManager : MonoBehaviour
     }
 
     // =========================
-    // Save Username
-    // =========================
-    public async void SaveUsername()
+    public async void SaveChanges()
+{   
+    Debug.Log("SAVE PRESSED");
+    errorText.text = "";
+
+    bool usernameChanged = newUsernameInput.text.Trim() != APIManager.myData.username;
+    bool passwordChanged = !string.IsNullOrEmpty(newPasswordInput.text);
+
+    if (!usernameChanged && !passwordChanged)
     {
-        if (!string.IsNullOrEmpty(newUsernameInput.text))
-        {
-            await APIManager.Instance.UpdateUsername(newUsernameInput.text);
-            await APIManager.Instance.GetMyData();
-            LoadProfileData();
-            usernameSuccessPanel.SetActive(true);
-        }
-    }
-    public void CloseUsernameSuccess()
-    {
-        usernameSuccessPanel.SetActive(false);
-        ShowProfile();
+        errorText.text = "No changes made";
+        return;
     }
 
-    // =========================
-    // Save Password
-    // =========================
-    public async void SavePassword()
+    if (usernameChanged)
     {
-    // 🔹 เช็คว่ากรอกครบไหม
-        if (string.IsNullOrEmpty(currentPasswordInput.text) ||
-            string.IsNullOrEmpty(newPasswordInput.text) ||
-            string.IsNullOrEmpty(repeatPasswordInput.text))
+        string username = newUsernameInput.text.Trim();
+
+        bool success = await APIManager.Instance.UpdateUsername(username);
+
+        if (!success)
         {
-            Debug.Log("Password fields are empty");
+            errorText.text = "Username already taken";
+            return;
+        }
+    }
+
+    if (passwordChanged)
+    {
+        if (string.IsNullOrEmpty(currentPasswordInput.text))
+        {
+            errorText.text = "Enter current password";
             return;
         }
 
-    // 🔹 เช็ครหัสใหม่ตรงกันไหม
         if (newPasswordInput.text != repeatPasswordInput.text)
         {
-            Debug.Log("Password not match");
+            errorText.text = "Passwords do not match";
             return;
         }
 
-    // 🔹 เรียก API เปลี่ยนรหัส
-        await APIManager.Instance.UpdatePassword(
+        bool success = await APIManager.Instance.UpdatePassword(
             currentPasswordInput.text,
             newPasswordInput.text
         );
 
-    // 🔹 กลับหน้า Profile
-        ShowProfile();
-    }
-    // =========================
-    // Delete Account
-    // =========================
-    // เปิด Popup
-    public void OpenDeleteConfirm()
-    {
-    deleteConfirmPanel.SetActive(true);
+        if (!success)
+        {
+            errorText.text = "Incorrect current password";
+            return;
+        }
     }
 
-// กดยกเลิก
+    await APIManager.Instance.GetMyData();
+    LoadProfileData();
+
+    currentPasswordInput.text = "";
+    newPasswordInput.text = "";
+    repeatPasswordInput.text = "";
+
+    ShowProfile();
+    StartCoroutine(ShowSuccessPopup());
+}
+public void CancelEditProfile()
+{
+    ShowProfile();
+}
+
+IEnumerator ShowSuccessPopup()
+{
+    usernameSuccessPanel.SetActive(true);
+
+    yield return new WaitForSeconds(3f);
+
+    usernameSuccessPanel.SetActive(false);
+}
+
+
+
+     // =========================
+    // Delete Account
+    // =========================
+
+    public void OpenDeleteConfirm()
+    {
+        deleteConfirmPanel.SetActive(true);
+    }
+
     public void CancelDelete()
     {
         deleteConfirmPanel.SetActive(false);
     }
 
-// กดยืนยันลบ
     public async void ConfirmDelete()
     {
         deleteConfirmPanel.SetActive(false);
 
         await APIManager.Instance.DeleteAccount();
+
         SceneManager.LoadScene("LoginScene");
     }
 
+    // =========================
+    // Logout
+    // =========================
 
-// =========================
-// Logout Confirm
-// =========================
-
-// เปิด popup
     public void OpenLogoutConfirm()
     {
         logoutConfirmPanel.SetActive(true);
     }
 
-// กดยกเลิก
     public void CancelLogout()
-{
-    logoutConfirmPanel.SetActive(false);
-}
+    {
+        logoutConfirmPanel.SetActive(false);
+    }
 
-// กดยืนยัน
     public void ConfirmLogout()
     {
         logoutConfirmPanel.SetActive(false);
         Logout();
     }
 
-// ฟังก์ชัน logout จริง
     public void Logout()
     {
         APIManager.Token = null;
         SceneManager.LoadScene("LoginScene");
     }
+
     // =========================
-    // ปุ่ม close
+    // Back Button
     // =========================
+
     public void PreviousPage()
     {
         string previousScene = PlayerPrefs.GetString("PreviousScene");
@@ -275,6 +309,7 @@ public class SettingSceneManager : MonoBehaviour
     // =========================
     // AUDIO
     // =========================
+
     void LoadAudioSetting()
     {
         musicSlider.value = PlayerPrefs.GetFloat("Music", 1f);
@@ -293,3 +328,4 @@ public class SettingSceneManager : MonoBehaviour
         PlayerPrefs.SetFloat("Master", masterSlider.value);
     }
 }
+

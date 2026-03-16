@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Threading.Tasks;
 
 public class ChangePasswordUI : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class ChangePasswordUI : MonoBehaviour
     public GameObject profilePage;
     public GameObject passwordPage;
 
+    [Header("Panels")]
+    public GameObject loadingPanel;
+
     [Header("Popups")]
     public GameObject successPopup;
 
@@ -19,13 +23,18 @@ public class ChangePasswordUI : MonoBehaviour
     public GameObject currentPasswordError;
     public GameObject repeatPasswordError;
 
+    bool isProcessing = false;
+
     void Start()
     {
         // ซ่อน error ตอนเริ่ม
         currentPasswordError.SetActive(false);
         repeatPasswordError.SetActive(false);
 
-        // ให้ error หายเมื่อเริ่มพิมพ์
+        // ซ่อน loading
+        loadingPanel.SetActive(false);
+
+        // ซ่อน error เมื่อเริ่มพิมพ์
         currentPasswordInput.onValueChanged.AddListener(delegate { HideErrors(); });
         newPasswordInput.onValueChanged.AddListener(delegate { HideErrors(); });
         repeatPasswordInput.onValueChanged.AddListener(delegate { HideErrors(); });
@@ -33,24 +42,37 @@ public class ChangePasswordUI : MonoBehaviour
 
     public async void SavePassword()
     {
-        // ซ่อน error ก่อนตรวจ
-        currentPasswordError.SetActive(false);
-        repeatPasswordError.SetActive(false);
+        if (isProcessing)
+            return;
 
-        if (string.IsNullOrEmpty(currentPasswordInput.text) ||
-            string.IsNullOrEmpty(newPasswordInput.text) ||
-            string.IsNullOrEmpty(repeatPasswordInput.text))
+        isProcessing = true;
+
+        HideErrors();
+
+        string currentPassword = currentPasswordInput.text;
+        string newPassword = newPasswordInput.text;
+        string repeatPassword = repeatPasswordInput.text;
+
+        if (string.IsNullOrWhiteSpace(currentPassword) ||
+            string.IsNullOrWhiteSpace(newPassword) ||
+            string.IsNullOrWhiteSpace(repeatPassword))
         {
             Debug.Log("Please fill all fields");
+            isProcessing = false;
             return;
         }
 
-        // 🔴 ตรวจ repeat password
-        if (newPasswordInput.text != repeatPasswordInput.text)
+        if (newPassword != repeatPassword)
         {
             repeatPasswordError.SetActive(true);
+            isProcessing = false;
             return;
         }
+
+        SetLoading(true);
+
+        // ให้ Unity render Loading ก่อน
+        await Task.Yield();
 
         bool success = true;
 
@@ -58,10 +80,12 @@ public class ChangePasswordUI : MonoBehaviour
         Debug.Log("Password updated (TEST MODE)");
 #else
         success = await APIManager.Instance.UpdatePassword(
-            currentPasswordInput.text,
-            newPasswordInput.text
+            currentPassword,
+            newPassword
         );
 #endif
+
+        SetLoading(false);
 
         if (success)
         {
@@ -75,6 +99,17 @@ public class ChangePasswordUI : MonoBehaviour
         {
             currentPasswordError.SetActive(true);
         }
+
+        isProcessing = false;
+    }
+
+    void SetLoading(bool state)
+    {
+        loadingPanel.SetActive(state);
+
+        currentPasswordInput.interactable = !state;
+        newPasswordInput.interactable = !state;
+        repeatPasswordInput.interactable = !state;
     }
 
     public void GoToProfile()
