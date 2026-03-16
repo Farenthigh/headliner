@@ -53,6 +53,14 @@ public struct GameResultStruct
     public int stage;
 }
 
+[Serializable]
+public struct StageUnlockData
+{
+    public int now_stage;
+    public int next_stage;
+    public int[] unlocked;
+}
+
 public class APIManager : MonoBehaviour
 {
     public static APIManager Instance { get; private set; }
@@ -147,5 +155,20 @@ public class APIManager : MonoBehaviour
     response.EnsureSuccessStatusCode();
 }
 
+public async Task<StageUnlockData> GetStageUnlock()
+{
+    HttpResponseMessage response = await client.GetAsync(
+        "stage/unlock?user_id=" + myData.id
+    );
 
+    var getResponse = await response.Content.ReadAsStringAsync();
+
+    Debug.Log(getResponse);   // ดู JSON ที่ backend ส่งมา
+
+    var jsonResponse = JsonUtility.FromJson<StageUnlockData>(getResponse);
+
+    response.EnsureSuccessStatusCode();
+
+    return jsonResponse;
+}
 }
