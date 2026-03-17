@@ -11,7 +11,7 @@ public class SelectGame : MonoBehaviour
     private void Start()
     {
         savinggame.onClick.AddListener(() => SelectGameOption("Saving Game"));
-        taxgame.onClick.AddListener(() => SceneManager.LoadScene("TaxGameMap"));
+        taxgame.onClick.AddListener(() => SelectGameOption("Tax Game"));
         investgame.onClick.AddListener(() => SelectGameOption("Investment Game"));
     }
     private void SelectGameOption(string game)

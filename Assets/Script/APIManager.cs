@@ -61,6 +61,21 @@ public struct StageUnlockData
     public int[] unlocked;
 }
 
+[Serializable]
+public struct StageStar
+{
+    public int ID;
+    public int UserID;
+    public int Stage;
+    public int Stars;
+}
+
+[Serializable]
+public class StageStarList
+{
+    public StageStar[] items;
+}
+
 public class APIManager : MonoBehaviour
 {
     public static APIManager Instance { get; private set; }
@@ -171,4 +186,35 @@ public async Task<StageUnlockData> GetStageUnlock()
 
     return jsonResponse;
 }
+
+public static class JsonHelper
+{
+    public static T[] FromJson<T>(string json)
+    {
+        string newJson = "{ \"items\": " + json + "}";
+        return JsonUtility.FromJson<Wrapper<T>>(newJson).items;
+    }
+
+    [Serializable]
+    private class Wrapper<T>
+    {
+        public T[] items;
+    }
+}
+
+public async Task<StageStar[]> GetStageStars()
+{
+    HttpResponseMessage response = await client.GetAsync(
+        "stage/stars?user_id=" + myData.id
+    );
+
+    var json = await response.Content.ReadAsStringAsync();
+
+    Debug.Log("Stars JSON: " + json);
+
+    StageStar[] stars = JsonHelper.FromJson<StageStar>(json);
+
+    return stars;
+}
+
 }
