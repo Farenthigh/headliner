@@ -1090,11 +1090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4e96c4b8e254dafbdb6ad92ede6a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloatCharacter
-  speed: 2
-  height: 20
-  rect: {fileID: 0}
-  startPos: {x: 0, y: 0}
-  isFloating: 0
 --- !u!1 &662713647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,11 +1227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4e96c4b8e254dafbdb6ad92ede6a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloatCharacter
-  speed: 2
-  height: 20
-  rect: {fileID: 0}
-  startPos: {x: 0, y: 0}
-  isFloating: 0
 --- !u!1 &744611353
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,11 +2066,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4e96c4b8e254dafbdb6ad92ede6a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloatCharacter
-  speed: 2
-  height: 20
-  rect: {fileID: 0}
-  startPos: {x: 0, y: 0}
-  isFloating: 0
 --- !u!1 &1218517465
 GameObject:
   m_ObjectHideFlags: 0
@@ -5153,7 +5138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4079387171236951732, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
       propertyPath: m_Pivot.x
