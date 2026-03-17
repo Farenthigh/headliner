@@ -18,4 +18,11 @@ public class CharacterBounce : MonoBehaviour
         float y = Mathf.Sin(Time.time * speed) * height;
         rect.anchoredPosition = startPos + new Vector2(0, y);
     }
+
+    void OnEnable()
+    {
+        rect = GetComponent<RectTransform>();
+        startPos = rect.anchoredPosition;
+    }
+
 }
