@@ -38,7 +38,16 @@ public class StoryManager : MonoBehaviour
             Debug.Log("wไป Chapter ต่อไป");
         }
     }
+    public void SetOnlyEnemySpeaking()
+    {
+        StartMove(characterRightUI);
+        StopMove(characterLeftUI);
 
+        characterRightUI.color = new Color(1,1,1,1f);
+        characterLeftUI.color = new Color(1,1,1,1f);
+    }
+
+    
     void UpdateUI()
     {
         StoryPage currentPage = allPages[currentIndex];
@@ -65,6 +74,10 @@ public class StoryManager : MonoBehaviour
             }
         }
         HandleCharacterLayout(currentPage);
+        if (!currentPage.isChoicePage)
+        {
+            UpdateCharacterAnimation(currentPage);
+        }
 
         // --- ส่วนของระบบ Quiz ---
         if (currentPage.isChoicePage)
@@ -83,7 +96,7 @@ public class StoryManager : MonoBehaviour
         }
 
 
-         if(currentIndex == allPages.Count - 1)
+        if (currentIndex == allPages.Count - 1)
             {
                 Debug.Log("นี่คือหน้าสุดท้าย");
                 Debug.Log("คุณชนะ");
@@ -129,4 +142,52 @@ public class StoryManager : MonoBehaviour
         characterUI.sprite = characterSprite;
         characterUI.gameObject.SetActive(true);
     }
+
+    void StartMove(Image character)
+    {
+        if (character == null) return;
+
+        if (character.GetComponent<CharacterBounce>() == null)
+        {
+            character.gameObject.AddComponent<CharacterBounce>();
+        }
+    }
+
+    void StopMove(Image character)
+    {
+        if (character == null) return;
+
+        CharacterBounce bounce = character.GetComponent<CharacterBounce>();
+        if (bounce != null)
+        {
+            Destroy(bounce);
+        }
+    }
+
+    void UpdateCharacterAnimation(StoryPage page)
+    {
+    // หยุดทุกตัวก่อน
+    StopMove(characterLeftUI);
+    StopMove(characterCenterUI);
+    StopMove(characterRightUI);
+
+    if (page.speakerPosition == SpeakerPosition.None)
+        return;
+    // ให้เฉพาะคนที่พูดขยับ
+    switch (page.speakerPosition)
+    {
+        case SpeakerPosition.Left:
+            StartMove(characterLeftUI);
+            break;
+
+        case SpeakerPosition.Center:
+            StartMove(characterCenterUI);
+            break;
+
+        case SpeakerPosition.Right:
+            StartMove(characterRightUI);
+            break;
+        }
+    }
+
 }
