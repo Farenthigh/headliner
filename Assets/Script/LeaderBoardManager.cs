@@ -2,8 +2,6 @@ using System.ComponentModel;
 using UnityEngine;
 using TMPro; 
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Xml.Serialization;
 
 
 public class LeaderBoardManager : MonoBehaviour
@@ -72,7 +70,8 @@ public class LeaderBoardManager : MonoBehaviour
         
         List<LeaderBoardEntry> displayData = new List<LeaderBoardEntry>(cachedData);
 
-        if (index == 0) 
+        GameMode selectedMode = (GameMode)index;
+        if (selectedMode == GameMode.SavingGame) 
         {
             displayData.Sort((a, b) => b.saving_game_score.CompareTo(a.saving_game_score));
         }
@@ -85,16 +84,16 @@ public class LeaderBoardManager : MonoBehaviour
         for (int i = 0; i < displayData.Count; i++)
         {
             var item = Instantiate(rowPrefab, container).GetComponent<LeaderBoardItemUI>();
-            int displayScore = (index == 0) ? displayData[i].saving_game_score : displayData[i].tax_game_score;
+            int displayScore = (selectedMode == GameMode.SavingGame) ? displayData[i].saving_game_score : displayData[i].tax_game_score;
             item.SetData(i + 1, displayData[i].username, displayScore);
         }
 
         string myUsername = APIManager.myData.username;
         for(int i = 0; i < displayData.Count; i++)
         {
-            if(displayData[i].username == myUsername)
+            if(string.Equals(displayData[i].username, myUsername, System.StringComparison.OrdinalIgnoreCase))
             {
-                int myScore = (index == 0)
+                int myScore = (selectedMode == GameMode.SavingGame)
                     ? displayData[i].saving_game_score
                     : displayData[i].tax_game_score;
 
