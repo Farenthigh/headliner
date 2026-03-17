@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Threading.Tasks;
 
 public class StageInfoManager : MonoBehaviour
 {
@@ -11,9 +13,43 @@ public class StageInfoManager : MonoBehaviour
 
     private string nextScene;
 
-    void Start()
+    public Image star1;
+    public Image star2;
+    public Image star3;
+    public StageStar[] playerStars;
+    
+
+    public async Task LoadStars()
     {
-        int stage = StageData.selectedStage;
+        playerStars = await APIManager.Instance.GetStageStars();
+    }
+
+    void ShowStars(int stage)
+    {
+        if (playerStars == null)
+        {
+            Debug.Log("Stars not loaded yet");
+            return;
+        }
+        int stars = 0;
+
+        foreach (var s in playerStars)
+        {
+            if (s.Stage == stage)
+            {
+                stars = s.Stars;
+                break;
+            }
+        }
+
+        star1.enabled = stars >= 1;
+        star2.enabled = stars >= 2;
+        star3.enabled = stars >= 3;
+    }
+
+    public void ShowStage(int stage)
+    {
+        ShowStars(stage);
 
         if (stage == 1)
         {
@@ -84,7 +120,6 @@ public class StageInfoManager : MonoBehaviour
 
     public void CloseStageInfo()
     {
-        SceneManager.LoadScene("TaxGameMap");
+        gameObject.SetActive(false);
     }
-
 }
