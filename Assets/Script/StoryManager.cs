@@ -141,18 +141,22 @@ public class StoryManager : MonoBehaviour
     {
         characterUI.sprite = characterSprite;
         characterUI.gameObject.SetActive(true);
+    
     }
 
     void StartMove(Image character)
     {
         if (character == null) return;
 
-        if (character.GetComponent<CharacterBounce>() == null)
-        {
-            character.gameObject.AddComponent<CharacterBounce>();
-        }
-    }
+        CharacterBounce bounce = character.GetComponent<CharacterBounce>();
 
+        if (bounce == null)
+        {
+            bounce = character.gameObject.AddComponent<CharacterBounce>();
+        }
+
+        bounce.enabled = true; // ✅ เปิดใช้งาน
+    }   
     void StopMove(Image character)
     {
         if (character == null) return;
@@ -160,34 +164,50 @@ public class StoryManager : MonoBehaviour
         CharacterBounce bounce = character.GetComponent<CharacterBounce>();
         if (bounce != null)
         {
-            Destroy(bounce);
+            bounce.enabled = false; // ❗ เปลี่ยนจาก Destroy → Disable
         }
     }
-
     void UpdateCharacterAnimation(StoryPage page)
     {
-    // หยุดทุกตัวก่อน
-    StopMove(characterLeftUI);
-    StopMove(characterCenterUI);
-    StopMove(characterRightUI);
 
-    if (page.speakerPosition == SpeakerPosition.None)
-        return;
-    // ให้เฉพาะคนที่พูดขยับ
-    switch (page.speakerPosition)
-    {
-        case SpeakerPosition.Left:
-            StartMove(characterLeftUI);
-            break;
+        Debug.Log("Animating: " + page.speakerPosition);
+    // 💥 ลบของเก่าทิ้งก่อนทุกครั้ง
+        StopMove(characterLeftUI);
+        StopMove(characterCenterUI);
+        StopMove(characterRightUI);
 
-        case SpeakerPosition.Center:
-            StartMove(characterCenterUI);
-            break;
+    // 💥 force reset position (สำคัญมาก)
+        ResetPosition(characterLeftUI);
+        ResetPosition(characterCenterUI);
+        ResetPosition(characterRightUI);
 
-        case SpeakerPosition.Right:
-            StartMove(characterRightUI);
-            break;
+    // 🎯 เริ่มใหม่
+        switch (page.speakerPosition)
+        {
+            case SpeakerPosition.Left:
+                StartMove(characterLeftUI);
+                break;
+
+            case SpeakerPosition.Center:
+                StartMove(characterCenterUI);
+                break;
+
+            case SpeakerPosition.Right:
+                StartMove(characterRightUI);
+                break;
         }
     }
 
+
+    void ResetPosition(Image character)
+    {
+        if (character == null) return;
+
+        RectTransform rect = character.GetComponent<RectTransform>();
+        if (rect != null)
+        {
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, 0);
+        }
+    }
+    
 }
