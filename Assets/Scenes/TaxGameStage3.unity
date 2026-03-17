@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 277148281}
         m_TargetAssemblyTypeName: StoryManager, Assembly-CSharp
         m_MethodName: OnClickNext
         m_Mode: 1
@@ -4191,9 +4191,9 @@ MonoBehaviour:
   popupDescriptionText: {fileID: 0}
   popupDateText: {fileID: 0}
   popupIconImage: {fileID: 2026670879}
+  mainAchievementPanel: {fileID: 0}
   achievementPrefab: {fileID: 0}
   achievementContainer: {fileID: 0}
-  mainAchievementPanel: {fileID: 0}
 --- !u!4 &1493728578
 Transform:
   m_ObjectHideFlags: 0

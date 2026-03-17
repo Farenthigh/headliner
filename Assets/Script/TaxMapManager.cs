@@ -9,6 +9,7 @@ public class TaxMapManager : MonoBehaviour
     [SerializeField] private Button stage3Button;
     [SerializeField] private Button stage4Button;
     [SerializeField] private Button stage5Button;
+    [SerializeField] private Button backButton;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class TaxMapManager : MonoBehaviour
         stage3Button.onClick.AddListener(OpenStage3);
         stage4Button.onClick.AddListener(OpenStage4);
         stage5Button.onClick.AddListener(OpenStage5);
+        backButton.onClick.AddListener(() => SceneManager.LoadScene("SelectGame"));
     }
 
     public void OpenStage1()

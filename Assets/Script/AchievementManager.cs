@@ -10,30 +10,45 @@ public class AchievementManager : MonoBehaviour
     public static AchievementManager Instance;
     public string backendUrl = "http://localhost:8080";
     public List<AchievementData> allAchievements;
+    
+    [Header("Popup UI")]
     public GameObject popupPanel;         
     public TextMeshProUGUI popupNameText;             
     public TextMeshProUGUI popupDescriptionText;      
     public TextMeshProUGUI popupDateText;             
     public Image popupIconImage;
+
+    [Header("Main UI")]
+    public GameObject mainAchievementPanel; 
     public GameObject achievementPrefab;   
     public Transform achievementContainer;
 
-
     void Awake()
     {
-        if (Instance == null) { Instance = this; DontDestroyOnLoad(gameObject); }
-        else { Destroy(gameObject); }
+        Instance = this;
     }
 
     void Start()
     {
         if (popupPanel != null) popupPanel.SetActive(false);
+        if (mainAchievementPanel != null) mainAchievementPanel.SetActive(false);
 
+        if (!string.IsNullOrEmpty(APIManager.Token))
+        {
+            StartCoroutine(LoadDataFromBackendRoutine());
+        }
+    }
+
+    public void InitializeAfterLogin()
+    {
         StartCoroutine(LoadDataFromBackendRoutine());
     }
 
     IEnumerator LoadDataFromBackendRoutine()
     {
+        // แก้ไขการดัก Error: เปลี่ยนมาเช็ค Token แทนเพราะ UserData เป็น struct เช็ค null ไม่ได้
+        if (string.IsNullOrEmpty(APIManager.Token)) yield break;
+
         uint myUserId = (uint)APIManager.myData.id;
         string url = backendUrl + "/achievements/user/" + myUserId;
         
@@ -46,12 +61,12 @@ public class AchievementManager : MonoBehaviour
             if (webRequest.result != UnityWebRequest.Result.Success)
             {
                 Debug.LogError("Error โหลดข้อมูล: " + webRequest.error);
+                GenerateAchievementUI(); 
             }
             else
             {
-                // ... (โค้ดดึง JSON ข้างในเหมือนเดิม ปล่อยไว้เลยครับ) ...
                 string jsonResponse = webRequest.downloadHandler.text;
-                
+                Debug.Log("JSON จาก Backend: " + jsonResponse);
                 AchievementListResponse response = JsonUtility.FromJson<AchievementListResponse>(jsonResponse);
 
                 foreach (var ach in allAchievements) 
@@ -64,7 +79,8 @@ public class AchievementManager : MonoBehaviour
                 {
                     foreach (var backendData in response.data)
                     {
-                        if (backendData.user_id != myUserId) continue;
+                        if (backendData.user_id != myUserId) continue; 
+                        
                         AchievementData ach = allAchievements.Find(a => a.id == backendData.achievement_id.ToString());
                         if (ach != null)
                         {
@@ -77,6 +93,7 @@ public class AchievementManager : MonoBehaviour
             }
         }
     }
+
     public void UnlockAchievement(uint backendAchievementId, string localAchievementId)
     {
         AchievementData ach = allAchievements.Find(a => a.id == localAchievementId);
@@ -93,11 +110,11 @@ public class AchievementManager : MonoBehaviour
 
     IEnumerator SaveToBackendRoutine(uint achievementId)
     {
-        string url = backendUrl + "/achievements/unlock";
+        if (string.IsNullOrEmpty(APIManager.Token)) yield break;
 
+        string url = backendUrl + "/achievements/unlock";
         uint myUserId = (uint)APIManager.myData.id;
         UnlockRequest req = new UnlockRequest { user_id = myUserId, achievement_id = achievementId };
-        
         string jsonData = JsonUtility.ToJson(req);
 
         using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
@@ -107,7 +124,6 @@ public class AchievementManager : MonoBehaviour
             webRequest.downloadHandler = new DownloadHandlerBuffer();
             
             webRequest.SetRequestHeader("Content-Type", "application/json");
-            
             webRequest.SetRequestHeader("Authorization", "Bearer " + APIManager.Token);
 
             yield return webRequest.SendWebRequest();
@@ -123,71 +139,18 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void ShowPopup(AchievementData data)
-    {
-        popupNameText.text = data.achievementName;
-        popupDescriptionText.text = "Description: " + data.description;
-        popupDateText.text = "Date: " + data.unlockDate;
-        popupIconImage.sprite = data.icon;
-
-        popupPanel.SetActive(true);
-    }
-
-    public void ClosePopup()
-    {
-        popupPanel.SetActive(false);
-    }
-
-    public void GenerateAchievementUI()
-    {
-        foreach (Transform child in achievementContainer)
-        {
-            Destroy(child.gameObject);
-        }
-
-        foreach (AchievementData ach in allAchievements)
-        {
-            GameObject newSlot = Instantiate(achievementPrefab, achievementContainer);
-            
-            AchievementSlotUI slotUI = newSlot.GetComponent<AchievementSlotUI>();
-            slotUI.SetupSlot(ach);
-        }
-    }
-
-    [ContextMenu("Test Unlock to Real DB!")]
-    public void TestUnlockToDB()
-    {
-        UnlockAchievement(1, "1"); 
-        UnlockAchievement(2, "2"); 
-
-        GenerateAchievementUI(); 
-    }
-
-    // 1. ฟังก์ชันนี้เอาไว้ถูกเรียกตอนปลดล็อกสำเร็จ
-    // 1. เปลี่ยนให้รับข้อมูลมาทั้งก้อน (AchievementData)
     public void ShowNotification(AchievementData data)
     {
         StartCoroutine(SlideNotificationRoutine(data));
     }
 
-    // 2. ระบบแอนิเมชันสไลด์ขึ้น-ลง
     private System.Collections.IEnumerator SlideNotificationRoutine(AchievementData data)
     {
-        // ใส่ชื่อถ้วยรางวัล
         if (popupNameText != null) popupNameText.text = data.achievementName;
-        
-        // +++ เพิ่มบรรทัดนี้ เพื่อเปลี่ยนรูปไอคอน! +++
-        if (popupIconImage != null && data.icon != null) 
-        {
-            popupIconImage.sprite = data.icon;
-        }
-        
-        // เปิดหน้าต่างขึ้นมา
+        if (popupIconImage != null && data.icon != null) popupIconImage.sprite = data.icon;
         if (popupPanel != null) popupPanel.SetActive(true);
 
-        // --- เตรียมทำแอนิเมชันสไลด์ ---
         RectTransform rect = popupPanel.GetComponent<RectTransform>();
-        
         Vector2 hiddenPos = new Vector2(rect.anchoredPosition.x, -150f); 
         Vector2 showPos = new Vector2(rect.anchoredPosition.x, 20f);
 
@@ -216,20 +179,30 @@ public class AchievementManager : MonoBehaviour
         popupPanel.SetActive(false);
     }
 
-    [Header("Main UI")]
-    public GameObject mainAchievementPanel; // ลาก MainAchievementPanel มาใส่ช่องนี้
+    // --- ส่วนที่ผมเผลอลบไป เอาคืนมาแล้วครับ! ---
+    public void ShowPopup(AchievementData data)
+    {
+        popupNameText.text = data.achievementName;
+        popupDescriptionText.text = "Description: " + data.description;
+        popupDateText.text = "Date: " + data.unlockDate;
+        popupIconImage.sprite = data.icon;
+        popupPanel.SetActive(true);
+    }
 
-    // สั่งเปิดหน้าต่างรวมถ้วยรางวัล
+    public void ClosePopup()
+    {
+        popupPanel.SetActive(false);
+    }
+
     public void OpenAchievementUI()
     {
         if (mainAchievementPanel != null)
         {
-            GenerateAchievementUI(); // สั่งรีเฟรชข้อมูลให้ล่าสุดก่อนโชว์
+            GenerateAchievementUI(); 
             mainAchievementPanel.SetActive(true);
         }
     }
 
-    // สั่งปิดหน้าต่าง
     public void CloseAchievementUI()
     {
         if (mainAchievementPanel != null)
@@ -237,8 +210,24 @@ public class AchievementManager : MonoBehaviour
             mainAchievementPanel.SetActive(false);
         }
     }
+
+    public void GenerateAchievementUI()
+    {
+        foreach (Transform child in achievementContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (AchievementData ach in allAchievements)
+        {
+            GameObject newSlot = Instantiate(achievementPrefab, achievementContainer);
+            AchievementSlotUI slotUI = newSlot.GetComponent<AchievementSlotUI>();
+            slotUI.SetupSlot(ach);
+        }
+    }
 }
 
+// --- คลาสสำหรับใช้แกะ JSON ที่หายไป กลับมาแล้วครับ! ---
 [System.Serializable]
 public class UnlockRequest
 {

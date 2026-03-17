@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using System.Collections; // +++ 1. ต้องมีบรรทัดนี้เพื่อใช้ Coroutine +++
+using System.Collections;
 using UnityEngine.SceneManagement; 
 
 public class StoryManager : MonoBehaviour
@@ -21,28 +21,51 @@ public class StoryManager : MonoBehaviour
     [Header("Quiz UI")]
     public Examlogic examSystem;
 
-    // +++ 2. ตัวแปรใหม่สำหรับทำระบบพิมพ์ดีด +++
     [Header("Typewriter Settings")]
-    public float typingSpeed = 0.03f;  // ความเร็วในการพิมพ์ (ค่าน้อย = พิมพ์เร็ว)
-    private bool isTyping = false;     // เช็คว่าตอนนี้กำลังพิมพ์อยู่หรือเปล่า
-    private Coroutine typingCoroutine; // ตัวเก็บสถานะการพิมพ์
+    public float typingSpeed = 0.03f;  
+    private bool isTyping = false;     
+    private Coroutine typingCoroutine; 
+
+    // +++ ส่วนของ VS Animation +++
+    [Header("VS Animation Settings (ลากของมาใส่)")]
+    public GameObject vsPanel;         
+    public RectTransform vTransform;   
+    public RectTransform sTransform;   
+    public RectTransform topCloud;     
+    public RectTransform bottomCloud;  
+    public ParticleSystem clashParticle; 
+    
+    // +++ เพิ่มตัวแปรสำหรับใส่เสียงสายฟ้า +++
+    public AudioSource thunderSound;   
+    
+    public float animationDuration = 0.5f;
+
+    [Header("Target Positions (จุดที่มันจะวิ่งมาหยุด)")]
+    public Vector2 vTargetPos = new Vector2(-100f, 0f); 
+    public Vector2 sTargetPos = new Vector2(100f, 0f);  
+    public Vector2 topCloudTargetPos = new Vector2(0f, 300f);    
+    public Vector2 bottomCloudTargetPos = new Vector2(0f, -300f); 
 
     void Start()
     {
+        if(vsPanel != null) vsPanel.SetActive(false);
+        if(clashParticle != null) 
+        {
+            clashParticle.Stop();
+            clashParticle.Clear();
+        }
         currentIndex = 0;
         UpdateUI();
     }
 
     public void OnClickNext()
     {
-        // +++ 3. เช็คว่าถ้ากำลังพิมพ์อยู่ ให้ข้ามไปโชว์ข้อความเต็มๆ ทันที (ผู้เล่นใจร้อน) +++
         if (isTyping)
         {
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
             dialogueTextUI.text = allPages[currentIndex].dialogueText;
             isTyping = false;
         }
-        // แต่ถ้าพิมพ์เสร็จแล้ว ก็ให้เปลี่ยนไปหน้าถัดไปตามปกติ
         else
         {
             if (currentIndex < allPages.Count - 1)
@@ -52,7 +75,7 @@ public class StoryManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("wไป Chapter ต่อไป");
+                Debug.Log("ไป Chapter ต่อไป");
             }
         }
     }
@@ -61,21 +84,14 @@ public class StoryManager : MonoBehaviour
     {
         StoryPage currentPage = allPages[currentIndex];
 
-        // +++ 4. สั่งให้เริ่มพิมพ์ข้อความแทนการยัดข้อความใส่ตรงๆ +++
         if (dialogueTextUI != null) 
         {
-            // ถ้ามีตัวเก่ากำลังพิมพ์อยู่ ให้หยุดก่อน
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-            // สั่งเริ่มพิมพ์ประโยคของหน้าปัจจุบัน
             typingCoroutine = StartCoroutine(TypeSentence(currentPage.dialogueText));
         }
 
         if (speakerNameUI != null) speakerNameUI.text = currentPage.speakerName;
-
-        if (backgroundImageUI != null && currentPage.background != null)
-        {
-            backgroundImageUI.sprite = currentPage.background;
-        }
+        if (backgroundImageUI != null && currentPage.background != null) backgroundImageUI.sprite = currentPage.background;
        
         if (speechBubbleUI != null)
         {
@@ -84,23 +100,14 @@ public class StoryManager : MonoBehaviour
                 speechBubbleUI.gameObject.SetActive(true);
                 speechBubbleUI.sprite = currentPage.speechBubble;
             }
-            else
-            {
-                // ถ้าหน้าไหนไม่ใส่รูปกรอบคำพูดมา ให้ซ่อนกรอบไปเลย
-                speechBubbleUI.gameObject.SetActive(false);
-            }
+            else speechBubbleUI.gameObject.SetActive(false);
         }
         HandleCharacterLayout(currentPage);
 
-        // --- ส่วนของระบบ Quiz ---
         if (currentPage.isChoicePage)
         {
             if (nextButton != null) nextButton.SetActive(false);
-            if (examSystem != null) 
-            {
-                examSystem.gameObject.SetActive(true);
-                examSystem.StartExam();
-            }
+            StartCoroutine(PlayVSEffectAndStartQuiz());
         }
         else
         {
@@ -108,44 +115,82 @@ public class StoryManager : MonoBehaviour
             if (examSystem != null) examSystem.gameObject.SetActive(false);
         }
 
-        // --- ส่วนของฉากจบ ---
         if(currentIndex == allPages.Count - 1)
         {
-            Debug.Log("นี่คือหน้าสุดท้าย");
-            Debug.Log("คุณชนะ");
             if (gameResult != null)
             {
-                int stars = 0; // ใส่เกราะกัน Error (ดักไว้เผื่อหา Manager ไม่เจอ)
-                if (Manager.Instance != null)
-                {
-                    stars = Manager.Instance.GetStarsFromExam();
-                }
-                else
-                {
-                    Debug.LogWarning("⚠️ หา Manager.Instance ไม่เจอ! จำลองดาว = 0");
-                }
-                
+                int stars = 0; 
+                if (Manager.Instance != null) stars = Manager.Instance.GetStarsFromExam();
                 gameResult.ShowVictoryResultDirect(stars);
             }
-            
             if (nextButton != null) nextButton.SetActive(false);
         }
     }
 
-    // +++ 5. ฟังก์ชันสำหรับทำเอฟเฟกต์พิมพ์ดีด +++
+    IEnumerator PlayVSEffectAndStartQuiz()
+    {
+        if(vsPanel != null) vsPanel.SetActive(true);
+        if(clashParticle != null) 
+        {
+            clashParticle.Stop();
+            clashParticle.Clear();
+        }
+
+        Vector2 vStartPos = vTransform != null ? vTransform.anchoredPosition : Vector2.zero;
+        Vector2 sStartPos = sTransform != null ? sTransform.anchoredPosition : Vector2.zero;
+        Vector2 topCloudStartPos = topCloud != null ? topCloud.anchoredPosition : Vector2.zero;
+        Vector2 bottomCloudStartPos = bottomCloud != null ? bottomCloud.anchoredPosition : Vector2.zero;
+
+        float time = 0;
+
+        while (time < animationDuration)
+        {
+            time += Time.deltaTime;
+            float percent = time / animationDuration;
+
+            if (vTransform != null) vTransform.anchoredPosition = Vector2.Lerp(vStartPos, vTargetPos, percent);
+            if (sTransform != null) sTransform.anchoredPosition = Vector2.Lerp(sStartPos, sTargetPos, percent);
+            if (topCloud != null) topCloud.anchoredPosition = Vector2.Lerp(topCloudStartPos, topCloudTargetPos, percent);
+            if (bottomCloud != null) bottomCloud.anchoredPosition = Vector2.Lerp(bottomCloudStartPos, bottomCloudTargetPos, percent);
+            
+            yield return null;
+        }
+
+        if (vTransform != null) vTransform.anchoredPosition = vTargetPos;
+        if (sTransform != null) sTransform.anchoredPosition = sTargetPos;
+        if (topCloud != null) topCloud.anchoredPosition = topCloudTargetPos;
+        if (bottomCloud != null) bottomCloud.anchoredPosition = bottomCloudTargetPos;
+
+        if (clashParticle != null) clashParticle.Play();
+        if (thunderSound != null) thunderSound.Play(); // สั่งให้ลำโพงเล่นเสียง
+
+        yield return new WaitForSeconds(3f); 
+
+        if(vsPanel != null) vsPanel.SetActive(false);
+        if (vTransform != null) vTransform.anchoredPosition = vStartPos;
+        if (sTransform != null) sTransform.anchoredPosition = sStartPos;
+        if (topCloud != null) topCloud.anchoredPosition = topCloudStartPos;
+        if (bottomCloud != null) bottomCloud.anchoredPosition = bottomCloudStartPos;
+
+        if(clashParticle != null) clashParticle.Stop();
+
+        if (examSystem != null) 
+        {
+            examSystem.gameObject.SetActive(true);
+            examSystem.StartExam();
+        }
+    }
+
     IEnumerator TypeSentence(string sentence)
     {
         isTyping = true;
-        dialogueTextUI.text = ""; // ล้างหน้าจอให้ว่างเปล่าก่อน
-
-        // เอาข้อความมาหั่นเป็นตัวอักษร แล้วค่อยๆ เติมเข้าไปทีละตัว
+        dialogueTextUI.text = ""; 
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueTextUI.text += letter;
-            yield return new WaitForSeconds(typingSpeed); // รอเวลาแป๊บนึงก่อนพิมพ์ตัวต่อไป
+            yield return new WaitForSeconds(typingSpeed); 
         }
-
-        isTyping = false; // พิมพ์เสร็จสิ้น
+        isTyping = false; 
     }
 
     void HandleCharacterLayout(StoryPage page)
@@ -154,21 +199,11 @@ public class StoryManager : MonoBehaviour
         if (characterCenterUI != null) characterCenterUI.gameObject.SetActive(false);
         if (characterRightUI != null) characterRightUI.gameObject.SetActive(false);
 
-        if (page.characterCenter != null && characterCenterUI != null)
-        {
-            SetupCharacter(characterCenterUI, page.characterCenter);
-        }
+        if (page.characterCenter != null && characterCenterUI != null) SetupCharacter(characterCenterUI, page.characterCenter);
         else
         {
-            if (page.characterLeft != null && characterLeftUI != null)
-            {
-                SetupCharacter(characterLeftUI, page.characterLeft);
-            }
-            
-            if (page.characterRight != null && characterRightUI != null)
-            {
-                SetupCharacter(characterRightUI, page.characterRight);
-            }
+            if (page.characterLeft != null && characterLeftUI != null) SetupCharacter(characterLeftUI, page.characterLeft);
+            if (page.characterRight != null && characterRightUI != null) SetupCharacter(characterRightUI, page.characterRight);
         }
     }
 
