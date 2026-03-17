@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public class TaxMapManager : MonoBehaviour
 {
@@ -109,6 +110,11 @@ public class TaxMapManager : MonoBehaviour
                 img.color = c;
             }
         }
+    }
+
+    public void GoToSelectGame()
+    {
+        SceneManager.LoadScene("SelectGame");
     }
 
 }
