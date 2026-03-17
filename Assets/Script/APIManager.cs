@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -74,6 +75,19 @@ public struct StageStar
 public class StageStarList
 {
     public StageStar[] items;
+}
+
+public struct LeaderBoardEntry
+{
+    public string username; // Join from user table
+    public int saving_game_score;
+    public int tax_game_score;   
+}
+
+[Serializable]
+public struct LeaderBoardData
+{
+    public List<LeaderBoardEntry> leaderBoard;
 }
 
 public class APIManager : MonoBehaviour
@@ -217,4 +231,15 @@ public async Task<StageStar[]> GetStageStars()
     return stars;
 }
 
+    public async Task<List<LeaderBoardEntry>> GetLeaderBoardData()
+    {
+        HttpResponseMessage response = await client.GetAsync("leaderboard/");
+        if (response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            var jsonResponse = JsonUtility.FromJson<ApiResponse<LeaderBoardData>>(content);
+            return jsonResponse.data.leaderBoard;
+        }
+        return new List<LeaderBoardEntry>();
+    }
 }
