@@ -22,16 +22,23 @@ public class LeaderBoardManager : MonoBehaviour
     [SerializeField] private GameObject myRankBar;
     [SerializeField] private LeaderBoardItemUI myRankItem;
 
-    public void OpenLeaderBoard()
+    public GameObject leaderboardPanel;
+    public APIManager apiManager;
+
+    public async void OpenLeaderBoard()
     {
-        leaderBoardPanel.SetActive(true);
-        RefreshData();
+        leaderboardPanel.SetActive(true);
+        // ตอนนี้โค้ดจะรู้จัก apiManager แล้วครับ
+        await apiManager.GetLeaderBoardData(); 
+        UpdateDisplay(0); 
     }
 
     public void CloseLeaderBoard()
     {
-        leaderBoardPanel.SetActive(false);
+        leaderboardPanel.SetActive(false);
     }
+
+
 
     private async void RefreshData()
     {
