@@ -455,6 +455,7 @@ MonoBehaviour:
   star1: {fileID: 7462476141987026058}
   star2: {fileID: 5286674213804715933}
   star3: {fileID: 3683789811629157398}
+  playerStars: []
 --- !u!1 &1537568534455852229
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4815476061570213978, guid: 9e7cc7393b686434ab065071836ec4cf, type: 3}
+  m_Sprite: {fileID: 5199979006384268662, guid: e0aa0b77630344a568ad37407e3aacf3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -807,7 +808,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4815476061570213978, guid: 9e7cc7393b686434ab065071836ec4cf, type: 3}
+  m_Sprite: {fileID: 5199979006384268662, guid: e0aa0b77630344a568ad37407e3aacf3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1513,7 +1514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4815476061570213978, guid: 9e7cc7393b686434ab065071836ec4cf, type: 3}
+  m_Sprite: {fileID: 5199979006384268662, guid: e0aa0b77630344a568ad37407e3aacf3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
