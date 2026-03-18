@@ -73,6 +73,11 @@ public class Examlogic : MonoBehaviour
             
             answerInputField.text = ""; 
         }
+
+        if (storyManager != null)
+        {
+            storyManager.SetOnlyEnemySpeaking();
+        }
     }
 
     public void Onanswerselected(int index)
@@ -191,5 +196,9 @@ public class Examlogic : MonoBehaviour
             enemyhearts[0].transform.parent.gameObject.SetActive(false);
 
         this.gameObject.SetActive(false);
+        
     }
+    
+
+    
 }
