@@ -10,7 +10,7 @@ public class StageInfoManager : MonoBehaviour
     public TextMeshProUGUI objective1;
     public TextMeshProUGUI objective2;
     public TextMeshProUGUI objective3;
-
+    public GameObject stageInfoimage;
     private string nextScene;
 
     public Image star1;
@@ -121,5 +121,6 @@ public class StageInfoManager : MonoBehaviour
     public void CloseStageInfo()
     {
         gameObject.SetActive(false);
+        stageInfoimage.SetActive(false);
     }
 }

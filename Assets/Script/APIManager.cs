@@ -77,17 +77,13 @@ public class StageStarList
     public StageStar[] items;
 }
 
-public struct LeaderBoardEntry
-{
-    public string username; // Join from user table
-    public int saving_game_score;
-    public int tax_game_score;   
-}
-
 [Serializable]
-public struct LeaderBoardData
+public struct LeaderboardEntry
 {
-    public List<LeaderBoardEntry> leaderBoard;
+    public int rank;
+    public int user_id;
+    public string username;
+    public int total_stars;
 }
 
 public class APIManager : MonoBehaviour
@@ -231,15 +227,30 @@ public async Task<StageStar[]> GetStageStars()
     return stars;
 }
 
-    public async Task<List<LeaderBoardEntry>> GetLeaderBoardData()
+
+    public async Task<List<LeaderboardEntry>> GetStageLeaderBoard()
     {
-        HttpResponseMessage response = await client.GetAsync("leaderboard/");
-        if (response.IsSuccessStatusCode)
-        {
-            var content = await response.Content.ReadAsStringAsync();
-            var jsonResponse = JsonUtility.FromJson<ApiResponse<LeaderBoardData>>(content);
-            return jsonResponse.data.leaderBoard;
-        }
-        return new List<LeaderBoardEntry>();
+        HttpResponseMessage response = await client.GetAsync("stage/leaderboard");
+
+        var json = await response.Content.ReadAsStringAsync();
+        Debug.Log("Leaderboard JSON: " + json);
+
+        LeaderboardEntry[] data = JsonHelper.FromJson<LeaderboardEntry>(json);
+
+        return new List<LeaderboardEntry>(data);
+    }
+
+    public async Task<LeaderboardEntry> GetMyRank()
+    {
+        HttpResponseMessage response = await client.GetAsync(
+            "stage/leaderboard/me?user_id=" + myData.id
+        );
+
+        var json = await response.Content.ReadAsStringAsync();
+        Debug.Log("My Rank JSON: " + json);
+
+        LeaderboardEntry data = JsonUtility.FromJson<LeaderboardEntry>(json);
+
+        return data;
     }
 }

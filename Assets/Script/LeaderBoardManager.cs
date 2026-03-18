@@ -12,24 +12,27 @@ public class LeaderBoardManager : MonoBehaviour
     [SerializeField] private Transform container;
     [SerializeField] private GameObject rowPrefab;
 
-    private List<LeaderBoardEntry> cachedData;
+    private List<LeaderboardEntry> cachedData;
+    private GameMode currentMode;
 
     [Header("Panel Referance")]
-    [SerializeField] private GameObject leaderBoardPanel;
+    [SerializeField] private GameObject leaderboardPanel;
 
     [Header("My Rank Bar")]
     [SerializeField] private GameObject myRankBar;
     [SerializeField] private LeaderBoardItemUI myRankItem;
 
-    public GameObject leaderboardPanel;
+    
     public APIManager apiManager;
 
     public async void OpenLeaderBoard()
     {
         leaderboardPanel.SetActive(true);
         // ตอนนี้โค้ดจะรู้จัก apiManager แล้วครับ
-        await apiManager.GetLeaderBoardData(); 
-        UpdateDisplay(0); 
+        cachedData = await apiManager.GetStageLeaderBoard();
+        var myRank = await apiManager.GetMyRank();
+        ShowMyRank(myRank);
+        UpdateDisplay();
     }
 
     public void CloseLeaderBoard()
@@ -41,68 +44,86 @@ public class LeaderBoardManager : MonoBehaviour
 
     private async void RefreshData()
     {
-        cachedData = await APIManager.Instance.GetLeaderBoardData();
-        UpdateDisplay(gameDropdown.value);
+        cachedData = await APIManager.Instance.GetStageLeaderBoard();
+
+        var myRank = await APIManager.Instance.GetMyRank();
+        ShowMyRank(myRank);
+
+        UpdateDisplay();
     }
 
     private async void Start()
     {
         await Task.Yield();
-        
-        cachedData = await APIManager.Instance.GetLeaderBoardData();
-        gameDropdown.value = 0;
+
+        cachedData = await APIManager.Instance.GetStageLeaderBoard();
+
+        var myRank = await APIManager.Instance.GetMyRank();
+
+        ShowMyRank(myRank);
+        currentMode = GameMode.SavingGame;
+
         gameDropdown.onValueChanged.AddListener(OnDropdownChanged);
-        UpdateDisplay(0);
+        gameDropdown.value = 0; // default Saving
 
+        UpdateDisplay();
     }
 
-    public void OnDropdownChanged(int index)
+
+   public void UpdateDisplay()
     {
-        UpdateDisplay(index);
-    }
+        foreach (Transform child in container)
+            Destroy(child.gameObject);
 
-    public void UpdateDisplay(int index)
-    {
-
-        foreach (Transform child in container) Destroy(child.gameObject);
-
-        if (cachedData == null || cachedData.Count == 0) return;
-
-        
-        List<LeaderBoardEntry> displayData = new List<LeaderBoardEntry>(cachedData);
-
-        GameMode selectedMode = (GameMode)index;
-        if (selectedMode == GameMode.SavingGame) 
+            //  ถ้าเป็น Saving → ว่างเลย
+        if (currentMode == GameMode.SavingGame)
         {
-            displayData.Sort((a, b) => b.saving_game_score.CompareTo(a.saving_game_score));
-        }
-        else 
-        {
-            displayData.Sort((a, b) => b.tax_game_score.CompareTo(a.tax_game_score));
+            myRankBar.SetActive(false); // ซ่อน rank ตัวเองด้วย
+            return;
         }
 
-        
-        for (int i = 0; i < displayData.Count; i++)
+            if (cachedData == null || cachedData.Count == 0)
+            return;
+
+        foreach (var data in cachedData)
         {
             var item = Instantiate(rowPrefab, container).GetComponent<LeaderBoardItemUI>();
-            int displayScore = (selectedMode == GameMode.SavingGame) ? displayData[i].saving_game_score : displayData[i].tax_game_score;
-            item.SetData(i + 1, displayData[i].username, displayScore);
+            item.SetData(data.rank, data.username, data.total_stars);
         }
-
-        string myUsername = APIManager.myData.username;
-        for(int i = 0; i < displayData.Count; i++)
+    }
+    private void ShowMyRank(LeaderboardEntry myRank)
         {
-            if(string.Equals(displayData[i].username, myUsername, System.StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrEmpty(myRank.username))
             {
-                int myScore = (selectedMode == GameMode.SavingGame)
-                    ? displayData[i].saving_game_score
-                    : displayData[i].tax_game_score;
-
                 myRankBar.SetActive(true);
-                myRankItem.SetData(i + 1, displayData[i].username, myScore);
-                return;
+                myRankItem.SetData(myRank.rank, myRank.username, myRank.total_stars);
+            }
+            else
+            {
+                myRankBar.SetActive(false);
             }
         }
-        myRankBar.SetActive(false);
+
+
+       public void OnDropdownChanged(int index)
+    {
+        Debug.Log("Dropdown changed: " + index);
+
+        currentMode = (GameMode)index;
+        Debug.Log("CurrentMode: " + currentMode);
+
+        if (currentMode == GameMode.SavingGame)
+        {
+            Debug.Log("Saving mode");
+            cachedData = null;
+            UpdateDisplay();
+        }
+        else if (currentMode == GameMode.TaxGame)
+        {
+            Debug.Log("Tax mode");
+            RefreshData();
+        }
     }
+
+
 }
