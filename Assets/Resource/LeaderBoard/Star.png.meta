@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 9e7cc7393b686434ab065071836ec4cf
-=======
-guid: e0aa0b77630344a568ad37407e3aacf3
->>>>>>> origin/feat/TaxGame-345
+guid: 352ba50f80d7b4c9cb34413817206b55
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -120,10 +116,10 @@ TextureImporter:
       name: Star_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 4
-        width: 170
-        height: 164
+        x: 0
+        y: 2
+        width: 30
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

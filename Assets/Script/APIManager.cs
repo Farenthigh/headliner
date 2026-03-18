@@ -2,8 +2,12 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Collections.Generic; // +++ เพิ่มเข้ามาเพื่อให้ใช้ List<> ของเพื่อนได้ +++
 using UnityEngine;
 
+// ==========================================
+// 1. โครงสร้างข้อมูลพื้นฐาน (Base Structs)
+// ==========================================
 [Serializable]
 public struct ApiResponse<T>
 {
@@ -46,7 +50,9 @@ public struct CharacterStruct
     public int character;
 }
 
-// +++ โครงสร้างข้อมูลใหม่จากฝั่ง Incoming +++
+// ==========================================
+// 2. โครงสร้างข้อมูลจัดการบัญชี (Profile Structs)
+// ==========================================
 [Serializable]
 public struct UpdateUsernameStruct
 {
@@ -60,13 +66,57 @@ public struct UpdatePasswordStruct
     public string newPassword;
 }
 
+// ==========================================
+// 3. โครงสร้างข้อมูลด่านและเกม (Stage Structs - จากเพื่อน)
+// ==========================================
+[Serializable]
+public struct GameResultStruct
+{
+    public int user_id;
+    public int stars;
+    public int stage;
+}
+
+[Serializable]
+public struct StageUnlockData
+{
+    public int now_stage;
+    public int next_stage;
+    public int[] unlocked;
+}
+
+[Serializable]
+public struct StageStar
+{
+    public int ID;
+    public int UserID;
+    public int Stage;
+    public int Stars;
+}
+
+[Serializable]
+public class StageStarList
+{
+    public StageStar[] items;
+}
+
+[Serializable]
+public struct LeaderboardEntry
+{
+    public int rank;
+    public int user_id;
+    public string username;
+    public int total_stars;
+}
+
+// ==========================================
+// 4. คลาส APIManager หลัก
+// ==========================================
 public class APIManager : MonoBehaviour
 {
     public static APIManager Instance { get; private set; }
     
-    // +++ ตัวแปรใหม่จากฝั่ง Incoming +++
     public static bool IsRequestRunning = false; 
-    
     public static string Token;
     public static UserData myData;
     static HttpClient client = new HttpClient();
@@ -78,7 +128,6 @@ public class APIManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // ตั้งค่า Client ตั้งแต่เริ่มเลย จะได้พร้อมใช้เสมอ
             client.BaseAddress = new Uri("http://localhost:8080/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -89,6 +138,9 @@ public class APIManager : MonoBehaviour
         }
     }
 
+    // ==========================================
+    // ส่วนที่ 1: ระบบล็อกอินและผู้เล่น (Auth & User)
+    // ==========================================
     public async Task<Uri> Register(RegisterStruct register)
     {
         HttpResponseMessage response = await client.PostAsync(
@@ -113,7 +165,6 @@ public class APIManager : MonoBehaviour
         var jsonResponse = JsonUtility.FromJson<ApiResponse<TokenData>>(postResponse);
         Token = jsonResponse.data.token;
         
-        // แนบ Bearer ให้ถูกต้อง (ใช้ตามแบบไฟล์ของคุณ ปลอดภัยกว่า)
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         return response.Headers.Location;
     }
@@ -132,7 +183,6 @@ public class APIManager : MonoBehaviour
 
     public async Task<Uri> GetMyData()
     {
-        // +++ ระบบล้าง Token และดัก Error ชั้นเยี่ยมจากไฟล์ของคุณ +++
         client.DefaultRequestHeaders.Remove("Authorization");
         Debug.Log("🔑 ตั๋ว Token ที่มีตอนนี้คือ: [" + Token + "]"); 
         
@@ -159,7 +209,6 @@ public class APIManager : MonoBehaviour
 
     public void Logout()
     {
-        // +++ ระบบล้างความทรงจำจากไฟล์ของคุณ +++
         Token = "";
         myData = new UserData();
         client.DefaultRequestHeaders.Clear();
@@ -167,18 +216,14 @@ public class APIManager : MonoBehaviour
         Debug.Log("ออกจากระบบ และล้างความทรงจำ HttpClient เรียบร้อย!");
     }
 
-    // ==========================================================
-    // +++ ฟังก์ชันใหม่ 3 ตัวที่เพิ่มมาจาก Incoming (ระบบจัดการบัญชี) +++
-    // ==========================================================
-
+    // ==========================================
+    // ส่วนที่ 2: ระบบจัดการโปรไฟล์ (Profile Update)
+    // ==========================================
     public async Task<bool> UpdateUsername(string newUsername)
     {
         try
         {
-            UpdateUsernameStruct data = new UpdateUsernameStruct
-            {
-                username = newUsername
-            };
+            UpdateUsernameStruct data = new UpdateUsernameStruct { username = newUsername };
 
             HttpResponseMessage response = await client.PutAsync(
                 "users/update-username/",
@@ -189,7 +234,7 @@ public class APIManager : MonoBehaviour
 
             if (response.IsSuccessStatusCode)
             {
-                myData.username = newUsername;   // อัปเดตข้อมูลตัวละครในเครื่องทันที
+                myData.username = newUsername;   
             }
 
             return response.IsSuccessStatusCode;
@@ -245,6 +290,89 @@ public class APIManager : MonoBehaviour
         {
             Debug.Log("Delete account error: " + e.Message);
             return false;
+        }
+    }
+
+    // ==========================================
+    // ส่วนที่ 3: ระบบด่าน และ ลีดเดอร์บอร์ด (Stage & Game - จากเพื่อน)
+    // ==========================================
+    public async Task SaveGameResult(int stars, int stage)
+    {
+        GameResultStruct result = new GameResultStruct
+        {
+            user_id = myData.id,
+            stars = stars,
+            stage = stage
+        };
+
+        string json = JsonUtility.ToJson(result);
+        Debug.Log("Sending: " + json);
+
+        HttpResponseMessage response = await client.PostAsync(
+            "stage/save",
+            new StringContent(json, System.Text.Encoding.UTF8, "application/json")
+        );
+
+        Debug.Log("Status: " + response.StatusCode);
+        response.EnsureSuccessStatusCode();
+    }
+
+    public async Task<StageUnlockData> GetStageUnlock()
+    {
+        HttpResponseMessage response = await client.GetAsync("stage/unlock?user_id=" + myData.id);
+        var getResponse = await response.Content.ReadAsStringAsync();
+        Debug.Log(getResponse);   
+
+        var jsonResponse = JsonUtility.FromJson<StageUnlockData>(getResponse);
+        response.EnsureSuccessStatusCode();
+        return jsonResponse;
+    }
+
+    public async Task<StageStar[]> GetStageStars()
+    {
+        HttpResponseMessage response = await client.GetAsync("stage/stars?user_id=" + myData.id);
+        var json = await response.Content.ReadAsStringAsync();
+        Debug.Log("Stars JSON: " + json);
+
+        StageStar[] stars = JsonHelper.FromJson<StageStar>(json);
+        return stars;
+    }
+
+    public async Task<List<LeaderboardEntry>> GetStageLeaderBoard()
+    {
+        HttpResponseMessage response = await client.GetAsync("stage/leaderboard");
+        var json = await response.Content.ReadAsStringAsync();
+        Debug.Log("Leaderboard JSON: " + json);
+
+        LeaderboardEntry[] data = JsonHelper.FromJson<LeaderboardEntry>(json);
+        return new List<LeaderboardEntry>(data);
+    }
+
+    public async Task<LeaderboardEntry> GetMyRank()
+    {
+        HttpResponseMessage response = await client.GetAsync("stage/leaderboard/me?user_id=" + myData.id);
+        var json = await response.Content.ReadAsStringAsync();
+        Debug.Log("My Rank JSON: " + json);
+
+        LeaderboardEntry data = JsonUtility.FromJson<LeaderboardEntry>(json);
+        return data;
+    }
+
+    // ==========================================
+    // คลาสตัวช่วยในการแกะ JSON แบบ Array
+    // ==========================================
+    public static class JsonHelper
+    {
+        public static T[] FromJson<T>(string json)
+        {
+            string newJson = "{ \"items\": " + json + "}";
+            return JsonUtility.FromJson<Wrapper<T>>(newJson).items;
+        }
+
+        [Serializable]
+        private class Wrapper<T>
+        {
+            public T[] items;
         }
     }
 }

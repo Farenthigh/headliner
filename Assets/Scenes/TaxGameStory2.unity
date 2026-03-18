@@ -1255,6 +1255,7 @@ MonoBehaviour:
     isChoicePage: 0
   gameResult: {fileID: 1262647940}
   examSystem: {fileID: 2100183397}
+  currentStage: 1
   typingSpeed: 0.03
   vsPanel: {fileID: 1998171786}
   vTransform: {fileID: 1378970276}
@@ -1262,6 +1263,7 @@ MonoBehaviour:
   topCloud: {fileID: 1045917017}
   bottomCloud: {fileID: 901782227}
   clashParticle: {fileID: 1737686208}
+  thunderSound: {fileID: 0}
   animationDuration: 0.5
   vTargetPos: {x: -19, y: 49}
   sTargetPos: {x: 72, y: 37}
@@ -2646,6 +2648,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+    - target: {fileID: 486270694310341649, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8117901253267943034, guid: 85184fcd1de9945439aa9ac851d3fecb, type: 3}
     - target: {fileID: 602149587871376632, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
       propertyPath: m_Sprite
       value: 
