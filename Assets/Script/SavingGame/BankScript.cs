@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 
 [System.Serializable]
@@ -19,14 +20,31 @@ public enum InterestPayType
 public class BankScript : MonoBehaviour
 {
     [SerializeField] private string bankName;
-    [SerializeField] private List<Interest> interestOptions;
+    [SerializeField] private Interest interestOptions;
+    [SerializeField] private float minimumDeposit;
+    [SerializeField] private float maximumDeposit;
     [SerializeField] private InterestPayType interestPayType;
+    [SerializeField] private float targetAmountForInterest;
+    [SerializeField] private float withdrawPenalty;
+    [SerializeField] private List<string> descrition;
     private List<Transaction> transactions = new List<Transaction>();
     private bool isContractBroken = false;
     private void OnMouseDown()
     {
-        if (SavingGameUIManager.Instance.GetBankPanel() != true)
-            SavingGameUIManager.Instance.OnOpenBankPanel(this);
+        if (HomePanel.Instance.GetHomePanel() || BankPanelUI.Instance.GetBankPanel()) return;
+        BankPanelUI.Instance.OnOpenBankPanel(this);
+    }
+    public List<string> GetDescription()
+    {
+        return descrition;
+    }
+    public float GetMinimumDeposit()
+    {
+        return minimumDeposit;
+    }
+    public float GetMaximumDeposit()
+    {
+        return maximumDeposit;
     }
     public float GetBalance()
     {
@@ -59,11 +77,11 @@ public class BankScript : MonoBehaviour
             isContractBroken
         );
         SavingGameLogicManager.Instance.DeductCash(amount);
-        if (isContractBroken)
-        {
-            Debug.Log("Deposit with contract is broken");
-        }
         transactions.Add(transaction);
+        if (interestPayType == InterestPayType.Target && GetBalance() >= targetAmountForInterest)
+        {
+            PayInterest();
+        }
     }
     public void Withdraw(float amount)
     {
@@ -89,14 +107,16 @@ public class BankScript : MonoBehaviour
             SavingGameLogicManager.Instance.GetCurrentYear(),
             isContractBroken
         );
-        //จ่ายดอกเบี้ยถ้าหากตรงตามเงื่อนไข
-        if (interestPayType == InterestPayType.Target) PayInterest();
         // ยกเลิกสัญญา (ถ้ามี)
         CancelContract();
+        if (withdrawPenalty > 0f)
+        {
+            Debug.Log($"Applying withdraw penalty of {withdrawPenalty}");
+            amount -= withdrawPenalty;
+        }
 
         // เพิ่มเงินกลับเข้ากระเป๋าผู้เล่น (wallet)
-        SavingGameLogicManager.Instance.AddCash(amount);
-
+        SavingGameLogicManager.Instance.AddCash(Mathf.Max(amount, 0f)); // ป้องกันไม่ให้จำนวนเงินติดลบหลังหักค่าปรับ
 
         //บันทึก transaction
         transactions.Add(newTransaction);
@@ -158,9 +178,8 @@ public class BankScript : MonoBehaviour
     }
     public void PayInterest()
     {
-        //TODO:: Implement interest payment functionality. with target monthly that find most suitable interest option when wtthdraw
         List<Transaction> newTransactions = new List<Transaction>();
-        Interest selectedInterest = null;
+        if (transactions.Count < 0) return;
         foreach (var deposit in transactions)
         {
             if (!deposit.isActive ||
@@ -168,27 +187,9 @@ public class BankScript : MonoBehaviour
                 deposit.isInterestPaid ||
                 deposit.isContractBroken)
                 continue;
-
-            if (interestOptions.Count == 0)
-                continue;
-
-            else if (interestOptions.Count > 1)
+            if (deposit.currentMonth == interestOptions.durationInMonths)
             {
-                foreach (var interest in interestOptions)
-                {
-                    if (deposit.currentMonth >= interest.durationInMonths)
-                    {
-                        selectedInterest = interest;
-                    }
-                }
-            }
-            else if (interestOptions.Count == 1)
-            {
-                selectedInterest = interestOptions[0];
-            }
-            if (deposit.currentMonth == selectedInterest.durationInMonths)
-            {
-                float interestAmount = deposit.amount * selectedInterest.interestRate;
+                float interestAmount = deposit.amount * interestOptions.interestRate;
 
                 // ดอกเบี้ย
                 newTransactions.Add(new Transaction(
@@ -205,24 +206,23 @@ public class BankScript : MonoBehaviour
                 // ฝากต่อ
                 newTransactions.Add(new Transaction(
                     Transaction.TransactionType.Deposit,
-                    deposit.amount + interestAmount, // ทบต้น
+                    deposit.amount, // ทบต้น
                     SavingGameLogicManager.Instance.GetCurrentMonth(),
                     SavingGameLogicManager.Instance.GetCurrentYear()
                 ));
 
                 Debug.Log($"Paid interest of {interestAmount} for deposit {deposit.transactionMonth}/{deposit.transactionYear}");
-                break;
             }
         }
-        transactions.AddRange(newTransactions);
+        if (newTransactions.Count > 0) transactions.AddRange(newTransactions);
     }
-    public void UpdateTransactionCurrentCurrentMonth()
+    public void UpdateTransactionCurrentMonth()
     {
         foreach (var transaction in transactions)
         {
             if (transaction.isActive && transaction.type == Transaction.TransactionType.Deposit && !transaction.isContractBroken)
                 transaction.currentMonth += 1;
         }
+        Debug.Log($"Updated transaction months for bank {bankName}");
     }
-    //TODO:: Create an Condition and withdraw penalty function
 }

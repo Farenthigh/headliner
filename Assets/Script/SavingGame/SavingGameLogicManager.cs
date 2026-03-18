@@ -7,13 +7,13 @@ public class SavingGameLogicManager : MonoBehaviour
     public static SavingGameLogicManager Instance { get; private set; }
     [SerializeField] private int secondsInOneMonth = 5;
     [SerializeField] private float startingCash = 1000f;
-    [SerializeField] private float cashPerMonth = 100f;
-    [SerializeField] private float goalAmount = 10000f;
+    [SerializeField] private float cashPerMonth = 1000f;
     [SerializeField] private int goalMonth = 12;
-    [SerializeField] private BankScript[] banks;
+    [SerializeField] public BankScript[] banks;
     public static event Action<int, int> OnNewMonth;
     // year, month
 
+    private bool isPaused = false;
     private int currentMonth = 1;
     private int currentYear = 0;
     private float currentTime;
@@ -37,23 +37,23 @@ public class SavingGameLogicManager : MonoBehaviour
         currentYear = 0;
         currentTime = 0f;
         cash = startingCash;
-        SavingGameUIManager.Instance.UpdateGoalBar();
+        // SavingGameUIManager.Instance.UpdateGoalBar();
     }
 
     private void Update()
     {
-        currentTime += Time.deltaTime;
-        Debug.Log("Current Time: " + GetFullTimeInSeconds());
+        if (!isPaused) currentTime += Time.deltaTime;
 
-        SavingGameUIManager.Instance.UpdateRoundTime(currentTime, secondsInOneMonth); //ใช้ทำUpdateRoundTimeg
+        SavingGameUIManager.Instance.UpdateRoundTime(currentTime, secondsInOneMonth); //ใช้ทำUpdateRoundTime
         SavingGameUIManager.Instance.UpdateRoundMonth();
 
+        // Debug.Log("Current Time: " + GetFullTimeInSeconds());
         if (currentTime >= secondsInOneMonth)
         {
             currentTime -= secondsInOneMonth;
 
             AdvanceMonth();
-            EventManager.Instance.RandomEvent();
+            // EventManager.Instance.RandomEvent();
         }
     }
 
@@ -61,7 +61,7 @@ public class SavingGameLogicManager : MonoBehaviour
     {
         currentMonth++;
         cash += cashPerMonth;
-        SavingGameUIManager.Instance.UpdateGoalBar();
+        SetIsPaused(true); // หยุดเกมชั่วคราวระหว่างการคำนวณและแสดงผล
         SavingGameUIManager.Instance.UpdateRoundMonth();
         Debug.Log($"💰 Received monthly cash: {cashPerMonth}. Current cash: {cash}");
 
@@ -75,8 +75,18 @@ public class SavingGameLogicManager : MonoBehaviour
 
         OnNewMonth?.Invoke(currentYear, currentMonth);
 
-        SavingGameUIManager.Instance.OnCloseBankPanel();
+        foreach (var bank in banks)
+        {
+            if (bank != null)
+            {
+                bank.UpdateTransactionCurrentMonth();
+                bank.PayInterest();
+            }
+        }
+        HomePanel.Instance.CloseHomePanel();
+        BankPanelUI.Instance.OnCloseBankPanel();
         EventManager.Instance.ResetEventTrigger();
+        EventManager.Instance.RandomEvent();
 
     }
     public int GetCurrentMonth()
@@ -114,11 +124,6 @@ public class SavingGameLogicManager : MonoBehaviour
     {
         return (currentYear * 12 + currentMonth - 1) * secondsInOneMonth + currentTime;
     }
-    public float GetGoalAmount()
-    {
-        return goalAmount;
-    }
-
     public float GetAllAssets()
     {
         float total = cash; // เงินสด
@@ -135,5 +140,9 @@ public class SavingGameLogicManager : MonoBehaviour
     public int GetGoalMonth()
     {
         return goalMonth;
+    }
+    public void SetIsPaused(bool paused)
+    {
+        isPaused = paused;
     }
 }

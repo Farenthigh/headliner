@@ -21,7 +21,6 @@ public class StoryManager : MonoBehaviour
     [Header("Quiz UI")]
     public Examlogic examSystem;
 
-    // +++ ดึงตัวแปร Stage จากโค้ดอันใหม่มาใส่ +++
     [Header("Stage Info")]
     [SerializeField] private int currentStage = 1;
 
@@ -38,10 +37,7 @@ public class StoryManager : MonoBehaviour
     public RectTransform topCloud;     
     public RectTransform bottomCloud;  
     public ParticleSystem clashParticle; 
-    
-    // +++ เพิ่มตัวแปรสำหรับใส่เสียงสายฟ้า +++
     public AudioSource thunderSound;   
-    
     public float animationDuration = 0.5f;
 
     [Header("Target Positions (จุดที่มันจะวิ่งมาหยุด)")]
@@ -84,6 +80,15 @@ public class StoryManager : MonoBehaviour
         }
     }
 
+    public void SetOnlyEnemySpeaking()
+    {
+        StartMove(characterRightUI);
+        StopMove(characterLeftUI);
+
+        if (characterRightUI != null) characterRightUI.color = new Color(1, 1, 1, 1f);
+        if (characterLeftUI != null) characterLeftUI.color = new Color(1, 1, 1, 1f);
+    }
+
     void UpdateUI()
     {
         StoryPage currentPage = allPages[currentIndex];
@@ -106,7 +111,14 @@ public class StoryManager : MonoBehaviour
             }
             else speechBubbleUI.gameObject.SetActive(false);
         }
+        
         HandleCharacterLayout(currentPage);
+
+        // +++ เพิ่มการเรียกใช้แอนิเมชันขยับตัวละคร (จากโค้ดใหม่) +++
+        if (!currentPage.isChoicePage)
+        {
+            UpdateCharacterAnimation(currentPage);
+        }
 
         if (currentPage.isChoicePage)
         {
@@ -119,7 +131,6 @@ public class StoryManager : MonoBehaviour
             if (examSystem != null) examSystem.gameObject.SetActive(false);
         }
 
-        // --- ส่วนตรวจสอบหน้าสุดท้าย (อัปเดตระบบส่งคะแนน) ---
         if(currentIndex == allPages.Count - 1)
         {
             Debug.Log("นี่คือหน้าสุดท้าย");
@@ -133,17 +144,13 @@ public class StoryManager : MonoBehaviour
                     stars = Manager.Instance.GetStarsFromExam();
                 }
 
-                // โชว์ UI สรุปดาว
                 gameResult.ShowVictoryResultDirect(stars);
-                
-                // 🔥 ส่งคะแนนเข้า API (ฟังก์ชันจากโค้ดใหม่)
                 SendResult(stars);
             }
 
             if (nextButton != null) nextButton.SetActive(false);
         }
     }
-
     IEnumerator PlayVSEffectAndStartQuiz()
     {
         if(vsPanel != null) vsPanel.SetActive(true);
@@ -209,7 +216,6 @@ public class StoryManager : MonoBehaviour
         }
         isTyping = false; 
     }
-
     void HandleCharacterLayout(StoryPage page)
     {
         if (characterLeftUI != null) characterLeftUI.gameObject.SetActive(false);
@@ -230,12 +236,70 @@ public class StoryManager : MonoBehaviour
         characterUI.gameObject.SetActive(true);
     }
 
-    // +++ เพิ่มฟังก์ชันยิง API เข้ามา (จากโค้ดใหม่) +++
+    void StartMove(Image character)
+    {
+        if (character == null) return;
+
+        CharacterBounce bounce = character.GetComponent<CharacterBounce>();
+        if (bounce == null)
+        {
+            bounce = character.gameObject.AddComponent<CharacterBounce>();
+        }
+
+        bounce.enabled = true; 
+    }  
+
+    void StopMove(Image character)
+    {
+        if (character == null) return;
+
+        CharacterBounce bounce = character.GetComponent<CharacterBounce>();
+        if (bounce != null)
+        {
+            bounce.enabled = false; 
+        }
+    }
+
+    void UpdateCharacterAnimation(StoryPage page)
+    {
+        Debug.Log("Animating: " + page.speakerPosition);
+        
+        StopMove(characterLeftUI);
+        StopMove(characterCenterUI);
+        StopMove(characterRightUI);
+
+        ResetPosition(characterLeftUI);
+        ResetPosition(characterCenterUI);
+        ResetPosition(characterRightUI);
+
+        switch (page.speakerPosition)
+        {
+            case SpeakerPosition.Left:
+                StartMove(characterLeftUI);
+                break;
+            case SpeakerPosition.Center:
+                StartMove(characterCenterUI);
+                break;
+            case SpeakerPosition.Right:
+                StartMove(characterRightUI);
+                break;
+        }
+    }
+
+    void ResetPosition(Image character)
+    {
+        if (character == null) return;
+
+        RectTransform rect = character.GetComponent<RectTransform>();
+        if (rect != null)
+        {
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, 0);
+        }
+    }
+
     private async void SendResult(int stars)
     {
         Debug.Log("Sending stars: " + stars + " stage: " + currentStage);
-        
-        // ส่งข้อมูลเข้า API ผ่าน APIManager ที่เราทำไว้
         await APIManager.Instance.SaveGameResult(stars, currentStage);
     }
 }
