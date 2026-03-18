@@ -6,17 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class StoryManager : MonoBehaviour
 {
-    public Text dialogueTextUI;
-    public Text speakerNameUI;
-    public Image backgroundImageUI;
-    public Image characterLeftUI;
-    public Image characterCenterUI;
-    public Image characterRightUI;
-    public Image speechBubbleUI;
-    public GameObject nextButton; 
-    public List<StoryPage> allPages; 
-    private int currentIndex = 0;
-    public GameResult gameResult;
+   public Text dialogueTextUI;
+   public Text speakerNameUI;
+   public Image backgroundImageUI;
+   public Image characterLeftUI;
+   public Image characterCenterUI;
+   public Image characterRightUI;
+   public Image speechBubbleUI;
+   public GameObject nextButton;
+   public List<StoryPage> allPages;
+   private int currentIndex = 0;
+   public GameResult gameResult;
+
 
     [Header("Quiz UI")]
     public Examlogic examSystem;
@@ -237,9 +238,9 @@ public class StoryManager : MonoBehaviour
     
     }
 
-    void StartMove(Image character)
-    {
-        if (character == null) return;
+   void StartMove(Image character)
+   {
+       if (character == null) return;
 
         CharacterBounce bounce = character.GetComponent<CharacterBounce>();
         if (bounce == null)
