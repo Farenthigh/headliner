@@ -50,14 +50,17 @@ public class SettingSceneManager : MonoBehaviour
     private void Start()
     {
 #if UNITY_EDITOR
-        APIManager.Token = "TEST_TOKEN";
-
-        APIManager.myData = new UserData
+        if (string.IsNullOrEmpty(APIManager.Token))
         {
-            username = "TestPlayer",
-            email = "test@email.com",
-            character = 1
-        };
+            APIManager.Token = "TEST_TOKEN";
+            APIManager.myData = new UserData
+            {
+                username = "TestPlayer",
+                email = "test@email.com",
+                character = 1
+            };
+            Debug.LogWarning("ใช้ข้อมูลจำลองเพราะไม่มี Token จริงส่งมา");
+        }
 #endif
 
         if (string.IsNullOrEmpty(APIManager.Token))
@@ -266,6 +269,10 @@ IEnumerator ShowSuccessPopup()
         deleteConfirmPanel.SetActive(false);
 
         await APIManager.Instance.DeleteAccount();
+        if (APIManager.Instance != null)
+        {
+            APIManager.Instance.Logout(); 
+        }
 
         SceneManager.LoadScene("LoginScene");
     }
@@ -292,7 +299,15 @@ IEnumerator ShowSuccessPopup()
 
     public void Logout()
     {
-        APIManager.Token = null;
+        if (APIManager.Instance != null)
+        {
+            APIManager.Instance.Logout();
+        }
+        else
+        {
+            APIManager.Token = null; 
+        }
+
         SceneManager.LoadScene("LoginScene");
     }
 

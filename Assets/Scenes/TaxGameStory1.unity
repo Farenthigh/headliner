@@ -2035,7 +2035,7 @@ MonoBehaviour:
   topCloud: {fileID: 866228089}
   bottomCloud: {fileID: 571262904}
   clashParticle: {fileID: 521837117}
-  thunderSound: {fileID: 966137957}
+  thunderSound: {fileID: 0}
   animationDuration: 0.5
   vTargetPos: {x: -19, y: 49}
   sTargetPos: {x: 72, y: -37}
