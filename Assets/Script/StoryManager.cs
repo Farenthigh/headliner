@@ -234,6 +234,7 @@ public class StoryManager : MonoBehaviour
     {
         characterUI.sprite = characterSprite;
         characterUI.gameObject.SetActive(true);
+    
     }
 
     void StartMove(Image character)
@@ -243,6 +244,7 @@ public class StoryManager : MonoBehaviour
         CharacterBounce bounce = character.GetComponent<CharacterBounce>();
         if (bounce == null)
         {
+            bounce = character.gameObject.AddComponent<CharacterBounce>();
             bounce = character.gameObject.AddComponent<CharacterBounce>();
         }
 
@@ -259,7 +261,6 @@ public class StoryManager : MonoBehaviour
             bounce.enabled = false; 
         }
     }
-
     void UpdateCharacterAnimation(StoryPage page)
     {
         Debug.Log("Animating: " + page.speakerPosition);
