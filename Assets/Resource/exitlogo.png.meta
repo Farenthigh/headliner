@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 9e7cc7393b686434ab065071836ec4cf
-=======
-guid: e0aa0b77630344a568ad37407e3aacf3
->>>>>>> origin/feat/TaxGame-345
+guid: b15a9c3cc2d6f4b78999f16715a173b6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5199979006384268662
-    second: Star_0
+      213: 2899455935172519424
+    second: exitlogo_0
+  - first:
+      213: -991186495629486306
+    second: exitlogo_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -117,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Star_0
+      name: exitlogo_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 4
-        width: 170
-        height: 164
+        x: 0
+        y: 3
+        width: 15
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 675e50b0b590a2840800000000000000
-      internalID: 5199979006384268662
+      spriteID: 0062bd1afcfec3820800000000000000
+      internalID: 2899455935172519424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exitlogo_1
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1717dd32299e32f0800000000000000
+      internalID: -991186495629486306
       vertices: []
       indices: 
       edges: []
@@ -152,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Star_0: 5199979006384268662
+      exitlogo_0: 2899455935172519424
+      exitlogo_1: -991186495629486306
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

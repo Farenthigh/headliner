@@ -21,6 +21,10 @@ public class StoryManager : MonoBehaviour
     [Header("Quiz UI")]
     public Examlogic examSystem;
 
+    // +++ ดึงตัวแปร Stage จากโค้ดอันใหม่มาใส่ +++
+    [Header("Stage Info")]
+    [SerializeField] private int currentStage = 1;
+
     [Header("Typewriter Settings")]
     public float typingSpeed = 0.03f;  
     private bool isTyping = false;     
@@ -41,10 +45,10 @@ public class StoryManager : MonoBehaviour
     public float animationDuration = 0.5f;
 
     [Header("Target Positions (จุดที่มันจะวิ่งมาหยุด)")]
-    public Vector2 vTargetPos = new Vector2(-100f, 0f); 
-    public Vector2 sTargetPos = new Vector2(100f, 0f);  
-    public Vector2 topCloudTargetPos = new Vector2(0f, 300f);    
-    public Vector2 bottomCloudTargetPos = new Vector2(0f, -300f); 
+    public Vector2 vTargetPos = new Vector2(-19f, 49f); 
+    public Vector2 sTargetPos = new Vector2(72f, -37f);  
+    public Vector2 topCloudTargetPos = new Vector2(0f, 407.92f);    
+    public Vector2 bottomCloudTargetPos = new Vector2(0f, -407.92f); 
 
     void Start()
     {
@@ -115,14 +119,27 @@ public class StoryManager : MonoBehaviour
             if (examSystem != null) examSystem.gameObject.SetActive(false);
         }
 
+        // --- ส่วนตรวจสอบหน้าสุดท้าย (อัปเดตระบบส่งคะแนน) ---
         if(currentIndex == allPages.Count - 1)
         {
+            Debug.Log("นี่คือหน้าสุดท้าย");
+            Debug.Log("คุณชนะ");
+
             if (gameResult != null)
             {
                 int stars = 0; 
-                if (Manager.Instance != null) stars = Manager.Instance.GetStarsFromExam();
+                if (Manager.Instance != null) 
+                {
+                    stars = Manager.Instance.GetStarsFromExam();
+                }
+
+                // โชว์ UI สรุปดาว
                 gameResult.ShowVictoryResultDirect(stars);
+                
+                // 🔥 ส่งคะแนนเข้า API (ฟังก์ชันจากโค้ดใหม่)
+                SendResult(stars);
             }
+
             if (nextButton != null) nextButton.SetActive(false);
         }
     }
@@ -162,7 +179,7 @@ public class StoryManager : MonoBehaviour
         if (bottomCloud != null) bottomCloud.anchoredPosition = bottomCloudTargetPos;
 
         if (clashParticle != null) clashParticle.Play();
-        if (thunderSound != null) thunderSound.Play(); // สั่งให้ลำโพงเล่นเสียง
+        if (thunderSound != null) thunderSound.Play(); 
 
         yield return new WaitForSeconds(3f); 
 
@@ -211,5 +228,14 @@ public class StoryManager : MonoBehaviour
     {
         characterUI.sprite = characterSprite;
         characterUI.gameObject.SetActive(true);
+    }
+
+    // +++ เพิ่มฟังก์ชันยิง API เข้ามา (จากโค้ดใหม่) +++
+    private async void SendResult(int stars)
+    {
+        Debug.Log("Sending stars: " + stars + " stage: " + currentStage);
+        
+        // ส่งข้อมูลเข้า API ผ่าน APIManager ที่เราทำไว้
+        await APIManager.Instance.SaveGameResult(stars, currentStage);
     }
 }

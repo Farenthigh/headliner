@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 9e7cc7393b686434ab065071836ec4cf
-=======
-guid: e0aa0b77630344a568ad37407e3aacf3
->>>>>>> origin/feat/TaxGame-345
+guid: 205912cd6407c4c1e9bc7dcc36aee286
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5199979006384268662
-    second: Star_0
+      213: -4786758364937790450
+    second: ScoreHeader_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -117,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Star_0
+      name: ScoreHeader_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 4
-        width: 170
-        height: 164
+        x: 0
+        y: 0
+        width: 223
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 675e50b0b590a2840800000000000000
-      internalID: 5199979006384268662
+      spriteID: e0cd040e0a4029db0800000000000000
+      internalID: -4786758364937790450
       vertices: []
       indices: 
       edges: []
@@ -152,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Star_0: 5199979006384268662
+      ScoreHeader_0: -4786758364937790450
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
