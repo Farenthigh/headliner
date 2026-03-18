@@ -46,6 +46,7 @@ public struct CharacterStruct
     public int character;
 }
 
+// +++ โครงสร้างข้อมูลใหม่จากฝั่ง Incoming +++
 [Serializable]
 public struct UpdateUsernameStruct
 {
@@ -55,14 +56,17 @@ public struct UpdateUsernameStruct
 [Serializable]
 public struct UpdatePasswordStruct
 {
-    public string current_password;
-    public string new_password;
+    public string currentPassword;
+    public string newPassword;
 }
 
 public class APIManager : MonoBehaviour
 {
     public static APIManager Instance { get; private set; }
-    public static bool IsRequestRunning = false;
+    
+    // +++ ตัวแปรใหม่จากฝั่ง Incoming +++
+    public static bool IsRequestRunning = false; 
+    
     public static string Token;
     public static UserData myData;
     static HttpClient client = new HttpClient();
@@ -73,18 +77,18 @@ public class APIManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            // ตั้งค่า Client ตั้งแต่เริ่มเลย จะได้พร้อมใช้เสมอ
+            client.BaseAddress = new Uri("http://localhost:8080/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
         else
         {
             Destroy(gameObject);
         }
     }
-    private void Start()
-    {
-        client.BaseAddress = new Uri("http://localhost:8080/");
-        client.DefaultRequestHeaders.Accept.Clear();
-        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-    }
+
     public async Task<Uri> Register(RegisterStruct register)
     {
         HttpResponseMessage response = await client.PostAsync(
@@ -108,7 +112,9 @@ public class APIManager : MonoBehaviour
         var postResponse = await response.Content.ReadAsStringAsync();
         var jsonResponse = JsonUtility.FromJson<ApiResponse<TokenData>>(postResponse);
         Token = jsonResponse.data.token;
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(Token);
+        
+        // แนบ Bearer ให้ถูกต้อง (ใช้ตามแบบไฟล์ของคุณ ปลอดภัยกว่า)
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
         return response.Headers.Location;
     }
 
@@ -126,15 +132,46 @@ public class APIManager : MonoBehaviour
 
     public async Task<Uri> GetMyData()
     {
+        // +++ ระบบล้าง Token และดัก Error ชั้นเยี่ยมจากไฟล์ของคุณ +++
+        client.DefaultRequestHeaders.Remove("Authorization");
+        Debug.Log("🔑 ตั๋ว Token ที่มีตอนนี้คือ: [" + Token + "]"); 
+        
+        if (!string.IsNullOrEmpty(Token)) 
+        {
+            string cleanToken = Token.Trim().Replace("\"", ""); 
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + cleanToken);
+        }
+
         HttpResponseMessage response = await client.GetAsync("users/data/");
         var getResponse = await response.Content.ReadAsStringAsync();
+
+        if (!response.IsSuccessStatusCode)
+        {
+            Debug.LogError($"ดึงข้อมูลล้มเหลว! Status: {response.StatusCode} | ข้อความ: {getResponse}");
+            response.EnsureSuccessStatusCode(); 
+        }
+
         var jsonResponse = JsonUtility.FromJson<ApiResponse<UserData>>(getResponse);
         myData = jsonResponse.data;
         
         return response.Headers.Location;
     }
 
-        public async Task<bool> UpdateUsername(string newUsername)
+    public void Logout()
+    {
+        // +++ ระบบล้างความทรงจำจากไฟล์ของคุณ +++
+        Token = "";
+        myData = new UserData();
+        client.DefaultRequestHeaders.Clear();
+        client.DefaultRequestHeaders.Add("Accept", "application/json");
+        Debug.Log("ออกจากระบบ และล้างความทรงจำ HttpClient เรียบร้อย!");
+    }
+
+    // ==========================================================
+    // +++ ฟังก์ชันใหม่ 3 ตัวที่เพิ่มมาจาก Incoming (ระบบจัดการบัญชี) +++
+    // ==========================================================
+
+    public async Task<bool> UpdateUsername(string newUsername)
     {
         try
         {
@@ -144,7 +181,7 @@ public class APIManager : MonoBehaviour
             };
 
             HttpResponseMessage response = await client.PutAsync(
-                "users/updateusername/",
+                "users/update-username/",
                 new StringContent(
                     JsonUtility.ToJson(data),
                     System.Text.Encoding.UTF8,
@@ -152,7 +189,7 @@ public class APIManager : MonoBehaviour
 
             if (response.IsSuccessStatusCode)
             {
-                myData.username = newUsername;   // ⭐ เพิ่มตรงนี้
+                myData.username = newUsername;   // อัปเดตข้อมูลตัวละครในเครื่องทันที
             }
 
             return response.IsSuccessStatusCode;
@@ -163,22 +200,30 @@ public class APIManager : MonoBehaviour
             return false;
         }
     }
-        public async Task<bool> UpdatePassword(string currentPassword, string newPassword)
+
+    public async Task<bool> UpdatePassword(string currentPassword, string newPassword)
     {
         try
         {
             UpdatePasswordStruct data = new UpdatePasswordStruct
             {
-                current_password = currentPassword,
-                new_password = newPassword
+                currentPassword = currentPassword,
+                newPassword = newPassword
             };
 
             HttpResponseMessage response = await client.PutAsync(
-                "users/updatepassword/",
+                "users/update-password/",
                 new StringContent(
                     JsonUtility.ToJson(data),
                     System.Text.Encoding.UTF8,
                     "application/json"));
+
+            if (!response.IsSuccessStatusCode)
+            {
+                string errorResponse = await response.Content.ReadAsStringAsync();
+                Debug.LogError($"❌ เปลี่ยนรหัสพัง! Status: {response.StatusCode} | Backend ด่ามาว่า: {errorResponse}");
+                return false;
+            }
 
             return response.IsSuccessStatusCode;
         }
@@ -189,7 +234,7 @@ public class APIManager : MonoBehaviour
         }
     }
 
-        public async Task<bool> DeleteAccount()
+    public async Task<bool> DeleteAccount()
     {
         try
         {
