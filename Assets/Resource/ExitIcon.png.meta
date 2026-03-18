@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: b15a9c3cc2d6f4b78999f16715a173b6
+guid: 89f1419e504234334a9f0b648d2c0fcb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2899455935172519424
-    second: exitlogo_0
+      213: -6750316414850278111
+    second: ExitIcon_0
   - first:
-      213: -991186495629486306
-    second: exitlogo_1
+      213: -5108416736778714061
+    second: ExitIcon_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: exitlogo_0
+      name: ExitIcon_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0062bd1afcfec3820800000000000000
-      internalID: 2899455935172519424
+      spriteID: 12d5c534cfe0252a0800000000000000
+      internalID: -6750316414850278111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: exitlogo_1
+      name: ExitIcon_1
       rect:
         serializedVersion: 2
         x: 10
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e1717dd32299e32f0800000000000000
-      internalID: -991186495629486306
+      spriteID: 33405af1b024b19b0800000000000000
+      internalID: -5108416736778714061
       vertices: []
       indices: 
       edges: []
@@ -173,8 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      exitlogo_0: 2899455935172519424
-      exitlogo_1: -991186495629486306
+      ExitIcon_0: -6750316414850278111
+      ExitIcon_1: -5108416736778714061
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
