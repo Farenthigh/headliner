@@ -11,6 +11,7 @@ public class TaxMapManager : MonoBehaviour
     public Button stage4;
     public Button stage5;
 
+    public GameObject stageInfoimage;
     public GameObject stageInfoPanel;
     public StageInfoManager stageInfoManager;
 
@@ -21,7 +22,8 @@ public class TaxMapManager : MonoBehaviour
     public Transform stage5Stars;
 
     async void Start()
-    {
+    {   
+        stageInfoimage.SetActive(false);
         stageInfoPanel.SetActive(false);
 
         SetStars(stage1Stars, 0);
@@ -36,7 +38,17 @@ public class TaxMapManager : MonoBehaviour
         ShowStars();
 
         var unlock = await APIManager.Instance.GetStageUnlock();
-        int nextStage = unlock.next_stage;
+
+        //  ค่าเริ่มต้น = 1
+        int nextStage = 1;
+        int nowStage = 1;
+
+        //  กัน null ทั้งก้อน
+        if (unlock.next_stage > 0)
+        nextStage = unlock.next_stage;
+
+        if (unlock.now_stage > 0)
+        nowStage = unlock.now_stage;
 
         stage1.interactable = nextStage >= 1;
         stage2.interactable = nextStage >= 2;
@@ -53,7 +65,8 @@ public class TaxMapManager : MonoBehaviour
     }
 
     void OpenStage(int stage)
-    {
+    {   
+        stageInfoimage.SetActive(true);
         stageInfoPanel.SetActive(true);
         stageInfoManager.ShowStage(stage);
     }
