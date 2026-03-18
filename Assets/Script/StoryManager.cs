@@ -304,4 +304,5 @@ public class StoryManager : MonoBehaviour
         Debug.Log("Sending stars: " + stars + " stage: " + currentStage);
         await APIManager.Instance.SaveGameResult(stars, currentStage);
     }
+    
 }
