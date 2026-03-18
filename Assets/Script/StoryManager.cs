@@ -23,13 +23,13 @@ public class StoryManager : MonoBehaviour
     [System.Serializable]
     public class TipBook
     {
-        public GameObject tipBookUI;
-        public int tipPageIndex;
+        public int tipPageIndex;      
+        public int bookPageToOpen;  
     }
 
     [Header("Tip Books")]
     public List<TipBook> tipBooks;
-    private bool isTipShowing = false;
+    public SceneLoader sceneLoader;
 
     void Start()
     {
@@ -71,13 +71,11 @@ public class StoryManager : MonoBehaviour
             }
             else
             {
-                // ถ้าหน้าไหนไม่ใส่รูปกรอบคำพูดมา ให้ซ่อนกรอบไปเลย
                 speechBubbleUI.gameObject.SetActive(false);
             }
         }
         HandleCharacterLayout(currentPage);
 
-        // --- ส่วนของระบบ Quiz ---
         if (currentPage.isChoicePage)
         {
             if (nextButton != null) nextButton.SetActive(false);
@@ -102,37 +100,34 @@ public class StoryManager : MonoBehaviour
                 {
                     int stars = Manager.Instance.GetStarsFromExam();
                     gameResult.ShowVictoryResultDirect(stars);
-                    // gameResult.ShowVictoryResultDirect(2); // ใส่จำนวนดาวที่ต้องการ
                 }
                 
                 if (nextButton != null) nextButton.SetActive(false);
                 // if (nextButton != null)
                 //     nextButton.SetActive(false);
             }
+        if (sceneLoader != null)
+            sceneLoader.ExitTips();
 
-                // รีเซ็ตก่อน
-        isTipShowing = false;
-
-        // ปิด tip ทุกอันก่อน
         foreach (TipBook tip in tipBooks)
         {
-            if (tip.tipBookUI != null)
-                tip.tipBookUI.SetActive(false);
+            if (currentIndex >= tip.tipPageIndex)
+            {
+                if (sceneLoader != null)
+                    sceneLoader.defaultPageToOpen = tip.bookPageToOpen;
+            }
         }
 
-        // ตรวจว่า page นี้ต้องเปิด tip ไหม
         foreach (TipBook tip in tipBooks)
         {
             if (currentIndex == tip.tipPageIndex)
             {
-                if (tip.tipBookUI != null)
-                {
-                    tip.tipBookUI.SetActive(true);
-                    isTipShowing = true;
-                }
+                if (sceneLoader != null)
+                    sceneLoader.OpenTips();
             }
-        }    
+        }
     }
+
 
     void HandleCharacterLayout(StoryPage page)
     {
@@ -163,4 +158,5 @@ public class StoryManager : MonoBehaviour
         characterUI.sprite = characterSprite;
         characterUI.gameObject.SetActive(true);
     }
+
 }

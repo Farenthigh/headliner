@@ -6,21 +6,20 @@ public class SceneLoader : MonoBehaviour
     public GameObject taxGameTips;
     public GameObject icon;
     public GameObject bg;
-
+    public TipsPageController tipsPageController;
+    public int defaultPageToOpen = 0;
 
     void Start()
-    {   
+    {
         bg.SetActive(false);
         icon.SetActive(true);
         saving.SetActive(false);
         taxGameTips.SetActive(false);
     }
 
-
     public void ShowSaving()
     {
         if (saving.activeSelf) return;
-
         saving.SetActive(true);
         taxGameTips.SetActive(false);
     }
@@ -28,26 +27,23 @@ public class SceneLoader : MonoBehaviour
     public void ShowTax()
     {
         if (taxGameTips.activeSelf) return;
-
         taxGameTips.SetActive(true);
         saving.SetActive(false);
     }
 
-    // กด icon เพื่อเปิด Tips
     public void OpenTips()
     {
-        // icon.SetActive(false);
         bg.SetActive(true);
-        saving.SetActive(false);       // เปิดหน้าแรก
+        saving.SetActive(false);
         taxGameTips.SetActive(true);
+
+        if (tipsPageController != null)
+            tipsPageController.GoToPage(defaultPageToOpen);
     }
 
-    // กด exit เพื่อกลับไป icon
     public void ExitTips()
     {
-        icon.SetActive(true);
         bg.SetActive(false);
-        saving.SetActive(false);
         taxGameTips.SetActive(false);
     }
 }
