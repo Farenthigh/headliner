@@ -1289,7 +1289,7 @@ MonoBehaviour:
     isChoicePage: 0
   gameResult: {fileID: 142996851}
   examSystem: {fileID: 1915187673}
-  currentStage: 1
+  currentStage: 5
   typingSpeed: 0.03
   vsPanel: {fileID: 115549944}
   vTransform: {fileID: 115549943}
