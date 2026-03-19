@@ -15,6 +15,7 @@ public class Register : MonoBehaviour
     private bool isPasswordVisible1 = false;
     [SerializeField] private Button toggleEyeButton2;
     [SerializeField] private Image eyeIconImage2;
+    [SerializeField] private TMP_Text errorText;
     private bool isPasswordVisible2 = false;
 
     private bool isPasswordVisible = false;
@@ -32,6 +33,8 @@ public class Register : MonoBehaviour
 
         confirmpasswordInput.contentType = TMP_InputField.ContentType.Password;
         if (eyeIconImage2 != null && eyeClosedSprite != null) eyeIconImage2.sprite = eyeClosedSprite;
+
+        if (errorText != null) errorText.text = "";
     }
     private void HandleLogin()
     {
@@ -40,13 +43,32 @@ public class Register : MonoBehaviour
 
     private async void HandleRegister()
     {
+        if (errorText != null) errorText.text = "";
         string email = emailInput.text;
         string password = passwordInput.text;
         string confirmpass = confirmpasswordInput.text;
 
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmpass))
+        {
+            if (errorText != null) errorText.text = "Please fill in all fields";
+            return;
+        }
+
+        if (!email.Contains("@") || !email.Contains("."))
+        {
+            if (errorText != null) errorText.text = "Invalid email";
+            return;
+        }
+
+        if (password.Length < 8)
+        {
+            if (errorText != null) errorText.text = "Password must be at least 8 characters";
+            return;
+        }
+
         if (password != confirmpass)
         {
-            Debug.Log("Passwords do not match");
+            if (errorText != null) errorText.text = "Password and confirm password do not match";
             return;
         }
         try
@@ -63,6 +85,7 @@ public class Register : MonoBehaviour
         catch (System.Exception ex)
         {
             Debug.Log("Registration failed: " + ex.Message);
+            if (errorText != null) errorText.text = "Registration failed (This email may already be in use)";
         }
 
     }

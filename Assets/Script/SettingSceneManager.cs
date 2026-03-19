@@ -317,8 +317,21 @@ IEnumerator ShowSuccessPopup()
 
     public void PreviousPage()
     {
-        string previousScene = PlayerPrefs.GetString("PreviousScene");
-        SceneManager.LoadScene(previousScene);
+        string previousScene = PlayerPrefs.GetString("PreviousScene", "");
+        if (string.IsNullOrEmpty(previousScene) || previousScene == "-1")
+        {
+            SceneManager.LoadScene(0); 
+            return;
+        }
+
+        if (int.TryParse(previousScene, out int sceneIndex))
+        {
+            SceneManager.LoadScene(Mathf.Max(0, sceneIndex));
+        }
+        else
+        {
+            SceneManager.LoadScene(previousScene);
+        }
     }
 
     // =========================

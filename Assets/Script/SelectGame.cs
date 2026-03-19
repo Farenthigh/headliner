@@ -8,7 +8,6 @@ public class SelectGame : MonoBehaviour
     [SerializeField] private Button savinggame;
     [SerializeField] private Button taxgame;
     [SerializeField] private Button leaderboard;
-    [SerializeField] private Button settingbtn;
 
 
 
@@ -16,7 +15,6 @@ public class SelectGame : MonoBehaviour
     {
         savinggame.onClick.AddListener(() => SelectGameOption("SavingGameMap"));
         taxgame.onClick.AddListener(() => SelectGameOption("TaxGameMap"));
-        settingbtn.onClick.AddListener(() => SelectGameOption("SettingsScene"));
         leaderboard.onClick.AddListener(() => SelectGameOption("LeaderBoardScene"));
     }
     private void SelectGameOption(string game)
