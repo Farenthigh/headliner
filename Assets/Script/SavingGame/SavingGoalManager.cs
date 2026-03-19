@@ -97,8 +97,14 @@ public class SavingGoalManager : MonoBehaviour
         }
         Debug.Log($"Total Assets: {totalAssets}, Stars Earned: {starsEarned}");
         StartCoroutine(ShowResults());
-
-
+        try
+        {
+            APIManager.Instance.SavingGameResult(stage, starsEarned);
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Failed to send saving game result: " + ex.Message);
+        }
     }
 
     public float GetGoalAmount()
