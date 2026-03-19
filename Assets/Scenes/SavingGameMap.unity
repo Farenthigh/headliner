@@ -1209,6 +1209,8 @@ MonoBehaviour:
   star1: {fileID: 1616015954}
   star2: {fileID: 603707827}
   star3: {fileID: 741541729}
+  filledStar: {fileID: 0}
+  stageButton: {fileID: 0}
 --- !u!1 &919961659
 GameObject:
   m_ObjectHideFlags: 0
