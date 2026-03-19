@@ -36,8 +36,17 @@ EditorBuildSettings:
     path: Assets/Scenes/TaxGameStory2.unity
     guid: 92826ca0417b74c27b5e92599fe58dd2
   - enabled: 1
+    path: Assets/Scenes/SavingGameStage4.unity
+    guid: 420cd7d4b6b9c465c9918c5a77cb4127
+  - enabled: 1
+    path: Assets/Scenes/SavingGameStage3.unity
+    guid: 119bbc8e6df4e4b698651b634dc5c5a8
+  - enabled: 1
     path: Assets/Scenes/TaxGameStage3.unity
     guid: c770ed9fb183742188a048715ea3ea62
+  - enabled: 1
+    path: Assets/Scenes/SavingGameStageInfo.unity
+    guid: 8c5c3858844ea47a788ec2a0de27474c
   - enabled: 1
     path: Assets/Scenes/TaxGameStage4.unity
     guid: 9508fc0e458e44f8fbd9a7a228672bb4
@@ -47,6 +56,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SettingsScene.unity
     guid: 6c86f2d86db3243e69b9e7613619453a
+  - enabled: 1
+    path: Assets/Scenes/SavingGameStage2.unity
+    guid: 5258e5fee18ea47d5808c01e8dc9a078
+  - enabled: 1
+    path: Assets/Scenes/SavingGameStage1.unity
+    guid: 057ca4f8fb6724d75bdd4d7a0d88c549
   - enabled: 1
     path: Assets/Scenes/LeaderBoardScene.unity
     guid: 5b1b9fd2d7ff942479b4399eab6ab7f2
