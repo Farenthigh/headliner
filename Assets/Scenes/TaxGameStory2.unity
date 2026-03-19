@@ -1286,7 +1286,7 @@ MonoBehaviour:
     isChoicePage: 0
   gameResult: {fileID: 1262647940}
   examSystem: {fileID: 2100183397}
-  currentStage: 1
+  currentStage: 2
   typingSpeed: 0.03
   vsPanel: {fileID: 1998171786}
   vTransform: {fileID: 1378970276}
@@ -2652,66 +2652,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221314513}
   m_CullTransparentMesh: 1
---- !u!1 &1229625735
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1229625737}
-  - component: {fileID: 1229625736}
-  m_Layer: 0
-  m_Name: ExamManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1229625736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229625735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aee31984464764cb48d67f3db2140d7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Examlogic
-  maxheart: 3
-  playercurrentheart: 0
-  enemycurrentheart: 0
-  allquestions: []
-  questiontextUI: {fileID: 525073186}
-  playerhearts: []
-  enemyhearts: []
-  choicePanel: {fileID: 253488375}
-  questionPanel: {fileID: 1128687892}
-  choicebuttontextUI: []
-  inputPanel: {fileID: 673313377}
-  answerInputField: {fileID: 987893555}
-  storyManager: {fileID: 0}
-  gameResult: {fileID: 1262647940}
-  achievementIdToUnlock: 0
-  achievementCodeToUnlock: 
---- !u!4 &1229625737
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229625735}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1020.9039, y: 431.51312, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1262647938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5343,5 +5283,4 @@ SceneRoots:
   - {fileID: 2100183399}
   - {fileID: 1658819511}
   - {fileID: 1280014816}
-  - {fileID: 1229625737}
   - {fileID: 620433601}
