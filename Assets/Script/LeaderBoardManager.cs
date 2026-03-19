@@ -3,7 +3,7 @@ using UnityEngine;
 using TMPro; 
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
+using UnityEngine.SceneManagement;
 
 public class LeaderBoardManager : MonoBehaviour
 {
@@ -31,15 +31,24 @@ public class LeaderBoardManager : MonoBehaviour
         // ตอนนี้โค้ดจะรู้จัก apiManager แล้วครับ
         cachedData = await apiManager.GetStageLeaderBoard();
         var myRank = await apiManager.GetMyRank();
+        if (this == null) return;
         ShowMyRank(myRank);
         UpdateDisplay();
     }
 
-    public void CloseLeaderBoard()
+    public void CloseLeaderBoardToTaxGameMap()
     {
-        leaderboardPanel.SetActive(false);
+        SceneManager.LoadScene("TaxGameMap");
     }
-
+    public void CloseLeaderBoardToSelectGame()
+    {
+        SceneManager.LoadScene("SelectGame");
+    }
+    public void CloseLeaderBoardToSavingGameMap()
+    {
+        SceneManager.LoadScene("SavingGameMap");
+    }
+    
 
 
     private async void RefreshData()
