@@ -97,7 +97,6 @@ public class TaxMapManager : MonoBehaviour
             if (s.Stage == 5) SetStars(stage5Stars, s.Stars);
         }
     }
-
     void SetStars(Transform stage, int starCount)
     {
         for (int i = 1; i <= 3; i++)

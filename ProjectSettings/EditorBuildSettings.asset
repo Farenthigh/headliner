@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/HomeScene.unity
+    guid: 07c26f300d46d43ff9f701b1528c85cc
+  - enabled: 1
     path: Assets/Scenes/LoginScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -53,9 +56,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Achievement.unity
     guid: a618b490c5afd44d19546fe6e56505d1
-  - enabled: 1
-    path: Assets/Scenes/HomeScene.unity
-    guid: 07c26f300d46d43ff9f701b1528c85cc
   - enabled: 0
     path: Assets/Scenes/Chatbot.unity
     guid: e4878ac31f5794f9c91d34e08435845a
