@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155e247e268c44a9095f1438a34495c1, type: 3}
+  m_Name: Innocent Scammer
+  m_EditorClassIdentifier: Assembly-CSharp::Event
+  eventType: 0
+  eventValueType: 0
+  eventValue: -150
+  rarity: 0
+  icon: {fileID: 8007377939379766679, guid: 78a3dd191e1764143824d63b0e39b217, type: 3}
+  eventName: Innocent Scammer
+  description: "\u0E21\u0E35\u0E04\u0E19\u0E21\u0E32\u0E2B\u0E25\u0E2D\u0E01\u0E02\u0E32\u0E22\u0E02\u0E2D\u0E07\u0E1B\u0E25\u0E2D\u0E21\n\u0E43\u0E2B\u0E49\u0E04\u0E38\u0E13\n\n\n-150"
