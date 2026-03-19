@@ -47,6 +47,17 @@ public class StoryManager : MonoBehaviour
     public Vector2 topCloudTargetPos = new Vector2(0f, 407.92f);    
     public Vector2 bottomCloudTargetPos = new Vector2(0f, -407.92f); 
 
+    [System.Serializable]
+    public class TipBook
+    {
+        public int tipPageIndex;      
+        public int bookPageToOpen;  
+    }
+
+    [Header("Tip Books")]
+    public List<TipBook> tipBooks;
+    public SceneLoader sceneLoader;
+
     void Start()
     {
         if(vsPanel != null) vsPanel.SetActive(false);
@@ -132,6 +143,8 @@ public class StoryManager : MonoBehaviour
             if (examSystem != null) examSystem.gameObject.SetActive(false);
         }
 
+        
+
         if(currentIndex == allPages.Count - 1)
         {
             Debug.Log("นี่คือหน้าสุดท้าย");
@@ -150,6 +163,36 @@ public class StoryManager : MonoBehaviour
             }
 
             if (nextButton != null) nextButton.SetActive(false);
+        }
+
+        // ปิด tips ก่อนทุกครั้ง
+        if (sceneLoader != null)
+            sceneLoader.ExitTips();
+
+        // อัปเดตหน้าที่ควรเปิด — เอาอันที่ใกล้ที่สุดไม่เกิน currentIndex
+        int bestPage = 0;
+        int bestIndex = -1;
+
+        foreach (TipBook tip in tipBooks)
+        {
+            if (currentIndex >= tip.tipPageIndex && tip.tipPageIndex > bestIndex)
+            {
+                bestIndex = tip.tipPageIndex;
+                bestPage = tip.bookPageToOpen;
+            }
+        }
+
+        if (sceneLoader != null)
+            sceneLoader.defaultPageToOpen = bestPage;
+
+        // เปิดอัตโนมัติถ้าตรงกับฉากนี้พอดี
+        foreach (TipBook tip in tipBooks)
+        {
+            if (currentIndex == tip.tipPageIndex)
+            {
+                if (sceneLoader != null)
+                    sceneLoader.OpenTips();
+            }
         }
     }
     IEnumerator PlayVSEffectAndStartQuiz()
