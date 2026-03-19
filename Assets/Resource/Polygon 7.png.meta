@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: bf753505ec4ad40ec8c360fbe5c4f97f
+guid: ffe73b35c02e041019eb97e5be8ea990
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7095936741910908937
-    second: tips_0
-  - first:
-      213: -6284505015297105309
-    second: tips_1
+      213: 5245666528448557965
+    second: Polygon 7_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tips_0
+      name: Polygon 7_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 62
-        width: 6
-        height: 7
+        x: 0
+        y: 0
+        width: 134
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ffe1cd012b268d90800000000000000
-      internalID: -7095936741910908937
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tips_1
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 14
-        width: 72
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3622e0e3cf3f8c8a0800000000000000
-      internalID: -6284505015297105309
+      spriteID: d8335563ae95cc840800000000000000
+      internalID: 5245666528448557965
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tips_0: -7095936741910908937
-      tips_1: -6284505015297105309
+      Polygon 7_0: 5245666528448557965
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
