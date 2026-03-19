@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;   // ถ้าใช้ Text / Image
 using System.Collections;
 using UnityEngine.SceneManagement;
-public class GameResult : MonoBehaviour
+public class SavingGameResult : MonoBehaviour
 {
+    public static SavingGameResult Instance;
     [Header("Victory UI")]
     [SerializeField] private GameObject victoryIntroUI;
     [SerializeField] private GameObject victoryResultUI;
@@ -35,8 +36,18 @@ public class GameResult : MonoBehaviour
     [Header("Next Level")]
     [SerializeField] private string nextSceneName;
 
-
-
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         victoryIntroUI.SetActive(false);
@@ -45,10 +56,10 @@ public class GameResult : MonoBehaviour
         defeatIntroUI.SetActive(false);
         defeatResultUI.SetActive(false);
     }
-    public void TriggerVictory(StoryManager storyManager)
+    public void TriggerVictory()
     {
         gameObject.SetActive(true);
-        StartCoroutine(VictoryFlow(storyManager));
+        StartCoroutine(VictoryFlow());
     }
 
     public void TriggerDefeat()
@@ -57,7 +68,7 @@ public class GameResult : MonoBehaviour
         StartCoroutine(DefeatFlow());
     }
 
-    private IEnumerator VictoryFlow(StoryManager storyManager)
+    private IEnumerator VictoryFlow()
     {
         victoryIntroUI.SetActive(true);
 
@@ -65,9 +76,6 @@ public class GameResult : MonoBehaviour
 
         victoryIntroUI.SetActive(false);
 
-        // 👉 ค่อยเปลี่ยนหน้า Story ตอนนี้
-        if (storyManager != null)
-            storyManager.OnClickNext();
     }
     public void ShowVictoryResultDirect(int starCount)
     {
