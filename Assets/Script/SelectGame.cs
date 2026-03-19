@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.SceneManagement;
 
 public class SelectGame : MonoBehaviour
 {
@@ -10,6 +9,7 @@ public class SelectGame : MonoBehaviour
     [SerializeField] private Button leaderboard;
 
 
+    [SerializeField] private Button investgame;
 
     private void Start()
     {
