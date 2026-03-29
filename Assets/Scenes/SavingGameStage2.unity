@@ -4467,11 +4467,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37c8834efe49400592e0b474f884eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGoalManager
-  stage: 0
-  baseGoal: 1000
-  goalAmount2: 1500
-  goalAmount3: 4000
-  goalMonth: 3
+  stage: 2
+  baseGoal: 15500
+  goalAmount2: 15600
+  goalAmount3: 15700
+  goalMonth: 6
   StarGoal1: {fileID: 1993647509}
   StarGoal2: {fileID: 618751626}
   StarGoal3: {fileID: 915994097}
@@ -4492,6 +4492,9 @@ MonoBehaviour:
   defeatBackground1: {fileID: -4883795571907323825, guid: a053e636afe454e2a8223c6eb98ab0c0, type: 3}
   defeatBackground2: {fileID: 354164613583611052, guid: 538c5693438a648a4b179ec0a6c89cf7, type: 3}
   passStar: {fileID: 4815476061570213978, guid: 9e7cc7393b686434ab065071836ec4cf, type: 3}
+  exit: {fileID: 0}
+  playAgain: {fileID: 0}
+  nextGame: {fileID: 0}
 --- !u!224 &899125577
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4758,25 +4761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a03c432142b49f9996f86e550f5a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGameResult
-  victoryIntroUI: {fileID: 0}
-  victoryResultUI: {fileID: 0}
-  Exit: {fileID: 0}
-  Play_again: {fileID: 0}
-  Next_game: {fileID: 0}
-  defeatIntroUI: {fileID: 0}
-  defeatResultUI: {fileID: 0}
-  d_Exit: {fileID: 0}
-  d_Play_again: {fileID: 0}
-  v_star1: {fileID: 0}
-  v_star2: {fileID: 0}
-  v_star3: {fileID: 0}
-  v_priority1: {fileID: 0}
-  v_priority2: {fileID: 0}
-  v_priority3: {fileID: 0}
-  d_star1: {fileID: 0}
-  d_star2: {fileID: 0}
-  d_star3: {fileID: 0}
-  nextSceneName: 
 --- !u!1 &934193851
 GameObject:
   m_ObjectHideFlags: 0
@@ -7192,9 +7176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGameLogicManager
   secondsInOneMonth: 10
-  startingCash: 1000
-  cashPerMonth: 1000
-  goalMonth: 12
+  startingCash: 3000
+  cashPerMonth: 2000
+  goalMonth: 6
   banks:
   - {fileID: 311653201}
   - {fileID: 1310717039}
