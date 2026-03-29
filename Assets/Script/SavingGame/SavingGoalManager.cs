@@ -1,10 +1,12 @@
 
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class SavingGoalManager : MonoBehaviour
 {
     public static SavingGoalManager Instance { get; private set; }
+    [SerializeField] private int stage;
     [SerializeField] private float baseGoal = 1000f;
     [SerializeField] private float goalAmount2 = 5000f;
     [SerializeField] private float goalAmount3 = 10000f;
@@ -12,45 +14,93 @@ public class SavingGoalManager : MonoBehaviour
     [SerializeField] private Image StarGoal1;
     [SerializeField] private Image StarGoal2;
     [SerializeField] private Image StarGoal3;
+    [SerializeField] private string Priority1;
+    [SerializeField] private GameObject PriorityParent1;
+    [SerializeField] private TMP_Text PriorityText1;
+    [SerializeField] private Image PriorityImage1;
+    [SerializeField] private string Priority2;
+    [SerializeField] private GameObject PriorityParent2;
+    [SerializeField] private TMP_Text PriorityText2;
+    [SerializeField] private Image PriorityImage2;
+    [SerializeField] private string Priority3;
+    [SerializeField] private GameObject PriorityParent3;
+    [SerializeField] private TMP_Text PriorityText3;
+    [SerializeField] private Image PriorityImage3;
+    [SerializeField] private Image ResultBackground1;
+    [SerializeField] private Image ResultBackground2;
+    [SerializeField] private Sprite defeatBackground1;
+    [SerializeField] private Sprite defeatBackground2;
     [SerializeField] private Sprite passStar;
+
+
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
     }
-    private void Update()
+    private void Start()
     {
-        CheckGoals(SavingGameLogicManager.Instance.GetAllAssets());
+        PriorityText1.text = Priority1;
+        PriorityText2.text = Priority2;
+        PriorityText3.text = Priority3;
+        ResultBackground1.gameObject.SetActive(false);
+        ResultBackground2.gameObject.SetActive(false);
+        PriorityParent1.SetActive(false);
+        PriorityParent2.SetActive(false);
+        PriorityParent3.SetActive(false);
+
     }
     public void CheckGoals(float totalAssets)
     {
-        if (SavingGameLogicManager.Instance.GetCurrentMonth() >= goalMonth + 1) return;
+
         // หยุดเวลาเมื่อเลยเดือนเป้าหมายแล้ว
         // ปิดทุกหน้าต่างที่เกี่ยวข้องกับการเล่นเกม
         // แสดงPanelที่บอกว่าเกมจบแล้ว
+
+        int starsEarned = 0;
+
         if (totalAssets >= goalAmount3)
         {
             Debug.Log("Congratulations! You've reached Goal 3!");
-            StarGoal3.sprite = passStar;
+            starsEarned += 1;
+            PriorityImage3.sprite = passStar;
         }
         if (totalAssets >= goalAmount2)
         {
             Debug.Log("Great job! You've reached Goal 2!");
-            StarGoal2.sprite = passStar;
+            starsEarned += 1;
+            PriorityImage2.sprite = passStar;
         }
         if (totalAssets >= baseGoal)
         {
             Debug.Log("Good start! You've reached Goal 1!");
-            StarGoal1.sprite = passStar;
+            starsEarned += 1;
+            PriorityImage1.sprite = passStar;
         }
+        if (starsEarned == 0)
+        {
+            ResultBackground1.sprite = defeatBackground1;
+            ResultBackground2.sprite = defeatBackground2;
+        }
+        else
+        {
+            if (starsEarned >= 1) StarGoal1.sprite = passStar;
+            if (starsEarned >= 2) StarGoal2.sprite = passStar;
+            if (starsEarned >= 3) StarGoal3.sprite = passStar;
+        }
+        Debug.Log($"Total Assets: {totalAssets}, Stars Earned: {starsEarned}");
+        StartCoroutine(ShowResults());
+
+
     }
+
     public float GetGoalAmount()
     {
         return baseGoal;
@@ -59,4 +109,25 @@ public class SavingGoalManager : MonoBehaviour
     {
         return goalMonth;
     }
+    public void AddGoal(float goal)
+    {
+
+        baseGoal += goal;
+    }
+    private IEnumerator ShowResults()
+    {
+        ResultBackground1.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        ResultBackground1.gameObject.SetActive(false);
+        ResultBackground2.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        PriorityParent1.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        PriorityParent2.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        PriorityParent3.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        ResultButtonPanelUI.Instance.SetShowPanel(true);
+    }
+
 }

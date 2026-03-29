@@ -207,6 +207,16 @@ public class APIManager : MonoBehaviour
         return response.Headers.Location;
     }
 
+    public async Task SavingGameResult(int stage, int stars)
+    {
+        HttpResponseMessage response = await client.PostAsync(
+            "users/savinggameresult/", new StringContent(
+                JsonUtility.ToJson(new { stage = stage, stars = stars }),
+                System.Text.Encoding.UTF8,
+                "application/json"));
+        response.EnsureSuccessStatusCode();
+    }
+
     public void Logout()
     {
         Token = "";

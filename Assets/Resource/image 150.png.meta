@@ -1,28 +1,22 @@
 fileFormatVersion: 2
-guid: 472ddd33eb93e4df283a69458d48823c
+guid: 6b586ced5c496414dadc68219e1d6d26
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1536458441065289963
-    second: LOG OUT_0
+      213: 854668074082671284
+    second: image 150_0
   - first:
-      213: -5871981690748650677
-    second: LOG OUT_1
+      213: -5251375243002976200
+    second: image 150_1
   - first:
-      213: -7196546124443057017
-    second: LOG OUT_2
+      213: 6239248110934943003
+    second: image 150_2
   - first:
-      213: -6094984568102982345
-    second: LOG OUT_3
+      213: -2052500809457384230
+    second: image 150_3
   - first:
-      213: 7380247620256593053
-    second: LOG OUT_4
-  - first:
-      213: -632731122261218034
-    second: LOG OUT_5
-  - first:
-      213: -5775042864914638441
-    second: LOG OUT_6
+      213: -5543970542362881017
+    second: image 150_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -114,17 +108,52 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LOG OUT_0
+      name: image 150_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 7
+        x: 88
+        y: 29
+        width: 321
+        height: 363
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ba909cc5146cdb00800000000000000
+      internalID: 854668074082671284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: image 150_1
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 82
         width: 27
-        height: 35
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be8d8d7cfc8925510800000000000000
-      internalID: 1536458441065289963
+      spriteID: 838e68a1a0e5f17b0800000000000000
+      internalID: -5251375243002976200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LOG OUT_1
+      name: image 150_2
       rect:
         serializedVersion: 2
-        x: 25
-        y: 6
-        width: 32
-        height: 36
+        x: 420
+        y: 86
+        width: 8
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4b345b63c7828ea0800000000000000
-      internalID: -5871981690748650677
+      spriteID: b15edc59913469650800000000000000
+      internalID: 6239248110934943003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LOG OUT_2
+      name: image 150_3
       rect:
         serializedVersion: 2
-        x: 58
-        y: 6
-        width: 32
-        height: 36
+        x: 115
+        y: 24
+        width: 13
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,42 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7848bd2cd6bb02c90800000000000000
-      internalID: -7196546124443057017
+      spriteID: ad4471f636d0483e0800000000000000
+      internalID: -2052500809457384230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LOG OUT_3
-      rect:
-        serializedVersion: 2
-        x: 103
-        y: 6
-        width: 32
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 73debb2f3d34a6ba0800000000000000
-      internalID: -6094984568102982345
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LOG OUT_4
+      name: image 150_4
       rect:
         serializedVersion: 2
         x: 136
-        y: 6
-        width: 31
-        height: 36
+        y: 27
+        width: 9
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,52 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d94f0dfbb18eb6660800000000000000
-      internalID: 7380247620256593053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LOG OUT_5
-      rect:
-        serializedVersion: 2
-        x: 168
-        y: 6
-        width: 33
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e0d294b85661837f0800000000000000
-      internalID: -632731122261218034
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LOG OUT_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 201
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 799db12ac1deadfa0800000000000000
-      internalID: -5775042864914638441
+      spriteID: 7041b393a2cdf03b0800000000000000
+      internalID: -5543970542362881017
       vertices: []
       indices: 
       edges: []
@@ -285,13 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LOG OUT_0: 1536458441065289963
-      LOG OUT_1: -5871981690748650677
-      LOG OUT_2: -7196546124443057017
-      LOG OUT_3: -6094984568102982345
-      LOG OUT_4: 7380247620256593053
-      LOG OUT_5: -632731122261218034
-      LOG OUT_6: -5775042864914638441
+      image 150_0: 854668074082671284
+      image 150_1: -5251375243002976200
+      image 150_2: 6239248110934943003
+      image 150_3: -2052500809457384230
+      image 150_4: -5543970542362881017
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

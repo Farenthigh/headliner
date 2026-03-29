@@ -3,26 +3,26 @@ guid: 472ddd33eb93e4df283a69458d48823c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1536458441065289963
-    second: LOG OUT_0
+      213: 1950444642548125415
+    second: Log out_0
   - first:
-      213: -5871981690748650677
-    second: LOG OUT_1
+      213: -1263709620559869054
+    second: Log out_1
   - first:
-      213: -7196546124443057017
-    second: LOG OUT_2
+      213: 6679242118527248601
+    second: Log out_2
   - first:
-      213: -6094984568102982345
-    second: LOG OUT_3
+      213: -1446236954656745684
+    second: Log out_3
   - first:
-      213: 7380247620256593053
-    second: LOG OUT_4
+      213: -7668632336038209036
+    second: Log out_4
   - first:
-      213: -632731122261218034
-    second: LOG OUT_5
+      213: 1742958836845009260
+    second: Log out_5
   - first:
-      213: -5775042864914638441
-    second: LOG OUT_6
+      213: 6910356071921810621
+    second: Log out_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,7 +118,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LOG OUT_0
+      name: Log out_0
       rect:
         serializedVersion: 2
         x: 1
@@ -133,14 +133,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be8d8d7cfc8925510800000000000000
-      internalID: 1536458441065289963
+      spriteID: 7ee0529811f511b10800000000000000
+      internalID: 1950444642548125415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LOG OUT_1
+      name: Log out_1
       rect:
         serializedVersion: 2
         x: 25
@@ -155,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4b345b63c7828ea0800000000000000
-      internalID: -5871981690748650677
+      spriteID: 28b0947abc6667ee0800000000000000
+      internalID: -1263709620559869054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LOG OUT_2
+      name: Log out_2
       rect:
         serializedVersion: 2
         x: 58
@@ -177,14 +177,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7848bd2cd6bb02c90800000000000000
-      internalID: -7196546124443057017
+      spriteID: 9d8e4a3915f61bc50800000000000000
+      internalID: 6679242118527248601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LOG OUT_3
+      name: Log out_3
       rect:
         serializedVersion: 2
         x: 103
@@ -199,14 +199,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 73debb2f3d34a6ba0800000000000000
-      internalID: -6094984568102982345
+      spriteID: c2754a8f62fedebe0800000000000000
+      internalID: -1446236954656745684
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LOG OUT_4
+      name: Log out_4
       rect:
         serializedVersion: 2
         x: 136
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d94f0dfbb18eb6660800000000000000
-      internalID: 7380247620256593053
+      spriteID: 4f95e51458b839590800000000000000
+      internalID: -7668632336038209036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LOG OUT_5
+      name: Log out_5
       rect:
         serializedVersion: 2
         x: 168
@@ -243,14 +243,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e0d294b85661837f0800000000000000
-      internalID: -632731122261218034
+      spriteID: c695648d3db303810800000000000000
+      internalID: 1742958836845009260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LOG OUT_6
+      name: Log out_6
       rect:
         serializedVersion: 2
         x: 0
@@ -265,8 +265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 799db12ac1deadfa0800000000000000
-      internalID: -5775042864914638441
+      spriteID: dbcfc5a1c3486ef50800000000000000
+      internalID: 6910356071921810621
       vertices: []
       indices: 
       edges: []
@@ -285,13 +285,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LOG OUT_0: 1536458441065289963
-      LOG OUT_1: -5871981690748650677
-      LOG OUT_2: -7196546124443057017
-      LOG OUT_3: -6094984568102982345
-      LOG OUT_4: 7380247620256593053
-      LOG OUT_5: -632731122261218034
-      LOG OUT_6: -5775042864914638441
+      Log out_0: 1950444642548125415
+      Log out_1: -1263709620559869054
+      Log out_2: 6679242118527248601
+      Log out_3: -1446236954656745684
+      Log out_4: -7668632336038209036
+      Log out_5: 1742958836845009260
+      Log out_6: 6910356071921810621
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

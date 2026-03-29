@@ -13,6 +13,7 @@ public class login : MonoBehaviour
     [SerializeField] private Image eyeIconImage;
     [SerializeField] private Sprite eyeOpenSprite;
     [SerializeField] private Sprite eyeClosedSprite;
+    [SerializeField] private TMP_Text errorText;
 
     private bool isPasswordVisible = false;
 
@@ -29,6 +30,8 @@ public class login : MonoBehaviour
         passwordInput.contentType = TMP_InputField.ContentType.Password;
         if (eyeIconImage != null && eyeClosedSprite != null) 
             eyeIconImage.sprite = eyeClosedSprite;
+
+        if (errorText != null) errorText.text = "";
 
     }
     private void TogglePasswordVisibility()
@@ -54,6 +57,14 @@ public class login : MonoBehaviour
     {
         string email = emailInput.text;
         string password = passwordInput.text;
+
+        if (errorText != null) errorText.text = "";
+
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        {
+            if (errorText != null) errorText.text = "please fill in all fields";
+            return;
+        }
         try
         {
             await APIManager.Instance.Login(email, password);
@@ -66,6 +77,10 @@ public class login : MonoBehaviour
         catch (System.Exception ex)
         {
             Debug.Log("Login failed: " + ex.Message);
+            if (errorText != null) 
+            {
+                errorText.text = "Email or password is incorrect. Please try again.";
+            }
         }
     }
 
