@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class StoryManager : MonoBehaviour
 {
+    [Header("Controllers")]
+    public TransitionController transitionController;
+
+    [Header("Story UI")]
    public Text dialogueTextUI;
    public Text speakerNameUI;
    public Image backgroundImageUI;
@@ -72,7 +76,7 @@ public class StoryManager : MonoBehaviour
 
     public void OnClickNext()
     {
-        if (isTyping)
+       if (isTyping)
         {
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
             dialogueTextUI.text = allPages[currentIndex].dialogueText;
@@ -82,8 +86,37 @@ public class StoryManager : MonoBehaviour
         {
             if (currentIndex < allPages.Count - 1)
             {
-                currentIndex++;
-                UpdateUI();
+                // 1. เช็กว่าพื้นหลังเปลี่ยนไหม?
+                Sprite currentBg = allPages[currentIndex].background;
+                Sprite nextBg = allPages[currentIndex + 1].background;
+                bool isBgChanged = (currentBg != nextBg && nextBg != null);
+
+                // 2. เช็กว่าหน้านั้นถูก "ติ๊กถูก" บังคับให้ Fade ไหม?
+                bool isForcedFade = allPages[currentIndex + 1].forceTransition;
+
+                // ถ้าพื้นหลังเปลี่ยน หรือ ถูกติ๊กบังคับ Fade ให้ทำงานผ่าน TransitionController
+                if ((isBgChanged || isForcedFade) && transitionController != null)
+                {
+                    // ปิดปุ่ม Next ชั่วคราว กันผู้เล่นกดรัวๆ ตอนจอกำลังมืด
+                    Button btn = nextButton.GetComponent<Button>();
+                    if (btn != null) btn.interactable = false;
+                    
+                    transitionController.PlaySceneFade(
+                        onMidFade: () => {
+                            currentIndex++;
+                            UpdateUI(); // เปลี่ยนหน้าตอนที่จอมืดสนิท
+                        },
+                        onComplete: () => {
+                            if (btn != null) btn.interactable = true; // เปิดปุ่มให้กดต่อได้
+                        }
+                    );
+                }
+                else
+                {
+                    // ไม่มีการเปลี่ยนฉาก และไม่ได้บังคับ Fade ก็ให้ข้อความเด้งขยับไปหน้าถัดไปทันที
+                    currentIndex++;
+                    UpdateUI();
+                }
             }
             else
             {
@@ -262,23 +295,43 @@ public class StoryManager : MonoBehaviour
     }
     void HandleCharacterLayout(StoryPage page)
     {
-        if (characterLeftUI != null) characterLeftUI.gameObject.SetActive(false);
-        if (characterCenterUI != null) characterCenterUI.gameObject.SetActive(false);
-        if (characterRightUI != null) characterRightUI.gameObject.SetActive(false);
-
-        if (page.characterCenter != null && characterCenterUI != null) SetupCharacter(characterCenterUI, page.characterCenter);
+        if (page.characterCenter != null && characterCenterUI != null)
+        {
+            SetupCharacter(characterCenterUI, page.characterCenter, page.forceCharacterFade);
+            if (characterLeftUI != null) characterLeftUI.gameObject.SetActive(false);
+            if (characterRightUI != null) characterRightUI.gameObject.SetActive(false);
+        }
         else
         {
-            if (page.characterLeft != null && characterLeftUI != null) SetupCharacter(characterLeftUI, page.characterLeft);
-            if (page.characterRight != null && characterRightUI != null) SetupCharacter(characterRightUI, page.characterRight);
+            if (characterCenterUI != null) characterCenterUI.gameObject.SetActive(false);
+            if (page.characterLeft != null && characterLeftUI != null)
+                SetupCharacter(characterLeftUI, page.characterLeft, page.forceCharacterFade);
+            else if (characterLeftUI != null) 
+                characterLeftUI.gameObject.SetActive(false); 
+            if (page.characterRight != null && characterRightUI != null)
+                SetupCharacter(characterRightUI, page.characterRight, page.forceCharacterFade);
+            else if (characterRightUI != null) 
+                characterRightUI.gameObject.SetActive(false); 
         }
     }
 
-    void SetupCharacter(Image characterUI, Sprite characterSprite)
+    void SetupCharacter(Image characterUI, Sprite characterSprite, bool forceFade)
     {
+        bool needsFadeIn = forceFade;
+        
         characterUI.sprite = characterSprite;
         characterUI.gameObject.SetActive(true);
-    
+
+        if (needsFadeIn && transitionController != null)
+        {
+            transitionController.FadeInCharacter(characterUI);
+        }
+        else
+        {
+            Color c = characterUI.color;
+            c.a = 1f;
+            characterUI.color = c;
+        }
     }
 
    void StartMove(Image character)
