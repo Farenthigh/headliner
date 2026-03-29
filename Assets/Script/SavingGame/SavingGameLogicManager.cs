@@ -57,9 +57,16 @@ public class SavingGameLogicManager : MonoBehaviour
         }
     }
 
-    private void AdvanceMonth()
+    public void AdvanceMonth()
     {
         currentMonth++;
+        if (currentMonth > SavingGoalManager.Instance.GetGoalMonth())
+        {
+            Debug.Log("Goal Month Reached! Checking goals...");
+            SavingGoalManager.Instance.CheckGoals(GetAllAssets());
+            SetIsPaused(true); // หยุดเกมเมื่อถึงเดือนเป้าหมาย
+            return;
+        }
         cash += cashPerMonth;
         SetIsPaused(true); // หยุดเกมชั่วคราวระหว่างการคำนวณและแสดงผล
         SavingGameUIManager.Instance.UpdateRoundMonth();
@@ -88,6 +95,10 @@ public class SavingGameLogicManager : MonoBehaviour
         EventManager.Instance.ResetEventTrigger();
         EventManager.Instance.RandomEvent();
 
+    }
+    public void Addtime(int time)
+    {
+        currentTime += time;
     }
     public int GetCurrentMonth()
     {

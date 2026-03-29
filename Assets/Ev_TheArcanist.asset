@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4574a2abd75344c7ba70559316e3ad7, type: 3}
   m_Name: Ev_TheArcanist
   m_EditorClassIdentifier: Assembly-CSharp::MoneyEvent
-  icon: {fileID: 0}
+  icon: {fileID: -1886156388885881694, guid: f0cfe9e8be2e7451da0d9a4849275955, type: 3}
   eventName: The Arcanist
   description: "\u0E40\u0E2A\u0E35\u0E22 150 \u0E40\u0E2B\u0E23\u0E35\u0E22\u0E0D
     \u0E40\u0E23\u0E35\u0E22\u0E19\u0E23\u0E39\u0E49\u0E15\u0E33\u0E23\u0E32\u0E40\u0E27\u0E17\u0E4C\u0E21\u0E19\u0E15\u0E23\u0E4C
     \u0E2D\u0E31\u0E1B\u0E40\u0E01\u0E23\u0E14\u0E27\u0E34\u0E0A\u0E32\u0E2D\u0E32\u0E04\u0E21\u0E02\u0E2D\u0E07\u0E04\u0E38\u0E13"
+  backcard: {fileID: -3165369043494433165, guid: 21470e131209945b2bc1f11949665197, type: 3}
+  frontcard: {fileID: 5604223034115033642, guid: bb7868d96b18f43af80a5a67b691eaee, type: 3}
   probability: 1
   goldAmount: -150

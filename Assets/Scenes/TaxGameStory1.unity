@@ -119,6 +119,59 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &2752495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2752497}
+  - component: {fileID: 2752496}
+  m_Layer: 0
+  m_Name: TipsPageController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2752496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2752495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62255412819da4dc4b65e9775e3f331d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TipsPageController
+  pages:
+  - {fileID: 55253303}
+  - {fileID: 998178197}
+  - {fileID: 2023786077}
+  - {fileID: 1001023790}
+  - {fileID: 2142824115}
+  flipDuration: 0.4
+  nextButton: {fileID: 985963447}
+  prevButton: {fileID: 1940872143}
+--- !u!4 &2752497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2752495}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 965.53143, y: 423.0692, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &35994883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,10 +180,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1290932387}
     m_Modifications:
+    - target: {fileID: 243685174663886332, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+    - target: {fileID: 486270694310341649, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8117901253267943034, guid: 85184fcd1de9945439aa9ac851d3fecb, type: 3}
+    - target: {fileID: 602149587871376632, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+    - target: {fileID: 639348024178139328, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+    - target: {fileID: 701555804904039436, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+    - target: {fileID: 857118392238431607, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
     - target: {fileID: 2287979810010689411, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
       propertyPath: nextSceneName
       value: TaxGameStory2
       objectReference: {fileID: 0}
+    - target: {fileID: 2537536871218113606, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
     - target: {fileID: 2921818050391590138, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -240
@@ -175,6 +256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameResult
       objectReference: {fileID: 0}
+    - target: {fileID: 7660995672047020517, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -184,6 +269,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2921818050391590138, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
   m_PrefabInstance: {fileID: 35994883}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &55253303 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4371229210700706050, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 953965118}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &111740336
 GameObject:
@@ -414,6 +504,56 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!1 &193154299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 193154301}
+  - component: {fileID: 193154300}
+  m_Layer: 0
+  m_Name: SceneLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &193154300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193154299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa672cb820c814a90a0c72b3c4234ffe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
+  saving: {fileID: 1542510343}
+  taxGameTips: {fileID: 1542510343}
+  icon: {fileID: 388895266}
+  bg: {fileID: 1807803241}
+  tipsPageController: {fileID: 2752496}
+  defaultPageToOpen: 0
+--- !u!4 &193154301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193154299}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 965.53143, y: 423.0692, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &213902059
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: -1}
+  m_AnchoredPosition: {x: 0, y: -0.00004154}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &214170271
@@ -859,6 +999,16 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!198 &383108413 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4326766847518952047, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
+  m_PrefabInstance: {fileID: 3813317817555529287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &388895266 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1528984047988115501, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 953965118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &425597597
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,6 +1088,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!224 &564845331 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 953965118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &624409057
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +1104,7 @@ GameObject:
   - component: {fileID: 624409058}
   - component: {fileID: 624409060}
   - component: {fileID: 624409059}
+  - component: {fileID: 624409061}
   m_Layer: 5
   m_Name: CharacterRight
   m_TagString: Untagged
@@ -1013,6 +1169,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624409057}
   m_CullTransparentMesh: 1
+--- !u!114 &624409061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624409057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4e96c4b8e254dafbdb6ad92ede6a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatCharacter
 --- !u!1 &662713647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,17 +1219,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &674702685 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7114852031150009824, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
-  m_PrefabInstance: {fileID: 5515702803595920392}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &743816241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,6 +1230,7 @@ GameObject:
   - component: {fileID: 743816242}
   - component: {fileID: 743816244}
   - component: {fileID: 743816243}
+  - component: {fileID: 743816245}
   m_Layer: 5
   m_Name: CharacterCenter
   m_TagString: Untagged
@@ -1137,6 +1295,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743816241}
   m_CullTransparentMesh: 1
+--- !u!114 &743816245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743816241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4e96c4b8e254dafbdb6ad92ede6a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatCharacter
 --- !u!1 &744611353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1479,6 +1649,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &866228089 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5784811080146751818, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
+  m_PrefabInstance: {fileID: 3813317817555529287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &891503635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,7 +1684,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AchievementManager
   backendUrl: http://localhost:8080
-  currentUserId: 1
   allAchievements:
   - {fileID: 11400000, guid: 47deae0b78f4d43fbaed1b8c170d2bc7, type: 2}
   - {fileID: 11400000, guid: f761f23d40f2f4277b2416fe8035634d, type: 2}
@@ -1527,11 +1701,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd1014bef09634a24bab7975a058c062, type: 2}
   - {fileID: 11400000, guid: cfd90d6aa468649d8b5c77aef3693b94, type: 2}
   - {fileID: 11400000, guid: 5ca495a8fc761462abd34174ba0080f5, type: 2}
-  popupPanel: {fileID: 1394361256}
-  popupNameText: {fileID: 1798528345}
+  popupPanel: {fileID: 1693964574}
+  popupNameText: {fileID: 1693964573}
   popupDescriptionText: {fileID: 0}
   popupDateText: {fileID: 0}
-  popupIconImage: {fileID: 674702685}
+  popupIconImage: {fileID: 1693964572}
+  mainAchievementPanel: {fileID: 0}
   achievementPrefab: {fileID: 0}
   achievementContainer: {fileID: 0}
 --- !u!4 &891503637
@@ -1546,7 +1721,8 @@ Transform:
   m_LocalPosition: {x: 967.20087, y: 491.9148, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1825765373}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &928263608
@@ -1624,6 +1800,658 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928263608}
   m_CullTransparentMesh: 1
+--- !u!1001 &953965118
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1290932387}
+    m_Modifications:
+    - target: {fileID: 822037808577774646, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 193154300}
+    - target: {fileID: 822037808577774646, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitTips
+      objectReference: {fileID: 0}
+    - target: {fileID: 1076335860543988928, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 193154300}
+    - target: {fileID: 1076335860543988928, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenTips
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119434274717323784, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: nextButton
+      value: 
+      objectReference: {fileID: 985963447}
+    - target: {fileID: 1119434274717323784, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: prevButton
+      value: 
+      objectReference: {fileID: 1940872143}
+    - target: {fileID: 1119434274717323784, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: 'pages.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2023786077}
+    - target: {fileID: 1603058641269299270, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_Name
+      value: TipsTaxGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6792608407913737928, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 151.8936
+      objectReference: {fileID: 0}
+    - target: {fileID: 6792608407913737928, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 151.8936
+      objectReference: {fileID: 0}
+    - target: {fileID: 6792608407913737928, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -913
+      objectReference: {fileID: 0}
+    - target: {fileID: 6792608407913737928, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 94
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2935826007489383782, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 2052453505}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+--- !u!1 &966137954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966137956}
+  - component: {fileID: 966137955}
+  - component: {fileID: 966137957}
+  m_Layer: 0
+  m_Name: StoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &966137955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966137954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29832a15318a453ca30c1e87c26d9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StoryManager
+  dialogueTextUI: {fileID: 1626854724}
+  speakerNameUI: {fileID: 795565461}
+  backgroundImageUI: {fileID: 214170271}
+  characterLeftUI: {fileID: 1201444882}
+  characterCenterUI: {fileID: 743816243}
+  characterRightUI: {fileID: 624409059}
+  speechBubbleUI: {fileID: 928263610}
+  nextButton: {fileID: 1705808509}
+  allPages:
+  - dialogueText: "\u0E13 \u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23 Tax Island
+      \u0E14\u0E34\u0E19\u0E41\u0E14\u0E19\u0E17\u0E35\u0E48\u0E40\u0E04\u0E22\u0E23\u0E38\u0E48\u0E07\u0E40\u0E23\u0E37\u0E2D\u0E07\u0E14\u0E49\u0E27\u0E22\u0E17\u0E2D\u0E07\u0E04\u0E33\u0E41\u0E25\u0E30\u0E01\u0E32\u0E23\u0E04\u0E49\u0E32\u0E02\u0E32\u0E22
+      \u0E41\u0E15\u0E48\u0E41\u0E25\u0E49\u0E27... "
+    speakerName: 
+    speakerPosition: 0
+    background: {fileID: 8053899242462091416, guid: 9250f99b3e7a547f494ee1e490b7e26d, type: 3}
+    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -5119980863986964875, guid: b2dba17db28b845cba91b8864bd6eaf9, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E2B\u0E21\u0E2D\u0E01\u0E41\u0E2B\u0E48\u0E07\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E31\u0E1A\u0E2A\u0E19\u0E01\u0E47\u0E40\u0E02\u0E49\u0E32\u0E1B\u0E01\u0E04\u0E25\u0E38\u0E21
+      \u0E1C\u0E39\u0E49\u0E04\u0E19\u0E2B\u0E25\u0E07\u0E25\u0E37\u0E21\u0E2B\u0E19\u0E49\u0E32\u0E17\u0E35\u0E48
+      \u0E1E\u0E48\u0E2D\u0E04\u0E49\u0E32\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E1A\u0E31\u0E0D\u0E0A\u0E35
+      \u0E02\u0E38\u0E19\u0E19\u0E32\u0E07\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E01\u0E0E\u0E40\u0E01\u0E13\u0E11\u0E4C
+      \u0E04\u0E25\u0E31\u0E07\u0E2B\u0E25\u0E27\u0E07\u0E27\u0E48\u0E32\u0E07\u0E40\u0E1B\u0E25\u0E48\u0E32 "
+    speakerName: 
+    speakerPosition: 0
+    background: {fileID: 4653932814348791077, guid: b77fa7cde836a4d01b21d60f3709352f, type: 3}
+    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -4756028443593143600, guid: 59188804024644bdb9802b3b7e411cbb, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E04\u0E27\u0E32\u0E21\u0E27\u0E38\u0E48\u0E19\u0E27\u0E32\u0E22\u0E01\u0E48\u0E2D\u0E15\u0E31\u0E27\u0E40\u0E1B\u0E47\u0E19\u0E1B\u0E35\u0E28\u0E32\u0E08\u0E01\u0E31\u0E14\u0E01\u0E34\u0E19\u0E40\u0E21\u0E37\u0E2D\u0E07"
+    speakerName: 
+    speakerPosition: 0
+    background: {fileID: 4653932814348791077, guid: b77fa7cde836a4d01b21d60f3709352f, type: 3}
+    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -4756028443593143600, guid: 59188804024644bdb9802b3b7e411cbb, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E21\u0E35\u0E40\u0E1E\u0E35\u0E22\u0E07\u0E1C\u0E39\u0E49\u0E40\u0E14\u0E35\u0E22\u0E27\u0E17\u0E35\u0E48\u0E08\u0E30\u0E01\u0E2D\u0E1A\u0E01\u0E39\u0E49\u0E2A\u0E16\u0E32\u0E19\u0E01\u0E32\u0E23\u0E13\u0E4C\u0E19\u0E35\u0E49\u0E44\u0E14\u0E49"
+    speakerName: 
+    speakerPosition: 0
+    background: {fileID: 4653932814348791077, guid: b77fa7cde836a4d01b21d60f3709352f, type: 3}
+    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 9159138986042934158, guid: ce593446a0b5c4f919a083dfa35c3cf5, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E19\u0E31\u0E48\u0E19\u0E04\u0E37\u0E2D '\u0E40\u0E08\u0E49\u0E32'"
+    speakerName: 
+    speakerPosition: 2
+    background: {fileID: 4653932814348791077, guid: b77fa7cde836a4d01b21d60f3709352f, type: 3}
+    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E40\u0E2E\u0E49\u0E2D... \u0E02\u0E49\u0E32\u0E1B\u0E27\u0E14\u0E2B\u0E31\u0E27\u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E40\u0E01\u0E34\u0E19
+      \u0E17\u0E48\u0E32\u0E19\u0E40\u0E2A\u0E19\u0E32\u0E1A\u0E14\u0E35\u0E04\u0E25\u0E31\u0E07\u0E04\u0E19\u0E43\u0E2B\u0E21\u0E48"
+    speakerName: "\u0E1E\u0E23\u0E30\u0E23\u0E32\u0E0A\u0E32"
+    speakerPosition: 0
+    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E40\u0E08\u0E49\u0E32\u0E21\u0E32\u0E01\u0E47\u0E14\u0E35\u0E41\u0E25\u0E49\u0E27...
+      \u0E14\u0E39\u0E2A\u0E34! \u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23\u0E40\u0E23\u0E32\u0E01\u0E33\u0E25\u0E31\u0E07\u0E08\u0E30\u0E25\u0E48\u0E21\u0E2A\u0E25\u0E32\u0E22
+      \u0E44\u0E21\u0E48\u0E43\u0E0A\u0E48\u0E40\u0E1E\u0E23\u0E32\u0E30\u0E40\u0E23\u0E32\u0E44\u0E21\u0E48\u0E21\u0E35\u0E17\u0E23\u0E31\u0E1E\u0E22\u0E32\u0E01\u0E23\u0E19\u0E30
+      \u0E41\u0E15\u0E48\u0E40\u0E1E\u0E23\u0E32\u0E30\u0E23\u0E30\u0E1A\u0E1A\u0E01\u0E32\u0E23\u0E40\u0E07\u0E34\u0E19\u0E02\u0E2D\u0E07\u0E40\u0E23\u0E32\u0E21\u0E31\u0E19\u0E1E\u0E31\u0E07\n\u0E44\u0E1B\u0E2B\u0E21\u0E14\u0E41\u0E25\u0E49\u0E27!"
+    speakerName: "\u0E1E\u0E23\u0E30\u0E23\u0E32\u0E0A\u0E32"
+    speakerPosition: 0
+    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E1B\u0E23\u0E30\u0E0A\u0E32\u0E0A\u0E19\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E27\u0E48\u0E32\u0E15\u0E49\u0E2D\u0E07\u0E08\u0E48\u0E32\u0E22\u0E20\u0E32\u0E29\u0E35\u0E22\u0E31\u0E07\u0E44\u0E07
+      \u0E1A\u0E32\u0E07\u0E04\u0E19\u0E01\u0E47\u0E2B\u0E19\u0E35 \u0E1A\u0E32\u0E07\u0E04\u0E19\u0E01\u0E47\u0E08\u0E48\u0E32\u0E22\u0E1C\u0E34\u0E14\u0E08\u0E19\u0E42\u0E14\u0E19\u0E1B\u0E23\u0E31\u0E1A...
+      \u0E02\u0E49\u0E32\u0E2D\u0E22\u0E32\u0E01\u0E43\u0E2B\u0E49\u0E40\u0E08\u0E49\u0E32\u0E0A\u0E48\u0E27\u0E22\u0E2D\u0E2D\u0E01\u0E44\u0E1B\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E43\u0E2B\u0E49\u0E17\u0E35
+      \u0E17\u0E33\u0E43\u0E2B\u0E49\u0E17\u0E38\u0E01\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E21\u0E31\u0E19
+      '\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07' \u0E17\u0E35\u0E40\u0E16\u0E2D\u0E30!"
+    speakerName: "\u0E1E\u0E23\u0E30\u0E23\u0E32\u0E0A\u0E32"
+    speakerPosition: 0
+    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E07\u0E32\u0E19\u0E22\u0E32\u0E01\u0E19\u0E48\u0E32\u0E14\u0E39...
+      \u0E41\u0E15\u0E48\u0E02\u0E49\u0E32\u0E08\u0E30\u0E25\u0E2D\u0E07\u0E14\u0E39!"
+    speakerName: 
+    speakerPosition: 0
+    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
+    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E02\u0E2D\u0E1A\u0E43\u0E08\u0E21\u0E32\u0E01! \u0E41\u0E15\u0E48\u0E40\u0E08\u0E49\u0E32\u0E44\u0E1B\u0E21\u0E37\u0E2D\u0E40\u0E1B\u0E25\u0E48\u0E32\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49...
+      \u0E02\u0E49\u0E32\u0E02\u0E2D\u0E21\u0E2D\u0E1A\u0E1C\u0E39\u0E49\u0E0A\u0E48\u0E27\u0E22\u0E17\u0E35\u0E48\u0E40\u0E01\u0E48\u0E07\u0E17\u0E35\u0E48\u0E2A\u0E38\u0E14\u0E43\u0E19\u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23\u0E43\u0E2B\u0E49\u0E40\u0E08\u0E49\u0E32!"
+    speakerName: "\u0E1E\u0E23\u0E30\u0E23\u0E32\u0E0A\u0E32"
+    speakerPosition: 0
+    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E15\u0E31\u0E49\u0E07\u0E0A\u0E37\u0E48\u0E2D\u0E43\u0E2B\u0E49\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E19\u0E23\u0E48\u0E27\u0E21\u0E17\u0E32\u0E07\u0E02\u0E2D\u0E07\u0E04\u0E38\u0E13"
+    speakerName: 
+    speakerPosition: 2
+    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
+    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E1B\u0E34\u0E4A\u0E07\u0E1B\u0E48\u0E2D\u0E07!~ \u0E2A\u0E27\u0E31\u0E2A\u0E14\u0E35\u0E08\u0E49\u0E32\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
+      \u0E02\u0E49\u0E32\u0E0A\u0E37\u0E48\u0E2D '...' \u0E20\u0E39\u0E15\u0E34\u0E1B\u0E23\u0E30\u0E08\u0E33\u0E01\u0E23\u0E21\u0E2A\u0E23\u0E23\u0E1E\u0E32\u0E01\u0E23\u0E40\u0E27\u0E17\u0E21\u0E19\u0E15\u0E23\u0E4C!"
+    speakerName: Chatbot
+    speakerPosition: 2
+    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E23\u0E32\u0E0A\u0E32\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E21\u0E32\u0E15\u0E31\u0E27\u0E40\u0E1B\u0E25\u0E48\u0E32\u0E19\u0E30
+      \u0E02\u0E49\u0E32\u0E1E\u0E01\u0E2A\u0E34\u0E48\u0E07\u0E19\u0E35\u0E49\u0E21\u0E32\u0E14\u0E49\u0E27\u0E22!"
+    speakerName: Chatbot
+    speakerPosition: 2
+    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\"\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C\u0E2A\u0E23\u0E23\u0E1E\u0E32\u0E01\u0E23\u0E28\u0E31\u0E01\u0E14\u0E34\u0E4C\u0E2A\u0E34\u0E17\u0E18\u0E34\u0E4C\"
+      \n(The Revenue Grimoire)\n\L"
+    speakerName: "\u0E17\u0E48\u0E32\u0E19\u0E44\u0E14\u0E49\u0E23\u0E31\u0E1A\u0E44\u0E2D\u0E40\u0E17\u0E21\u0E23\u0E30\u0E14\u0E31\u0E1A\u0E15\u0E33\u0E19\u0E32\u0E19"
+    speakerPosition: 2
+    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
+    speechBubble: {fileID: 0}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C\u0E40\u0E25\u0E48\u0E21\u0E19\u0E35\u0E49\u0E23\u0E27\u0E1A\u0E23\u0E27\u0E21\u0E04\u0E27\u0E32\u0E21\u0E23\u0E39\u0E49\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E20\u0E32\u0E29\u0E35\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14\u0E43\u0E19\u0E08\u0E31\u0E01\u0E23\u0E27\u0E32\u0E25\u0E40\u0E2D\u0E32\u0E44\u0E27\u0E49!
+      \u0E21\u0E31\u0E19\u0E04\u0E37\u0E2D\u0E2D\u0E32\u0E27\u0E38\u0E18\u0E40\u0E14\u0E35\u0E22\u0E27\u0E17\u0E35\u0E48\u0E08\u0E30\u0E43\u0E0A\u0E49\u0E1B\u0E23\u0E32\u0E1A\u0E1E\u0E27\u0E01\u0E21\u0E2D\u0E19\u0E2A\u0E40\u0E15\u0E2D\u0E23\u0E4C\u0E17\u0E35\u0E48\u0E40\u0E01\u0E34\u0E14\u0E08\u0E32\u0E01\u0E04\u0E27\u0E32\u0E21\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E1C\u0E34\u0E14\u0E44\u0E14\u0E49!"
+    speakerName: Chatbot
+    speakerPosition: 0
+    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E40\u0E2D\u0E32\u0E25\u0E48\u0E30! \u0E20\u0E32\u0E23\u0E01\u0E34\u0E08\u0E41\u0E23\u0E01\u0E02\u0E2D\u0E07\u0E40\u0E23\u0E32\u0E04\u0E37\u0E2D
+      '\u0E1B\u0E23\u0E30\u0E15\u0E39\u0E40\u0E21\u0E37\u0E2D\u0E07\u0E2B\u0E19\u0E49\u0E32\u0E14\u0E48\u0E32\u0E19'...
+      \u0E02\u0E49\u0E32\u0E44\u0E14\u0E49\u0E02\u0E48\u0E32\u0E27\u0E27\u0E48\u0E32\u0E21\u0E35\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E19\u0E34\u0E2A\u0E31\u0E22\u0E40\u0E2A\u0E35\u0E22\u0E01\u0E33\u0E25\u0E31\u0E07\u0E23\u0E35\u0E14\u0E44\u0E16\u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E2D\u0E22\u0E39\u0E48
+      \u0E23\u0E35\u0E1A\u0E44\u0E1B\u0E01\u0E31\u0E19\u0E40\u0E16\u0E2D\u0E30!"
+    speakerName: Chatbot
+    speakerPosition: 0
+    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32
+      \u0E23\u0E30\u0E2B\u0E27\u0E48\u0E32\u0E07\u0E40\u0E14\u0E34\u0E19\u0E44\u0E1B
+      \u0E02\u0E49\u0E32\u0E02\u0E2D\u0E17\u0E27\u0E19\u0E04\u0E27\u0E32\u0E21\u0E08\u0E33\u0E2B\u0E19\u0E48\u0E2D\u0E22\n\u0E01\u0E32\u0E23\u0E15\u0E48\u0E2D\u0E2A\u0E39\u0E49\u0E02\u0E2D\u0E07\u0E17\u0E48\u0E32\u0E19\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E43\u0E0A\u0E49\u0E14\u0E32\u0E1A\u0E1F\u0E31\u0E19\u0E19\u0E30
+      \u0E41\u0E15\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E43\u0E0A\u0E49\u0E04\u0E27\u0E32\u0E21\u0E23\u0E39\u0E49"
+    speakerName: Chatbot
+    speakerPosition: 1
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E21\u0E2D\u0E19\u0E2A\u0E40\u0E15\u0E2D\u0E23\u0E4C\u0E16\u0E32\u0E21
+      \u0E2B\u0E23\u0E37\u0E2D\u0E42\u0E08\u0E21\u0E15\u0E35\u0E14\u0E49\u0E27\u0E22\u0E04\u0E27\u0E32\u0E21\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E1C\u0E34\u0E14
+      \u0E17\u0E48\u0E32\u0E19\u0E15\u0E49\u0E2D\u0E07\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E04\u0E33\u0E15\u0E2D\u0E1A\u0E17\u0E35\u0E48\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E2A\u0E30\u0E17\u0E49\u0E2D\u0E19\u0E01\u0E32\u0E23\u0E42\u0E08\u0E21\u0E15\u0E35\u0E01\u0E25\u0E31\u0E1A\u0E44\u0E1B!"
+    speakerName: Chatbot
+    speakerPosition: 1
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E16\u0E49\u0E32\u0E15\u0E2D\u0E1A\u0E16\u0E39\u0E01 \u0E21\u0E2D\u0E19\u0E2A\u0E40\u0E15\u0E2D\u0E23\u0E4C\u0E08\u0E30\u0E1A\u0E32\u0E14\u0E40\u0E08\u0E47\u0E1A
+      \u0E41\u0E15\u0E48\u0E16\u0E49\u0E32\u0E15\u0E2D\u0E1A\u0E1C\u0E34\u0E14\u0E40\u0E25\u0E37\u0E2D\u0E14
+      (HP) \u0E02\u0E2D\u0E07\u0E17\u0E48\u0E32\u0E19\u0E08\u0E30\u0E25\u0E14\u0E25\u0E07
+      \u0E23\u0E30\u0E27\u0E31\u0E07\u0E15\u0E31\u0E27\u0E14\u0E49\u0E27\u0E22\u0E25\u0E48\u0E30!"
+    speakerName: Chatbot
+    speakerPosition: 2
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E19\u0E31\u0E48\u0E19\u0E44\u0E07! \u0E16\u0E36\u0E07\u0E41\u0E25\u0E49\u0E27...
+      '\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21'
+      \u0E15\u0E31\u0E27\u0E43\u0E2B\u0E0D\u0E48\u0E40\u0E1A\u0E49\u0E2D\u0E40\u0E23\u0E34\u0E48\u0E21\u0E40\u0E25\u0E22!
+      \u0E40\u0E15\u0E23\u0E35\u0E22\u0E21\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C\u0E43\u0E2B\u0E49\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E19\u0E30\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32
+      \u0E28\u0E36\u0E01\u0E41\u0E23\u0E01\u0E40\u0E23\u0E34\u0E48\u0E21\u0E02\u0E36\u0E49\u0E19\u0E41\u0E25\u0E49\u0E27!"
+    speakerName: Chatbot
+    speakerPosition: 2
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
+      \u0E14\u0E39\u0E19\u0E31\u0E48\u0E19\u0E2A\u0E34 \u0E1B\u0E23\u0E30\u0E15\u0E39\u0E40\u0E21\u0E37\u0E2D\u0E07\u0E16\u0E39\u0E01\u0E1B\u0E34\u0E14\u0E15\u0E32\u0E22!
+      \u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E40\u0E14\u0E37\u0E2D\u0E14\u0E23\u0E49\u0E2D\u0E19\u0E01\u0E31\u0E19\u0E44\u0E1B\u0E2B\u0E21\u0E14
+      \u0E40\u0E1E\u0E23\u0E32\u0E30 '\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21'
+      \u0E21\u0E31\u0E19\u0E22\u0E36\u0E14\u0E1B\u0E23\u0E30\u0E15\u0E39\u0E44\u0E27\u0E49
+      \u0E41\u0E25\u0E49\u0E27\u0E40\u0E23\u0E35\u0E22\u0E01\u0E40\u0E01\u0E47\u0E1A\u0E40\u0E07\u0E34\u0E19\u0E21\u0E31\u0E48\u0E27\u0E0B\u0E31\u0E48\u0E27
+      \u0E2D\u0E49\u0E32\u0E07\u0E27\u0E48\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E20\u0E32\u0E29\u0E35!"
+    speakerName: Chatbot
+    speakerPosition: 0
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E42\u0E2E\u0E48\u0E46\u0E46! \u0E43\u0E04\u0E23\u0E08\u0E30\u0E1C\u0E48\u0E32\u0E19\u0E17\u0E32\u0E07\u0E19\u0E35\u0E49
+      \u0E15\u0E49\u0E2D\u0E07\u0E08\u0E48\u0E32\u0E22 '\u0E04\u0E48\u0E32\u0E1C\u0E48\u0E32\u0E19\u0E17\u0E32\u0E07\u0E1E\u0E34\u0E40\u0E28\u0E29'
+      \u0E21\u0E32\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E40\u0E14\u0E35\u0E4B\u0E22\u0E27\u0E19\u0E35\u0E49!
+      \u0E02\u0E49\u0E32\u0E08\u0E30\u0E40\u0E2D\u0E32\u0E44\u0E1B\u0E0B\u0E37\u0E49\u0E2D\u0E19\u0E48\u0E2D\u0E07\u0E44\u0E01\u0E48\u0E01\u0E34\u0E19\u0E04\u0E19\u0E40\u0E14\u0E35\u0E22\u0E27!"
+    speakerName: "\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21"
+    speakerPosition: 0
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E2B\u0E19\u0E2D\u0E22\u0E41\u0E19\u0E48! \u0E20\u0E32\u0E29\u0E35\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E21\u0E35\u0E44\u0E27\u0E49\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E0B\u0E37\u0E49\u0E2D\u0E19\u0E48\u0E2D\u0E07\u0E44\u0E01\u0E48\u0E43\u0E2B\u0E49\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E19\u0E30!
+      \u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32 \u0E40\u0E1B\u0E34\u0E14
+      '\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C\u0E2A\u0E23\u0E23\u0E1E\u0E32\u0E01\u0E23'
+      \u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01 \u0E41\u0E25\u0E49\u0E27\u0E44\u0E1B\u0E2A\u0E31\u0E48\u0E07\u0E2A\u0E2D\u0E19\u0E21\u0E31\u0E19\u0E01\u0E31\u0E19\u0E40\u0E16\u0E2D\u0E30!"
+    speakerName: "\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21"
+    speakerPosition: 0
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E01\u0E48\u0E2D\u0E19\u0E08\u0E30\u0E44\u0E1B\u0E2A\u0E39\u0E49
+      \u0E17\u0E48\u0E32\u0E19\u0E15\u0E49\u0E2D\u0E07\u0E08\u0E33\u0E04\u0E32\u0E16\u0E32\u0E1E\u0E27\u0E01\u0E19\u0E35\u0E49\u0E43\u0E2B\u0E49\u0E41\u0E21\u0E48\u0E19\u0E19\u0E30\u0E08\u0E4A\u0E30!"
+    speakerName: "\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21"
+    speakerPosition: 0
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: 
+    speakerName: 
+    speakerPosition: 0
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: 0}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E44\u0E2B\u0E21\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32?
+      \u0E44\u0E1B\u0E25\u0E38\u0E22\u0E01\u0E31\u0E19\u0E40\u0E25\u0E22!"
+    speakerName: Chatbot
+    speakerPosition: 0
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E40\u0E08\u0E49\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E43\u0E04\u0E23?
+      \u0E08\u0E30\u0E21\u0E32\u0E41\u0E22\u0E48\u0E07\u0E19\u0E48\u0E2D\u0E07\u0E44\u0E01\u0E48\u0E02\u0E49\u0E32\u0E40\u0E23\u0E2D\u0E30!
+      \u0E23\u0E31\u0E1A\u0E01\u0E23\u0E30\u0E1A\u0E2D\u0E07\u0E02\u0E49\u0E32\u0E44\u0E1B\u0E01\u0E34\u0E19\u0E0B\u0E30!"
+    speakerName: "\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21"
+    speakerPosition: 0
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: 
+    speakerName: 
+    speakerPosition: 0
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: 0}
+    characterLeft: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
+    isChoicePage: 1
+  - dialogueText: "\u0E02\u0E49\u0E32... \u0E02\u0E49\u0E32\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E41\u0E25\u0E49\u0E27
+      \u0E02\u0E49\u0E32\u0E08\u0E30\u0E44\u0E21\u0E48\u0E23\u0E35\u0E14\u0E44\u0E16\u0E43\u0E04\u0E23\u0E21\u0E31\u0E48\u0E27\u0E0B\u0E31\u0E48\u0E27\u0E2D\u0E35\u0E01
+      \u0E02\u0E49\u0E32\u0E08\u0E30\u0E44\u0E1B\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35\u0E43\u0E2B\u0E49\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07\u0E1A\u0E49\u0E32\u0E07..."
+    speakerName: "\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21"
+    speakerPosition: 0
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: "\u0E40\u0E22\u0E49! \u0E17\u0E48\u0E32\u0E19\u0E17\u0E33\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08!
+      \u0E15\u0E2D\u0E19\u0E19\u0E35\u0E49\u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E1E\u0E37\u0E49\u0E19\u0E10\u0E32\u0E19\u0E20\u0E32\u0E29\u0E35\u0E41\u0E25\u0E49\u0E27
+      \u0E41\u0E15\u0E02\u0E49\u0E32\u0E44\u0E14\u0E49\u0E22\u0E34\u0E19\u0E40\u0E2A\u0E35\u0E22\u0E07\u0E41\u0E1B\u0E25\u0E01\u0E46
+      \u0E21\u0E32\u0E08\u0E32\u0E01 '\u0E15\u0E25\u0E32\u0E14\u0E01\u0E34\u0E25\u0E14\u0E4C\u0E01\u0E32\u0E23\u0E04\u0E49\u0E32'
+      \u0E14\u0E39\u0E40\u0E2B\u0E21\u0E37\u0E2D\u0E19\u0E1E\u0E48\u0E2D\u0E04\u0E49\u0E32\u0E41\u0E21\u0E48\u0E04\u0E49\u0E32\u0E01\u0E33\u0E25\u0E31\u0E07\u0E17\u0E30\u0E40\u0E25\u0E32\u0E30\u0E01\u0E31\u0E19\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E1B\u0E23\u0E30\u0E40\u0E20\u0E17\u0E23\u0E32\u0E22\u0E44\u0E14\u0E49\u0E2D\u0E22\u0E39\u0E48
+      \u0E44\u0E1B\u0E14\u0E39\u0E01\u0E31\u0E19\u0E40\u0E16\u0E2D\u0E30!"
+    speakerName: Chatbot
+    speakerPosition: 0
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  - dialogueText: 
+    speakerName: 
+    speakerPosition: 0
+    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
+    speechBubble: {fileID: 0}
+    characterLeft: {fileID: 0}
+    characterCenter: {fileID: 0}
+    characterRight: {fileID: 0}
+    isChoicePage: 0
+  gameResult: {fileID: 1598745707}
+  examSystem: {fileID: 1360646096}
+  currentStage: 1
+  typingSpeed: 0.03
+  vsPanel: {fileID: 1266874366}
+  vTransform: {fileID: 1464767638}
+  sTransform: {fileID: 1739319597}
+  topCloud: {fileID: 866228089}
+  bottomCloud: {fileID: 1473863996}
+  clashParticle: {fileID: 383108413}
+  thunderSound: {fileID: 0}
+  animationDuration: 0.5
+  vTargetPos: {x: -19, y: 49}
+  sTargetPos: {x: 72, y: -37}
+  topCloudTargetPos: {x: 0, y: 407.92}
+  bottomCloudTargetPos: {x: 0, y: -407.92}
+  tipBooks:
+  - tipPageIndex: 24
+    bookPageToOpen: 0
+  sceneLoader: {fileID: 193154300}
+--- !u!4 &966137956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966137954}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &966137957
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966137954}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 686b892c0913c4866bc11f1eabf944a4, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &977832696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,6 +2527,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977832696}
   m_CullTransparentMesh: 1
+--- !u!114 &985963447 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7222730550929919385, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 953965118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1 &998178197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8842644593866510237, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 953965118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1001023790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2430078481240392591, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 953965118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1176194434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,6 +2642,10 @@ PrefabInstance:
     - target: {fileID: 7632085504637795407, guid: 89e56c57e90a5254299629ee79b94cc7, type: 3}
       propertyPath: m_Name
       value: icon_calculator
+      objectReference: {fileID: 0}
+    - target: {fileID: 7632085504637795407, guid: 89e56c57e90a5254299629ee79b94cc7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8136885375621692936, guid: 89e56c57e90a5254299629ee79b94cc7, type: 3}
       propertyPath: m_Pivot.x
@@ -1895,6 +2748,7 @@ GameObject:
   - component: {fileID: 1201444881}
   - component: {fileID: 1201444883}
   - component: {fileID: 1201444882}
+  - component: {fileID: 1201444884}
   m_Layer: 5
   m_Name: CharacterLeft
   m_TagString: Untagged
@@ -1959,6 +2813,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201444880}
   m_CullTransparentMesh: 1
+--- !u!114 &1201444884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201444880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4e96c4b8e254dafbdb6ad92ede6a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatCharacter
 --- !u!1 &1218517465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,6 +2900,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218517465}
   m_CullTransparentMesh: 1
+--- !u!1 &1266874366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2483139350031394824, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
+  m_PrefabInstance: {fileID: 3813317817555529287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1266874367 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
+  m_PrefabInstance: {fileID: 3813317817555529287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1290932386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,9 +2951,10 @@ RectTransform:
   - {fileID: 1705808510}
   - {fileID: 1731108073}
   - {fileID: 1182933917}
-  - {fileID: 2052453505}
+  - {fileID: 564845331}
   - {fileID: 35994884}
-  - {fileID: 1394361257}
+  - {fileID: 1400173021}
+  - {fileID: 1266874367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2134,8 +3011,8 @@ Canvas:
   m_GameObject: {fileID: 1290932386}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1754559337}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2232,7 +3109,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1360646095}
-  - component: {fileID: 1360646094}
   - component: {fileID: 1360646096}
   - component: {fileID: 1360646097}
   m_Layer: 0
@@ -2242,348 +3118,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1360646094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360646093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f29832a15318a453ca30c1e87c26d9f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StoryManager
-  dialogueTextUI: {fileID: 1626854724}
-  speakerNameUI: {fileID: 795565461}
-  backgroundImageUI: {fileID: 214170271}
-  characterLeftUI: {fileID: 1201444882}
-  characterCenterUI: {fileID: 743816243}
-  characterRightUI: {fileID: 624409059}
-  speechBubbleUI: {fileID: 928263610}
-  nextButton: {fileID: 1705808509}
-  allPages:
-  - dialogueText: "\u0E13 \u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23 Tax Island
-      \u0E14\u0E34\u0E19\u0E41\u0E14\u0E19\u0E17\u0E35\u0E48\u0E40\u0E04\u0E22\u0E23\u0E38\u0E48\u0E07\u0E40\u0E23\u0E37\u0E2D\u0E07\u0E14\u0E49\u0E27\u0E22\u0E17\u0E2D\u0E07\u0E04\u0E33\u0E41\u0E25\u0E30\u0E01\u0E32\u0E23\u0E04\u0E49\u0E32\u0E02\u0E32\u0E22
-      \u0E41\u0E15\u0E48\u0E41\u0E25\u0E49\u0E27... "
-    speakerName: 
-    background: {fileID: 8053899242462091416, guid: 9250f99b3e7a547f494ee1e490b7e26d, type: 3}
-    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -5119980863986964875, guid: b2dba17db28b845cba91b8864bd6eaf9, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E2B\u0E21\u0E2D\u0E01\u0E41\u0E2B\u0E48\u0E07\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E31\u0E1A\u0E2A\u0E19\u0E01\u0E47\u0E40\u0E02\u0E49\u0E32\u0E1B\u0E01\u0E04\u0E25\u0E38\u0E21
-      \u0E1C\u0E39\u0E49\u0E04\u0E19\u0E2B\u0E25\u0E07\u0E25\u0E37\u0E21\u0E2B\u0E19\u0E49\u0E32\u0E17\u0E35\u0E48
-      \u0E1E\u0E48\u0E2D\u0E04\u0E49\u0E32\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E1A\u0E31\u0E0D\u0E0A\u0E35
-      \u0E02\u0E38\u0E19\u0E19\u0E32\u0E07\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E01\u0E0E\u0E40\u0E01\u0E13\u0E11\u0E4C
-      \u0E04\u0E25\u0E31\u0E07\u0E2B\u0E25\u0E27\u0E07\u0E27\u0E48\u0E32\u0E07\u0E40\u0E1B\u0E25\u0E48\u0E32 "
-    speakerName: 
-    background: {fileID: 4653932814348791077, guid: b77fa7cde836a4d01b21d60f3709352f, type: 3}
-    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -4756028443593143600, guid: 59188804024644bdb9802b3b7e411cbb, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E04\u0E27\u0E32\u0E21\u0E27\u0E38\u0E48\u0E19\u0E27\u0E32\u0E22\u0E01\u0E48\u0E2D\u0E15\u0E31\u0E27\u0E40\u0E1B\u0E47\u0E19\u0E1B\u0E35\u0E28\u0E32\u0E08\u0E01\u0E31\u0E14\u0E01\u0E34\u0E19\u0E40\u0E21\u0E37\u0E2D\u0E07"
-    speakerName: 
-    background: {fileID: 4653932814348791077, guid: b77fa7cde836a4d01b21d60f3709352f, type: 3}
-    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -4756028443593143600, guid: 59188804024644bdb9802b3b7e411cbb, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E21\u0E35\u0E40\u0E1E\u0E35\u0E22\u0E07\u0E1C\u0E39\u0E49\u0E40\u0E14\u0E35\u0E22\u0E27\u0E17\u0E35\u0E48\u0E08\u0E30\u0E01\u0E2D\u0E1A\u0E01\u0E39\u0E49\u0E2A\u0E16\u0E32\u0E19\u0E01\u0E32\u0E23\u0E13\u0E4C\u0E19\u0E35\u0E49\u0E44\u0E14\u0E49"
-    speakerName: 
-    background: {fileID: 4653932814348791077, guid: b77fa7cde836a4d01b21d60f3709352f, type: 3}
-    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 9159138986042934158, guid: ce593446a0b5c4f919a083dfa35c3cf5, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E19\u0E31\u0E48\u0E19\u0E04\u0E37\u0E2D '\u0E40\u0E08\u0E49\u0E32'"
-    speakerName: 
-    background: {fileID: 4653932814348791077, guid: b77fa7cde836a4d01b21d60f3709352f, type: 3}
-    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E40\u0E2E\u0E49\u0E2D... \u0E02\u0E49\u0E32\u0E1B\u0E27\u0E14\u0E2B\u0E31\u0E27\u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E40\u0E01\u0E34\u0E19
-      \u0E17\u0E48\u0E32\u0E19\u0E40\u0E2A\u0E19\u0E32\u0E1A\u0E14\u0E35\u0E04\u0E25\u0E31\u0E07\u0E04\u0E19\u0E43\u0E2B\u0E21\u0E48"
-    speakerName: "\u0E1E\u0E23\u0E30\u0E23\u0E32\u0E0A\u0E32"
-    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E40\u0E08\u0E49\u0E32\u0E21\u0E32\u0E01\u0E47\u0E14\u0E35\u0E41\u0E25\u0E49\u0E27...
-      \u0E14\u0E39\u0E2A\u0E34! \u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23\u0E40\u0E23\u0E32\u0E01\u0E33\u0E25\u0E31\u0E07\u0E08\u0E30\u0E25\u0E48\u0E21\u0E2A\u0E25\u0E32\u0E22
-      \u0E44\u0E21\u0E48\u0E43\u0E0A\u0E48\u0E40\u0E1E\u0E23\u0E32\u0E30\u0E40\u0E23\u0E32\u0E44\u0E21\u0E48\u0E21\u0E35\u0E17\u0E23\u0E31\u0E1E\u0E22\u0E32\u0E01\u0E23\u0E19\u0E30
-      \u0E41\u0E15\u0E48\u0E40\u0E1E\u0E23\u0E32\u0E30\u0E23\u0E30\u0E1A\u0E1A\u0E01\u0E32\u0E23\u0E40\u0E07\u0E34\u0E19\u0E02\u0E2D\u0E07\u0E40\u0E23\u0E32\u0E21\u0E31\u0E19\u0E1E\u0E31\u0E07\n\u0E44\u0E1B\u0E2B\u0E21\u0E14\u0E41\u0E25\u0E49\u0E27!"
-    speakerName: "\u0E1E\u0E23\u0E30\u0E23\u0E32\u0E0A\u0E32"
-    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E1B\u0E23\u0E30\u0E0A\u0E32\u0E0A\u0E19\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E27\u0E48\u0E32\u0E15\u0E49\u0E2D\u0E07\u0E08\u0E48\u0E32\u0E22\u0E20\u0E32\u0E29\u0E35\u0E22\u0E31\u0E07\u0E44\u0E07
-      \u0E1A\u0E32\u0E07\u0E04\u0E19\u0E01\u0E47\u0E2B\u0E19\u0E35 \u0E1A\u0E32\u0E07\u0E04\u0E19\u0E01\u0E47\u0E08\u0E48\u0E32\u0E22\u0E1C\u0E34\u0E14\u0E08\u0E19\u0E42\u0E14\u0E19\u0E1B\u0E23\u0E31\u0E1A...
-      \u0E02\u0E49\u0E32\u0E2D\u0E22\u0E32\u0E01\u0E43\u0E2B\u0E49\u0E40\u0E08\u0E49\u0E32\u0E0A\u0E48\u0E27\u0E22\u0E2D\u0E2D\u0E01\u0E44\u0E1B\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E43\u0E2B\u0E49\u0E17\u0E35
-      \u0E17\u0E33\u0E43\u0E2B\u0E49\u0E17\u0E38\u0E01\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E21\u0E31\u0E19
-      '\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07' \u0E17\u0E35\u0E40\u0E16\u0E2D\u0E30!"
-    speakerName: "\u0E1E\u0E23\u0E30\u0E23\u0E32\u0E0A\u0E32"
-    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E07\u0E32\u0E19\u0E22\u0E32\u0E01\u0E19\u0E48\u0E32\u0E14\u0E39...
-      \u0E41\u0E15\u0E48\u0E02\u0E49\u0E32\u0E08\u0E30\u0E25\u0E2D\u0E07\u0E14\u0E39!"
-    speakerName: 
-    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
-    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E02\u0E2D\u0E1A\u0E43\u0E08\u0E21\u0E32\u0E01! \u0E41\u0E15\u0E48\u0E40\u0E08\u0E49\u0E32\u0E44\u0E1B\u0E21\u0E37\u0E2D\u0E40\u0E1B\u0E25\u0E48\u0E32\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49...
-      \u0E02\u0E49\u0E32\u0E02\u0E2D\u0E21\u0E2D\u0E1A\u0E1C\u0E39\u0E49\u0E0A\u0E48\u0E27\u0E22\u0E17\u0E35\u0E48\u0E40\u0E01\u0E48\u0E07\u0E17\u0E35\u0E48\u0E2A\u0E38\u0E14\u0E43\u0E19\u0E2D\u0E32\u0E13\u0E32\u0E08\u0E31\u0E01\u0E23\u0E43\u0E2B\u0E49\u0E40\u0E08\u0E49\u0E32!"
-    speakerName: "\u0E1E\u0E23\u0E30\u0E23\u0E32\u0E0A\u0E32"
-    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E15\u0E31\u0E49\u0E07\u0E0A\u0E37\u0E48\u0E2D\u0E43\u0E2B\u0E49\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E19\u0E23\u0E48\u0E27\u0E21\u0E17\u0E32\u0E07\u0E02\u0E2D\u0E07\u0E04\u0E38\u0E13"
-    speakerName: 
-    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
-    speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E1B\u0E34\u0E4A\u0E07\u0E1B\u0E48\u0E2D\u0E07!~ \u0E2A\u0E27\u0E31\u0E2A\u0E14\u0E35\u0E08\u0E49\u0E32\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
-      \u0E02\u0E49\u0E32\u0E0A\u0E37\u0E48\u0E2D '...' \u0E20\u0E39\u0E15\u0E34\u0E1B\u0E23\u0E30\u0E08\u0E33\u0E01\u0E23\u0E21\u0E2A\u0E23\u0E23\u0E1E\u0E32\u0E01\u0E23\u0E40\u0E27\u0E17\u0E21\u0E19\u0E15\u0E23\u0E4C!"
-    speakerName: Chatbot
-    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E23\u0E32\u0E0A\u0E32\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E21\u0E32\u0E15\u0E31\u0E27\u0E40\u0E1B\u0E25\u0E48\u0E32\u0E19\u0E30
-      \u0E02\u0E49\u0E32\u0E1E\u0E01\u0E2A\u0E34\u0E48\u0E07\u0E19\u0E35\u0E49\u0E21\u0E32\u0E14\u0E49\u0E27\u0E22!"
-    speakerName: Chatbot
-    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\"\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C\u0E2A\u0E23\u0E23\u0E1E\u0E32\u0E01\u0E23\u0E28\u0E31\u0E01\u0E14\u0E34\u0E4C\u0E2A\u0E34\u0E17\u0E18\u0E34\u0E4C\"
-      \n(The Revenue Grimoire)\n\L"
-    speakerName: "\u0E17\u0E48\u0E32\u0E19\u0E44\u0E14\u0E49\u0E23\u0E31\u0E1A\u0E44\u0E2D\u0E40\u0E17\u0E21\u0E23\u0E30\u0E14\u0E31\u0E1A\u0E15\u0E33\u0E19\u0E32\u0E19"
-    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
-    speechBubble: {fileID: 0}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C\u0E40\u0E25\u0E48\u0E21\u0E19\u0E35\u0E49\u0E23\u0E27\u0E1A\u0E23\u0E27\u0E21\u0E04\u0E27\u0E32\u0E21\u0E23\u0E39\u0E49\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E20\u0E32\u0E29\u0E35\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14\u0E43\u0E19\u0E08\u0E31\u0E01\u0E23\u0E27\u0E32\u0E25\u0E40\u0E2D\u0E32\u0E44\u0E27\u0E49!
-      \u0E21\u0E31\u0E19\u0E04\u0E37\u0E2D\u0E2D\u0E32\u0E27\u0E38\u0E18\u0E40\u0E14\u0E35\u0E22\u0E27\u0E17\u0E35\u0E48\u0E08\u0E30\u0E43\u0E0A\u0E49\u0E1B\u0E23\u0E32\u0E1A\u0E1E\u0E27\u0E01\u0E21\u0E2D\u0E19\u0E2A\u0E40\u0E15\u0E2D\u0E23\u0E4C\u0E17\u0E35\u0E48\u0E40\u0E01\u0E34\u0E14\u0E08\u0E32\u0E01\u0E04\u0E27\u0E32\u0E21\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E1C\u0E34\u0E14\u0E44\u0E14\u0E49!"
-    speakerName: Chatbot
-    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E40\u0E2D\u0E32\u0E25\u0E48\u0E30! \u0E20\u0E32\u0E23\u0E01\u0E34\u0E08\u0E41\u0E23\u0E01\u0E02\u0E2D\u0E07\u0E40\u0E23\u0E32\u0E04\u0E37\u0E2D
-      '\u0E1B\u0E23\u0E30\u0E15\u0E39\u0E40\u0E21\u0E37\u0E2D\u0E07\u0E2B\u0E19\u0E49\u0E32\u0E14\u0E48\u0E32\u0E19'...
-      \u0E02\u0E49\u0E32\u0E44\u0E14\u0E49\u0E02\u0E48\u0E32\u0E27\u0E27\u0E48\u0E32\u0E21\u0E35\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E19\u0E34\u0E2A\u0E31\u0E22\u0E40\u0E2A\u0E35\u0E22\u0E01\u0E33\u0E25\u0E31\u0E07\u0E23\u0E35\u0E14\u0E44\u0E16\u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E2D\u0E22\u0E39\u0E48
-      \u0E23\u0E35\u0E1A\u0E44\u0E1B\u0E01\u0E31\u0E19\u0E40\u0E16\u0E2D\u0E30!"
-    speakerName: Chatbot
-    background: {fileID: 690243772044861111, guid: cf7e4162a3f514ea19e7e5a096ab5ec4, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32
-      \u0E23\u0E30\u0E2B\u0E27\u0E48\u0E32\u0E07\u0E40\u0E14\u0E34\u0E19\u0E44\u0E1B
-      \u0E02\u0E49\u0E32\u0E02\u0E2D\u0E17\u0E27\u0E19\u0E04\u0E27\u0E32\u0E21\u0E08\u0E33\u0E2B\u0E19\u0E48\u0E2D\u0E22\n\u0E01\u0E32\u0E23\u0E15\u0E48\u0E2D\u0E2A\u0E39\u0E49\u0E02\u0E2D\u0E07\u0E17\u0E48\u0E32\u0E19\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E43\u0E0A\u0E49\u0E14\u0E32\u0E1A\u0E1F\u0E31\u0E19\u0E19\u0E30
-      \u0E41\u0E15\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E43\u0E0A\u0E49\u0E04\u0E27\u0E32\u0E21\u0E23\u0E39\u0E49"
-    speakerName: Chatbot
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E21\u0E2D\u0E19\u0E2A\u0E40\u0E15\u0E2D\u0E23\u0E4C\u0E16\u0E32\u0E21
-      \u0E2B\u0E23\u0E37\u0E2D\u0E42\u0E08\u0E21\u0E15\u0E35\u0E14\u0E49\u0E27\u0E22\u0E04\u0E27\u0E32\u0E21\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E1C\u0E34\u0E14
-      \u0E17\u0E48\u0E32\u0E19\u0E15\u0E49\u0E2D\u0E07\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E04\u0E33\u0E15\u0E2D\u0E1A\u0E17\u0E35\u0E48\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E2A\u0E30\u0E17\u0E49\u0E2D\u0E19\u0E01\u0E32\u0E23\u0E42\u0E08\u0E21\u0E15\u0E35\u0E01\u0E25\u0E31\u0E1A\u0E44\u0E1B!"
-    speakerName: Chatbot
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E16\u0E49\u0E32\u0E15\u0E2D\u0E1A\u0E16\u0E39\u0E01 \u0E21\u0E2D\u0E19\u0E2A\u0E40\u0E15\u0E2D\u0E23\u0E4C\u0E08\u0E30\u0E1A\u0E32\u0E14\u0E40\u0E08\u0E47\u0E1A
-      \u0E41\u0E15\u0E48\u0E16\u0E49\u0E32\u0E15\u0E2D\u0E1A\u0E1C\u0E34\u0E14\u0E40\u0E25\u0E37\u0E2D\u0E14
-      (HP) \u0E02\u0E2D\u0E07\u0E17\u0E48\u0E32\u0E19\u0E08\u0E30\u0E25\u0E14\u0E25\u0E07
-      \u0E23\u0E30\u0E27\u0E31\u0E07\u0E15\u0E31\u0E27\u0E14\u0E49\u0E27\u0E22\u0E25\u0E48\u0E30!"
-    speakerName: Chatbot
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E19\u0E31\u0E48\u0E19\u0E44\u0E07! \u0E16\u0E36\u0E07\u0E41\u0E25\u0E49\u0E27...
-      '\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21'
-      \u0E15\u0E31\u0E27\u0E43\u0E2B\u0E0D\u0E48\u0E40\u0E1A\u0E49\u0E2D\u0E40\u0E23\u0E34\u0E48\u0E21\u0E40\u0E25\u0E22!
-      \u0E40\u0E15\u0E23\u0E35\u0E22\u0E21\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C\u0E43\u0E2B\u0E49\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E19\u0E30\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32
-      \u0E28\u0E36\u0E01\u0E41\u0E23\u0E01\u0E40\u0E23\u0E34\u0E48\u0E21\u0E02\u0E36\u0E49\u0E19\u0E41\u0E25\u0E49\u0E27!"
-    speakerName: Chatbot
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
-      \u0E14\u0E39\u0E19\u0E31\u0E48\u0E19\u0E2A\u0E34 \u0E1B\u0E23\u0E30\u0E15\u0E39\u0E40\u0E21\u0E37\u0E2D\u0E07\u0E16\u0E39\u0E01\u0E1B\u0E34\u0E14\u0E15\u0E32\u0E22!
-      \u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E40\u0E14\u0E37\u0E2D\u0E14\u0E23\u0E49\u0E2D\u0E19\u0E01\u0E31\u0E19\u0E44\u0E1B\u0E2B\u0E21\u0E14
-      \u0E40\u0E1E\u0E23\u0E32\u0E30 '\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21'
-      \u0E21\u0E31\u0E19\u0E22\u0E36\u0E14\u0E1B\u0E23\u0E30\u0E15\u0E39\u0E44\u0E27\u0E49
-      \u0E41\u0E25\u0E49\u0E27\u0E40\u0E23\u0E35\u0E22\u0E01\u0E40\u0E01\u0E47\u0E1A\u0E40\u0E07\u0E34\u0E19\u0E21\u0E31\u0E48\u0E27\u0E0B\u0E31\u0E48\u0E27
-      \u0E2D\u0E49\u0E32\u0E07\u0E27\u0E48\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E20\u0E32\u0E29\u0E35!"
-    speakerName: Chatbot
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E42\u0E2E\u0E48\u0E46\u0E46! \u0E43\u0E04\u0E23\u0E08\u0E30\u0E1C\u0E48\u0E32\u0E19\u0E17\u0E32\u0E07\u0E19\u0E35\u0E49
-      \u0E15\u0E49\u0E2D\u0E07\u0E08\u0E48\u0E32\u0E22 '\u0E04\u0E48\u0E32\u0E1C\u0E48\u0E32\u0E19\u0E17\u0E32\u0E07\u0E1E\u0E34\u0E40\u0E28\u0E29'
-      \u0E21\u0E32\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E40\u0E14\u0E35\u0E4B\u0E22\u0E27\u0E19\u0E35\u0E49!
-      \u0E02\u0E49\u0E32\u0E08\u0E30\u0E40\u0E2D\u0E32\u0E44\u0E1B\u0E0B\u0E37\u0E49\u0E2D\u0E19\u0E48\u0E2D\u0E07\u0E44\u0E01\u0E48\u0E01\u0E34\u0E19\u0E04\u0E19\u0E40\u0E14\u0E35\u0E22\u0E27!"
-    speakerName: "\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21"
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E2B\u0E19\u0E2D\u0E22\u0E41\u0E19\u0E48! \u0E20\u0E32\u0E29\u0E35\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E21\u0E35\u0E44\u0E27\u0E49\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E0B\u0E37\u0E49\u0E2D\u0E19\u0E48\u0E2D\u0E07\u0E44\u0E01\u0E48\u0E43\u0E2B\u0E49\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E19\u0E30!
-      \u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32 \u0E40\u0E1B\u0E34\u0E14
-      '\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C\u0E2A\u0E23\u0E23\u0E1E\u0E32\u0E01\u0E23'
-      \u0E2B\u0E19\u0E49\u0E32\u0E41\u0E23\u0E01 \u0E41\u0E25\u0E49\u0E27\u0E44\u0E1B\u0E2A\u0E31\u0E48\u0E07\u0E2A\u0E2D\u0E19\u0E21\u0E31\u0E19\u0E01\u0E31\u0E19\u0E40\u0E16\u0E2D\u0E30!"
-    speakerName: "\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21"
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E01\u0E48\u0E2D\u0E19\u0E08\u0E30\u0E44\u0E1B\u0E2A\u0E39\u0E49
-      \u0E17\u0E48\u0E32\u0E19\u0E15\u0E49\u0E2D\u0E07\u0E08\u0E33\u0E04\u0E32\u0E16\u0E32\u0E1E\u0E27\u0E01\u0E19\u0E35\u0E49\u0E43\u0E2B\u0E49\u0E41\u0E21\u0E48\u0E19\u0E19\u0E30\u0E08\u0E4A\u0E30!"
-    speakerName: "\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21"
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E20\u0E32\u0E29\u0E35\u0E04\u0E37\u0E2D\u0E2D\u0E30\u0E44\u0E23?:
-      \u0E40\u0E07\u0E34\u0E19\u0E17\u0E35\u0E48\u0E23\u0E31\u0E10\u0E40\u0E01\u0E47\u0E1A\u0E08\u0E32\u0E01\u0E1B\u0E23\u0E30\u0E0A\u0E32\u0E0A\u0E19
-      \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E19\u0E33\u0E21\u0E32\u0E1E\u0E31\u0E12\u0E19\u0E32\u0E1B\u0E23\u0E30\u0E40\u0E17\u0E28
-      (\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E16\u0E19\u0E19, \u0E42\u0E23\u0E07\u0E1E\u0E22\u0E32\u0E1A\u0E32\u0E25,
-      \u0E42\u0E23\u0E07\u0E40\u0E23\u0E35\u0E22\u0E19) \u0E44\u0E21\u0E48\u0E48\u0E40\u0E2D\u0E32\u0E44\u0E1B\u0E43\u0E0A\u0E49\u0E2A\u0E48\u0E27\u0E19\u0E15\u0E31\u0E27
-      \u0E20\u0E32\u0E29\u0E35\u0E17\u0E32\u0E07\u0E2D\u0E49\u0E2D\u0E21 (VAT 7%):
-      \u0E40\u0E1B\u0E47\u0E19\u0E20\u0E32\u0E29\u0E35\u0E17\u0E35\u0E48\u0E41\u0E1D\u0E07\u0E2D\u0E22\u0E39\u0E48\u0E43\u0E19\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32\u0E41\u0E25\u0E30\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23
-      \u0E17\u0E38\u0E01\u0E04\u0E19 (\u0E41\u0E21\u0E49\u0E41\u0E15\u0E48\u0E40\u0E14\u0E47\u0E01)
-      \u0E40\u0E1B\u0E47\u0E19\u0E04\u0E19\u0E08\u0E48\u0E32\u0E22\u0E20\u0E32\u0E29\u0E35\u0E19\u0E35\u0E49\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E0B\u0E37\u0E49\u0E2D\u0E02\u0E2D\u0E07
-      \u0E43\u0E04\u0E23\u0E15\u0E49\u0E2D\u0E07\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35?:
-      \u0E04\u0E19\u0E17\u0E35\u0E48\u0E21\u0E35\u0E40\u0E07\u0E34\u0E19\u0E44\u0E14\u0E49\u0E16\u0E36\u0E07\u0E40\u0E01\u0E13\u0E11\u0E4C
-      \u0E04\u0E19\u0E42\u0E2A\u0E14 \u0E21\u0E35\u0E40\u0E07\u0E34\u0E19\u0E40\u0E14\u0E37\u0E2D\u0E19\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E40\u0E14\u0E35\u0E22\u0E27:
-      \u0E15\u0E49\u0E2D\u0E07\u0E22\u0E37\u0E48\u0E19\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E23\u0E32\u0E22\u0E44\u0E14\u0E49\u0E40\u0E01\u0E34\u0E19
-      120,000 \u0E1A\u0E32\u0E17/\u0E1B\u0E35"
-    speakerName: 
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: 0}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E44\u0E2B\u0E21\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32?
-      \u0E44\u0E1B\u0E25\u0E38\u0E22\u0E01\u0E31\u0E19\u0E40\u0E25\u0E22!"
-    speakerName: Chatbot
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E40\u0E08\u0E49\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E43\u0E04\u0E23?
-      \u0E08\u0E30\u0E21\u0E32\u0E41\u0E22\u0E48\u0E07\u0E19\u0E48\u0E2D\u0E07\u0E44\u0E01\u0E48\u0E02\u0E49\u0E32\u0E40\u0E23\u0E2D\u0E30!
-      \u0E23\u0E31\u0E1A\u0E01\u0E23\u0E30\u0E1A\u0E2D\u0E07\u0E02\u0E49\u0E32\u0E44\u0E1B\u0E01\u0E34\u0E19\u0E0B\u0E30!"
-    speakerName: "\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21"
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: 
-    speakerName: 
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: 0}
-    characterLeft: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
-    isChoicePage: 1
-  - dialogueText: "\u0E02\u0E49\u0E32... \u0E02\u0E49\u0E32\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E41\u0E25\u0E49\u0E27
-      \u0E02\u0E49\u0E32\u0E08\u0E30\u0E44\u0E21\u0E48\u0E23\u0E35\u0E14\u0E44\u0E16\u0E43\u0E04\u0E23\u0E21\u0E31\u0E48\u0E27\u0E0B\u0E31\u0E48\u0E27\u0E2D\u0E35\u0E01
-      \u0E02\u0E49\u0E32\u0E08\u0E30\u0E44\u0E1B\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35\u0E43\u0E2B\u0E49\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07\u0E1A\u0E49\u0E32\u0E07..."
-    speakerName: "\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E21\u0E31\u0E48\u0E27\u0E19\u0E34\u0E48\u0E21"
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: "\u0E40\u0E22\u0E49! \u0E17\u0E48\u0E32\u0E19\u0E17\u0E33\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08!
-      \u0E15\u0E2D\u0E19\u0E19\u0E35\u0E49\u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E1E\u0E37\u0E49\u0E19\u0E10\u0E32\u0E19\u0E20\u0E32\u0E29\u0E35\u0E41\u0E25\u0E49\u0E27
-      \u0E41\u0E15\u0E02\u0E49\u0E32\u0E44\u0E14\u0E49\u0E22\u0E34\u0E19\u0E40\u0E2A\u0E35\u0E22\u0E07\u0E41\u0E1B\u0E25\u0E01\u0E46
-      \u0E21\u0E32\u0E08\u0E32\u0E01 '\u0E15\u0E25\u0E32\u0E14\u0E01\u0E34\u0E25\u0E14\u0E4C\u0E01\u0E32\u0E23\u0E04\u0E49\u0E32'
-      \u0E14\u0E39\u0E40\u0E2B\u0E21\u0E37\u0E2D\u0E19\u0E1E\u0E48\u0E2D\u0E04\u0E49\u0E32\u0E41\u0E21\u0E48\u0E04\u0E49\u0E32\u0E01\u0E33\u0E25\u0E31\u0E07\u0E17\u0E30\u0E40\u0E25\u0E32\u0E30\u0E01\u0E31\u0E19\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E1B\u0E23\u0E30\u0E40\u0E20\u0E17\u0E23\u0E32\u0E22\u0E44\u0E14\u0E49\u0E2D\u0E22\u0E39\u0E48
-      \u0E44\u0E1B\u0E14\u0E39\u0E01\u0E31\u0E19\u0E40\u0E16\u0E2D\u0E30!"
-    speakerName: Chatbot
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  - dialogueText: 
-    speakerName: 
-    background: {fileID: 284314508137338092, guid: 281c1cc7b1d6d4a81be0d23400c26f11, type: 3}
-    speechBubble: {fileID: 0}
-    characterLeft: {fileID: 0}
-    characterCenter: {fileID: 0}
-    characterRight: {fileID: 0}
-    isChoicePage: 0
-  gameResult: {fileID: 1598745707}
-  examSystem: {fileID: 1360646096}
 --- !u!4 &1360646095
 Transform:
   m_ObjectHideFlags: 0
@@ -2645,12 +3179,38 @@ MonoBehaviour:
     - "\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E19\u0E33\u0E40\u0E07\u0E34\u0E19\u0E44\u0E1B\u0E1D\u0E32\u0E01\u0E18\u0E19\u0E32\u0E04\u0E32\u0E23\u0E43\u0E2B\u0E49\u0E14\u0E2D\u0E01\u0E40\u0E1A\u0E35\u0E49\u0E22\u0E07\u0E2D\u0E01\u0E40\u0E07\u0E22"
     correctChoiceIndex: 2
     correctStringAnswer: 
-  - questionText: "\u0E2B\u0E19\u0E2D\u0E22... \u0E41\u0E01\u0E40\u0E01\u0E48\u0E07\u0E19\u0E31\u0E01\u0E43\u0E0A\u0E48\u0E44\u0E2B\u0E21!
-      \u0E07\u0E31\u0E49\u0E19\u0E02\u0E49\u0E32\u0E08\u0E30\u0E2A\u0E32\u0E1B\u0E43\u0E2B\u0E49\u0E17\u0E38\u0E01\u0E04\u0E19\u0E43\u0E19\u0E40\u0E21\u0E37\u0E2D\u0E07\u0E19\u0E35\u0E49\u0E15\u0E49\u0E2D\u0E07\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35\u0E43\u0E2B\u0E49\u0E2B\u0E21\u0E14
-      \u0E44\u0E21\u0E48\u0E27\u0E48\u0E32\u0E08\u0E30\u0E21\u0E35\u0E40\u0E07\u0E34\u0E19\u0E01\u0E35\u0E48\u0E1A\u0E32\u0E17\u0E01\u0E47\u0E15\u0E32\u0E21
-      \u0E2E\u0E48\u0E32\u0E46\u0E46!!\n\u0E08\u0E07\u0E23\u0E30\u0E1A\u0E38\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02\u0E23\u0E32\u0E22\u0E44\u0E14\u0E49\u0E02\u0E31\u0E49\u0E19\u0E15\u0E48\u0E33\u0E15\u0E48\u0E2D\u0E1B\u0E35
-      \u0E2A\u0E33\u0E2B\u0E23\u0E31\u0E1A\u0E21\u0E19\u0E38\u0E29\u0E22\u0E4C\u0E40\u0E07\u0E34\u0E19\u0E40\u0E14\u0E37\u0E2D\u0E19\u0E42\u0E2A\u0E14
-      (\u0E23\u0E30\u0E1A\u0E38\u0E40\u0E09\u0E1E\u0E32\u0E30\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02
+  - questionText: "\u0E2B\u0E36\u0E46\u2026 \u0E16\u0E49\u0E32\u0E40\u0E14\u0E47\u0E01\u0E19\u0E49\u0E2D\u0E22\u0E0B\u0E37\u0E49\u0E2D\u0E02\u0E2D\u0E07\u0E43\u0E19\u0E15\u0E25\u0E32\u0E14
+      \u0E02\u0E49\u0E32\u0E04\u0E07\u0E40\u0E01\u0E47\u0E1A VAT \u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E2A\u0E34\u0E19\u0E30?
+      \u0E40\u0E14\u0E47\u0E01\u0E21\u0E31\u0E19\u0E44\u0E21\u0E48\u0E21\u0E35\u0E40\u0E07\u0E34\u0E19\u0E40\u0E14\u0E37\u0E2D\u0E19\u0E19\u0E35\u0E48\u0E19\u0E32!"
+    type: 0
+    choices:
+    - "\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07! \u0E40\u0E14\u0E47\u0E01\u0E44\u0E21\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E08\u0E48\u0E32\u0E22
+      VAT"
+    - "\u0E1C\u0E34\u0E14! \u0E17\u0E38\u0E01\u0E04\u0E19\u0E17\u0E35\u0E48\u0E0B\u0E37\u0E49\u0E2D\u0E02\u0E2D\u0E07\u0E01\u0E47\u0E08\u0E48\u0E32\u0E22
+      VAT \u0E2D\u0E22\u0E39\u0E48\u0E14\u0E35"
+    - "\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07! \u0E40\u0E01\u0E47\u0E1A\u0E44\u0E14\u0E49\u0E40\u0E09\u0E1E\u0E32\u0E30\u0E04\u0E19\u0E17\u0E33\u0E07\u0E32\u0E19"
+    - "\u0E1C\u0E34\u0E14! \u0E40\u0E01\u0E47\u0E1A VAT \u0E40\u0E09\u0E1E\u0E32\u0E30\u0E1C\u0E39\u0E49\u0E43\u0E2B\u0E0D\u0E48\u0E40\u0E17\u0E48\u0E32\u0E19\u0E31\u0E49\u0E19"
+    correctChoiceIndex: 1
+    correctStringAnswer: 
+  - questionText: "\u0E2D\u0E37\u0E21\u2026 \u0E16\u0E49\u0E32\u0E21\u0E35\u0E23\u0E32\u0E22\u0E44\u0E14\u0E49
+      150,000 \u0E1A\u0E32\u0E17\u0E15\u0E48\u0E2D\u0E1B\u0E35 \u0E02\u0E49\u0E32\u0E08\u0E30\u0E2A\u0E31\u0E48\u0E07\u0E43\u0E2B\u0E49\u0E21\u0E31\u0E19
+      \u201C\u0E44\u0E21\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35\u201D
+      \u0E44\u0E14\u0E49\u0E44\u0E2B\u0E21\u0E19\u0E30? \u0E02\u0E49\u0E32\u0E02\u0E35\u0E49\u0E40\u0E01\u0E35\u0E22\u0E08\u0E14\u0E39\u0E40\u0E2D\u0E01\u0E2A\u0E32\u0E23
+      \u0E2E\u0E48\u0E32\u0E46!"
+    type: 0
+    choices:
+    - "\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49! \u0E40\u0E09\u0E1E\u0E32\u0E30\u0E04\u0E19\u0E23\u0E27\u0E22\u0E21\u0E32\u0E01\u0E46
+      \u0E40\u0E17\u0E48\u0E32\u0E19\u0E31\u0E49\u0E19\u0E17\u0E35\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E22\u0E37\u0E48\u0E19"
+    - "\u0E44\u0E14\u0E49! \u0E16\u0E49\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E04\u0E19\u0E42\u0E2A\u0E14\u0E40\u0E17\u0E48\u0E32\u0E19\u0E31\u0E49\u0E19"
+    - "\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49! \u0E23\u0E32\u0E22\u0E44\u0E14\u0E49\u0E40\u0E01\u0E34\u0E19
+      120,000 \u0E1A\u0E32\u0E17/\u0E1B\u0E35 \u0E15\u0E49\u0E2D\u0E07\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35 "
+    - "\u0E44\u0E14\u0E49! \u0E08\u0E30\u0E22\u0E37\u0E48\u0E19\u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48\u0E01\u0E47\u0E44\u0E14\u0E49"
+    correctChoiceIndex: 2
+    correctStringAnswer: 
+  - questionText: "\u0E2B\u0E36! \u0E07\u0E31\u0E49\u0E19\u0E02\u0E49\u0E32\u0E08\u0E30\u0E2A\u0E32\u0E1B\u0E43\u0E2B\u0E49\u0E17\u0E38\u0E01\u0E04\u0E19\u0E15\u0E49\u0E2D\u0E07\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35\u0E43\u0E2B\u0E49\u0E2B\u0E21\u0E14!\n\u0E08\u0E07\u0E23\u0E30\u0E1A\u0E38
+      \u201C\u0E23\u0E32\u0E22\u0E44\u0E14\u0E49\u0E02\u0E31\u0E49\u0E19\u0E15\u0E48\u0E33\u0E15\u0E48\u0E2D\u0E1B\u0E35\u201D
+      \u0E02\u0E2D\u0E07\u0E21\u0E19\u0E38\u0E29\u0E22\u0E4C\u0E40\u0E07\u0E34\u0E19\u0E40\u0E14\u0E37\u0E2D\u0E19\u0E42\u0E2A\u0E14
+      (\u0E15\u0E2D\u0E1A\u0E40\u0E1B\u0E47\u0E19\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02
       \u0E44\u0E21\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E43\u0E2A\u0E48\u0E25\u0E39\u0E01\u0E19\u0E49\u0E33)"
     type: 1
     choices: []
@@ -2674,7 +3234,7 @@ MonoBehaviour:
   - {fileID: 1970411858}
   inputPanel: {fileID: 1731108072}
   answerInputField: {fileID: 1373539186}
-  storyManager: {fileID: 1360646094}
+  storyManager: {fileID: 966137955}
   gameResult: {fileID: 1598745707}
   achievementIdToUnlock: 12
   achievementCodeToUnlock: 12
@@ -2869,16 +3429,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373539185}
   m_CullTransparentMesh: 1
---- !u!1 &1394361256 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4079387171236951732, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
-  m_PrefabInstance: {fileID: 5515702803595920392}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1394361257 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
-  m_PrefabInstance: {fileID: 5515702803595920392}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1397724526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,6 +3508,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1400173020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400173021}
+  - component: {fileID: 1400173022}
+  m_Layer: 5
+  m_Name: APIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1400173021
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400173020}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1290932387}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1400173022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400173020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1acc3b6d772054a67bbe18cf1a22c97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::APIManager
 --- !u!1 &1425556820
 GameObject:
   m_ObjectHideFlags: 0
@@ -3010,6 +3608,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
+--- !u!224 &1464767638 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1299281956627730766, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
+  m_PrefabInstance: {fileID: 3813317817555529287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1472014889
 GameObject:
   m_ObjectHideFlags: 0
@@ -3057,6 +3660,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1473863996 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2103573308521603421, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
+  m_PrefabInstance: {fileID: 3813317817555529287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1477450074
 GameObject:
   m_ObjectHideFlags: 0
@@ -3308,6 +3916,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534793209}
   m_CullTransparentMesh: 1
+--- !u!1 &1542510343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9138429888559091950, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 953965118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1575166732
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,6 +4528,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686032868}
   m_CullTransparentMesh: 1
+--- !u!1001 &1693964570
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1825765373}
+    m_Modifications:
+    - target: {fileID: 4079387171236951732, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_Name
+      value: AchievementNotiPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079387171236951732, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 673
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 173
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+--- !u!224 &1693964571 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+  m_PrefabInstance: {fileID: 1693964570}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1693964572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7114852031150009824, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+  m_PrefabInstance: {fileID: 1693964570}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &1693964573 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7099017972534253386, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+  m_PrefabInstance: {fileID: 1693964570}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &1693964574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4079387171236951732, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+  m_PrefabInstance: {fileID: 1693964570}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1696064421
 GameObject:
   m_ObjectHideFlags: 0
@@ -4092,7 +4838,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1360646094}
+      - m_Target: {fileID: 966137955}
         m_TargetAssemblyTypeName: StoryManager, Assembly-CSharp
         m_MethodName: OnClickNext
         m_Mode: 1
@@ -4182,6 +4928,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &1739319597 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8836144904134033164, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
+  m_PrefabInstance: {fileID: 3813317817555529287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1754559335
 GameObject:
   m_ObjectHideFlags: 0
@@ -4274,17 +5025,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1798528345 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7099017972534253386, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
-  m_PrefabInstance: {fileID: 5515702803595920392}
+--- !u!1 &1807803241 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6578604472192878681, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 953965118}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1825467784
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,6 +5105,108 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825467784}
   m_CullTransparentMesh: 1
+--- !u!1 &1825765372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1825765373}
+  - component: {fileID: 1825765376}
+  - component: {fileID: 1825765375}
+  - component: {fileID: 1825765374}
+  m_Layer: 5
+  m_Name: AchievementCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1825765373
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825765372}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1693964571}
+  m_Father: {fileID: 891503637}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1825765374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825765372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1825765375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825765372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1825765376
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825765372}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 100
+  m_TargetDisplay: 0
 --- !u!1 &1837208091
 GameObject:
   m_ObjectHideFlags: 0
@@ -4516,6 +5363,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1940872143 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4941882708053743923, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 953965118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &1954716804
 GameObject:
   m_ObjectHideFlags: 0
@@ -4689,6 +5547,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!1 &2023786077 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8480378459008760580, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 953965118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2044256158
 GameObject:
   m_ObjectHideFlags: 0
@@ -4789,7 +5652,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1290932387}
+    m_TransformParent: {fileID: 564845331}
     m_Modifications:
     - target: {fileID: 112199298258141146, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4818,6 +5681,10 @@ PrefabInstance:
     - target: {fileID: 993454551553709125, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
       propertyPath: m_Value
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353781041075703242, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5362654722564720867, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
       propertyPath: m_Pivot.x
@@ -4893,11 +5760,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5362654722564720867, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 960
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 5362654722564720867, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 540
+      value: 95
       objectReference: {fileID: 0}
     - target: {fileID: 5362654722564720867, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4909,6 +5776,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5362654722564720867, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749454745197093719, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6007425804537943222, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
@@ -4927,13 +5798,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlobalChatCanvas 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7243806418280596673, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7836818743593611110, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7836818743593611110, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000020468755
+      value: 0.000091552734
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323708343729662879, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -49.440002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4982,7 +5861,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &5515702803595920392
+--- !u!1 &2142824115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1979568730234370021, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
+  m_PrefabInstance: {fileID: 953965118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3813317817555529287
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -4990,91 +5874,87 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1290932387}
     m_Modifications:
-    - target: {fileID: 4079387171236951732, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 2483139350031394824, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_Name
-      value: AchievementNotiPanel
+      value: Animation
       objectReference: {fileID: 0}
-    - target: {fileID: 4079387171236951732, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_Pivot.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
-      propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 673
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 173
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6590008600404750538, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+    - target: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
@@ -5082,7 +5962,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9a558163acc444284863b7048fdd1ce1, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5092,4 +5972,7 @@ SceneRoots:
   - {fileID: 1397724529}
   - {fileID: 1360646095}
   - {fileID: 1472014891}
+  - {fileID: 966137956}
   - {fileID: 891503637}
+  - {fileID: 2752497}
+  - {fileID: 193154301}
