@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;   // ถ้าใช้ Text / Image
 using System.Collections;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 public class GameResult : MonoBehaviour
 {
     [Header("Victory UI")]
@@ -16,7 +16,7 @@ public class GameResult : MonoBehaviour
     [SerializeField] private GameObject defeatResultUI;
     [SerializeField] private GameObject d_Exit;
     [SerializeField] private GameObject d_Play_again;
-    
+
 
     [Header("Victory Stars")]
     [SerializeField] private GameObject v_star1;
@@ -34,41 +34,41 @@ public class GameResult : MonoBehaviour
 
     [Header("Next Level")]
     [SerializeField] private string nextSceneName;
-    
+
 
 
     private void Start()
-{
-    victoryIntroUI.SetActive(false);
-    victoryResultUI.SetActive(false);
+    {
+        victoryIntroUI.SetActive(false);
+        victoryResultUI.SetActive(false);
 
-    defeatIntroUI.SetActive(false);
-    defeatResultUI.SetActive(false);
-}
-public void TriggerVictory(StoryManager storyManager)
-{
-    gameObject.SetActive(true);
-    StartCoroutine(VictoryFlow(storyManager));
-}
+        defeatIntroUI.SetActive(false);
+        defeatResultUI.SetActive(false);
+    }
+    public void TriggerVictory(StoryManager storyManager)
+    {
+        gameObject.SetActive(true);
+        StartCoroutine(VictoryFlow(storyManager));
+    }
 
-public void TriggerDefeat()
-{
-    gameObject.SetActive(true);   // 👈 เพิ่มบรรทัดนี้
-    StartCoroutine(DefeatFlow());
-}
+    public void TriggerDefeat()
+    {
+        gameObject.SetActive(true);   // 👈 เพิ่มบรรทัดนี้
+        StartCoroutine(DefeatFlow());
+    }
 
     private IEnumerator VictoryFlow(StoryManager storyManager)
-{
-    victoryIntroUI.SetActive(true);
+    {
+        victoryIntroUI.SetActive(true);
 
-    yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.5f);
 
-    victoryIntroUI.SetActive(false);
+        victoryIntroUI.SetActive(false);
 
-    // 👉 ค่อยเปลี่ยนหน้า Story ตอนนี้
-    if (storyManager != null)
-        storyManager.OnClickNext();
-}
+        // 👉 ค่อยเปลี่ยนหน้า Story ตอนนี้
+        if (storyManager != null)
+            storyManager.OnClickNext();
+    }
     public void ShowVictoryResultDirect(int starCount)
     {
         gameObject.SetActive(true);
@@ -85,17 +85,17 @@ public void TriggerDefeat()
         ShowDefeatStars();
         defeatResultUI.SetActive(true);
     }
-    
-    private void ShowVictoryStars(int starCount)
-{
-    v_star1.SetActive(starCount >= 1);
-    v_star2.SetActive(starCount >= 2);
-    v_star3.SetActive(starCount >= 3);
 
-    v_priority1.SetActive(starCount >= 1);
-    v_priority2.SetActive(starCount >= 2);
-    v_priority3.SetActive(starCount >= 3);
-}
+    private void ShowVictoryStars(int starCount)
+    {
+        v_star1.SetActive(starCount >= 1);
+        v_star2.SetActive(starCount >= 2);
+        v_star3.SetActive(starCount >= 3);
+
+        v_priority1.SetActive(starCount >= 1);
+        v_priority2.SetActive(starCount >= 2);
+        v_priority3.SetActive(starCount >= 3);
+    }
     // private void ShowVictoryStars()
     // {
     //     int starCount = 2;
@@ -137,6 +137,7 @@ public void TriggerDefeat()
     public void OnClickExit()
     {
         Debug.Log("Victory Exit Clicked");
+        SceneManager.LoadScene("TaxGameMap");
     }
 
     public void OnClickPlayAgain()
@@ -164,12 +165,13 @@ public void TriggerDefeat()
             Debug.LogWarning("Scene '" + nextSceneName + "' is NOT in Build Profiles!");
         }
     }
-    
+
 
     // ===== Defeat Buttons =====
     public void OnClickDefeatExit()
     {
         Debug.Log("Defeat Exit Clicked");
+         SceneManager.LoadScene("TaxGameMap");
     }
 
     public void OnClickDefeatPlayAgain()

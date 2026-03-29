@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155e247e268c44a9095f1438a34495c1, type: 3}
+  m_Name: Guiding Stray
+  m_EditorClassIdentifier: Assembly-CSharp::Event
+  eventType: 0
+  eventValueType: 0
+  eventValue: 150
+  rarity: 0
+  icon: {fileID: -1743699092822578155, guid: 5fe6143c3c5914ff5849b6ce6ac96f42, type: 3}
+  eventName: Guiding Stray
+  description: "\u0E2A\u0E38\u0E19\u0E31\u0E02\u0E08\u0E23\u0E08\u0E31\u0E14\u0E1E\u0E32\u0E04\u0E38\u0E13\u0E44\u0E1B\u0E40\u0E08\u0E2D\n\u0E2B\u0E35\u0E1A\u0E44\u0E21\u0E49\u0E40\u0E01\u0E48\u0E32\n\n\n+150"

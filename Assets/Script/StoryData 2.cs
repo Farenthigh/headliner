@@ -1,10 +1,19 @@
 using UnityEngine;
 
+
+public enum SpeakerPosition
+{
+        None,
+        Left,
+        Center,
+        Right
+    }
 [System.Serializable] 
 public class StoryPage 
 {
     [TextArea(3,5)] public string dialogueText; 
     public string speakerName; 
+    public SpeakerPosition speakerPosition;
     public Sprite background;   
     public Sprite speechBubble;
     public Sprite characterLeft;
@@ -12,5 +21,8 @@ public class StoryPage
     public Sprite characterRight;
 
     [Header("Quiz Settings")]
-    public bool isChoicePage;  
+    public bool isChoicePage;
+
+
+
 }
