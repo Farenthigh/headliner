@@ -18,6 +18,12 @@ public class AchievementManager : MonoBehaviour
     public TextMeshProUGUI popupDateText;             
     public Image popupIconImage;
 
+    [Header("New Unlock Animation UI")]
+    public GameObject unlockPanel;         
+    public RectTransform cardRect;
+    public AchievementCard achievementCard;
+    public ParticleSystem sparkleParticle;
+
     [Header("Main UI")]
     public GameObject mainAchievementPanel; 
     public GameObject achievementPrefab;   
@@ -32,6 +38,8 @@ public class AchievementManager : MonoBehaviour
     {
         if (popupPanel != null) popupPanel.SetActive(false);
         if (mainAchievementPanel != null) mainAchievementPanel.SetActive(false);
+        if (unlockPanel != null) unlockPanel.SetActive(false);
+        if (cardRect != null) cardRect.gameObject.SetActive(false);
 
         if (!string.IsNullOrEmpty(APIManager.Token))
         {
@@ -46,7 +54,6 @@ public class AchievementManager : MonoBehaviour
 
     IEnumerator LoadDataFromBackendRoutine()
     {
-        // แก้ไขการดัก Error: เปลี่ยนมาเช็ค Token แทนเพราะ UserData เป็น struct เช็ค null ไม่ได้
         if (string.IsNullOrEmpty(APIManager.Token)) yield break;
 
         uint myUserId = (uint)APIManager.myData.id;
@@ -102,10 +109,52 @@ public class AchievementManager : MonoBehaviour
             ach.isUnlocked = true;
             ach.unlockDate = System.DateTime.Now.ToString("dd/MM/yyyy");
             Debug.Log($"ปลดล็อก UI: {ach.achievementName}!");
-            ShowNotification(ach);
+            
+            StartCoroutine(PopupSequence(ach));
 
             StartCoroutine(SaveToBackendRoutine(backendAchievementId));
         }
+    }
+
+    private IEnumerator PopupSequence(AchievementData data)
+    {
+        unlockPanel.SetActive(true);
+        cardRect.gameObject.SetActive(true);
+        
+        achievementCard.SetupCard(data);
+
+        Vector2 startPos = new Vector2(0, -1500f);
+        Vector2 targetPos = Vector2.zero;
+        Vector3 startScale = new Vector3(0.5f, 0.5f, 0.5f);
+        Vector3 targetScale = Vector3.one;
+
+        float duration = 0.5f;
+        float time = 0;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+            float easeOutCubic = 1f - Mathf.Pow(1f - t, 3f);
+
+            cardRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, easeOutCubic);
+            cardRect.localScale = Vector3.Lerp(startScale, targetScale, easeOutCubic);
+            
+            yield return null;
+        }
+
+        cardRect.anchoredPosition = targetPos;
+        cardRect.localScale = targetScale;
+
+        if (sparkleParticle != null) sparkleParticle.Play();
+        
+        achievementCard.EnableInteraction();
+    }
+
+    public void CloseUnlockPanel()
+    {
+        unlockPanel.SetActive(false);
+        cardRect.gameObject.SetActive(false);
     }
 
     IEnumerator SaveToBackendRoutine(uint achievementId)
@@ -139,47 +188,6 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void ShowNotification(AchievementData data)
-    {
-        StartCoroutine(SlideNotificationRoutine(data));
-    }
-
-    private System.Collections.IEnumerator SlideNotificationRoutine(AchievementData data)
-    {
-        if (popupNameText != null) popupNameText.text = data.achievementName;
-        if (popupIconImage != null && data.icon != null) popupIconImage.sprite = data.icon;
-        if (popupPanel != null) popupPanel.SetActive(true);
-
-        RectTransform rect = popupPanel.GetComponent<RectTransform>();
-        Vector2 hiddenPos = new Vector2(rect.anchoredPosition.x, -150f); 
-        Vector2 showPos = new Vector2(rect.anchoredPosition.x, 20f);
-
-        rect.anchoredPosition = hiddenPos;
-
-        float time = 0;
-        while(time < 0.5f) 
-        {
-            rect.anchoredPosition = Vector2.Lerp(hiddenPos, showPos, time / 0.5f);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        rect.anchoredPosition = showPos;
-
-        yield return new WaitForSeconds(3f);
-
-        time = 0;
-        while(time < 0.5f) 
-        {
-            rect.anchoredPosition = Vector2.Lerp(showPos, hiddenPos, time / 0.5f);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        rect.anchoredPosition = hiddenPos;
-
-        popupPanel.SetActive(false);
-    }
-
-    // --- ส่วนที่ผมเผลอลบไป เอาคืนมาแล้วครับ! ---
     public void ShowPopup(AchievementData data)
     {
         popupNameText.text = data.achievementName;
@@ -227,7 +235,6 @@ public class AchievementManager : MonoBehaviour
     }
 }
 
-// --- คลาสสำหรับใช้แกะ JSON ที่หายไป กลับมาแล้วครับ! ---
 [System.Serializable]
 public class UnlockRequest
 {
