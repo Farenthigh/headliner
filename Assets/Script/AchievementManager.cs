@@ -37,6 +37,8 @@ public class AchievementManager : MonoBehaviour
         {
             StartCoroutine(LoadDataFromBackendRoutine());
         }
+        
+
     }
 
     public void InitializeAfterLogin()
@@ -201,6 +203,12 @@ public class AchievementManager : MonoBehaviour
             GenerateAchievementUI(); 
             mainAchievementPanel.SetActive(true);
         }
+
+        AchievementData ach = allAchievements.Find(a => a.id == "18");
+        if (ach != null && !ach.isUnlocked)
+        {
+            AchievementManager.Instance.UnlockAchievement(18, "18");
+        }
     }
 
     public void CloseAchievementUI()
@@ -223,6 +231,44 @@ public class AchievementManager : MonoBehaviour
             GameObject newSlot = Instantiate(achievementPrefab, achievementContainer);
             AchievementSlotUI slotUI = newSlot.GetComponent<AchievementSlotUI>();
             slotUI.SetupSlot(ach);
+        }
+    }
+
+    public void CheckToolMasterGlobal()
+    {
+        bool usedChat = PlayerPrefs.GetInt("Used_Chat", 0) == 1;
+        bool usedCalc = PlayerPrefs.GetInt("Used_Calculator", 0) == 1;
+        bool usedTips = PlayerPrefs.GetInt("Used_Tips", 0) == 1;
+
+        if (usedChat && usedCalc && usedTips)
+        {
+            AchievementData ach = allAchievements.Find(a => a.id == "22");
+
+            if (ach != null && !ach.isUnlocked)
+            {
+                UnlockAchievement(22, "22");
+
+                PlayerPrefs.DeleteKey("Used_Chat");
+                PlayerPrefs.DeleteKey("Used_Calculator");
+                PlayerPrefs.DeleteKey("Used_Tips");
+                PlayerPrefs.Save();
+            }
+        }
+    }
+
+    public void CheckTaxComebackKing()
+    {
+        int level = PlayerPrefs.GetInt("Tax_Level", 1);
+        int failed = PlayerPrefs.GetInt("Tax_Failed", 0);
+
+        if (level > 5 && failed == 0)
+        {
+            AchievementData ach = allAchievements.Find(a => a.id == "23");
+
+            if (ach != null && !ach.isUnlocked)
+            {
+                UnlockAchievement(23, "23");
+            }
         }
     }
 }
@@ -249,3 +295,4 @@ public class AchievementListResponse
     public string message;
     public List<UserAchievementResponse> data; 
 }
+

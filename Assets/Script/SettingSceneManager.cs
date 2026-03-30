@@ -4,8 +4,14 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 
+
+
 public class SettingSceneManager : MonoBehaviour
 {
+    private bool openedProfile;
+    private bool openedAudio;
+    private bool openedHelp;
+    private bool openedContact;
     [Header("Pages")]
     public GameObject profilePage;
     public GameObject editProfilePage;
@@ -72,6 +78,11 @@ public class SettingSceneManager : MonoBehaviour
         ShowProfile();
         LoadProfileData();
         LoadAudioSetting();
+
+        openedProfile = PlayerPrefs.GetInt("Open_Profile", 0) == 1;
+        openedAudio = PlayerPrefs.GetInt("Open_Audio", 0) == 1;
+        openedHelp = PlayerPrefs.GetInt("Open_Help", 0) == 1;
+        openedContact = PlayerPrefs.GetInt("Open_Contact", 0) == 1;
     }
 
     // =========================
@@ -123,6 +134,10 @@ public class SettingSceneManager : MonoBehaviour
 
         profilePage.SetActive(true);
         profileHighlight.SetActive(true);
+
+        openedProfile = true;
+        PlayerPrefs.SetInt("Open_Profile", 1);
+        CheckFullExplorer();
     }
 
     public void ShowEditProfile()
@@ -150,6 +165,11 @@ public class SettingSceneManager : MonoBehaviour
 
         audioPage.SetActive(true);
         audioHighlight.SetActive(true);
+
+        openedAudio = true;
+        PlayerPrefs.SetInt("Open_Audio", 1);
+        PlayerPrefs.Save();
+        CheckFullExplorer();
     }
 
     public void ShowHelp()
@@ -159,6 +179,11 @@ public class SettingSceneManager : MonoBehaviour
 
         helpPage.SetActive(true);
         helpHighlight.SetActive(true);
+
+        openedHelp = true;
+        PlayerPrefs.SetInt("Open_Help", 1);
+        PlayerPrefs.Save();
+        CheckFullExplorer();    
     }
 
     public void ShowContact()
@@ -168,6 +193,11 @@ public class SettingSceneManager : MonoBehaviour
 
         contactPage.SetActive(true);
         contactHighlight.SetActive(true);
+
+        openedContact = true;
+        PlayerPrefs.SetInt("Open_Contact", 1);
+        PlayerPrefs.Save();
+        CheckFullExplorer();
     }
 
     // =========================
@@ -354,6 +384,19 @@ IEnumerator ShowSuccessPopup()
         PlayerPrefs.SetFloat("Music", musicSlider.value);
         PlayerPrefs.SetFloat("SFX", sfxSlider.value);
         PlayerPrefs.SetFloat("Master", masterSlider.value);
+    }
+    void CheckFullExplorer()
+    {
+        if (openedProfile && openedAudio && openedHelp && openedContact)
+        {
+            AchievementData ach = AchievementManager.Instance.allAchievements
+                .Find(a => a.id == "20");
+
+            if (ach != null && !ach.isUnlocked)
+            {
+                AchievementManager.Instance.UnlockAchievement(20, "20");
+            }
+        }
     }
 }
 

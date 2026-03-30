@@ -382,6 +382,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: allAchievements.Array.size
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: 'allAchievements.Array.data[16]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d8a2464bea9c46de9aee0117793f42a, type: 2}
+    - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: 'allAchievements.Array.data[17]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a7c3ac233b7a14b74ab7d1f924df9507, type: 2}
+    - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: 'allAchievements.Array.data[18]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 391a5b20b2c514bd1b1a6052c793ca1a, type: 2}
+    - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: 'allAchievements.Array.data[19]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 128809a17c1f14ac0b2d7a2ec0b2a86e, type: 2}
+    - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: 'allAchievements.Array.data[20]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bbe134725d4fa41ffbf8cf9daa42914d, type: 2}
+    - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: 'allAchievements.Array.data[21]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 63e6ba9070f294eac95abc3c15269bac, type: 2}
+    - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: 'allAchievements.Array.data[22]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 447be3dfb7c934609988825dd9776190, type: 2}
+    - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: 'allAchievements.Array.data[23]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 88ee697f242364aeabb760b22491f8cd, type: 2}
+    - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: 'allAchievements.Array.data[24]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e8a34f270ab644002a61287fa357cebc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
