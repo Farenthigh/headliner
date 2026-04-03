@@ -85,8 +85,9 @@ public class GameResult : MonoBehaviour
         level++;
 
         PlayerPrefs.SetInt("Tax_Level", level);
+        PlayerPrefs.SetInt("Played_Tax", 1);
         PlayerPrefs.Save();
-
+        AchievementManager.Instance.CheckDoubleExpertise();
         // ✅ เช็ค achievement
         if (level > 5)
         {

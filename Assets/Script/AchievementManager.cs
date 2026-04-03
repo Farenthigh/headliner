@@ -271,6 +271,26 @@ public class AchievementManager : MonoBehaviour
             }
         }
     }
+    public void CheckDoubleExpertise()
+    {
+        bool playedTax = PlayerPrefs.GetInt("Played_Tax", 0) == 1;
+        bool playedSaving = PlayerPrefs.GetInt("Played_Saving", 0) == 1;
+
+        if (playedTax && playedSaving)
+        {
+            AchievementData ach = allAchievements.Find(a => a.id == "25");
+
+            if (ach != null && !ach.isUnlocked)
+            {
+                UnlockAchievement(25, "25");
+
+            // reset กัน spam
+                PlayerPrefs.DeleteKey("Played_Tax");
+                PlayerPrefs.DeleteKey("Played_Saving");
+                PlayerPrefs.Save();
+            }
+        }
+    }
 }
 
 // --- คลาสสำหรับใช้แกะ JSON ที่หายไป กลับมาแล้วครับ! ---
