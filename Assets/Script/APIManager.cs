@@ -29,6 +29,7 @@ public struct UserData
     public string email;
     public string username;
     public int character;
+    public string chatbot_name;
 }
 
 public struct RegisterStruct
@@ -385,4 +386,48 @@ public class APIManager : MonoBehaviour
             public T[] items;
         }
     }
+    public async System.Threading.Tasks.Task SaveChatbotName(string newName)
+    {
+        if (string.IsNullOrEmpty(Token)) return;
+
+        string url = client.BaseAddress + "users/update-chatbot"; 
+        UpdateChatbotRequest req = new UpdateChatbotRequest
+        {
+            user_id = (uint)myData.id,
+            chatbot_name = newName
+        };
+    string jsonData = JsonUtility.ToJson(req);
+
+    using (UnityEngine.Networking.UnityWebRequest webRequest = new UnityEngine.Networking.UnityWebRequest(url, "POST"))
+        {
+            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
+            webRequest.uploadHandler = new UnityEngine.Networking.UploadHandlerRaw(bodyRaw);
+            webRequest.downloadHandler = new UnityEngine.Networking.DownloadHandlerBuffer();
+        
+            webRequest.SetRequestHeader("Content-Type", "application/json");
+            webRequest.SetRequestHeader("Authorization", "Bearer " + Token);
+
+            var operation = webRequest.SendWebRequest();
+        
+            while (!operation.isDone) { await System.Threading.Tasks.Task.Yield(); }
+
+            if (webRequest.result != UnityEngine.Networking.UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(webRequest.error);
+            }
+            else
+            {
+                myData.chatbot_name = newName; 
+                PlayerPrefs.SetString("ChatbotCustomName", newName);
+                PlayerPrefs.Save();
+            }
+        }
+    }
+    
+}
+[System.Serializable]
+public class UpdateChatbotRequest
+{
+    public uint user_id;
+    public string chatbot_name;
 }
