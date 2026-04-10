@@ -31,16 +31,15 @@ public class AchievementSlotUI : MonoBehaviour
     }
 
     public void OnClickSlot()
+    
     {
-        if (myData == null) return;
-
         if (myData.isUnlocked)
         {
             AchievementManager.Instance.ShowPopup(myData);
         }
         else
         {
-            Debug.Log("ยังไม่ปลดล็อก: ");
+            AchievementManager.Instance.ShowHintPopup(myData);
         }
     }
 }

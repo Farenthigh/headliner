@@ -22,6 +22,9 @@ public class AchievementManager : MonoBehaviour
     public GameObject mainAchievementPanel; 
     public GameObject achievementPrefab;   
     public Transform achievementContainer;
+    [Header("Hint Popup")]
+    public GameObject hintPopup;
+    public TextMeshProUGUI hintDescriptionText;
 
     void Awake()
     {
@@ -70,7 +73,7 @@ public class AchievementManager : MonoBehaviour
                 string jsonResponse = webRequest.downloadHandler.text;
                 Debug.Log("JSON จาก Backend: " + jsonResponse);
                 AchievementListResponse response = JsonUtility.FromJson<AchievementListResponse>(jsonResponse);
-
+                Debug.Log("ALL ACH COUNT: " + allAchievements.Count);
                 foreach (var ach in allAchievements) 
                 {
                     ach.isUnlocked = false; 
@@ -197,7 +200,7 @@ public class AchievementManager : MonoBehaviour
     }
 
     public void OpenAchievementUI()
-    {
+    {   Debug.Log("OPEN ACHIEVEMENT UI"); 
         if (mainAchievementPanel != null)
         {
             GenerateAchievementUI(); 
@@ -290,6 +293,24 @@ public class AchievementManager : MonoBehaviour
                 PlayerPrefs.Save();
             }
         }
+    }
+   public void ShowHintPopup(AchievementData data)
+    {
+        Debug.Log("Show Hint Popup: " + data.name);
+
+        hintPopup.SetActive(true);
+
+        Debug.Log("Popup Active: " + hintPopup.activeSelf);
+        Debug.Log("Popup In Hierarchy: " + hintPopup.activeInHierarchy);
+
+        hintPopup.transform.SetAsLastSibling();
+
+        hintDescriptionText.text = data.description;
+    }   
+    public void CloseHintPopup()
+    {
+        Debug.Log("CLOSE POPUP");
+        hintPopup.SetActive(false);
     }
 }
 
