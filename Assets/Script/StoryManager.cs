@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.SceneManagement; 
+using TMPro;
 
 public class StoryManager : MonoBehaviour
 {
@@ -47,6 +48,12 @@ public class StoryManager : MonoBehaviour
     public Vector2 topCloudTargetPos = new Vector2(0f, 407.92f);    
     public Vector2 bottomCloudTargetPos = new Vector2(0f, -407.92f); 
 
+    [Header("Naming System")]
+    public GameObject namingPanel;
+    public TMP_InputField nameInputField;
+    public Button confirmNameButton;
+    private string currentChatbotName = "Chatbot";
+
     [System.Serializable]
     public class TipBook
     {
@@ -66,6 +73,21 @@ public class StoryManager : MonoBehaviour
             clashParticle.Stop();
             clashParticle.Clear();
         }
+
+        if (confirmNameButton != null)
+        {
+            confirmNameButton.onClick.AddListener(ConfirmName);
+        }
+
+        if (PlayerPrefs.HasKey("ChatbotCustomName"))
+        {
+            currentChatbotName = PlayerPrefs.GetString("ChatbotCustomName");
+        }
+        else if (APIManager.myData.id != 0 && !string.IsNullOrEmpty(APIManager.myData.chatbot_name))
+        {
+            currentChatbotName = APIManager.myData.chatbot_name;
+        }
+
         currentIndex = 0;
         UpdateUI();
     }
@@ -75,7 +97,7 @@ public class StoryManager : MonoBehaviour
         if (isTyping)
         {
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-            dialogueTextUI.text = allPages[currentIndex].dialogueText;
+            dialogueTextUI.text = ProcessText(allPages[currentIndex].dialogueText);
             isTyping = false;
         }
         else
@@ -101,17 +123,36 @@ public class StoryManager : MonoBehaviour
         if (characterLeftUI != null) characterLeftUI.color = new Color(1, 1, 1, 1f);
     }
 
+    private string ProcessText(string rawText)
+    {
+        if (string.IsNullOrEmpty(rawText)) return "";
+        return rawText.Replace("{Name}", currentChatbotName);
+    }
+
     void UpdateUI()
     {
         StoryPage currentPage = allPages[currentIndex];
 
+        if (currentPage.isNamingPage)
+        {
+            if (namingPanel != null) namingPanel.SetActive(true);
+            if (nextButton != null) nextButton.SetActive(false);
+            return; 
+        }
+
+        if (namingPanel != null) namingPanel.SetActive(false);
+        if (nextButton != null) nextButton.SetActive(true);
+
+        string processedSpeaker = ProcessText(currentPage.speakerName);
+        string processedDialogue = ProcessText(currentPage.dialogueText);
+
         if (dialogueTextUI != null) 
         {
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-            typingCoroutine = StartCoroutine(TypeSentence(currentPage.dialogueText));
+            typingCoroutine = StartCoroutine(TypeSentence(processedDialogue));
         }
-
-        if (speakerNameUI != null) speakerNameUI.text = currentPage.speakerName;
+        
+        if (speakerNameUI != null) speakerNameUI.text = processedSpeaker;
         if (backgroundImageUI != null && currentPage.background != null) backgroundImageUI.sprite = currentPage.background;
        
         if (speechBubbleUI != null)
@@ -348,4 +389,19 @@ public class StoryManager : MonoBehaviour
         await APIManager.Instance.SaveGameResult(stars, currentStage);
     }
     
+    public async void ConfirmName()
+    {
+        if (nameInputField != null && !string.IsNullOrEmpty(nameInputField.text))
+        {
+            string newName = nameInputField.text;
+            currentChatbotName = newName;
+            await APIManager.Instance.SaveChatbotName(newName);
+        }
+        if (namingPanel != null) namingPanel.SetActive(false);
+        if (currentIndex < allPages.Count - 1)
+        {
+            currentIndex++;
+            UpdateUI();
+        }
+    }
 }
