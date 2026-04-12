@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 6b586ced5c496414dadc68219e1d6d26
+guid: 0a47c50b44a8f4d1b83184987b0bf112
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 854668074082671284
-    second: image 150_0
-  - first:
-      213: -5251375243002976200
-    second: image 150_1
-  - first:
-      213: 6239248110934943003
-    second: image 150_2
-  - first:
-      213: -2052500809457384230
-    second: image 150_3
-  - first:
-      213: -5543970542362881017
-    second: image 150_4
+      213: 2618672361372306907
+    second: cardfront_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -108,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image 150_0
+      name: cardfront_0
       rect:
         serializedVersion: 2
-        x: 88
-        y: 29
-        width: 321
-        height: 363
+        x: 0
+        y: 0
+        width: 448
+        height: 763
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,96 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ba909cc5146cdb00800000000000000
-      internalID: 854668074082671284
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: image 150_1
-      rect:
-        serializedVersion: 2
-        x: 390
-        y: 82
-        width: 27
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 838e68a1a0e5f17b0800000000000000
-      internalID: -5251375243002976200
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: image 150_2
-      rect:
-        serializedVersion: 2
-        x: 420
-        y: 86
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b15edc59913469650800000000000000
-      internalID: 6239248110934943003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: image 150_3
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 24
-        width: 13
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ad4471f636d0483e0800000000000000
-      internalID: -2052500809457384230
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: image 150_4
-      rect:
-        serializedVersion: 2
-        x: 136
-        y: 27
-        width: 9
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7041b393a2cdf03b0800000000000000
-      internalID: -5543970542362881017
+      spriteID: bddcaba63a4675420800000000000000
+      internalID: 2618672361372306907
       vertices: []
       indices: 
       edges: []
@@ -235,11 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image 150_0: 854668074082671284
-      image 150_1: -5251375243002976200
-      image 150_2: 6239248110934943003
-      image 150_3: -2052500809457384230
-      image 150_4: -5543970542362881017
+      cardfront_0: 2618672361372306907
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

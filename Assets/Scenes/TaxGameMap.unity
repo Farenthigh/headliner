@@ -2856,7 +2856,7 @@ MonoBehaviour:
   rowPrefab: {fileID: 7780977136555150123, guid: 0bef71fea24fe4199bba17fb56f8ae9e, type: 3}
   leaderboardPanel: {fileID: 1448497780}
   myRankBar: {fileID: 1448497783}
-  myRankItem: {fileID: 1448497782}
+  myRankItem: {fileID: 1448497785}
   apiManager: {fileID: 1547363597}
 --- !u!4 &876143388
 Transform:
@@ -4837,17 +4837,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_Dropdown
---- !u!114 &1448497782 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1081189894753411428, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
-  m_PrefabInstance: {fileID: 1448497779}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 710f3e1270074458082c86c4bedcd8fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LeaderBoardItemUI
 --- !u!1 &1448497783 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 724925863256295207, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
@@ -4858,6 +4847,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8853161010013256757, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
   m_PrefabInstance: {fileID: 1448497779}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1448497785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7067055893477437173, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
+  m_PrefabInstance: {fileID: 1448497779}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448497783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 710f3e1270074458082c86c4bedcd8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeaderBoardItemUI
 --- !u!1 &1464848027
 GameObject:
   m_ObjectHideFlags: 0
