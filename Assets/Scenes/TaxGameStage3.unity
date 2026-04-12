@@ -1029,11 +1029,12 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: "\u0E1A\u0E23\u0E37\u0E4B\u0E2D\u0E2D\u0E2D... \u0E19\u0E48\u0E32\u0E01\u0E25\u0E31\u0E27\u0E08\u0E31\u0E07!
       \u0E14\u0E39\u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E1E\u0E27\u0E01\u0E19\u0E31\u0E49\u0E19\u0E2A\u0E34
       \u0E2B\u0E19\u0E49\u0E32\u0E0B\u0E35\u0E14\u0E15\u0E31\u0E27\u0E1C\u0E2D\u0E21\u0E41\u0E2B\u0E49\u0E07\u0E01\u0E31\u0E19\u0E2B\u0E21\u0E14\u0E40\u0E25\u0E22
       \u0E40\u0E2B\u0E21\u0E37\u0E2D\u0E19\u0E42\u0E14\u0E19\u0E2A\u0E39\u0E1A\u0E1E\u0E25\u0E31\u0E07\u0E0A\u0E35\u0E27\u0E34\u0E15\u0E44\u0E1B\u0E08\u0E19\u0E2B\u0E21\u0E14"
-    speakerName: Chatbot
+    speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: 4349194590612477393, guid: bcbf939e575ee4d7ea99ddfdf4f843f1, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
@@ -1041,12 +1042,13 @@ MonoBehaviour:
     characterCenter: {fileID: 4354231566380549168, guid: 0d2f6708399ba4ae0aec337df1665387, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: "\u0E02\u0E49\u0E32\u0E2A\u0E31\u0E21\u0E1C\u0E31\u0E2A\u0E44\u0E14\u0E49\u0E16\u0E36\u0E07\u0E44\u0E2D\u0E1B\u0E35\u0E28\u0E32\u0E08...
       \u0E21\u0E31\u0E19\u0E04\u0E37\u0E2D\u0E41\u0E27\u0E21\u0E44\u0E1E\u0E23\u0E4C\u0E20\u0E32\u0E29\u0E35!
       \u0E21\u0E31\u0E19\u0E0A\u0E2D\u0E1A\u0E14\u0E39\u0E14\u0E40\u0E07\u0E34\u0E19\u0E08\u0E32\u0E01\u0E04\u0E19\u0E17\u0E35\u0E48\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E08\u0E31\u0E01\u0E1B\u0E49\u0E2D\u0E07\u0E01\u0E31\u0E19\u0E15\u0E31\u0E27
       \u0E04\u0E19\u0E17\u0E35\u0E48\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E08\u0E31\u0E01\u0E43\u0E0A\u0E49
       '\u0E04\u0E48\u0E32\u0E25\u0E14\u0E2B\u0E22\u0E48\u0E2D\u0E19' \u0E01\u0E47\u0E40\u0E2B\u0E21\u0E37\u0E2D\u0E19\u0E40\u0E14\u0E34\u0E19\u0E15\u0E31\u0E27\u0E40\u0E1B\u0E25\u0E48\u0E32\u0E43\u0E2B\u0E49\u0E21\u0E31\u0E19\u0E01\u0E31\u0E14\u0E04\u0E2D\u0E40\u0E25\u0E48\u0E19\u0E19\u0E31\u0E48\u0E19\u0E41\u0E2B\u0E25\u0E30!"
-    speakerName: Chatbot
+    speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: 4349194590612477393, guid: bcbf939e575ee4d7ea99ddfdf4f843f1, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
@@ -1054,6 +1056,7 @@ MonoBehaviour:
     characterCenter: {fileID: 4354231566380549168, guid: 0d2f6708399ba4ae0aec337df1665387, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: "\u0E1F\u0E38\u0E14\u0E1F\u0E34\u0E14... \u0E01\u0E25\u0E34\u0E48\u0E19\u0E40\u0E07\u0E34\u0E19\u0E2A\u0E14\u0E2B\u0E2D\u0E21\u0E2B\u0E27\u0E32\u0E19!
       \u0E1E\u0E27\u0E01\u0E40\u0E08\u0E49\u0E32\u0E21\u0E35\u0E23\u0E32\u0E22\u0E44\u0E14\u0E49
       \u0E41\u0E15\u0E48\u0E44\u0E21\u0E48\u0E21\u0E35\u0E04\u0E48\u0E32\u0E25\u0E14\u0E2B\u0E22\u0E48\u0E2D\u0E19\u0E43\u0E0A\u0E48\u0E44\u0E2B\u0E21?
@@ -1066,11 +1069,12 @@ MonoBehaviour:
     characterCenter: {fileID: 5913643589360538641, guid: d5aa271de76fb45cea5d1b49313cc73d, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
       \u0E2D\u0E22\u0E48\u0E32\u0E40\u0E1E\u0E34\u0E48\u0E07\u0E2A\u0E39\u0E49\u0E21\u0E37\u0E2D\u0E40\u0E1B\u0E25\u0E48\u0E32!
       \u0E40\u0E23\u0E32\u0E15\u0E49\u0E2D\u0E07\u0E2A\u0E27\u0E21\u0E40\u0E01\u0E23\u0E32\u0E30\u0E1B\u0E49\u0E2D\u0E07\u0E01\u0E31\u0E19\u0E01\u0E48\u0E2D\u0E19
       \u0E08\u0E33\u0E04\u0E32\u0E16\u0E32\u0E1A\u0E17\u0E19\u0E35\u0E49\u0E44\u0E27\u0E49\u0E19\u0E30!"
-    speakerName: Chatbot
+    speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: 4349194590612477393, guid: bcbf939e575ee4d7ea99ddfdf4f843f1, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
@@ -1078,6 +1082,7 @@ MonoBehaviour:
     characterCenter: {fileID: 410971064699957904, guid: cb518a63800d74fe0be4629d645d587e, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: 
     speakerName: 
     speakerPosition: 0
@@ -1087,6 +1092,7 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: "\u0E40\u0E01\u0E23\u0E32\u0E30\u0E40\u0E01\u0E2D\u0E30\u0E2D\u0E30\u0E44\u0E23\u0E44\u0E23\u0E49\u0E2A\u0E32\u0E23\u0E30!
       \u0E02\u0E49\u0E32\u0E08\u0E30\u0E01\u0E31\u0E14\u0E04\u0E2D\u0E40\u0E08\u0E49\u0E32\u0E40\u0E14\u0E35\u0E4B\u0E22\u0E27\u0E19\u0E35\u0E49\u0E41\u0E2B\u0E25\u0E30!"
     speakerName: "\u0E41\u0E27\u0E21\u0E44\u0E1E\u0E23\u0E4C\u0E20\u0E32\u0E29\u0E35"
@@ -1097,6 +1103,7 @@ MonoBehaviour:
     characterCenter: {fileID: 5913643589360538641, guid: d5aa271de76fb45cea5d1b49313cc73d, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: 
     speakerName: 
     speakerPosition: 0
@@ -1106,6 +1113,7 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 5913643589360538641, guid: d5aa271de76fb45cea5d1b49313cc73d, type: 3}
     isChoicePage: 1
+    isNamingPage: 0
   - dialogueText: 
     speakerName: 
     speakerPosition: 0
@@ -1115,9 +1123,10 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: "\u0E40\u0E22\u0E49! \u0E41\u0E14\u0E23\u0E47\u0E01\u0E04\u0E39\u0E25\u0E48\u0E32\u0E2B\u0E19\u0E35\u0E44\u0E1B\u0E41\u0E25\u0E49\u0E27
       \u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E1B\u0E25\u0E2D\u0E14\u0E20\u0E31\u0E22\u0E40\u0E1E\u0E23\u0E32\u0E30\u0E23\u0E39\u0E49\u0E08\u0E31\u0E01\u0E43\u0E0A\u0E49\u0E2A\u0E34\u0E17\u0E18\u0E34\u0E25\u0E14\u0E2B\u0E22\u0E48\u0E2D\u0E19\u0E19\u0E35\u0E48\u0E40\u0E2D\u0E07"
-    speakerName: Chatbot
+    speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: 8685835791614800407, guid: f9290858f68d94cdea805b7410bf3031, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
@@ -1125,11 +1134,12 @@ MonoBehaviour:
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: "\u0E41\u0E15\u0E48\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32...
       \u0E01\u0E32\u0E23\u0E40\u0E14\u0E34\u0E19\u0E17\u0E32\u0E07\u0E02\u0E2D\u0E07\u0E40\u0E23\u0E32\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E08\u0E1A
       \u0E14\u0E48\u0E32\u0E19\u0E15\u0E48\u0E2D\u0E44\u0E1B\u0E04\u0E37\u0E2D\u0E02\u0E2D\u0E07\u0E08\u0E23\u0E34\u0E07...
       \u0E40\u0E23\u0E32\u0E15\u0E49\u0E2D\u0E07\u0E1A\u0E38\u0E01\u0E2B\u0E2D\u0E04\u0E2D\u0E22\u0E19\u0E31\u0E01\u0E04\u0E33\u0E19\u0E27\u0E13"
-    speakerName: Chatbot
+    speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: 8685835791614800407, guid: f9290858f68d94cdea805b7410bf3031, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
@@ -1137,12 +1147,13 @@ MonoBehaviour:
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: "\u0E17\u0E35\u0E48\u0E19\u0E31\u0E48\u0E19\u0E21\u0E35\u0E42\u0E01\u0E40\u0E25\u0E21\u0E2B\u0E34\u0E19\u0E40\u0E1D\u0E49\u0E32\u0E2D\u0E22\u0E39\u0E48
       \u0E21\u0E31\u0E19\u0E08\u0E30\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E27\u0E48\u0E32\u0E17\u0E48\u0E32\u0E19\u0E40\u0E2D\u0E32\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14
       (\u0E23\u0E32\u0E22\u0E44\u0E14\u0E49 - \u0E04\u0E48\u0E32\u0E43\u0E0A\u0E49\u0E08\u0E48\u0E32\u0E22
       - \u0E04\u0E48\u0E32\u0E25\u0E14\u0E2B\u0E22\u0E48\u0E2D\u0E19) \u0E21\u0E32\u0E04\u0E33\u0E19\u0E27\u0E13\u0E20\u0E32\u0E29\u0E35\u0E08\u0E23\u0E34\u0E07\u0E46
       \u0E44\u0E14\u0E49\u0E16\u0E39\u0E01\u0E44\u0E2B\u0E21"
-    speakerName: Chatbot
+    speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: 8685835791614800407, guid: f9290858f68d94cdea805b7410bf3031, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
@@ -1150,9 +1161,10 @@ MonoBehaviour:
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: "\u0E40\u0E15\u0E23\u0E35\u0E22\u0E21\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E04\u0E34\u0E14\u0E40\u0E25\u0E02
       (\u0E41\u0E25\u0E30\u0E2A\u0E21\u0E2D\u0E07) \u0E43\u0E2B\u0E49\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E19\u0E30!"
-    speakerName: Chatbot
+    speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: 8685835791614800407, guid: f9290858f68d94cdea805b7410bf3031, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
@@ -1160,6 +1172,7 @@ MonoBehaviour:
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   - dialogueText: 
     speakerName: 
     speakerPosition: 0
@@ -1169,6 +1182,7 @@ MonoBehaviour:
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    isNamingPage: 0
   gameResult: {fileID: 325103212}
   examSystem: {fileID: 1602382759}
   currentStage: 3
@@ -1185,6 +1199,9 @@ MonoBehaviour:
   sTargetPos: {x: 72, y: -37}
   topCloudTargetPos: {x: 0, y: 407.92}
   bottomCloudTargetPos: {x: 0, y: -407.92}
+  namingPanel: {fileID: 0}
+  nameInputField: {fileID: 0}
+  confirmNameButton: {fileID: 0}
   tipBooks:
   - tipPageIndex: 5
     bookPageToOpen: 2

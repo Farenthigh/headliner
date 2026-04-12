@@ -23,6 +23,7 @@ public class StoryPage
     [Header("Quiz Settings")]
     public bool isChoicePage;
 
+    public bool isNamingPage;
 
 
 }
