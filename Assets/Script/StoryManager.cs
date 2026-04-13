@@ -65,6 +65,9 @@ public class StoryManager : MonoBehaviour
     public List<TipBook> tipBooks;
     public SceneLoader sceneLoader;
 
+    [Header("Player Characters")]
+    public Sprite[] availableCharacters;
+
     void Start()
     {
         if(vsPanel != null) vsPanel.SetActive(false);
@@ -307,11 +310,41 @@ public class StoryManager : MonoBehaviour
         if (characterCenterUI != null) characterCenterUI.gameObject.SetActive(false);
         if (characterRightUI != null) characterRightUI.gameObject.SetActive(false);
 
-        if (page.characterCenter != null && characterCenterUI != null) SetupCharacter(characterCenterUI, page.characterCenter);
+        Sprite centerSprite = page.characterCenter;
+        Sprite leftSprite = page.characterLeft;
+        Sprite rightSprite = page.characterRight;
+
+        if (page.isPlayer && availableCharacters.Length > 0)
+        {
+            int selectedCharID = 0; 
+            
+            if (APIManager.myData.id != 0) 
+            {
+                selectedCharID = APIManager.myData.character; 
+            }
+            else 
+            {
+                selectedCharID = PlayerPrefs.GetInt("SelectedCharacter", 0); 
+            }
+
+            if (selectedCharID >= 0 && selectedCharID < availableCharacters.Length)
+            {
+                Sprite playerSprite = availableCharacters[selectedCharID];
+
+                switch (page.speakerPosition)
+                {
+                    case SpeakerPosition.Left: leftSprite = playerSprite; break;
+                    case SpeakerPosition.Center: centerSprite = playerSprite; break;
+                    case SpeakerPosition.Right: rightSprite = playerSprite; break;
+                }
+            }
+        }
+
+        if (centerSprite != null && characterCenterUI != null) SetupCharacter(characterCenterUI, centerSprite);
         else
         {
-            if (page.characterLeft != null && characterLeftUI != null) SetupCharacter(characterLeftUI, page.characterLeft);
-            if (page.characterRight != null && characterRightUI != null) SetupCharacter(characterRightUI, page.characterRight);
+            if (leftSprite != null && characterLeftUI != null) SetupCharacter(characterLeftUI, leftSprite);
+            if (rightSprite != null && characterRightUI != null) SetupCharacter(characterRightUI, rightSprite);
         }
     }
 

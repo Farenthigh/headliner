@@ -185,9 +185,9 @@ public class APIManager : MonoBehaviour
     public async Task<Uri> GetMyData()
     {
         client.DefaultRequestHeaders.Remove("Authorization");
-        Debug.Log("🔑 ตั๋ว Token ที่มีตอนนี้คือ: [" + Token + "]"); 
-        
-        if (!string.IsNullOrEmpty(Token)) 
+        Debug.Log("Token: [" + Token + "]");
+
+        if (!string.IsNullOrEmpty(Token))
         {
             string cleanToken = Token.Trim().Replace("\"", ""); 
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + cleanToken);
