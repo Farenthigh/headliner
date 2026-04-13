@@ -165,7 +165,7 @@ public class Examlogic : MonoBehaviour
             Debug.Log("คุณแพ้");
             isProcessing = false;
             CloseExamUI();
-            if (gameResult != null) gameResult.TriggerDefeat();
+            if (gameResult != null) gameResult.TriggerDefeat(1, 0, 0);
         }
         else if(enemycurrentheart <= 0 /*|| questionindex >= allquestions.Count - 1*/) //ปิดเงื่อนไขที่ถึงข้อท้ายแล้วผ่านด่าน
         {

@@ -102,12 +102,40 @@ public class StageStarList
 }
 
 [Serializable]
+public struct LeaderboardResponse
+{
+    public string message;
+    public LeaderboardData data;
+}
+
+[Serializable]
+public struct LeaderboardData
+{
+    // ชื่อตัวแปรต้องตรงกับที่ Go ส่งมา (leaderBoard)
+    public LeaderboardEntry[] leaderBoard; 
+}
+
+[System.Serializable]
 public struct LeaderboardEntry
 {
-    public int rank;
-    public int user_id;
+    public int rank; 
     public string username;
-    public int total_stars;
+
+    public int saving_game_score;
+    public int tax_game_score;
+
+    public int total_stars; 
+    public string updated_at;
+}
+
+[Serializable]
+public struct SaveLeaderboardStruct
+{
+    public int user_id;
+    public int saving_game_score;
+    public int tax_game_score;
+    public int saving_game_time;
+    public int tax_game_time;
 }
 
 // ==========================================
@@ -179,6 +207,7 @@ public class APIManager : MonoBehaviour
                 System.Text.Encoding.UTF8,
                 "application/json"));
         response.EnsureSuccessStatusCode();
+        myData.username = name;
         return response.Headers.Location;
     }
 
@@ -351,23 +380,20 @@ public class APIManager : MonoBehaviour
 
     public async Task<List<LeaderboardEntry>> GetStageLeaderBoard()
     {
-        HttpResponseMessage response = await client.GetAsync("stage/leaderboard");
+        HttpResponseMessage response = await client.GetAsync("leaderboard");
         var json = await response.Content.ReadAsStringAsync();
         Debug.Log("Leaderboard JSON: " + json);
 
-        LeaderboardEntry[] data = JsonHelper.FromJson<LeaderboardEntry>(json);
-        return new List<LeaderboardEntry>(data);
+        var jsonResponse = JsonUtility.FromJson<LeaderboardResponse>(json);
+        
+        if (jsonResponse.data.leaderBoard != null)
+        {
+            return new List<LeaderboardEntry>(jsonResponse.data.leaderBoard);
+        }
+        
+        return new List<LeaderboardEntry>(); 
     }
 
-    public async Task<LeaderboardEntry> GetMyRank()
-    {
-        HttpResponseMessage response = await client.GetAsync("stage/leaderboard/me?user_id=" + myData.id);
-        var json = await response.Content.ReadAsStringAsync();
-        Debug.Log("My Rank JSON: " + json);
-
-        LeaderboardEntry data = JsonUtility.FromJson<LeaderboardEntry>(json);
-        return data;
-    }
 
     // ==========================================
     // คลาสตัวช่วยในการแกะ JSON แบบ Array
@@ -423,8 +449,38 @@ public class APIManager : MonoBehaviour
             }
         }
     }
+    public async Task SaveLeaderboardScore(int savingScore, int taxScore, int savingTime, int taxTime)
+    {
+        SaveLeaderboardStruct requestData = new SaveLeaderboardStruct
+        {
+            user_id = myData.id,
+            saving_game_score = savingScore,
+            tax_game_score = taxScore,
+            saving_game_time = savingTime,
+            tax_game_time = taxTime
+        };
+
+        string json = JsonUtility.ToJson(requestData);
+        Debug.Log("ส่งคะแนนเข้าลีดเดอร์บอร์ด: " + json);
+
+        // ยิงไปที่ Route /leaderboard ที่เราเพิ่งสร้างเมื่อกี้
+        HttpResponseMessage response = await client.PostAsync(
+            "leaderboard", 
+            new StringContent(json, System.Text.Encoding.UTF8, "application/json")
+        );
+
+        if (!response.IsSuccessStatusCode)
+        {
+            string error = await response.Content.ReadAsStringAsync();
+            Debug.LogError("บันทึกคะแนนลีดเดอร์บอร์ดล้มเหลว: " + error);
+        }
+        
+        response.EnsureSuccessStatusCode();
+    }
+    
     
 }
+
 [System.Serializable]
 public class UpdateChatbotRequest
 {
