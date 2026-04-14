@@ -13,7 +13,7 @@ public class SelectGame : MonoBehaviour
 
     private void Start()
     {
-        savinggame.onClick.AddListener(() => SelectGameOption("SavingGameMap"));
+        savinggame.onClick.AddListener(() => SelectGameOption("SavingGameStageInfo"));
         taxgame.onClick.AddListener(() => SelectGameOption("TaxGameMap"));
         leaderboard.onClick.AddListener(() => SelectGameOption("LeaderBoardScene"));
     }

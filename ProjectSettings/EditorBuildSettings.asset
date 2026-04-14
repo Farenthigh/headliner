@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectGame.unity
     guid: 02b1c663f33b9415eb683947ce13a6a7
   - enabled: 1
-    path: Assets/Scenes/SavingGameMap.unity
+    path: Assets/Scenes/nouse.unity
     guid: 6173ce2e8984047aeb8811d9d53d5f35
   - enabled: 1
     path: Assets/Scenes/RegisterScene.unity
