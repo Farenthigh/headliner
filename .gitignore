@@ -34,6 +34,7 @@
 # Visual Studio cache directory
 .vs/
 
+google-services.json
 # Gradle cache directory
 .gradle/
 
