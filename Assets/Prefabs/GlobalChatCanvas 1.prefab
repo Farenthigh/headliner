@@ -1365,6 +1365,7 @@ MonoBehaviour:
   chatWindow: {fileID: 6861584723438223197}
   openButton: {fileID: 243656198943661436}
   closeButton: {fileID: 7891418050540924180}
+  typingSpeed: 0.02
 --- !u!1 &5986556607867300186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,7 +1727,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4267312931400450962
 MonoBehaviour:
   m_ObjectHideFlags: 0
