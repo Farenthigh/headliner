@@ -278,24 +278,12 @@ public class APIManager : MonoBehaviour
         }
     }
 
-    // --- Game Logic: REDUNDANT SAVING METHODS PRESERVED ---
-
-    // Version A variant
-    public async Task SavingGameResult(int stage, int stars)
-    {
-        HttpResponseMessage response = await client.PostAsync(
-            "users/savinggameresult/", new StringContent(
-                JsonUtility.ToJson(new { stage = stage, stars = stars }),
-                System.Text.Encoding.UTF8, "application/json"));
-        response.EnsureSuccessStatusCode();
-    }
-
     // Version B variant (using SavingGameResultStruct)
-    public async Task SavingGameResultEnhanced(int stage, int stars)
+    public async Task SavingGameResult(int stage, int stars)
     {
         SavingGameResultStruct result = new SavingGameResultStruct { user_id = myData.id, stage = stage, stars = stars };
         HttpResponseMessage response = await client.PostAsync(
-            "saving-stage/save", new StringContent(
+            "/saving-stage/save", new StringContent(
                 JsonUtility.ToJson(result), System.Text.Encoding.UTF8, "application/json"));
         response.EnsureSuccessStatusCode();
     }
@@ -305,7 +293,7 @@ public class APIManager : MonoBehaviour
     {
         GameResultStruct result = new GameResultStruct { user_id = myData.id, stars = stars, stage = stage };
         HttpResponseMessage response = await client.PostAsync(
-            "stage/save", new StringContent(JsonUtility.ToJson(result), System.Text.Encoding.UTF8, "application/json"));
+            "/stage/save", new StringContent(JsonUtility.ToJson(result), System.Text.Encoding.UTF8, "application/json"));
         response.EnsureSuccessStatusCode();
     }
 
@@ -316,7 +304,7 @@ public class APIManager : MonoBehaviour
         try
         {
             // Using ID 99 as per requested snippet redundancy
-            HttpResponseMessage response = await client.GetAsync("saving-stage/stars?user_id=99");
+            HttpResponseMessage response = await client.GetAsync("saving-stage/stars?user_id=" + myData.id);
             if (!response.IsSuccessStatusCode) return -1;
             var getResponse = await response.Content.ReadAsStringAsync();
             string wrappedJson = "{ \"items\": " + getResponse + " }";
@@ -330,11 +318,11 @@ public class APIManager : MonoBehaviour
 
     public async Task<int> GetlatestStage()
     {
-        HttpResponseMessage response = await client.GetAsync("saving-stage/unlock?user_id=99");
+        HttpResponseMessage response = await client.GetAsync("saving-stage/unlock?user_id=" + myData.id);
         response.EnsureSuccessStatusCode();
         string getResponse = await response.Content.ReadAsStringAsync();
         StageResponse jsonResponse = JsonUtility.FromJson<StageResponse>(getResponse);
-        return jsonResponse.next_stage;
+        return jsonResponse.now_stage;
     }
 
     public async Task<StageUnlockData> GetStageUnlock()
