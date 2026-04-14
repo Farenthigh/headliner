@@ -3463,7 +3463,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 661590190}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 915401325}
+        m_TargetAssemblyTypeName: EventDisplay, Assembly-CSharp
+        m_MethodName: OnCardClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &661590190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4665,19 +4677,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventDisplay
   panel: {fileID: 311397370}
+  cardRoot: {fileID: 138959573}
   cardBack: {fileID: 1528485503}
   cardFront: {fileID: 661590188}
-  commonFrame: {fileID: 0}
-  uncommonFrame: {fileID: 0}
-  rareFrame: {fileID: 0}
-  cardFrame: {fileID: 0}
-  commonBack: {fileID: 0}
-  uncommonBack: {fileID: 0}
-  rareBack: {fileID: 0}
-  cardBackImage: {fileID: 0}
+  cardFrame: {fileID: 661590190}
+  cardBackImage: {fileID: 1528485505}
   iconImage: {fileID: 337020454}
   nameText: {fileID: 1791101242}
   descriptionText: {fileID: 285410203}
+  commonFrame: {fileID: 2040593383014832805, guid: 640a372326fc24a4b9b7099af4ec2e99, type: 3}
+  uncommonFrame: {fileID: 2957237373258384390, guid: aaa368995fc0a42ec819d7c4a9904c17, type: 3}
+  rareFrame: {fileID: 5604223034115033642, guid: bb7868d96b18f43af80a5a67b691eaee, type: 3}
+  commonBack: {fileID: 4298370819815946133, guid: 1886d0df09b07487abe5accd16236594, type: 3}
+  uncommonBack: {fileID: -3717946327700899573, guid: e8e0d180a911a489eba683481d21a615, type: 3}
+  rareBack: {fileID: -3165369043494433165, guid: 21470e131209945b2bc1f11949665197, type: 3}
 --- !u!4 &915401326
 Transform:
   m_ObjectHideFlags: 0
@@ -7837,7 +7850,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1528485505}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 915401325}
+        m_TargetAssemblyTypeName: EventDisplay, Assembly-CSharp
+        m_MethodName: OnCardClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1570554638
 GameObject:
   m_ObjectHideFlags: 0

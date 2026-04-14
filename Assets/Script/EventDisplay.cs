@@ -9,156 +9,117 @@ public class EventDisplay : MonoBehaviour
 
     [Header("UI Objects")]
     public GameObject panel;
+    public Transform cardRoot; 
     public GameObject cardBack;
     public GameObject cardFront;
 
-    [Header("Rarity Front Sprites")]
-    public Sprite commonFrame;
-    public Sprite uncommonFrame;
-    public Sprite rareFrame;
-    public Image cardFrame;
-
-    [Header("Rarity Back Sprites")]
-    public Sprite commonBack;
-    public Sprite uncommonBack;
-    public Sprite rareBack;
-    public Image cardBackImage;
-
     [Header("UI Elements")]
+    public Image cardFrame;
+    public Image cardBackImage;
     public Image iconImage;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
 
+    [Header("Rarity Sprites")]
+    public Sprite commonFrame; public Sprite uncommonFrame; public Sprite rareFrame;
+    public Sprite commonBack; public Sprite uncommonBack; public Sprite rareBack;
 
-    private bool isWaitingForInput = false;
+    private bool isFlipped = false;
+    private bool isAnimating = false;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
     }
+    
     private void Start()
     {
         panel.SetActive(false);
+
+        if (cardFront != null)
+            cardFront.transform.localRotation = Quaternion.Euler(0, 180, 0);
     }
 
     public void ShowEvent(Event eventData)
     {
-        Debug.Log("Showing Event: " + eventData.eventName);
-        // Set Front card details but hide it
-        // nameText.text = eventData.eventName;
-        // descriptionText.text = eventData.description;
-        // iconImage.sprite = eventData.icon;
+        UpdateRarityUI(eventData.rarity);
 
-        if (cardFrame != null)
-        {
-            if (eventData.rarity == EventRarity.Common)
-            {
-                if (cardFrame != null) cardFrame.sprite = commonFrame;
-                if (cardBackImage != null) cardBackImage.sprite = commonBack;
-            }
-            else if (eventData.rarity == EventRarity.Uncommon)
-            {
-                if (cardFrame != null) cardFrame.sprite = uncommonFrame;
-                if (cardBackImage != null) cardBackImage.sprite = uncommonBack;
-            }
-            else if (eventData.rarity == EventRarity.Rare)
-            {
-                if (cardFrame != null) cardFrame.sprite = rareFrame;
-                if (cardBackImage != null) cardBackImage.sprite = rareBack;
-            }
-        }
-        // Show panel and animate card flip start with back to front
-        panel.SetActive(true);
+        if (nameText != null) nameText.text = eventData.eventName;
+        if (descriptionText != null) descriptionText.text = eventData.description;
+        if (iconImage != null) iconImage.sprite = eventData.icon;
+
+        StopAllCoroutines(); 
+        cardRoot.rotation = Quaternion.identity;
         cardBack.SetActive(true);
         cardFront.SetActive(false);
-
-        // cardBack.GetComponent<Image>().sprite = eventData.backcard;
-        // cardFront.GetComponent<Image>().sprite = eventData.frontcard;
-        // iconImage.sprite = eventData.icon;
-        // nameText.text = $"{eventData.eventName}";
-        // descriptionText.text = $"{eventData.description}";
-
-
-        StartCoroutine(RevealProcess());
+        
+        isFlipped = false;
+        isAnimating = false;
+        panel.SetActive(true);
     }
 
-    IEnumerator RevealProcess()
+    private void UpdateRarityUI(EventRarity rarity)
     {
-        // // Wait for 1 second before flipping
-        yield return new WaitForSeconds(1f);
-        // Flip the card to reveal front
-        RevealCard();
-        Debug.Log("Card Revealed!");
-        yield return new WaitForSeconds(0.2f);
-
-        yield return StartCoroutine(WaitPointerClick());
-        ClosePanel();
-        Debug.Log("Closing Panel Now...");
-    }
-
-    IEnumerator WaitPointerClick()
-    {
-        while (true)
+        switch (rarity)
         {
-            if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+            case EventRarity.Common:
+                cardFrame.sprite = commonFrame; cardBackImage.sprite = commonBack; break;
+            case EventRarity.Uncommon:
+                cardFrame.sprite = uncommonFrame; cardBackImage.sprite = uncommonBack; break;
+            case EventRarity.Rare:
+                cardFrame.sprite = rareFrame; cardBackImage.sprite = rareBack; break;
+        }
+    }
+
+    public void OnCardClicked()
+    {
+        if (isAnimating) return;
+
+        if (!isFlipped)
+        {
+            StartCoroutine(FlipCoroutine());
+        }
+        else
+        {
+            Debug.Log("Card is already flipped, closing now...");
+            ClosePanel();
+        }
+    }
+
+    private IEnumerator FlipCoroutine()
+    {
+        isAnimating = true;
+        float duration = 0.4f; 
+        float time = 0;
+        Quaternion startRot = cardRoot.rotation;
+        Quaternion targetRot = Quaternion.Euler(0, 180, 0);
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+            
+            float smoothT = t * t * (3f - 2f * t); 
+            cardRoot.rotation = Quaternion.Lerp(startRot, targetRot, smoothT);
+
+            if (smoothT >= 0.5f && cardBack.activeSelf)
             {
-                yield break;
+                cardBack.SetActive(false);
+                cardFront.SetActive(true);
             }
             yield return null;
         }
-    }
-
-
-    // wait for player click to flip the card
-    // isWaitingForInput = true;
-
-    // Add a listener to the cardBack button to set isWaitingForInput to false when clicked
-    //     Button cardBackButton = cardBack.GetComponent<Button>();
-    //     void OnCardBackClicked()
-    //     {
-    //         isWaitingForInput = false;
-    //     }
-    //     cardBackButton.onClick.AddListener(OnCardBackClicked);
-
-    //     while (isWaitingForInput)
-    //     {
-    //         yield return null;
-    //     }
-
-    //     // Remove the listener after input is received
-    //     cardBackButton.onClick.RemoveListener(OnCardBackClicked);
-
-    //     // Flip the card to reveal front
-    //     RevealCard();
-    // }
-
-    void RevealCard()
-    {
-        cardBack.SetActive(false);
-        cardFront.SetActive(true);
-        // Button cardFrontButton = cardFront.GetComponent<Button>();
-        // cardFrontButton.onClick.AddListener(OnCardFrontClicked);
-
-        //Sound effect can be added here like "ฟึ่บ"
+        
+        cardRoot.rotation = targetRot;
+        isFlipped = true;
+        isAnimating = false;
     }
 
     public void ClosePanel()
     {
         panel.SetActive(false);
-        SavingGameLogicManager.Instance.SetIsPaused(false);
-        // Time.timeScale = 1f; // Resume the game,
-    }
-    public void OnCardFrontClicked()
-    {
-        // Close the panel and trigger the event effect
-        Debug.Log("Card front clicked, closing panel and triggering event effect.");
-        ClosePanel();
+        if (SavingGameLogicManager.Instance != null)
+            SavingGameLogicManager.Instance.SetIsPaused(false);
     }
 }
