@@ -113,7 +113,10 @@ public class SavingGoalManager : MonoBehaviour
         StartCoroutine(ShowResults());
         try
         {
-            APIManager.Instance.SavingGameResult(stage, starsEarned);
+            if (starsEarned > 0)
+            {
+                APIManager.Instance.SavingGameResult(stage, starsEarned);
+            }
         }
         catch (System.Exception ex)
         {
