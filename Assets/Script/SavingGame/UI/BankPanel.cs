@@ -99,6 +99,11 @@ public class BankPanelUI : MonoBehaviour
             OnFailedAction($"ไม่สามารถฝากได้ เนื่องจากยอดฝากขั้นสูงคือ {bankScript.GetMaximumDeposit()}");
             return;
         }
+        if (bankScript.GetBalance() < amount)
+        {
+            OnFailedAction("ไม่สามารถฝากได้ เนื่องจากยอดเงินในมือไม่เพียงพอ");
+            return;
+        }
         bankScript.Deposit(amount);
         amountInput.text = "";
     }
