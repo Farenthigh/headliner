@@ -120,6 +120,8 @@ public class UpdateChatbotRequest
 public class APIManager : MonoBehaviour
 {
     public static APIManager Instance { get; private set; }
+
+    public static bool IsRequestRunning = false;
     public static bool IsRequestRunning = false;
     public static string Token;
     public static UserData myData;
@@ -165,6 +167,8 @@ public class APIManager : MonoBehaviour
         var jsonResponse = JsonUtility.FromJson<ApiResponse<TokenData>>(postResponse);
         Token = jsonResponse.data.token;
 
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+
         // Shared header update logic
         string cleanToken = Token.Trim().Replace("\"", "");
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cleanToken);
@@ -185,11 +189,14 @@ public class APIManager : MonoBehaviour
     public async Task<Uri> GetMyData()
     {
         client.DefaultRequestHeaders.Remove("Authorization");
+        Debug.Log("🔑 ตั๋ว Token ที่มีตอนนี้คือ: [" + Token + "]");
+
         if (!string.IsNullOrEmpty(Token))
-        {
-            string cleanToken = Token.Trim().Replace("\"", "");
-            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + cleanToken);
-        }
+            if (!string.IsNullOrEmpty(Token))
+            {
+                string cleanToken = Token.Trim().Replace("\"", "");
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + cleanToken);
+            }
 
         HttpResponseMessage response = await client.GetAsync("users/data/");
         var getResponse = await response.Content.ReadAsStringAsync();
@@ -202,6 +209,7 @@ public class APIManager : MonoBehaviour
 
         var jsonResponse = JsonUtility.FromJson<ApiResponse<UserData>>(getResponse);
         myData = jsonResponse.data;
+
         return response.Headers.Location;
     }
 
@@ -221,6 +229,19 @@ public class APIManager : MonoBehaviour
         try
         {
             UpdateUsernameStruct data = new UpdateUsernameStruct { username = newUsername };
+
+            HttpResponseMessage response = await client.PutAsync(
+                "users/update-username/",
+                new StringContent(
+                    JsonUtility.ToJson(data),
+                    System.Text.Encoding.UTF8,
+                    "application/json"));
+
+            if (response.IsSuccessStatusCode)
+            {
+                myData.username = newUsername;
+            }
+
             HttpResponseMessage response = await client.PutAsync("users/update-username/",
                 new StringContent(JsonUtility.ToJson(data), System.Text.Encoding.UTF8, "application/json"));
             if (response.IsSuccessStatusCode) { myData.username = newUsername; }
@@ -329,6 +350,8 @@ public class APIManager : MonoBehaviour
     {
         HttpResponseMessage response = await client.GetAsync("stage/unlock?user_id=" + myData.id);
         var getResponse = await response.Content.ReadAsStringAsync();
+        Debug.Log(getResponse);
+
         var jsonResponse = JsonUtility.FromJson<StageUnlockData>(getResponse);
         response.EnsureSuccessStatusCode();
         return jsonResponse;

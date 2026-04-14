@@ -15,28 +15,28 @@ public class Examlogic : MonoBehaviour
     public Text questiontextUI;
     public GameObject[] playerhearts;
     public GameObject[] enemyhearts;
-    public GameObject choicePanel; 
+    public GameObject choicePanel;
     public GameObject questionPanel;
     public Text[] choicebuttontextUI;
-    public GameObject inputPanel; 
-    public TMP_InputField answerInputField; 
+    public GameObject inputPanel;
+    public TMP_InputField answerInputField;
     public StoryManager storyManager;
     public GameResult gameResult;
     public int achievementIdToUnlock;
     public string achievementCodeToUnlock;
 
-    public void StartExam() 
+    public void StartExam()
     {
         this.gameObject.SetActive(true);
-        if(questionPanel != null) questionPanel.SetActive(true);
+        if (questionPanel != null) questionPanel.SetActive(true);
 
         //Set Auto Open SuperClass Heart
         if (playerhearts.Length > 0 && playerhearts[0].transform.parent != null)
-        playerhearts[0].transform.parent.gameObject.SetActive(true);
-    
+            playerhearts[0].transform.parent.gameObject.SetActive(true);
+
         if (enemyhearts.Length > 0 && enemyhearts[0].transform.parent != null)
             enemyhearts[0].transform.parent.gameObject.SetActive(true);
-            
+
         playercurrentheart = maxheart;
         enemycurrentheart = maxheart;
 
@@ -46,7 +46,7 @@ public class Examlogic : MonoBehaviour
 
     void loadQuestion()
     {
-        if(questionindex >= allquestions.Count)
+        if (questionindex >= allquestions.Count)
         {
             Debug.Log("หมดแล้วคำถามหมด");
             return;
@@ -60,9 +60,9 @@ public class Examlogic : MonoBehaviour
             choicePanel.SetActive(true);
             inputPanel.SetActive(false);
 
-            for(int i = 0; i < choicebuttontextUI.Length; i++)
+            for (int i = 0; i < choicebuttontextUI.Length; i++)
             {
-                if(i < currentquestion.choices.Length)
+                if (i < currentquestion.choices.Length)
                     choicebuttontextUI[i].text = currentquestion.choices[i];
             }
         }
@@ -70,8 +70,8 @@ public class Examlogic : MonoBehaviour
         {
             choicePanel.SetActive(false);
             inputPanel.SetActive(true);
-            
-            answerInputField.text = ""; 
+
+            answerInputField.text = "";
         }
 
         if (storyManager != null)
@@ -83,6 +83,7 @@ public class Examlogic : MonoBehaviour
     public void Onanswerselected(int index)
     {
         if (currentquestion.type != QuestionType.MultipleChoice) return;
+        AudioManager.instance.PlaySFX("Hit");
         ProcessResult(index == currentquestion.correctChoiceIndex);
     }
 
@@ -91,23 +92,23 @@ public class Examlogic : MonoBehaviour
         if (currentquestion.type != QuestionType.TextInput) return;
 
         string playerAnswer = answerInputField.text.Trim();
-        
+
         bool isCorrect = playerAnswer == currentquestion.correctStringAnswer;
-        
+
         ProcessResult(isCorrect);
     }
 
     void ProcessResult(bool isCorrect)
     {
-        if(playercurrentheart <= 0 || enemycurrentheart <= 0) return;
+        if (playercurrentheart <= 0 || enemycurrentheart <= 0) return;
         isProcessing = true;
 
-        if(isCorrect)
+        if (isCorrect)
         {
             Debug.Log("ตอบถูก!");
             enemycurrentheart--;
-        } 
-        else 
+        }
+        else
         {
             Debug.Log("ตอบผิด!");
             playercurrentheart--;
@@ -139,9 +140,9 @@ public class Examlogic : MonoBehaviour
 
     void updateHeartUI()
     {
-        for(int i = 0 ; i < playerhearts.Length; i++)
+        for (int i = 0; i < playerhearts.Length; i++)
         {
-            if(playerhearts[i] != null)
+            if (playerhearts[i] != null)
             {
                 // ถ้าลำดับ i น้อยกว่าเลือดที่มี ให้เปิดดวงนั้น
                 playerhearts[i].SetActive(i < playercurrentheart);
@@ -149,9 +150,9 @@ public class Examlogic : MonoBehaviour
         }
 
         // อัปเดตฝั่งศัตรู
-        for(int i = 0 ; i < enemyhearts.Length; i++)
+        for (int i = 0; i < enemyhearts.Length; i++)
         {
-            if(enemyhearts[i] != null)
+            if (enemyhearts[i] != null)
             {
                 enemyhearts[i].SetActive(i < enemycurrentheart);
             }
@@ -160,19 +161,20 @@ public class Examlogic : MonoBehaviour
 
     void CheckGameEnd()
     {
-        if(playercurrentheart <= 0) 
+        if (playercurrentheart <= 0)
         {
             Debug.Log("คุณแพ้");
             isProcessing = false;
             CloseExamUI();
             if (gameResult != null) gameResult.TriggerDefeat();
         }
-        else if(enemycurrentheart <= 0 /*|| questionindex >= allquestions.Count - 1*/) //ปิดเงื่อนไขที่ถึงข้อท้ายแล้วผ่านด่าน
+        else if (enemycurrentheart <= 0 /*|| questionindex >= allquestions.Count - 1*/) //ปิดเงื่อนไขที่ถึงข้อท้ายแล้วผ่านด่าน
         {
             Debug.Log("คุณชนะ");
             CloseExamUI();
 
-            if(achievementIdToUnlock > 0 && !string.IsNullOrEmpty(achievementCodeToUnlock)){
+            if (achievementIdToUnlock > 0 && !string.IsNullOrEmpty(achievementCodeToUnlock))
+            {
                 AchievementManager.Instance.UnlockAchievement((uint)achievementIdToUnlock, achievementCodeToUnlock);
             }
 
@@ -188,17 +190,17 @@ public class Examlogic : MonoBehaviour
         if (inputPanel != null) inputPanel.SetActive(false);
 
         if (choicePanel != null) choicePanel.SetActive(false);
-        
+
         if (playerhearts.Length > 0 && playerhearts[0].transform.parent != null)
             playerhearts[0].transform.parent.gameObject.SetActive(false);
-            
+
         if (enemyhearts.Length > 0 && enemyhearts[0].transform.parent != null)
             enemyhearts[0].transform.parent.gameObject.SetActive(false);
 
         this.gameObject.SetActive(false);
-        
-    }
-    
 
-    
+    }
+
+
+
 }

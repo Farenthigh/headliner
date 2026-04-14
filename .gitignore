@@ -100,3 +100,4 @@ InitTestScene*.unity*
 Assets/Resource/Star.png.meta
 
 google-services.json
+google-secret.json

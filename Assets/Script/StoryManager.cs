@@ -2,22 +2,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class StoryManager : MonoBehaviour
 {
-   public Text dialogueTextUI;
-   public Text speakerNameUI;
-   public Image backgroundImageUI;
-   public Image characterLeftUI;
-   public Image characterCenterUI;
-   public Image characterRightUI;
-   public Image speechBubbleUI;
-   public GameObject nextButton;
-   public List<StoryPage> allPages;
-   private int currentIndex = 0;
-   public GameResult gameResult;
+    public Text dialogueTextUI;
+    public Text speakerNameUI;
+    public Image backgroundImageUI;
+    public Image characterLeftUI;
+    public Image characterCenterUI;
+    public Image characterRightUI;
+    public Image speechBubbleUI;
+    public GameObject nextButton;
+    public List<StoryPage> allPages;
+    private int currentIndex = 0;
+    public GameResult gameResult;
 
 
     [Header("Quiz UI")]
@@ -27,26 +27,26 @@ public class StoryManager : MonoBehaviour
     [SerializeField] private int currentStage = 1;
 
     [Header("Typewriter Settings")]
-    public float typingSpeed = 0.03f;  
-    private bool isTyping = false;     
-    private Coroutine typingCoroutine; 
+    public float typingSpeed = 0.03f;
+    private bool isTyping = false;
+    private Coroutine typingCoroutine;
 
     // +++ ส่วนของ VS Animation +++
     [Header("VS Animation Settings (ลากของมาใส่)")]
-    public GameObject vsPanel;         
-    public RectTransform vTransform;   
-    public RectTransform sTransform;   
-    public RectTransform topCloud;     
-    public RectTransform bottomCloud;  
-    public ParticleSystem clashParticle; 
-    public AudioSource thunderSound;   
+    public GameObject vsPanel;
+    public RectTransform vTransform;
+    public RectTransform sTransform;
+    public RectTransform topCloud;
+    public RectTransform bottomCloud;
+    public ParticleSystem clashParticle;
+    public AudioSource thunderSound;
     public float animationDuration = 0.5f;
 
     [Header("Target Positions (จุดที่มันจะวิ่งมาหยุด)")]
-    public Vector2 vTargetPos = new Vector2(-19f, 49f); 
-    public Vector2 sTargetPos = new Vector2(72f, -37f);  
-    public Vector2 topCloudTargetPos = new Vector2(0f, 407.92f);    
-    public Vector2 bottomCloudTargetPos = new Vector2(0f, -407.92f); 
+    public Vector2 vTargetPos = new Vector2(-19f, 49f);
+    public Vector2 sTargetPos = new Vector2(72f, -37f);
+    public Vector2 topCloudTargetPos = new Vector2(0f, 407.92f);
+    public Vector2 bottomCloudTargetPos = new Vector2(0f, -407.92f);
 
     [Header("Naming System")]
     public GameObject namingPanel;
@@ -57,8 +57,8 @@ public class StoryManager : MonoBehaviour
     [System.Serializable]
     public class TipBook
     {
-        public int tipPageIndex;      
-        public int bookPageToOpen;  
+        public int tipPageIndex;
+        public int bookPageToOpen;
     }
 
     [Header("Tip Books")]
@@ -67,8 +67,8 @@ public class StoryManager : MonoBehaviour
 
     void Start()
     {
-        if(vsPanel != null) vsPanel.SetActive(false);
-        if(clashParticle != null) 
+        if (vsPanel != null) vsPanel.SetActive(false);
+        if (clashParticle != null)
         {
             clashParticle.Stop();
             clashParticle.Clear();
@@ -104,6 +104,7 @@ public class StoryManager : MonoBehaviour
         {
             if (currentIndex < allPages.Count - 1)
             {
+                AudioManager.instance.PlaySFX("NextPage");
                 currentIndex++;
                 UpdateUI();
             }
@@ -137,7 +138,7 @@ public class StoryManager : MonoBehaviour
         {
             if (namingPanel != null) namingPanel.SetActive(true);
             if (nextButton != null) nextButton.SetActive(false);
-            return; 
+            return;
         }
 
         if (namingPanel != null) namingPanel.SetActive(false);
@@ -146,15 +147,15 @@ public class StoryManager : MonoBehaviour
         string processedSpeaker = ProcessText(currentPage.speakerName);
         string processedDialogue = ProcessText(currentPage.dialogueText);
 
-        if (dialogueTextUI != null) 
+        if (dialogueTextUI != null)
         {
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
             typingCoroutine = StartCoroutine(TypeSentence(processedDialogue));
         }
-        
+
         if (speakerNameUI != null) speakerNameUI.text = processedSpeaker;
         if (backgroundImageUI != null && currentPage.background != null) backgroundImageUI.sprite = currentPage.background;
-       
+
         if (speechBubbleUI != null)
         {
             if (currentPage.speechBubble != null)
@@ -164,7 +165,7 @@ public class StoryManager : MonoBehaviour
             }
             else speechBubbleUI.gameObject.SetActive(false);
         }
-        
+
         HandleCharacterLayout(currentPage);
 
         // +++ เพิ่มการเรียกใช้แอนิเมชันขยับตัวละคร (จากโค้ดใหม่) +++
@@ -184,17 +185,17 @@ public class StoryManager : MonoBehaviour
             if (examSystem != null) examSystem.gameObject.SetActive(false);
         }
 
-        
 
-        if(currentIndex == allPages.Count - 1)
+
+        if (currentIndex == allPages.Count - 1)
         {
             Debug.Log("นี่คือหน้าสุดท้าย");
             Debug.Log("คุณชนะ");
 
             if (gameResult != null)
             {
-                int stars = 0; 
-                if (Manager.Instance != null) 
+                int stars = 0;
+                if (Manager.Instance != null)
                 {
                     stars = Manager.Instance.GetStarsFromExam();
                 }
@@ -238,8 +239,8 @@ public class StoryManager : MonoBehaviour
     }
     IEnumerator PlayVSEffectAndStartQuiz()
     {
-        if(vsPanel != null) vsPanel.SetActive(true);
-        if(clashParticle != null) 
+        if (vsPanel != null) vsPanel.SetActive(true);
+        if (clashParticle != null)
         {
             clashParticle.Stop();
             clashParticle.Clear();
@@ -261,7 +262,7 @@ public class StoryManager : MonoBehaviour
             if (sTransform != null) sTransform.anchoredPosition = Vector2.Lerp(sStartPos, sTargetPos, percent);
             if (topCloud != null) topCloud.anchoredPosition = Vector2.Lerp(topCloudStartPos, topCloudTargetPos, percent);
             if (bottomCloud != null) bottomCloud.anchoredPosition = Vector2.Lerp(bottomCloudStartPos, bottomCloudTargetPos, percent);
-            
+
             yield return null;
         }
 
@@ -271,19 +272,19 @@ public class StoryManager : MonoBehaviour
         if (bottomCloud != null) bottomCloud.anchoredPosition = bottomCloudTargetPos;
 
         if (clashParticle != null) clashParticle.Play();
-        if (thunderSound != null) thunderSound.Play(); 
+        if (thunderSound != null) thunderSound.Play();
 
-        yield return new WaitForSeconds(3f); 
+        yield return new WaitForSeconds(3f);
 
-        if(vsPanel != null) vsPanel.SetActive(false);
+        if (vsPanel != null) vsPanel.SetActive(false);
         if (vTransform != null) vTransform.anchoredPosition = vStartPos;
         if (sTransform != null) sTransform.anchoredPosition = sStartPos;
         if (topCloud != null) topCloud.anchoredPosition = topCloudStartPos;
         if (bottomCloud != null) bottomCloud.anchoredPosition = bottomCloudStartPos;
 
-        if(clashParticle != null) clashParticle.Stop();
+        if (clashParticle != null) clashParticle.Stop();
 
-        if (examSystem != null) 
+        if (examSystem != null)
         {
             examSystem.gameObject.SetActive(true);
             examSystem.StartExam();
@@ -293,13 +294,13 @@ public class StoryManager : MonoBehaviour
     IEnumerator TypeSentence(string sentence)
     {
         isTyping = true;
-        dialogueTextUI.text = ""; 
+        dialogueTextUI.text = "";
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueTextUI.text += letter;
-            yield return new WaitForSeconds(typingSpeed); 
+            yield return new WaitForSeconds(typingSpeed);
         }
-        isTyping = false; 
+        isTyping = false;
     }
     void HandleCharacterLayout(StoryPage page)
     {
@@ -319,12 +320,12 @@ public class StoryManager : MonoBehaviour
     {
         characterUI.sprite = characterSprite;
         characterUI.gameObject.SetActive(true);
-    
+
     }
 
-   void StartMove(Image character)
-   {
-       if (character == null) return;
+    void StartMove(Image character)
+    {
+        if (character == null) return;
 
         CharacterBounce bounce = character.GetComponent<CharacterBounce>();
         if (bounce == null)
@@ -333,8 +334,8 @@ public class StoryManager : MonoBehaviour
             bounce = character.gameObject.AddComponent<CharacterBounce>();
         }
 
-        bounce.enabled = true; 
-    }  
+        bounce.enabled = true;
+    }
 
     void StopMove(Image character)
     {
@@ -343,13 +344,13 @@ public class StoryManager : MonoBehaviour
         CharacterBounce bounce = character.GetComponent<CharacterBounce>();
         if (bounce != null)
         {
-            bounce.enabled = false; 
+            bounce.enabled = false;
         }
     }
     void UpdateCharacterAnimation(StoryPage page)
     {
         Debug.Log("Animating: " + page.speakerPosition);
-        
+
         StopMove(characterLeftUI);
         StopMove(characterCenterUI);
         StopMove(characterRightUI);
@@ -388,7 +389,7 @@ public class StoryManager : MonoBehaviour
         Debug.Log("Sending stars: " + stars + " stage: " + currentStage);
         await APIManager.Instance.SaveGameResult(stars, currentStage);
     }
-    
+
     public async void ConfirmName()
     {
         if (nameInputField != null && !string.IsNullOrEmpty(nameInputField.text))

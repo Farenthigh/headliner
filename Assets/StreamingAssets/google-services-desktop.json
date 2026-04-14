@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "328172234968",
+    "project_id": "headliner-1fd26",
+    "storage_bucket": "headliner-1fd26.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328172234968:android:87c738f224a929f492cfad",
+        "android_client_info": {
+          "package_name": "com.headliner.desktop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328172234968-0n8h9gua7vqrdesn81nk7u6tclslsfg2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbbjOocg8LpjOCK0RIIwn05xoetw3il5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328172234968-0n8h9gua7vqrdesn81nk7u6tclslsfg2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
