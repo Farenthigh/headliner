@@ -4492,9 +4492,9 @@ MonoBehaviour:
   defeatBackground1: {fileID: -4883795571907323825, guid: a053e636afe454e2a8223c6eb98ab0c0, type: 3}
   defeatBackground2: {fileID: 354164613583611052, guid: 538c5693438a648a4b179ec0a6c89cf7, type: 3}
   passStar: {fileID: 4815476061570213978, guid: 9e7cc7393b686434ab065071836ec4cf, type: 3}
-  exit: {fileID: 0}
-  playAgain: {fileID: 0}
-  nextGame: {fileID: 0}
+  exit: {fileID: 590813733}
+  playAgain: {fileID: 1943893511}
+  nextGame: {fileID: 1381999337}
 --- !u!224 &899125577
 RectTransform:
   m_ObjectHideFlags: 0

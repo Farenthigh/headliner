@@ -24,7 +24,7 @@ public class SavingGameStage : MonoBehaviour
         {
             star = await APIManager.Instance.GetSavingGameStar(stage);
             int latestStage = await APIManager.Instance.GetlatestStage();
-            Debug.Log($"Stage {stage} has {star} stars.");
+            Debug.Log($"Stage {stage} has {star} stars latest stage: {latestStage}");
             if (star == -1)
             {
                 star1.gameObject.SetActive(false);
