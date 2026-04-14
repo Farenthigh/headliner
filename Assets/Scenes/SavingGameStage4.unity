@@ -4587,12 +4587,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37c8834efe49400592e0b474f884eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGoalManager
-  stage: 0
+  stage: 4
   baseGoal: 1000
   goalAmount2: 1500
-  stage: 5
-  baseGoal: 2000
-  goalAmount2: 3000
   goalAmount3: 4000
   goalMonth: 3
   StarGoal1: {fileID: 618751626}
