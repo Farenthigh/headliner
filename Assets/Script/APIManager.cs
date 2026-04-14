@@ -2,12 +2,14 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using System.Collections.Generic; // +++ เพิ่มเข้ามาเพื่อให้ใช้ List<> ของเพื่อนได้ +++
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 // ==========================================
-// 1. โครงสร้างข้อมูลพื้นฐาน (Base Structs)
+// 1. ALL DATA STRUCTURES (COMBINED)
 // ==========================================
+
 [Serializable]
 public struct ApiResponse<T>
 {
@@ -17,10 +19,7 @@ public struct ApiResponse<T>
 }
 
 [Serializable]
-public struct TokenData
-{
-    public string token;
-}
+public struct TokenData { public string token; }
 
 [Serializable]
 public struct UserData
@@ -32,50 +31,30 @@ public struct UserData
     public string chatbot_name;
 }
 
-public struct RegisterStruct
-{
-    public string email;
-    public string password;
-    public string confirm_password;
-}
-
-public struct LoginStruct
-{
-    public string email;
-    public string password;
-}
-
-public struct CharacterStruct
-{
-    public string username;
-    public int character;
-}
-
-// ==========================================
-// 2. โครงสร้างข้อมูลจัดการบัญชี (Profile Structs)
-// ==========================================
-[Serializable]
-public struct UpdateUsernameStruct
-{
-    public string username;
-}
+public struct RegisterStruct { public string email; public string password; public string confirm_password; }
+public struct LoginStruct { public string email; public string password; }
+public struct CharacterStruct { public string username; public int character; }
 
 [Serializable]
-public struct UpdatePasswordStruct
-{
-    public string currentPassword;
-    public string newPassword;
-}
+public struct UpdateUsernameStruct { public string username; }
 
-// ==========================================
-// 3. โครงสร้างข้อมูลด่านและเกม (Stage Structs - จากเพื่อน)
-// ==========================================
+[Serializable]
+public struct UpdatePasswordStruct { public string currentPassword; public string newPassword; }
+
 [Serializable]
 public struct GameResultStruct
 {
     public int user_id;
     public int stars;
     public int stage;
+}
+
+[Serializable]
+public struct SavingGameResultStruct
+{
+    public int user_id;
+    public int stage;
+    public int stars;
 }
 
 [Serializable]
@@ -96,10 +75,7 @@ public struct StageStar
 }
 
 [Serializable]
-public class StageStarList
-{
-    public StageStar[] items;
-}
+public class StageStarList { public StageStar[] items; }
 
 [Serializable]
 public struct LeaderboardEntry
@@ -110,20 +86,48 @@ public struct LeaderboardEntry
     public int total_stars;
 }
 
+[Serializable]
+public struct GetSavingGameStarStruct
+{
+    public int id;
+    public int user_id;
+    public int stage;
+    public int stars;
+}
+
+[Serializable]
+public class StarDataWrapper { public List<GetSavingGameStarStruct> items; }
+
+[Serializable]
+public class StageResponse
+{
+    public int next_stage;
+    public int now_stage;
+    public int[] unlocked;
+}
+
+[Serializable]
+public class UpdateChatbotRequest
+{
+    public uint user_id;
+    public string chatbot_name;
+}
+
 // ==========================================
-// 4. คลาส APIManager หลัก
+// 2. APIManager (ALL FUNCTIONS MERGED)
 // ==========================================
+
 public class APIManager : MonoBehaviour
 {
     public static APIManager Instance { get; private set; }
-    
-    public static bool IsRequestRunning = false; 
+    public static bool IsRequestRunning = false;
     public static string Token;
     public static UserData myData;
     static HttpClient client = new HttpClient();
 
     private void Awake()
     {
+        // Initial setup from both versions
         if (Instance == null)
         {
             Instance = this;
@@ -139,18 +143,14 @@ public class APIManager : MonoBehaviour
         }
     }
 
-    // ==========================================
-    // ส่วนที่ 1: ระบบล็อกอินและผู้เล่น (Auth & User)
-    // ==========================================
+    // --- Version A & B: Auth & Core ---
+
     public async Task<Uri> Register(RegisterStruct register)
     {
         HttpResponseMessage response = await client.PostAsync(
             "users/register/", new StringContent(
-                JsonUtility.ToJson(register),
-                System.Text.Encoding.UTF8,
-                "application/json"));
+                JsonUtility.ToJson(register), System.Text.Encoding.UTF8, "application/json"));
         response.EnsureSuccessStatusCode();
-
         return response.Headers.Location;
     }
 
@@ -159,14 +159,15 @@ public class APIManager : MonoBehaviour
         HttpResponseMessage response = await client.PostAsync(
             "users/login/", new StringContent(
                 JsonUtility.ToJson(new LoginStruct { email = email, password = password }),
-                System.Text.Encoding.UTF8,
-                "application/json"));
+                System.Text.Encoding.UTF8, "application/json"));
         response.EnsureSuccessStatusCode();
         var postResponse = await response.Content.ReadAsStringAsync();
         var jsonResponse = JsonUtility.FromJson<ApiResponse<TokenData>>(postResponse);
         Token = jsonResponse.data.token;
-        
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+
+        // Shared header update logic
+        string cleanToken = Token.Trim().Replace("\"", "");
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", cleanToken);
         return response.Headers.Location;
     }
 
@@ -176,8 +177,7 @@ public class APIManager : MonoBehaviour
         HttpResponseMessage response = await client.PostAsync(
             "users/createcharacter/", new StringContent(
                 JsonUtility.ToJson(new CharacterStruct { username = name, character = character }),
-                System.Text.Encoding.UTF8,
-                "application/json"));
+                System.Text.Encoding.UTF8, "application/json"));
         response.EnsureSuccessStatusCode();
         return response.Headers.Location;
     }
@@ -185,11 +185,9 @@ public class APIManager : MonoBehaviour
     public async Task<Uri> GetMyData()
     {
         client.DefaultRequestHeaders.Remove("Authorization");
-        Debug.Log("🔑 ตั๋ว Token ที่มีตอนนี้คือ: [" + Token + "]"); 
-        
-        if (!string.IsNullOrEmpty(Token)) 
+        if (!string.IsNullOrEmpty(Token))
         {
-            string cleanToken = Token.Trim().Replace("\"", ""); 
+            string cleanToken = Token.Trim().Replace("\"", "");
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + cleanToken);
         }
 
@@ -199,23 +197,12 @@ public class APIManager : MonoBehaviour
         if (!response.IsSuccessStatusCode)
         {
             Debug.LogError($"ดึงข้อมูลล้มเหลว! Status: {response.StatusCode} | ข้อความ: {getResponse}");
-            response.EnsureSuccessStatusCode(); 
+            response.EnsureSuccessStatusCode();
         }
 
         var jsonResponse = JsonUtility.FromJson<ApiResponse<UserData>>(getResponse);
         myData = jsonResponse.data;
-        
         return response.Headers.Location;
-    }
-
-    public async Task SavingGameResult(int stage, int stars)
-    {
-        HttpResponseMessage response = await client.PostAsync(
-            "users/savinggameresult/", new StringContent(
-                JsonUtility.ToJson(new { stage = stage, stars = stars }),
-                System.Text.Encoding.UTF8,
-                "application/json"));
-        response.EnsureSuccessStatusCode();
     }
 
     public void Logout()
@@ -224,70 +211,34 @@ public class APIManager : MonoBehaviour
         myData = new UserData();
         client.DefaultRequestHeaders.Clear();
         client.DefaultRequestHeaders.Add("Accept", "application/json");
-        Debug.Log("ออกจากระบบ และล้างความทรงจำ HttpClient เรียบร้อย!");
+        Debug.Log("ออกจากระบบ เรียบร้อย!");
     }
 
-    // ==========================================
-    // ส่วนที่ 2: ระบบจัดการโปรไฟล์ (Profile Update)
-    // ==========================================
+    // --- Profile Management Section ---
+
     public async Task<bool> UpdateUsername(string newUsername)
     {
         try
         {
             UpdateUsernameStruct data = new UpdateUsernameStruct { username = newUsername };
-
-            HttpResponseMessage response = await client.PutAsync(
-                "users/update-username/",
-                new StringContent(
-                    JsonUtility.ToJson(data),
-                    System.Text.Encoding.UTF8,
-                    "application/json"));
-
-            if (response.IsSuccessStatusCode)
-            {
-                myData.username = newUsername;   
-            }
-
+            HttpResponseMessage response = await client.PutAsync("users/update-username/",
+                new StringContent(JsonUtility.ToJson(data), System.Text.Encoding.UTF8, "application/json"));
+            if (response.IsSuccessStatusCode) { myData.username = newUsername; }
             return response.IsSuccessStatusCode;
         }
-        catch (Exception e)
-        {
-            Debug.Log("Update username error: " + e.Message);
-            return false;
-        }
+        catch (Exception e) { Debug.Log("Update username error: " + e.Message); return false; }
     }
 
     public async Task<bool> UpdatePassword(string currentPassword, string newPassword)
     {
         try
         {
-            UpdatePasswordStruct data = new UpdatePasswordStruct
-            {
-                currentPassword = currentPassword,
-                newPassword = newPassword
-            };
-
-            HttpResponseMessage response = await client.PutAsync(
-                "users/update-password/",
-                new StringContent(
-                    JsonUtility.ToJson(data),
-                    System.Text.Encoding.UTF8,
-                    "application/json"));
-
-            if (!response.IsSuccessStatusCode)
-            {
-                string errorResponse = await response.Content.ReadAsStringAsync();
-                Debug.LogError($"❌ เปลี่ยนรหัสพัง! Status: {response.StatusCode} | Backend ด่ามาว่า: {errorResponse}");
-                return false;
-            }
-
+            UpdatePasswordStruct data = new UpdatePasswordStruct { currentPassword = currentPassword, newPassword = newPassword };
+            HttpResponseMessage response = await client.PutAsync("users/update-password/",
+                new StringContent(JsonUtility.ToJson(data), System.Text.Encoding.UTF8, "application/json"));
             return response.IsSuccessStatusCode;
         }
-        catch (Exception e)
-        {
-            Debug.Log("Update password error: " + e.Message);
-            return false;
-        }
+        catch (Exception e) { Debug.Log("Update password error: " + e.Message); return false; }
     }
 
     public async Task<bool> DeleteAccount()
@@ -297,43 +248,87 @@ public class APIManager : MonoBehaviour
             HttpResponseMessage response = await client.DeleteAsync("users/delete/");
             return response.IsSuccessStatusCode;
         }
-        catch (Exception e)
+        catch (Exception e) { Debug.Log("Delete account error: " + e.Message); return false; }
+    }
+
+    public async Task SaveChatbotName(string newName)
+    {
+        if (string.IsNullOrEmpty(Token)) return;
+        string url = client.BaseAddress + "users/update-chatbot";
+        UpdateChatbotRequest req = new UpdateChatbotRequest { user_id = (uint)myData.id, chatbot_name = newName };
+        string jsonData = JsonUtility.ToJson(req);
+
+        using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
         {
-            Debug.Log("Delete account error: " + e.Message);
-            return false;
+            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
+            webRequest.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            webRequest.downloadHandler = new DownloadHandlerBuffer();
+            webRequest.SetRequestHeader("Content-Type", "application/json");
+            webRequest.SetRequestHeader("Authorization", "Bearer " + Token);
+
+            var operation = webRequest.SendWebRequest();
+            while (!operation.isDone) { await Task.Yield(); }
+            if (webRequest.result != UnityWebRequest.Result.Success) { Debug.LogError(webRequest.error); }
+            else
+            {
+                myData.chatbot_name = newName;
+                PlayerPrefs.SetString("ChatbotCustomName", newName);
+                PlayerPrefs.Save();
+            }
         }
     }
 
-    // ==========================================
-    // ส่วนที่ 3: ระบบด่าน และ ลีดเดอร์บอร์ด (Stage & Game - จากเพื่อน)
-    // ==========================================
+    // Version B variant (using SavingGameResultStruct)
+    public async Task SavingGameResult(int stage, int stars)
+    {
+        SavingGameResultStruct result = new SavingGameResultStruct { user_id = myData.id, stage = stage, stars = stars };
+        HttpResponseMessage response = await client.PostAsync(
+            "/saving-stage/save", new StringContent(
+                JsonUtility.ToJson(result), System.Text.Encoding.UTF8, "application/json"));
+        response.EnsureSuccessStatusCode();
+    }
+
+    // Version from "Friend" logic
     public async Task SaveGameResult(int stars, int stage)
     {
-        GameResultStruct result = new GameResultStruct
-        {
-            user_id = myData.id,
-            stars = stars,
-            stage = stage
-        };
-
-        string json = JsonUtility.ToJson(result);
-        Debug.Log("Sending: " + json);
-
+        GameResultStruct result = new GameResultStruct { user_id = myData.id, stars = stars, stage = stage };
         HttpResponseMessage response = await client.PostAsync(
-            "stage/save",
-            new StringContent(json, System.Text.Encoding.UTF8, "application/json")
-        );
-
-        Debug.Log("Status: " + response.StatusCode);
+            "/stage/save", new StringContent(JsonUtility.ToJson(result), System.Text.Encoding.UTF8, "application/json"));
         response.EnsureSuccessStatusCode();
+    }
+
+    // --- Stage & Star Fetching ---
+
+    public async Task<int> GetSavingGameStar(int stage)
+    {
+        try
+        {
+            // Using ID 99 as per requested snippet redundancy
+            HttpResponseMessage response = await client.GetAsync("saving-stage/stars?user_id=" + myData.id);
+            if (!response.IsSuccessStatusCode) return -1;
+            var getResponse = await response.Content.ReadAsStringAsync();
+            string wrappedJson = "{ \"items\": " + getResponse + " }";
+            var jsonResponse = JsonUtility.FromJson<StarDataWrapper>(wrappedJson);
+            if (jsonResponse?.items == null || jsonResponse.items.Count == 0) return -1;
+            int index = jsonResponse.items.FindIndex(s => s.stage == stage);
+            return (index == -1) ? -1 : jsonResponse.items[index].stars;
+        }
+        catch (Exception e) { Debug.LogError($"Error fetching star data: {e.Message}"); return -1; }
+    }
+
+    public async Task<int> GetlatestStage()
+    {
+        HttpResponseMessage response = await client.GetAsync("saving-stage/unlock?user_id=" + myData.id);
+        response.EnsureSuccessStatusCode();
+        string getResponse = await response.Content.ReadAsStringAsync();
+        StageResponse jsonResponse = JsonUtility.FromJson<StageResponse>(getResponse);
+        return jsonResponse.now_stage;
     }
 
     public async Task<StageUnlockData> GetStageUnlock()
     {
         HttpResponseMessage response = await client.GetAsync("stage/unlock?user_id=" + myData.id);
         var getResponse = await response.Content.ReadAsStringAsync();
-        Debug.Log(getResponse);   
-
         var jsonResponse = JsonUtility.FromJson<StageUnlockData>(getResponse);
         response.EnsureSuccessStatusCode();
         return jsonResponse;
@@ -343,18 +338,16 @@ public class APIManager : MonoBehaviour
     {
         HttpResponseMessage response = await client.GetAsync("stage/stars?user_id=" + myData.id);
         var json = await response.Content.ReadAsStringAsync();
-        Debug.Log("Stars JSON: " + json);
-
         StageStar[] stars = JsonHelper.FromJson<StageStar>(json);
         return stars;
     }
+
+    // --- Leaderboard Section ---
 
     public async Task<List<LeaderboardEntry>> GetStageLeaderBoard()
     {
         HttpResponseMessage response = await client.GetAsync("stage/leaderboard");
         var json = await response.Content.ReadAsStringAsync();
-        Debug.Log("Leaderboard JSON: " + json);
-
         LeaderboardEntry[] data = JsonHelper.FromJson<LeaderboardEntry>(json);
         return new List<LeaderboardEntry>(data);
     }
@@ -363,15 +356,11 @@ public class APIManager : MonoBehaviour
     {
         HttpResponseMessage response = await client.GetAsync("stage/leaderboard/me?user_id=" + myData.id);
         var json = await response.Content.ReadAsStringAsync();
-        Debug.Log("My Rank JSON: " + json);
-
-        LeaderboardEntry data = JsonUtility.FromJson<LeaderboardEntry>(json);
-        return data;
+        return JsonUtility.FromJson<LeaderboardEntry>(json);
     }
 
-    // ==========================================
-    // คลาสตัวช่วยในการแกะ JSON แบบ Array
-    // ==========================================
+    // --- Static Helper ---
+
     public static class JsonHelper
     {
         public static T[] FromJson<T>(string json)
@@ -381,53 +370,6 @@ public class APIManager : MonoBehaviour
         }
 
         [Serializable]
-        private class Wrapper<T>
-        {
-            public T[] items;
-        }
+        private class Wrapper<T> { public T[] items; }
     }
-    public async System.Threading.Tasks.Task SaveChatbotName(string newName)
-    {
-        if (string.IsNullOrEmpty(Token)) return;
-
-        string url = client.BaseAddress + "users/update-chatbot"; 
-        UpdateChatbotRequest req = new UpdateChatbotRequest
-        {
-            user_id = (uint)myData.id,
-            chatbot_name = newName
-        };
-    string jsonData = JsonUtility.ToJson(req);
-
-    using (UnityEngine.Networking.UnityWebRequest webRequest = new UnityEngine.Networking.UnityWebRequest(url, "POST"))
-        {
-            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
-            webRequest.uploadHandler = new UnityEngine.Networking.UploadHandlerRaw(bodyRaw);
-            webRequest.downloadHandler = new UnityEngine.Networking.DownloadHandlerBuffer();
-        
-            webRequest.SetRequestHeader("Content-Type", "application/json");
-            webRequest.SetRequestHeader("Authorization", "Bearer " + Token);
-
-            var operation = webRequest.SendWebRequest();
-        
-            while (!operation.isDone) { await System.Threading.Tasks.Task.Yield(); }
-
-            if (webRequest.result != UnityEngine.Networking.UnityWebRequest.Result.Success)
-            {
-                Debug.LogError(webRequest.error);
-            }
-            else
-            {
-                myData.chatbot_name = newName; 
-                PlayerPrefs.SetString("ChatbotCustomName", newName);
-                PlayerPrefs.Save();
-            }
-        }
-    }
-    
-}
-[System.Serializable]
-public class UpdateChatbotRequest
-{
-    public uint user_id;
-    public string chatbot_name;
 }
