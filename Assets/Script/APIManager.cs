@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Data.Common;
 
 // ==========================================
 // 1. ALL DATA STRUCTURES (COMBINED)
@@ -357,6 +358,58 @@ public class APIManager : MonoBehaviour
         HttpResponseMessage response = await client.GetAsync("stage/leaderboard/me?user_id=" + myData.id);
         var json = await response.Content.ReadAsStringAsync();
         return JsonUtility.FromJson<LeaderboardEntry>(json);
+    }
+
+    public async Task<Uri> LoginWithGmail(string firebaseIdToken)
+    {
+        client.DefaultRequestHeaders.Authorization = null;
+        // 1. ตั้งค่า Header สำหรับส่ง Firebase Token (ID Token)
+        // Middleware ใน Go ของเราจะรอรับ Bearer <token> จากตรงนี้
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", firebaseIdToken);
+
+        // 2. ยิง Request ไปที่ Endpoint ใหม่
+        // เนื่องจากเราส่ง Token ผ่าน Header แล้ว Body อาจจะส่งเป็น JSON เปล่าๆ {} 
+        // หรือถ้า API ฝั่ง Go ไม่ได้ใช้ Body ก็ส่ง StringContent เปล่าไปได้ครับ
+        HttpResponseMessage response = await client.PostAsync(
+            "users/login-with-google/", new StringContent(
+                "{}", // ส่ง JSON เปล่าๆ ไปถ้าฝั่ง Go ไม่ได้รับค่าจาก Body
+                System.Text.Encoding.UTF8,
+                "application/json"));
+
+        // 3. ตรวจสอบ Status Code
+        response.EnsureSuccessStatusCode();
+
+        // 4. อ่าน Response เพื่อเอา System JWT Token มาเก็บไว้ใช้ต่อ
+        var postResponse = await response.Content.ReadAsStringAsync();
+        var jsonResponse = JsonUtility.FromJson<ApiResponse<TokenData>>(postResponse);
+
+        // 5. อัปเดต Token ของระบบเราเอง (ที่ได้จาก Go) ลงใน Client 
+        // เพื่อให้ Request ครั้งต่อๆ ไปใช้ Token ของระบบเราแทน Firebase Token
+        Token = jsonResponse.data.token;
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+
+        return response.Headers.Location;
+    }
+    public async Task<Uri> RegisterWithGmail(string firebaseIdToken)
+    {
+        client.DefaultRequestHeaders.Authorization = null;
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", firebaseIdToken);
+
+        HttpResponseMessage response = await client.PostAsync(
+            "users/register-with-google/", new StringContent(
+                "{}", // ส่ง JSON เปล่าๆ ไปถ้าฝั่ง Go ไม่ได้รับค่าจาก Body
+                System.Text.Encoding.UTF8,
+                "application/json"));
+
+        response.EnsureSuccessStatusCode();
+
+        var postResponse = await response.Content.ReadAsStringAsync();
+        var jsonResponse = JsonUtility.FromJson<ApiResponse<TokenData>>(postResponse);
+
+        Token = jsonResponse.data.token;
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+
+        return response.Headers.Location;
     }
 
     // --- Static Helper ---
