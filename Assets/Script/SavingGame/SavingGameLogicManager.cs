@@ -60,6 +60,10 @@ public class SavingGameLogicManager : MonoBehaviour
     public void AdvanceMonth()
     {
         currentMonth++;
+        if (SavingGameUIManager.Instance != null)
+        {
+            SavingGameUIManager.Instance.SpawnFloatingRound(1);
+        }
         if (currentMonth > SavingGoalManager.Instance.GetGoalMonth())
         {
             Debug.Log("Goal Month Reached! Checking goals...");
@@ -98,7 +102,10 @@ public class SavingGameLogicManager : MonoBehaviour
     }
     public void Addtime(int time)
     {
-        currentTime += time;
+        if (SavingGameUIManager.Instance != null && time != 0)
+        {
+            SavingGameUIManager.Instance.SpawnFloatingTime(time);
+        }
     }
     public int GetCurrentMonth()
     {
@@ -117,12 +124,21 @@ public class SavingGameLogicManager : MonoBehaviour
         cash += amount;
         if (cash < 0) cash = 0;
         Debug.Log($"Player Gold Updated: {cash}");
+
+        if (SavingGameUIManager.Instance != null && amount != 0)
+        {
+            SavingGameUIManager.Instance.SpawnFloatingMoney(amount);
+        }
     }
     public bool DeductCash(float amount)
     {
         if (cash >= amount)
         {
             cash -= amount;
+            if (SavingGameUIManager.Instance != null && amount != 0)
+            {
+                SavingGameUIManager.Instance.SpawnFloatingMoney(-amount);
+            }
             return true;
         }
         else

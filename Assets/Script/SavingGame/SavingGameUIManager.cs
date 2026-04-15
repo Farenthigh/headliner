@@ -22,6 +22,18 @@ public class SavingGameUIManager : MonoBehaviour
     [SerializeField] private TMP_Text goalTextMoney;
     [SerializeField] private TMP_Text roundMonthText;
 
+    [Header("Floating Text")]
+    [SerializeField] private GameObject floatingTextPrefab;
+    [SerializeField] private Transform floatingTextSpawnPoint; 
+
+    [Header("Floating Time Text")]
+    [SerializeField] private GameObject floatingTimePrefab;
+    [SerializeField] private Transform floatingTimeSpawnPoint; 
+
+    [Header("Floating Round Text")]
+    [SerializeField] private GameObject floatingRoundPrefab;
+    [SerializeField] private Transform floatingRoundSpawnPoint; // จุดที่จะให้เลขรอบเด้ง (ตรงกลางจอหรือตรงปฏิทิน)
+
     private BankScript bankScript;
     private void Awake()
     {
@@ -138,4 +150,42 @@ public class SavingGameUIManager : MonoBehaviour
         }
     }
 
+    public void SpawnFloatingMoney(float amount)
+    {
+        if (floatingTextPrefab == null || floatingTextSpawnPoint == null) return;
+
+        // สร้างข้อความลอยขึ้นมาที่ตำแหน่ง SpawnPoint
+        GameObject go = Instantiate(floatingTextPrefab, floatingTextSpawnPoint.position, Quaternion.identity, floatingTextSpawnPoint);
+        
+        FloatingMoneyText floatingText = go.GetComponent<FloatingMoneyText>();
+        if (floatingText != null)
+        {
+            floatingText.Setup(amount);
+        }
+    }
+
+    public void SpawnFloatingTime(int timeAmount)
+    {
+        if (floatingTimePrefab == null || floatingTimeSpawnPoint == null) return;
+
+        GameObject go = Instantiate(floatingTimePrefab, floatingTimeSpawnPoint.position, Quaternion.identity, floatingTimeSpawnPoint);
+        
+        FloatingTimeText floatingText = go.GetComponent<FloatingTimeText>();
+        if (floatingText != null)
+        {
+            floatingText.Setup(timeAmount);
+        }
+    }
+
+    public void SpawnFloatingRound(int amount)
+    {
+        if (floatingRoundPrefab == null || floatingRoundSpawnPoint == null) return;
+
+        GameObject go = Instantiate(floatingRoundPrefab, floatingRoundSpawnPoint.position, Quaternion.identity, floatingRoundSpawnPoint);
+        FloatingRoundText floatingText = go.GetComponent<FloatingRoundText>();
+        if (floatingText != null)
+        {
+            floatingText.Setup(amount);
+        }
+    }
 }
