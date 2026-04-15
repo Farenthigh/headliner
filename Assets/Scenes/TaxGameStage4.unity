@@ -3548,7 +3548,7 @@ MonoBehaviour:
     speakerName: 
     speakerPosition: 0
     background: {fileID: -1371252455819440678, guid: a0d955e860ae240d094bbb283457d79a, type: 3}
-    videoBackground: {fileID: 0}
+    videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 0}
@@ -3560,7 +3560,7 @@ MonoBehaviour:
     speakerName: Chatbot
     speakerPosition: 0
     background: {fileID: -1371252455819440678, guid: a0d955e860ae240d094bbb283457d79a, type: 3}
-    videoBackground: {fileID: 0}
+    videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 0}
@@ -3575,7 +3575,7 @@ MonoBehaviour:
     speakerName: Chatbot
     speakerPosition: 2
     background: {fileID: -1371252455819440678, guid: a0d955e860ae240d094bbb283457d79a, type: 3}
-    videoBackground: {fileID: 0}
+    videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 8821016199925446121, guid: da427df7bf7fc41578796724bbb8dd78, type: 3}
@@ -3603,7 +3603,7 @@ MonoBehaviour:
     speakerName: Chatbot
     speakerPosition: 2
     background: {fileID: -1371252455819440678, guid: a0d955e860ae240d094bbb283457d79a, type: 3}
-    videoBackground: {fileID: 0}
+    videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -860921133738406991, guid: c9f94fdc47cb24e5481877fa931b03a8, type: 3}
@@ -3613,7 +3613,7 @@ MonoBehaviour:
     speakerName: 
     speakerPosition: 0
     background: {fileID: -1371252455819440678, guid: a0d955e860ae240d094bbb283457d79a, type: 3}
-    videoBackground: {fileID: 0}
+    videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 0}
@@ -3625,7 +3625,7 @@ MonoBehaviour:
     speakerName: "\u0E42\u0E01\u0E40\u0E25\u0E21\u0E28\u0E34\u0E25\u0E32"
     speakerPosition: 2
     background: {fileID: -1371252455819440678, guid: a0d955e860ae240d094bbb283457d79a, type: 3}
-    videoBackground: {fileID: 0}
+    videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -860921133738406991, guid: c9f94fdc47cb24e5481877fa931b03a8, type: 3}
@@ -3636,7 +3636,7 @@ MonoBehaviour:
     speakerName: "\u0E42\u0E01\u0E40\u0E25\u0E21\u0E28\u0E34\u0E25\u0E32"
     speakerPosition: 2
     background: {fileID: -1371252455819440678, guid: a0d955e860ae240d094bbb283457d79a, type: 3}
-    videoBackground: {fileID: 0}
+    videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -860921133738406991, guid: c9f94fdc47cb24e5481877fa931b03a8, type: 3}
@@ -3646,7 +3646,7 @@ MonoBehaviour:
     speakerName: 
     speakerPosition: 0
     background: {fileID: -1371252455819440678, guid: a0d955e860ae240d094bbb283457d79a, type: 3}
-    videoBackground: {fileID: 0}
+    videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
     characterCenter: {fileID: 0}
@@ -3659,7 +3659,7 @@ MonoBehaviour:
     speakerName: Chatbot
     speakerPosition: 0
     background: {fileID: -1371252455819440678, guid: a0d955e860ae240d094bbb283457d79a, type: 3}
-    videoBackground: {fileID: 0}
+    videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 3003209275560297047, guid: 13e4840c3b6e24015a130ac47579508f, type: 3}
@@ -3674,7 +3674,7 @@ MonoBehaviour:
     speakerName: Chatbot
     speakerPosition: 2
     background: {fileID: -1371252455819440678, guid: a0d955e860ae240d094bbb283457d79a, type: 3}
-    videoBackground: {fileID: 0}
+    videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
@@ -3684,7 +3684,7 @@ MonoBehaviour:
     speakerName: 
     speakerPosition: 0
     background: {fileID: 0}
-    videoBackground: {fileID: 0}
+    videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 0}
