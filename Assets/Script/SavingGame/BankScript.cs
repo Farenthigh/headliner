@@ -28,6 +28,9 @@ public class BankScript : MonoBehaviour
     [SerializeField] private float targetAmountForInterest;
     [SerializeField] private float withdrawPenalty;
     [SerializeField] private List<string> descrition;
+    [SerializeField] private Sprite characterImage;
+
+    [SerializeField] private string dialogue;
     private List<Transaction> transactions = new List<Transaction>();
     private bool isContractBroken = false;
     private void OnMouseDown()
@@ -227,5 +230,15 @@ public class BankScript : MonoBehaviour
                 transaction.currentMonth += 1;
         }
         Debug.Log($"Updated transaction months for bank {bankName}");
+    }
+
+    public Sprite GetCharacterImage()
+    {
+        return characterImage;
+    }
+
+    public string GetDialogue()
+    {
+        return dialogue;
     }
 }
