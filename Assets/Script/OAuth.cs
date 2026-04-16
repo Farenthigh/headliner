@@ -190,7 +190,18 @@ public class OAuth : MonoBehaviour
 
         if (apiTask.IsFaulted)
         {
-            Debug.LogError("Login Error: " + apiTask.Exception.Flatten().InnerException.Message);
+            Debug.LogError("Register Error: " + apiTask.Exception.Flatten().InnerException.Message);
+
+            // ดึง Exception ตัวในออกมา
+            var innerEx = apiTask.Exception.Flatten().InnerException;
+
+            // ถ้า Error Message มีคำว่า 400 (Bad Request) หรืออีเมลซ้ำ
+            if (currentAuthMode == AuthMode.Signup && innerEx.Message.Contains("400"))
+            {
+                Debug.Log("User already exists or Bad Request. Switching to Login...");
+                UnityEngine.SceneManagement.SceneManager.LoadScene("LoginScene");
+            }
+
         }
         else
         {
