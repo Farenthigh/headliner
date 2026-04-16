@@ -26,8 +26,8 @@ public class GoogleSecrets
 public class OAuth : MonoBehaviour
 {
     [SerializeField] private Button loginButton;
-    private string clientId = "";
-    private string clientSecret = "";
+    private string clientId;
+    private string clientSecret;
     private string redirectUri = "http://localhost:54321/";
     [SerializeField] private AuthMode currentAuthMode;
 
@@ -36,7 +36,7 @@ public class OAuth : MonoBehaviour
 
     private void Start()
     {
-        TextAsset secretFile = Resources.Load<TextAsset>("google-secret.json");
+        TextAsset secretFile = Resources.Load<TextAsset>("google-secret");
         if (secretFile != null)
         {
             // Parse your JSON here
@@ -47,7 +47,7 @@ public class OAuth : MonoBehaviour
             Debug.Log("Client Secret : " + clientSecret);
         }
         loginButton.onClick.AddListener(() => StartAuthFlow(currentAuthMode));
-        // Firebase.Auth.FirebaseAuth.DefaultInstance.SignOut();
+        Firebase.Auth.FirebaseAuth.DefaultInstance.SignOut();
     }
 
     public async void StartAuthFlow(AuthMode mode)
