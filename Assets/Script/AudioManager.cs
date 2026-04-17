@@ -6,6 +6,7 @@ public class Sound
     public string name;
     public AudioClip clip;
 }
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
@@ -27,7 +28,24 @@ public class AudioManager : MonoBehaviour
     }
     void Start()
     {
-        PlayMusic("MainTheme");
+        PlayMusic("theme");
+    }
+    void Update()
+    {
+        // ตรวจสอบว่ามีการกดปุ่มใดๆ และปุ่มนั้นไม่ใช่คลิกเมาส์ (0=ซ้าย, 1=ขวา, 2=กลาง)
+        if (Input.anyKeyDown &&
+            !Input.GetMouseButtonDown(0) &&
+            !Input.GetMouseButtonDown(1) &&
+            !Input.GetMouseButtonDown(2))
+        {
+            AudioManager.instance.PlaySFX("typing");
+        }
+
+        // แยกเสียงคลิกเมาส์ออกมาต่างหาก (ถ้าต้องการ)
+        if (Input.GetMouseButtonDown(0))
+        {
+            AudioManager.instance.PlaySFX("click");
+        }
     }
 
     public void PlayMusic(string name)
@@ -46,5 +64,15 @@ public class AudioManager : MonoBehaviour
         {
             sfxSource.PlayOneShot(s.clip);
         }
+    }
+    public void SetMusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
+
+    // ฟังก์ชันปรับความดัง SFX
+    public void SetSFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
     }
 }
