@@ -33,9 +33,9 @@ public class StoryManager : MonoBehaviour
 
     // +++ ส่วนของ VS Animation +++
     [Header("VS Animation Settings (ลากของมาใส่)")]
-    public GameObject vsPanel;         
-    public RectTransform vTransform;   
-    public RectTransform sTransform;   
+    public GameObject vsPanel;
+    public RectTransform vTransform;
+    public RectTransform sTransform;
     public RectTransform topCloud;     
     public RectTransform bottomCloud;  
     public ParticleSystem clashParticle; 
@@ -170,7 +170,6 @@ public class StoryManager : MonoBehaviour
         
         HandleCharacterLayout(currentPage);
 
-        // +++ เพิ่มการเรียกใช้แอนิเมชันขยับตัวละคร (จากโค้ดใหม่) +++
         if (!currentPage.isChoicePage)
         {
             UpdateCharacterAnimation(currentPage);
@@ -201,19 +200,16 @@ public class StoryManager : MonoBehaviour
                 {
                     stars = Manager.Instance.GetStarsFromExam();
                 }
-
-                gameResult.ShowVictoryResultDirect(stars);
-                SendResult(stars);
+                Debug.Log("⭐ จำนวนดาวที่จะส่งไปลีดเดอร์บอร์ดคือ: " + stars);
+                gameResult.ShowVictoryResultDirect(stars, currentStage, stars, 0);
             }
 
             if (nextButton != null) nextButton.SetActive(false);
         }
 
-        // ปิด tips ก่อนทุกครั้ง
         if (sceneLoader != null)
             sceneLoader.ExitTips();
 
-        // อัปเดตหน้าที่ควรเปิด — เอาอันที่ใกล้ที่สุดไม่เกิน currentIndex
         int bestPage = 0;
         int bestIndex = -1;
 
