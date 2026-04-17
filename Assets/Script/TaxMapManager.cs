@@ -43,7 +43,7 @@ public class TaxMapManager : MonoBehaviour
         var unlock = await APIManager.Instance.GetStageUnlock();
 
         int nextStage = 1;
-        int nowStage = 1;
+        int nowStage = 0;
 
         if (unlock.next_stage > 0)
             nextStage = unlock.next_stage;
@@ -66,15 +66,25 @@ public class TaxMapManager : MonoBehaviour
         if (nextStage < 5) SetStarAlpha(stage5Stars, 0.3f);
 
         // =========================
-        // 🎯 เด้งเฉพาะด่านที่ "เพิ่งผ่านใหม่"
+        // เด้งเฉพาะด่านที่ "เพิ่งผ่านใหม่"
         // =========================
-        int lastStage = PlayerPrefs.GetInt(LAST_STAGE_KEY, 1);
+       
+        int lastStage = PlayerPrefs.GetInt(LAST_STAGE_KEY,1);
 
-        if (nowStage > lastStage)
+        if (!PlayerPrefs.HasKey(LAST_STAGE_KEY))
         {
-            StartCoroutine(PlayStageFlow(lastStage + 1, nowStage));
+            // เข้าเกมครั้งแรก → เด้ง stage1
+            StartCoroutine(PlayStageFlow(1, nowStage));
         }
 
+        else if (nowStage > lastStage)
+        {
+            // ผ่านด่านใหม่ → เด้งเฉพาะด่านใหม่
+            StartCoroutine(PlayStageFlow(lastStage + 1, nowStage));
+        }
+        
+        Debug.Log("lastStage = " + lastStage);
+        Debug.Log("nowStage = " + nowStage);
         PlayerPrefs.SetInt(LAST_STAGE_KEY, nowStage);
         PlayerPrefs.Save();
     }
@@ -89,7 +99,7 @@ public class TaxMapManager : MonoBehaviour
         for (int i = start; i <= end; i++)
         {
             PlayUnlockBounce(i);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -198,14 +208,14 @@ public class TaxMapManager : MonoBehaviour
     }
 
     // =========================
-    // 🎯 Bounce Animation
+    // Bounce Animation
     // =========================
     IEnumerator BounceEffect(Transform target)
     {
         Vector3 original = target.localScale;
         Vector3 big = original * 1.25f;
 
-        float duration = 0.12f;
+        float duration = 0.15f;
         float time = 0f;
 
         while (time < duration)
