@@ -45,6 +45,9 @@ public class AudioSettingUI : MonoBehaviour
 
         ApplyVolume(parameter, value);
 
+        AudioManager.instance.SetMusicVolume(parameter == "MusicVolume" ? value : AudioManager.instance.musicSource.volume);
+        AudioManager.instance.SetSFXVolume(parameter == "SFXVolume" ? value : AudioManager.instance.sfxSource.volume);
+
         PlayerPrefs.SetFloat(parameter, value);
         PlayerPrefs.Save();
 

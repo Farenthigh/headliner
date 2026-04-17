@@ -567,20 +567,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6195a8bb59f8a4fe7b3ed2d42b7e5b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  musicSounds:
-  - name: theme
-    clip: {fileID: 8300000, guid: d2b1e1422d1df4be6a8ba3f0940d0d90, type: 3}
+  musicSounds: []
   sfxSounds:
   - name: click
     clip: {fileID: 8300000, guid: 1c15365b918af4424896df1127134fca, type: 3}
-  - name: hit
-    clip: {fileID: 8300000, guid: 61465869e99ea480d9b1d597bf9e2e76, type: 3}
-  - name: page
-    clip: {fileID: 8300000, guid: 0db7736b9d254469b96eb031aed9acc1, type: 3}
-  - name: victory
-    clip: {fileID: 8300000, guid: f726699314bfe4980921fa7588473d19, type: 3}
-  - name: next
-    clip: {fileID: 8300000, guid: 5883379333b734b14b9276e2e74ef3d1, type: 3}
   musicSource: {fileID: 1743926266}
   sfxSource: {fileID: 1101745921}
 --- !u!4 &620981399
@@ -1274,7 +1264,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: clickcs
+          m_StringArgument: click
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1616312049
