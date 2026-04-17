@@ -137,14 +137,14 @@ public class GameResult : MonoBehaviour
     public void OnClickExit()
     {
         Debug.Log("Victory Exit Clicked");
-        SceneManager.LoadScene("TaxGameMap");
+        LoadingManager.Instance.LoadScene("TaxGameMap");
     }
 
     public void OnClickPlayAgain()
     {
         Debug.Log("Victory Play Again Clicked");
         Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        LoadingManager.Instance.LoadScene(currentScene.name);
     }
 
     public void OnClickNextGame()
@@ -158,7 +158,7 @@ public class GameResult : MonoBehaviour
         // เช็คว่า Scene อยู่ใน Build Profiles หรือไม่
         if (Application.CanStreamedLevelBeLoaded(nextSceneName))
         {
-            SceneManager.LoadScene(nextSceneName);
+            LoadingManager.Instance.LoadScene(nextSceneName);
         }
         else
         {
@@ -171,14 +171,14 @@ public class GameResult : MonoBehaviour
     public void OnClickDefeatExit()
     {
         Debug.Log("Defeat Exit Clicked");
-         SceneManager.LoadScene("TaxGameMap");
+         LoadingManager.Instance.LoadScene("TaxGameMap");
     }
 
     public void OnClickDefeatPlayAgain()
     {
         Debug.Log("Defeat Play Again Clicked");
         Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        LoadingManager.Instance.LoadScene(currentScene.name);
     }
 
 

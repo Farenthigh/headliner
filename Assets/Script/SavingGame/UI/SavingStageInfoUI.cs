@@ -82,12 +82,12 @@ public class SavingStageInfoManager : MonoBehaviour
 
     public void StartStage()
     {
-        SceneManager.LoadScene(nextScene);
+        LoadingManager.Instance.LoadScene(nextScene);
     }
 
     public void CloseStageInfo()
     {
-        SceneManager.LoadScene("SavingGameMap");
+        LoadingManager.Instance.LoadScene("SavingGameMap");
     }
 
 }

@@ -151,7 +151,7 @@ public class SavingGameResult : MonoBehaviour
     {
         Debug.Log("Victory Play Again Clicked");
         Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        LoadingManager.Instance.LoadScene(currentScene.name);
     }
 
     public void OnClickNextGame()
@@ -165,7 +165,7 @@ public class SavingGameResult : MonoBehaviour
         // เช็คว่า Scene อยู่ใน Build Profiles หรือไม่
         if (Application.CanStreamedLevelBeLoaded(nextSceneName))
         {
-            SceneManager.LoadScene(nextSceneName);
+            LoadingManager.Instance.LoadScene(nextSceneName);
         }
         else
         {
@@ -184,7 +184,7 @@ public class SavingGameResult : MonoBehaviour
     {
         Debug.Log("Defeat Play Again Clicked");
         Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        LoadingManager.Instance.LoadScene(currentScene.name);
     }
 
 

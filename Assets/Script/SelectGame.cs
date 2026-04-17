@@ -20,6 +20,6 @@ public class SelectGame : MonoBehaviour
     private void SelectGameOption(string game)
     {
         Debug.Log($"Selected Game: {game}");
-        SceneManager.LoadScene(game);
+        LoadingManager.Instance.LoadScene(game);
     }
 }

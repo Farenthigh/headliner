@@ -42,25 +42,25 @@ public class SavingGameMap : MonoBehaviour
     void OnBack()
     {
         Debug.Log("ย้อนกลับ");
-        // อนาคต: SceneManager.LoadScene("MainMenu");
+        // อนาคต: LoadingManager.Instance.LoadScene("MainMenu");
     }
 
     void OnLeaderboard()
     {
         Debug.Log("ไปหน้า Leaderboard");
-        // อนาคต: SceneManager.LoadScene("Leaderboard");
+        // อนาคต: LoadingManager.Instance.LoadScene("Leaderboard");
     }
 
     void OnAchievement()
     {
         Debug.Log("ไปหน้า Achievement");
-        // อนาคต: SceneManager.LoadScene("Achievement");
+        // อนาคต: LoadingManager.Instance.LoadScene("Achievement");
     }
 
     void OnSetting()
     {
         Debug.Log("ไปหน้า Setting");
-        // อนาคต: SceneManager.LoadScene("Setting");
+        // อนาคต: LoadingManager.Instance.LoadScene("Setting");
     }
 
     // ================= ปุ่มด่าน =================
@@ -79,7 +79,7 @@ public class SavingGameMap : MonoBehaviour
         RefreshAllLevels();
 
         // อนาคต:
-        // SceneManager.LoadScene("Level" + level);
+        // LoadingManager.Instance.LoadScene("Level" + level);
     }
 
     void RefreshAllLevels()

@@ -12,6 +12,6 @@ public class SceneSwitcher : MonoBehaviour
         PlayerPrefs.SetString("PreviousScene", currentSceneName);
         PlayerPrefs.Save();
 
-        SceneManager.LoadScene(settingSceneName);
+        LoadingManager.Instance.LoadScene(settingSceneName);
     }
 }

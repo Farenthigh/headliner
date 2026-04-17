@@ -29,7 +29,7 @@ public class SelectCharacter : MonoBehaviour
         try
         {
             await APIManager.Instance.ChooseCharacter(selectedCharacter, playerName);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SelectGame");
+            LoadingManager.Instance.LoadScene("SelectGame");
         }
 
         catch (System.Exception ex)

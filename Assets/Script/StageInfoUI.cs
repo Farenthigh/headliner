@@ -115,7 +115,7 @@ public class StageInfoManager : MonoBehaviour
 
     public void StartStage()
     {
-        SceneManager.LoadScene(nextScene);
+        LoadingManager.Instance.LoadScene(nextScene);
     }
 
     public void CloseStageInfo()

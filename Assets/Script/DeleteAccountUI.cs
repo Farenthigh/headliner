@@ -63,6 +63,6 @@ public class DeleteAccountUI : MonoBehaviour
 
         passwordPopup.SetActive(false);
 
-        SceneManager.LoadScene("LoginScene");
+        LoadingManager.Instance.LoadScene("LoginScene");
     }
 }

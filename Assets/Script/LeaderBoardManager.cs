@@ -38,15 +38,15 @@ public class LeaderBoardManager : MonoBehaviour
 
     public void CloseLeaderBoardToTaxGameMap()
     {
-        SceneManager.LoadScene("TaxGameMap");
+        LoadingManager.Instance.LoadScene("TaxGameMap");
     }
     public void CloseLeaderBoardToSelectGame()
     {
-        SceneManager.LoadScene("SelectGame");
+        LoadingManager.Instance.LoadScene("SelectGame");
     }
     public void CloseLeaderBoardToSavingGameMap()
     {
-        SceneManager.LoadScene("SavingGameMap");
+        LoadingManager.Instance.LoadScene("SavingGameMap");
     }
     
 
