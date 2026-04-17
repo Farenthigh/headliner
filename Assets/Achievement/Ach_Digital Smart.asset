@@ -19,5 +19,5 @@ MonoBehaviour:
     1 \u0E1B\u0E35"
   icon: {fileID: -9092083878277606856, guid: b2fc1566fc0454211b2f9f0c5ce30b1b, type: 3}
   gameType: 0
-  isUnlocked: 0
+  isUnlocked: 1
   unlockDate: 

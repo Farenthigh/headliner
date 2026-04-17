@@ -40,8 +40,6 @@ public class AchievementManager : MonoBehaviour
         {
             StartCoroutine(LoadDataFromBackendRoutine());
         }
-        
-
     }
 
     public void InitializeAfterLogin()
@@ -186,13 +184,16 @@ public class AchievementManager : MonoBehaviour
 
     // --- ส่วนที่ผมเผลอลบไป เอาคืนมาแล้วครับ! ---
     public void ShowPopup(AchievementData data)
-    {
-        popupNameText.text = data.achievementName;
-        popupDescriptionText.text = "Description: " + data.description;
-        popupDateText.text = "Date: " + data.unlockDate;
-        popupIconImage.sprite = data.icon;
-        popupPanel.SetActive(true);
-    }
+{
+    if (popupPanel == null) return;
+
+    popupNameText.text = data.achievementName;
+    popupDescriptionText.text = data.description;
+    popupDateText.text = data.unlockDate;
+    popupIconImage.sprite = data.icon;
+
+    popupPanel.SetActive(true);
+}
 
     public void ClosePopup()
     {

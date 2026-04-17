@@ -18,5 +18,5 @@ MonoBehaviour:
     \u0E41\u0E25\u0E30\u0E1E\u0E34\u0E0A\u0E34\u0E15\u0E17\u0E31\u0E49\u0E07 5 \u0E14\u0E48\u0E32\u0E19\u0E23\u0E27\u0E14\u0E41\u0E1A\u0E1A\u0E44\u0E21\u0E48\u0E21\u0E35\u0E1E\u0E25\u0E32\u0E14"
   icon: {fileID: -7716358058020212565, guid: 60f1b374d01c3487c88e584d85df493d, type: 3}
   gameType: 0
-  isUnlocked: 0
+  isUnlocked: 1
   unlockDate: 
