@@ -1365,6 +1365,7 @@ MonoBehaviour:
   chatWindow: {fileID: 6861584723438223197}
   openButton: {fileID: 243656198943661436}
   closeButton: {fileID: 7891418050540924180}
+  typingSpeed: 0.02
 --- !u!1 &5986556607867300186
 GameObject:
   m_ObjectHideFlags: 0
