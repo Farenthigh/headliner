@@ -493,10 +493,3 @@ public class APIManager : MonoBehaviour
     
     
 }
-
-[System.Serializable]
-public class UpdateChatbotRequest
-{
-    public uint user_id;
-    public string chatbot_name;
-}
