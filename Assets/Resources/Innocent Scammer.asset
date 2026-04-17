@@ -15,7 +15,7 @@ MonoBehaviour:
   eventType: 0
   eventValueType: 0
   eventValue: -150
-  rarity: 0
-  icon: {fileID: 8007377939379766679, guid: 78a3dd191e1764143824d63b0e39b217, type: 3}
+  rarity: 1
+  icon: {fileID: 21300000, guid: cea588ab780fc488ea5e6cb1fb2645fe, type: 3}
   eventName: Innocent Scammer
   description: "\u0E21\u0E35\u0E04\u0E19\u0E21\u0E32\u0E2B\u0E25\u0E2D\u0E01\u0E02\u0E32\u0E22\u0E02\u0E2D\u0E07\u0E1B\u0E25\u0E2D\u0E21\n\u0E43\u0E2B\u0E49\u0E04\u0E38\u0E13\n\n\n-150"

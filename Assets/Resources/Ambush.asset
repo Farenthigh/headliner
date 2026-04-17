@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 155e247e268c44a9095f1438a34495c1, type: 3}
-  m_Name: Guiding Stray
+  m_Name: Ambush
   m_EditorClassIdentifier: Assembly-CSharp::Event
   eventType: 0
   eventValueType: 0
-  eventValue: 150
-  rarity: 1
-  icon: {fileID: 7840746246206996261, guid: 7a395c101e1a1488c8a1a7c0ec53a9c5, type: 3}
-  eventName: Guiding Stray
-  description: "\u0E2A\u0E38\u0E19\u0E31\u0E02\u0E08\u0E23\u0E08\u0E31\u0E14\u0E1E\u0E32\u0E04\u0E38\u0E13\u0E44\u0E1B\u0E40\u0E08\u0E2D\n\u0E2B\u0E35\u0E1A\u0E44\u0E21\u0E49\u0E40\u0E01\u0E48\u0E32\n\n\n+150"
+  eventValue: -2000
+  rarity: 2
+  icon: {fileID: -53716006586487231, guid: 1feb0f50c4f68486cb40264151dcadff, type: 3}
+  eventName: Ambush
+  description: "\u0E04\u0E38\u0E13\u0E16\u0E39\u0E01\u0E1B\u0E25\u0E49\u0E19\u0E43\u0E19\u0E15\u0E2D\u0E19\u0E01\u0E25\u0E32\u0E07\u0E04\u0E37\u0E19\n\n-2000"

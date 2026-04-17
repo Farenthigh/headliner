@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 155e247e268c44a9095f1438a34495c1, type: 3}
-  m_Name: Kind Merchant
+  m_Name: Village Gossip
   m_EditorClassIdentifier: Assembly-CSharp::Event
-  eventType: 0
+  eventType: 1
   eventValueType: 0
-  eventValue: 10
+  eventValue: -10
   rarity: 0
-  icon: {fileID: 6148624234843274970, guid: 0193e9825f09847ba92a2df7c989ac99, type: 3}
-  eventName: Kind Merchant
-  description: "\u0E1E\u0E48\u0E2D\u0E04\u0E49\u0E32\u0E40\u0E14\u0E34\u0E19\u0E17\u0E32\u0E07\u0E41\u0E27\u0E30\u0E17\u0E31\u0E01\u0E17\u0E32\u0E22\u0E41\u0E25\u0E30\n\u0E21\u0E2D\u0E1A\u0E02\u0E19\u0E21\u0E43\u0E2B\u0E49\n\n\n+10"
+  icon: {fileID: -696198635165355469, guid: 2e4bb64e0d6ea4b278c207e286d0ba75, type: 3}
+  eventName: Village Gossip
+  description: "\u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E40\u0E25\u0E48\u0E32\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E23\u0E32\u0E27\u0E43\u0E19\u0E2B\u0E21\u0E39\u0E48\u0E1A\u0E49\u0E32\u0E19\u0E43\u0E2B\u0E49\u0E1F\u0E31\u0E07\n\n-10"
