@@ -24,6 +24,7 @@ public class StoryPage
     public bool isChoicePage;
 
     public bool isNamingPage;
+    public bool isPlayer;
 
 
 }

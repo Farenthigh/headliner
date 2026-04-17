@@ -81,9 +81,9 @@ public class EventDisplay : MonoBehaviour
 
         // cardBack.GetComponent<Image>().sprite = eventData.backcard;
         // cardFront.GetComponent<Image>().sprite = eventData.frontcard;
-        // iconImage.sprite = eventData.icon;
-        // nameText.text = $"{eventData.eventName}";
-        // descriptionText.text = $"{eventData.description}";
+        iconImage.sprite = eventData.icon;
+        nameText.text = $"{eventData.eventName}";
+        descriptionText.text = $"{eventData.description}";
 
 
         StartCoroutine(RevealProcess());
