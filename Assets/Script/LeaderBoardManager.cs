@@ -34,7 +34,7 @@ public class LeaderBoardManager : MonoBehaviour
 
     public void CloseLeaderBoardToTaxGameMap() { SceneManager.LoadScene("TaxGameMap"); }
     public void CloseLeaderBoardToSelectGame() { SceneManager.LoadScene("SelectGame"); }
-    public void CloseLeaderBoardToSavingGameMap() { SceneManager.LoadScene("SavingGameMap"); }
+    public void CloseLeaderBoardToSavingGameMap() { SceneManager.LoadScene("SavingGameStageInfo"); }
 
     private async void RefreshData()
     {
