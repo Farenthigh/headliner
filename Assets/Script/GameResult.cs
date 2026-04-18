@@ -210,7 +210,7 @@ public class GameResult : MonoBehaviour
     public void OnClickDefeatExit()
     {
         Debug.Log("Defeat Exit Clicked");
-         SceneManager.LoadScene("TaxGameMap");
+        SceneManager.LoadScene("TaxGameMap");
     }
 
     public void OnClickDefeatPlayAgain()
