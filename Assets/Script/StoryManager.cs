@@ -342,7 +342,6 @@ public class StoryManager : MonoBehaviour
         Sprite leftSprite = page.characterLeft;
         Sprite rightSprite = page.characterRight;
 
-        // ดึงตัวละครผู้เล่น (ลอจิกจาก Incoming)
         if (page.isPlayer && availableCharacters.Length > 0)
         {
             int selectedCharID = 0; 
