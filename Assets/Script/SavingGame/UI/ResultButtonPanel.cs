@@ -24,7 +24,7 @@ public class ResultButtonPanelUI : MonoBehaviour
     }
     private void Start()
     {
-        resultButtonPanel.SetActive(false);
+        resultButtonPanel.SetActive(true);
         ExitButton.onClick.AddListener(OnExitButtonClicked);
         PlayAgainButton.onClick.AddListener(OnPlayAgainButtonClicked);
         NextGameButton.onClick.AddListener(OnNextGameButtonClicked);

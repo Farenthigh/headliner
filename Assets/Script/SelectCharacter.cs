@@ -51,7 +51,7 @@ public class SelectCharacter : MonoBehaviour
     {
         selectedCharacter = character;
 
-        if (character == 1)
+        if (character == 0)
         {
             triangle1.SetActive(true);
             triangle2.SetActive(false);
