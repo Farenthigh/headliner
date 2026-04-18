@@ -23,6 +23,9 @@ public class StoryPage
     [Header("Quiz Settings")]
     public bool isChoicePage;
 
+    [Header("Scene Settings")]
+    public bool forceTransition;
+    public bool forceCharacterFade;
     public bool isNamingPage;
     public bool isPlayer;
 

@@ -270,6 +270,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2921818050391590138, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
   m_PrefabInstance: {fileID: 35994883}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &38283977 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+  m_PrefabInstance: {fileID: 1232655814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &55253303 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4371229210700706050, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
@@ -766,6 +771,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214170269}
   m_CullTransparentMesh: 1
+--- !u!114 &225813657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1009828381240639105, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+  m_PrefabInstance: {fileID: 1232655814}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
 --- !u!1 &230569838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,6 +1508,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4e96c4b8e254dafbdb6ad92ede6a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloatCharacter
+--- !u!1 &633311235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 633311236}
+  - component: {fileID: 633311238}
+  - component: {fileID: 633311237}
+  m_Layer: 5
+  m_Name: FadeOverlay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &633311236
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633311235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1290932387}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.000045776}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &633311237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633311235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &633311238
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633311235}
+  m_CullTransparentMesh: 1
 --- !u!1 &662713647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,6 +2378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29832a15318a453ca30c1e87c26d9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StoryManager
+  transitionController: {fileID: 1290454427}
   dialogueTextUI: {fileID: 1626854724}
   speakerNameUI: {fileID: 795565461}
   backgroundImageUI: {fileID: 214170271}
@@ -2307,6 +2399,8 @@ MonoBehaviour:
     characterCenter: {fileID: -5119980863986964875, guid: b2dba17db28b845cba91b8864bd6eaf9, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 1
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E2B\u0E21\u0E2D\u0E01\u0E41\u0E2B\u0E48\u0E07\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E31\u0E1A\u0E2A\u0E19\u0E01\u0E47\u0E40\u0E02\u0E49\u0E32\u0E1B\u0E01\u0E04\u0E25\u0E38\u0E21
@@ -2322,6 +2416,8 @@ MonoBehaviour:
     characterCenter: {fileID: -4756028443593143600, guid: 59188804024644bdb9802b3b7e411cbb, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 1
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E04\u0E27\u0E32\u0E21\u0E27\u0E38\u0E48\u0E19\u0E27\u0E32\u0E22\u0E01\u0E48\u0E2D\u0E15\u0E31\u0E27\u0E40\u0E1B\u0E47\u0E19\u0E1B\u0E35\u0E28\u0E32\u0E08\u0E01\u0E31\u0E14\u0E01\u0E34\u0E19\u0E40\u0E21\u0E37\u0E2D\u0E07"
@@ -2333,6 +2429,8 @@ MonoBehaviour:
     characterCenter: {fileID: -4756028443593143600, guid: 59188804024644bdb9802b3b7e411cbb, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 1
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E21\u0E35\u0E40\u0E1E\u0E35\u0E22\u0E07\u0E1C\u0E39\u0E49\u0E40\u0E14\u0E35\u0E22\u0E27\u0E17\u0E35\u0E48\u0E08\u0E30\u0E01\u0E2D\u0E1A\u0E01\u0E39\u0E49\u0E2A\u0E16\u0E32\u0E19\u0E01\u0E32\u0E23\u0E13\u0E4C\u0E19\u0E35\u0E49\u0E44\u0E14\u0E49"
@@ -2344,6 +2442,8 @@ MonoBehaviour:
     characterCenter: {fileID: 9159138986042934158, guid: ce593446a0b5c4f919a083dfa35c3cf5, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E19\u0E31\u0E48\u0E19\u0E04\u0E37\u0E2D '\u0E40\u0E08\u0E49\u0E32'"
@@ -2355,6 +2455,8 @@ MonoBehaviour:
     characterCenter: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 1
     isNamingPage: 0
     isPlayer: 1
   - dialogueText: "\u0E40\u0E2E\u0E49\u0E2D... \u0E02\u0E49\u0E32\u0E1B\u0E27\u0E14\u0E2B\u0E31\u0E27\u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E40\u0E01\u0E34\u0E19
@@ -2367,6 +2469,8 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 1
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E40\u0E08\u0E49\u0E32\u0E21\u0E32\u0E01\u0E47\u0E14\u0E35\u0E41\u0E25\u0E49\u0E27...
@@ -2381,6 +2485,8 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E1B\u0E23\u0E30\u0E0A\u0E32\u0E0A\u0E19\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E27\u0E48\u0E32\u0E15\u0E49\u0E2D\u0E07\u0E08\u0E48\u0E32\u0E22\u0E20\u0E32\u0E29\u0E35\u0E22\u0E31\u0E07\u0E44\u0E07
@@ -2396,6 +2502,8 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E07\u0E32\u0E19\u0E22\u0E32\u0E01\u0E19\u0E48\u0E32\u0E14\u0E39...
@@ -2408,6 +2516,8 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E02\u0E2D\u0E1A\u0E43\u0E08\u0E21\u0E32\u0E01! \u0E41\u0E15\u0E48\u0E40\u0E08\u0E49\u0E32\u0E44\u0E1B\u0E21\u0E37\u0E2D\u0E40\u0E1B\u0E25\u0E48\u0E32\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49...
@@ -2420,6 +2530,8 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E15\u0E31\u0E49\u0E07\u0E0A\u0E37\u0E48\u0E2D\u0E43\u0E2B\u0E49\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E19\u0E23\u0E48\u0E27\u0E21\u0E17\u0E32\u0E07\u0E02\u0E2D\u0E07\u0E04\u0E38\u0E13"
@@ -2431,6 +2543,8 @@ MonoBehaviour:
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 1
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: 
@@ -2454,6 +2568,8 @@ MonoBehaviour:
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 1
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E23\u0E32\u0E0A\u0E32\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E21\u0E32\u0E15\u0E31\u0E27\u0E40\u0E1B\u0E25\u0E48\u0E32\u0E19\u0E30
@@ -2466,6 +2582,8 @@ MonoBehaviour:
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\"\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C\u0E2A\u0E23\u0E23\u0E1E\u0E32\u0E01\u0E23\u0E28\u0E31\u0E01\u0E14\u0E34\u0E4C\u0E2A\u0E34\u0E17\u0E18\u0E34\u0E4C\"
@@ -2478,6 +2596,8 @@ MonoBehaviour:
     characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 1
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E04\u0E31\u0E21\u0E20\u0E35\u0E23\u0E4C\u0E40\u0E25\u0E48\u0E21\u0E19\u0E35\u0E49\u0E23\u0E27\u0E1A\u0E23\u0E27\u0E21\u0E04\u0E27\u0E32\u0E21\u0E23\u0E39\u0E49\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E20\u0E32\u0E29\u0E35\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14\u0E43\u0E19\u0E08\u0E31\u0E01\u0E23\u0E27\u0E32\u0E25\u0E40\u0E2D\u0E32\u0E44\u0E27\u0E49!
@@ -2490,6 +2610,8 @@ MonoBehaviour:
     characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E40\u0E2D\u0E32\u0E25\u0E48\u0E30! \u0E20\u0E32\u0E23\u0E01\u0E34\u0E08\u0E41\u0E23\u0E01\u0E02\u0E2D\u0E07\u0E40\u0E23\u0E32\u0E04\u0E37\u0E2D
@@ -2504,6 +2626,8 @@ MonoBehaviour:
     characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32
@@ -2518,6 +2642,8 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 1
+    forceCharacterFade: 1
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E21\u0E2D\u0E19\u0E2A\u0E40\u0E15\u0E2D\u0E23\u0E4C\u0E16\u0E32\u0E21
@@ -2531,6 +2657,8 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E16\u0E49\u0E32\u0E15\u0E2D\u0E1A\u0E16\u0E39\u0E01 \u0E21\u0E2D\u0E19\u0E2A\u0E40\u0E15\u0E2D\u0E23\u0E4C\u0E08\u0E30\u0E1A\u0E32\u0E14\u0E40\u0E08\u0E47\u0E1A
@@ -2545,6 +2673,8 @@ MonoBehaviour:
     characterCenter: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E19\u0E31\u0E48\u0E19\u0E44\u0E07! \u0E16\u0E36\u0E07\u0E41\u0E25\u0E49\u0E27...
@@ -2560,6 +2690,8 @@ MonoBehaviour:
     characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 1
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32!
@@ -2577,6 +2709,8 @@ MonoBehaviour:
     characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E42\u0E2E\u0E48\u0E46\u0E46! \u0E43\u0E04\u0E23\u0E08\u0E30\u0E1C\u0E48\u0E32\u0E19\u0E17\u0E32\u0E07\u0E19\u0E35\u0E49
@@ -2591,6 +2725,8 @@ MonoBehaviour:
     characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E2B\u0E19\u0E2D\u0E22\u0E41\u0E19\u0E48! \u0E20\u0E32\u0E29\u0E35\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E21\u0E35\u0E44\u0E27\u0E49\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E0B\u0E37\u0E49\u0E2D\u0E19\u0E48\u0E2D\u0E07\u0E44\u0E01\u0E48\u0E43\u0E2B\u0E49\u0E40\u0E08\u0E49\u0E32\u0E22\u0E31\u0E01\u0E29\u0E4C\u0E19\u0E30!
@@ -2605,6 +2741,8 @@ MonoBehaviour:
     characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E01\u0E48\u0E2D\u0E19\u0E08\u0E30\u0E44\u0E1B\u0E2A\u0E39\u0E49
@@ -2617,6 +2755,8 @@ MonoBehaviour:
     characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: 
@@ -2628,6 +2768,8 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E44\u0E2B\u0E21\u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32?
@@ -2640,6 +2782,8 @@ MonoBehaviour:
     characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E40\u0E08\u0E49\u0E32\u0E40\u0E1B\u0E47\u0E19\u0E43\u0E04\u0E23?
@@ -2653,6 +2797,8 @@ MonoBehaviour:
     characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: 
@@ -2664,6 +2810,8 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
     isChoicePage: 1
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E02\u0E49\u0E32... \u0E02\u0E49\u0E32\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E41\u0E25\u0E49\u0E27
@@ -2677,6 +2825,8 @@ MonoBehaviour:
     characterCenter: {fileID: -2055008003363216766, guid: 448308d65ad9b4883a03f8ce7454b202, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: "\u0E40\u0E22\u0E49! \u0E17\u0E48\u0E32\u0E19\u0E17\u0E33\u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08!
@@ -2693,6 +2843,8 @@ MonoBehaviour:
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   - dialogueText: 
@@ -2704,6 +2856,8 @@ MonoBehaviour:
     characterCenter: {fileID: 0}
     characterRight: {fileID: 0}
     isChoicePage: 0
+    forceTransition: 0
+    forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
   gameResult: {fileID: 1598745707}
@@ -3373,6 +3527,123 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218517465}
   m_CullTransparentMesh: 1
+--- !u!1001 &1232655814
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1290932387}
+    m_Modifications:
+    - target: {fileID: 3282918483095804955, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_Name
+      value: FeedbackUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708536299644261733, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719146965361136135, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -245.01144
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -76.444
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138076709737153054, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
 --- !u!1 &1266874366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2483139350031394824, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
@@ -3383,6 +3654,58 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
   m_PrefabInstance: {fileID: 3813317817555529287}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1287137355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4708536299644261733, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+  m_PrefabInstance: {fileID: 1232655814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1290454426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1290454428}
+  - component: {fileID: 1290454427}
+  m_Layer: 0
+  m_Name: TransitionController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1290454427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290454426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be80643fefee4430badbaf6e9ab0ea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TransitionController
+  fadeOverlayUI: {fileID: 633311237}
+  fadeSpeed: 0.5
+  characterFadeSpeed: 0.3
+--- !u!4 &1290454428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290454426}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22.3709, y: -104.70962, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1290932386
 GameObject:
   m_ObjectHideFlags: 0
@@ -3423,11 +3746,13 @@ RectTransform:
   - {fileID: 1837208092}
   - {fileID: 1705808510}
   - {fileID: 1731108073}
+  - {fileID: 633311236}
   - {fileID: 1182933917}
   - {fileID: 564845331}
   - {fileID: 35994884}
   - {fileID: 1400173021}
   - {fileID: 1266874367}
+  - {fileID: 38283977}
   - {fileID: 1393347366}
   - {fileID: 1643542227}
   m_Father: {fileID: 0}
@@ -3620,9 +3945,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee31984464764cb48d67f3db2140d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Examlogic
-  maxheart: 3
-  playercurrentheart: 3
-  enemycurrentheart: 3
+  questionPanel: {fileID: 2076555986}
+  choicePanel: {fileID: 1837208091}
+  inputPanel: {fileID: 1731108072}
+  questionTextUI: {fileID: 129233559}
+  choiceButtons:
+  - {fileID: 1696064423}
+  - {fileID: 2044256160}
+  - {fileID: 1954716806}
+  - {fileID: 1579882232}
+  choicebuttontextUI:
+  - {fileID: 425597600}
+  - {fileID: 1914222663}
+  - {fileID: 1595234359}
+  - {fileID: 1970411858}
+  answerInputField: {fileID: 1373539186}
+  resultTextUI: {fileID: 0}
   allquestions:
   - questionText: "\u0E02\u0E49\u0E32\u0E08\u0E30\u0E40\u0E01\u0E47\u0E1A\u0E40\u0E07\u0E34\u0E19\u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E40\u0E1E\u0E34\u0E48\u0E21!
       \u0E1E\u0E27\u0E01\u0E21\u0E31\u0E19\u0E40\u0E1E\u0E34\u0E48\u0E07\u0E0B\u0E37\u0E49\u0E2D\u0E14\u0E32\u0E1A\u0E21\u0E32
@@ -3642,6 +3980,11 @@ MonoBehaviour:
       10% \u0E19\u0E30"
     correctChoiceIndex: 1
     correctStringAnswer: 
+    correctMessage: "\u0E40\u0E08\u0E49\u0E32\u0E1C\u0E34\u0E14 \u0E23\u0E32\u0E04\u0E32\u0E21\u0E31\u0E19\u0E23\u0E27\u0E21
+      VAT \u0E41\u0E25\u0E49\u0E27!"
+    correctMessageSide: 0
+    wrongMessage: "\u0E42\u0E07\u0E48\u0E08\u0E23\u0E34\u0E07\u0E46! \u0E08\u0E48\u0E32\u0E22\u0E21\u0E32\u0E0B\u0E30\u0E14\u0E35\u0E46"
+    wrongMessageSide: 1
   - questionText: "\u0E07\u0E31\u0E49\u0E19\u0E02\u0E49\u0E32\u0E16\u0E32\u0E21\u0E2B\u0E19\u0E48\u0E2D\u0E22
       \u0E17\u0E33\u0E44\u0E21\u0E21\u0E19\u0E38\u0E29\u0E22\u0E4C\u0E15\u0E49\u0E2D\u0E07\u0E40\u0E2A\u0E35\u0E22\u0E20\u0E32\u0E29\u0E35\u0E43\u0E2B\u0E49\u0E27\u0E38\u0E48\u0E19\u0E27\u0E32\u0E22\u0E14\u0E49\u0E27\u0E22?
       \u0E40\u0E01\u0E47\u0E1A\u0E44\u0E27\u0E49\u0E01\u0E34\u0E19\u0E40\u0E2D\u0E07\u0E44\u0E21\u0E48\u0E14\u0E35\u0E01\u0E27\u0E48\u0E32\u0E23\u0E36\u0E44\u0E07?"
@@ -3654,6 +3997,10 @@ MonoBehaviour:
     - "\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E19\u0E33\u0E40\u0E07\u0E34\u0E19\u0E44\u0E1B\u0E1D\u0E32\u0E01\u0E18\u0E19\u0E32\u0E04\u0E32\u0E23\u0E43\u0E2B\u0E49\u0E14\u0E2D\u0E01\u0E40\u0E1A\u0E35\u0E49\u0E22\u0E07\u0E2D\u0E01\u0E40\u0E07\u0E22"
     correctChoiceIndex: 2
     correctStringAnswer: 
+    correctMessage: "\u0E20\u0E32\u0E29\u0E35\u0E04\u0E37\u0E2D\u0E2B\u0E19\u0E49\u0E32\u0E17\u0E35\u0E48!"
+    correctMessageSide: 0
+    wrongMessage: "\u0E43\u0E2B\u0E49\u0E02\u0E49\u0E32\u0E43\u0E0A\u0E49\u0E22\u0E31\u0E07\u0E08\u0E30\u0E14\u0E35\u0E0B\u0E30\u0E01\u0E27\u0E48\u0E32"
+    wrongMessageSide: 1
   - questionText: "\u0E2B\u0E36\u0E46\u2026 \u0E16\u0E49\u0E32\u0E40\u0E14\u0E47\u0E01\u0E19\u0E49\u0E2D\u0E22\u0E0B\u0E37\u0E49\u0E2D\u0E02\u0E2D\u0E07\u0E43\u0E19\u0E15\u0E25\u0E32\u0E14
       \u0E02\u0E49\u0E32\u0E04\u0E07\u0E40\u0E01\u0E47\u0E1A VAT \u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E2A\u0E34\u0E19\u0E30?
       \u0E40\u0E14\u0E47\u0E01\u0E21\u0E31\u0E19\u0E44\u0E21\u0E48\u0E21\u0E35\u0E40\u0E07\u0E34\u0E19\u0E40\u0E14\u0E37\u0E2D\u0E19\u0E19\u0E35\u0E48\u0E19\u0E32!"
@@ -3667,6 +4014,10 @@ MonoBehaviour:
     - "\u0E1C\u0E34\u0E14! \u0E40\u0E01\u0E47\u0E1A VAT \u0E40\u0E09\u0E1E\u0E32\u0E30\u0E1C\u0E39\u0E49\u0E43\u0E2B\u0E0D\u0E48\u0E40\u0E17\u0E48\u0E32\u0E19\u0E31\u0E49\u0E19"
     correctChoiceIndex: 1
     correctStringAnswer: 
+    correctMessage: "\u0E40\u0E08\u0E49\u0E32\u0E19\u0E35\u0E48\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E2D\u0E30\u0E44\u0E23\u0E40\u0E2A\u0E35\u0E22\u0E41\u0E25\u0E49\u0E27"
+    correctMessageSide: 0
+    wrongMessage: "\u0E40\u0E08\u0E49\u0E32\u0E21\u0E31\u0E19\u0E42\u0E07\u0E48"
+    wrongMessageSide: 1
   - questionText: "\u0E2D\u0E37\u0E21\u2026 \u0E16\u0E49\u0E32\u0E21\u0E35\u0E23\u0E32\u0E22\u0E44\u0E14\u0E49
       150,000 \u0E1A\u0E32\u0E17\u0E15\u0E48\u0E2D\u0E1B\u0E35 \u0E02\u0E49\u0E32\u0E08\u0E30\u0E2A\u0E31\u0E48\u0E07\u0E43\u0E2B\u0E49\u0E21\u0E31\u0E19
       \u201C\u0E44\u0E21\u0E48\u0E15\u0E49\u0E2D\u0E07\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35\u201D
@@ -3682,6 +4033,10 @@ MonoBehaviour:
     - "\u0E44\u0E14\u0E49! \u0E08\u0E30\u0E22\u0E37\u0E48\u0E19\u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48\u0E01\u0E47\u0E44\u0E14\u0E49"
     correctChoiceIndex: 2
     correctStringAnswer: 
+    correctMessage: "\u0E40\u0E08\u0E2D\u0E19\u0E35\u0E48\u0E2B\u0E19\u0E48\u0E2D\u0E22\u0E40\u0E1B\u0E47\u0E19\u0E44\u0E07"
+    correctMessageSide: 0
+    wrongMessage: "\u0E40\u0E08\u0E49\u0E32\u0E1E\u0E25\u0E32\u0E14\u0E41\u0E25\u0E49\u0E27"
+    wrongMessageSide: 1
   - questionText: "\u0E2B\u0E36! \u0E07\u0E31\u0E49\u0E19\u0E02\u0E49\u0E32\u0E08\u0E30\u0E2A\u0E32\u0E1B\u0E43\u0E2B\u0E49\u0E17\u0E38\u0E01\u0E04\u0E19\u0E15\u0E49\u0E2D\u0E07\u0E22\u0E37\u0E48\u0E19\u0E20\u0E32\u0E29\u0E35\u0E43\u0E2B\u0E49\u0E2B\u0E21\u0E14!\n\u0E08\u0E07\u0E23\u0E30\u0E1A\u0E38
       \u201C\u0E23\u0E32\u0E22\u0E44\u0E14\u0E49\u0E02\u0E31\u0E49\u0E19\u0E15\u0E48\u0E33\u0E15\u0E48\u0E2D\u0E1B\u0E35\u201D
       \u0E02\u0E2D\u0E07\u0E21\u0E19\u0E38\u0E29\u0E22\u0E4C\u0E40\u0E07\u0E34\u0E19\u0E40\u0E14\u0E37\u0E2D\u0E19\u0E42\u0E2A\u0E14
@@ -3691,7 +4046,17 @@ MonoBehaviour:
     choices: []
     correctChoiceIndex: 0
     correctStringAnswer: 120000
-  questiontextUI: {fileID: 129233559}
+    correctMessage: "\u0E04\u0E34\u0E14\u0E27\u0E48\u0E32\u0E02\u0E49\u0E32\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E2B\u0E23\u0E37\u0E2D"
+    correctMessageSide: 0
+    wrongMessage: "\u0E2E\u0E48\u0E32\u0E46\u0E46\u0E46"
+    wrongMessageSide: 1
+  playerFeedbackPanel: {fileID: 1287137355}
+  playerFeedbackText: {fileID: 2081329274}
+  enemyFeedbackPanel: {fileID: 1935125809}
+  enemyFeedbackText: {fileID: 225813657}
+  maxheart: 3
+  playercurrentheart: 3
+  enemycurrentheart: 3
   playerhearts:
   - {fileID: 800506545}
   - {fileID: 744611353}
@@ -3700,15 +4065,12 @@ MonoBehaviour:
   - {fileID: 230569838}
   - {fileID: 1534793209}
   - {fileID: 1218517465}
-  choicePanel: {fileID: 1837208091}
-  questionPanel: {fileID: 2076555986}
-  choicebuttontextUI:
-  - {fileID: 425597600}
-  - {fileID: 1914222663}
-  - {fileID: 1595234359}
-  - {fileID: 1970411858}
-  inputPanel: {fileID: 1731108072}
-  answerInputField: {fileID: 1373539186}
+  rectToShake: {fileID: 0}
+  shakeDuration: 0.3
+  shakeMagnitude: 10
+  soundEffect: {fileID: 0}
+  correctSound: {fileID: 0}
+  wrongSound: {fileID: 0}
   storyManager: {fileID: 966137955}
   gameResult: {fileID: 1598745707}
   achievementIdToUnlock: 12
@@ -5824,6 +6186,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!1 &1935125809 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7719146965361136135, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+  m_PrefabInstance: {fileID: 1232655814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1936429853
 GameObject:
   m_ObjectHideFlags: 0
@@ -6360,6 +6727,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2081329274 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7606921871518099091, guid: 9429f726dbe084acc9079a2ca5b42a2a, type: 3}
+  m_PrefabInstance: {fileID: 1232655814}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
 --- !u!1 &2142824115 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1979568730234370021, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
@@ -6576,3 +6954,4 @@ SceneRoots:
   - {fileID: 891503637}
   - {fileID: 2752497}
   - {fileID: 193154301}
+  - {fileID: 1290454428}
