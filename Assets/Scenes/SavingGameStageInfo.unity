@@ -751,11 +751,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LeaderBoardManager
   gameDropdown: {fileID: 1577608735}
-  container: {fileID: 0}
-  rowPrefab: {fileID: 0}
+  container: {fileID: 310963634}
+  rowPrefab: {fileID: 7780977136555150123, guid: 0bef71fea24fe4199bba17fb56f8ae9e, type: 3}
   leaderboardPanel: {fileID: 757342971}
-  myRankBar: {fileID: 0}
-  myRankItem: {fileID: 0}
+  myRankBar: {fileID: 919211776}
+  myRankItem: {fileID: 919211777}
 --- !u!4 &239665256
 Transform:
   m_ObjectHideFlags: 0
@@ -979,6 +979,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260697922}
   m_CullTransparentMesh: 1
+--- !u!224 &310963634 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8853161010013256757, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
+  m_PrefabInstance: {fileID: 757342969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &313144085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,6 +1361,22 @@ PrefabInstance:
     - target: {fileID: 2060217840148141755, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173559740399488022, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 239665255}
+    - target: {fileID: 3173559740399488022, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseLeaderBoardToSavingGameMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173559740399488022, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LeaderBoardManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173559740399488022, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3662700116038714818, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2102,6 +2123,22 @@ MonoBehaviour:
   star3: {fileID: 164868921}
   filledStar: {fileID: 4815476061570213978, guid: 9e7cc7393b686434ab065071836ec4cf, type: 3}
   stageButton: {fileID: 918521960}
+--- !u!1 &919211776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 724925863256295207, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
+  m_PrefabInstance: {fileID: 757342969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &919211777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7067055893477437173, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
+  m_PrefabInstance: {fileID: 757342969}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919211776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 710f3e1270074458082c86c4bedcd8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeaderBoardItemUI
 --- !u!1 &994068787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,7 +2205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4867477706546820928, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8235041097999565657, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
       propertyPath: m_Pivot.x
