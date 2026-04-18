@@ -308,7 +308,7 @@ public class Examlogic : MonoBehaviour // ใช้ชื่อคลาสเ�
             Debug.Log("คุณแพ้");
             isProcessing = false;
             CloseExamUI();
-            if (gameResult != null) gameResult.TriggerDefeat();
+            if (gameResult != null) gameResult.TriggerDefeat(1, 0, 0);
         }
         else if(enemycurrentheart <= 0) 
         {

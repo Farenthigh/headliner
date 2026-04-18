@@ -1,7 +1,9 @@
 
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class SavingGoalManager : MonoBehaviour
 {
@@ -31,6 +33,9 @@ public class SavingGoalManager : MonoBehaviour
     [SerializeField] private Sprite defeatBackground1;
     [SerializeField] private Sprite defeatBackground2;
     [SerializeField] private Sprite passStar;
+    [SerializeField] private Button exit;
+    [SerializeField] private Button playAgain;
+    [SerializeField] private Button nextGame;
 
 
 
@@ -55,6 +60,15 @@ public class SavingGoalManager : MonoBehaviour
         PriorityParent1.SetActive(false);
         PriorityParent2.SetActive(false);
         PriorityParent3.SetActive(false);
+
+        exit.onClick.AddListener(OnExitClick);
+        playAgain.onClick.AddListener(OnPlayAgainClick);
+        nextGame.onClick.AddListener(OnNextGameClick);
+
+        if (stage == 5)
+        {
+            nextGame.gameObject.SetActive(false);
+        }
 
     }
     public void CheckGoals(float totalAssets)
@@ -97,8 +111,17 @@ public class SavingGoalManager : MonoBehaviour
         }
         Debug.Log($"Total Assets: {totalAssets}, Stars Earned: {starsEarned}");
         StartCoroutine(ShowResults());
-
-
+        try
+        {
+            if (starsEarned > 0)
+            {
+                APIManager.Instance.SavingGameResult(stage, starsEarned);
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Failed to send saving game result: " + ex.Message);
+        }
     }
 
     public float GetGoalAmount()
@@ -129,5 +152,16 @@ public class SavingGoalManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ResultButtonPanelUI.Instance.SetShowPanel(true);
     }
-
+    private void OnExitClick()
+    {
+        SceneManager.LoadScene("SavingGameStageInfo");
+    }
+    private void OnPlayAgainClick()
+    {
+        SceneManager.LoadScene($"SavingGameStage{stage}");
+    }
+    private void OnNextGameClick()
+    {
+        SceneManager.LoadScene($"SavingGameStage{stage + 1}");
+    }
 }

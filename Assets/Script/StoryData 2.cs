@@ -26,5 +26,8 @@ public class StoryPage
     [Header("Scene Settings")]
     public bool forceTransition;
     public bool forceCharacterFade;
+    public bool isNamingPage;
+    public bool isPlayer;
+
 
 }
