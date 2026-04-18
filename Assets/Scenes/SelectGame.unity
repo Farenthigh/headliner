@@ -1887,6 +1887,7 @@ MonoBehaviour:
   savinggame: {fileID: 862418090}
   taxgame: {fileID: 1499675376}
   leaderboard: {fileID: 1569043163}
+  investgame: {fileID: 0}
 --- !u!4 &1824458436
 Transform:
   m_ObjectHideFlags: 0
