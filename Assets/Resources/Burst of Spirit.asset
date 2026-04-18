@@ -15,8 +15,8 @@ MonoBehaviour:
   eventType: 1
   eventValueType: 0
   eventValue: 10
-  rarity: 0
-  icon: {fileID: -5421660401824673759, guid: b13256e389b8e45eebf442d055400629, type: 3}
+  rarity: 1
+  icon: {fileID: 7515357072684481883, guid: 3bab0ac7b69a94fa79d94375bf7261c9, type: 3}
   eventName: Burst of Spirit
   description: "\u0E04\u0E38\u0E13\u0E19\u0E36\u0E01\u0E16\u0E36\u0E07\u0E40\u0E1B\u0E49\u0E32\u0E2B\u0E21\u0E32\u0E22\u0E41\u0E25\u0E49\u0E27\n\u0E21\u0E35\u0E41\u0E23\u0E07\u0E2E\u0E36\u0E14\n\n\n\u0E1F\u0E37\u0E49\u0E19\u0E1F\u0E39\u0E40\u0E27\u0E25\u0E32
     10 \u0E27\u0E34\u0E19\u0E32\u0E17\u0E35"
