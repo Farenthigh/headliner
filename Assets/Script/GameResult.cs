@@ -89,7 +89,7 @@ public class GameResult : MonoBehaviour
     {
         victoryIntroUI.SetActive(true);
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
 
         victoryIntroUI.SetActive(false);
 
@@ -113,8 +113,10 @@ public class GameResult : MonoBehaviour
         AchievementManager.Instance.CheckTaxComebackKing();
         }
         gameObject.SetActive(true);
-        ShowVictoryStars(starCount);
+        // ShowVictoryStars(starCount);
+        victoryIntroUI.SetActive(false);
         victoryResultUI.SetActive(true);
+        StartCoroutine(ShowVictoryStarsSequence(starCount));
         Debug.Log("กำลังส่งข้อมูลเกมไปที่ Database...");
 
         try
@@ -138,7 +140,7 @@ public class GameResult : MonoBehaviour
     private IEnumerator DefeatFlow()
     {
         defeatIntroUI.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
 
         defeatIntroUI.SetActive(false);
         ShowDefeatStars();
@@ -154,6 +156,41 @@ public class GameResult : MonoBehaviour
         v_priority1.SetActive(starCount >= 1);
         v_priority2.SetActive(starCount >= 2);
         v_priority3.SetActive(starCount >= 3);
+    }
+
+        IEnumerator ShowVictoryStarsSequence(int starCount)
+    {
+        // ปิดก่อน (กันค้าง)
+        v_star1.SetActive(false);
+        v_star2.SetActive(false);
+        v_star3.SetActive(false);
+
+        v_priority1.SetActive(false);
+        v_priority2.SetActive(false);
+        v_priority3.SetActive(false);
+
+        // ⭐ ดวงที่ 1
+        if (starCount >= 1)
+        {
+            v_star1.SetActive(true);
+            v_priority1.SetActive(true);
+            yield return new WaitForSeconds(0.6f);
+        }
+
+        // ⭐ ดวงที่ 2
+        if (starCount >= 2)
+        {
+            v_star2.SetActive(true);
+            v_priority2.SetActive(true);
+            yield return new WaitForSeconds(0.6f);
+        }
+
+        // ⭐ ดวงที่ 3
+        if (starCount >= 3)
+        {
+            v_star3.SetActive(true);
+            v_priority3.SetActive(true);
+        }
     }
     // private void ShowVictoryStars()
     // {

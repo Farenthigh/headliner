@@ -1,20 +1,10 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 1b4387cfb1e0ec449b8f7b38a63d6629
-=======
-guid: 35332dd41d7244d3b945e9e87b3d6bf5
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
+guid: 84809d171754c2a4ea0e76f8e495e8cb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1429237409021251797
-    second: Ellipse 47_0
-<<<<<<< HEAD
-  - first:
-      213: -2177658430849356804
-    second: Ellipse 47_1
-=======
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
+      213: 8125336416166673819
+    second: Star 16_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,40 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD
-=======
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ellipse 47_0
+      name: Star 16_0
       rect:
         serializedVersion: 2
-<<<<<<< HEAD
-        x: 3
-        y: 4
-        width: 844
-        height: 843
-=======
         x: 0
-        y: 0
-        width: 850
-        height: 850
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
+        y: 2
+        width: 54
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,37 +115,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5d05960e9dba5d310800000000000000
-      internalID: 1429237409021251797
+      spriteID: b9df82eab6ef2c070800000000000000
+      internalID: 8125336416166673819
       vertices: []
       indices: 
       edges: []
       weights: []
-<<<<<<< HEAD
-    - serializedVersion: 2
-      name: Ellipse 47_1
-      rect:
-        serializedVersion: 2
-        x: 839
-        y: 439
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cfbe613e13767c1e0800000000000000
-      internalID: -2177658430849356804
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-=======
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
     outline: []
     customData: 
     physicsShape: []
@@ -193,11 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Ellipse 47_0: 1429237409021251797
-<<<<<<< HEAD
-      Ellipse 47_1: -2177658430849356804
-=======
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
+      Star 16_0: 8125336416166673819
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

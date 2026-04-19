@@ -1,20 +1,25 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 1b4387cfb1e0ec449b8f7b38a63d6629
-=======
-guid: 35332dd41d7244d3b945e9e87b3d6bf5
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
+guid: d0cc8edef6dd2a848bf74fe192617620
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1429237409021251797
-    second: Ellipse 47_0
-<<<<<<< HEAD
+      213: -2850398134756759706
+    second: DEFEAT_0
   - first:
-      213: -2177658430849356804
-    second: Ellipse 47_1
-=======
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
+      213: -2693078646604208720
+    second: DEFEAT_1
+  - first:
+      213: -7098228175633716769
+    second: DEFEAT_2
+  - first:
+      213: -1878240899264707260
+    second: DEFEAT_3
+  - first:
+      213: -4120901042980536586
+    second: DEFEAT_4
+  - first:
+      213: -5991143272335481184
+    second: DEFEAT_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -56,7 +61,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -106,40 +111,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD
-=======
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ellipse 47_0
+      name: DEFEAT_0
       rect:
         serializedVersion: 2
-<<<<<<< HEAD
-        x: 3
-        y: 4
-        width: 844
-        height: 843
-=======
         x: 0
         y: 0
-        width: 850
-        height: 850
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
+        width: 78
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,21 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5d05960e9dba5d310800000000000000
-      internalID: 1429237409021251797
+      spriteID: 667236d9ff95178d0800000000000000
+      internalID: -2850398134756759706
       vertices: []
       indices: 
       edges: []
       weights: []
-<<<<<<< HEAD
     - serializedVersion: 2
-      name: Ellipse 47_1
+      name: DEFEAT_1
       rect:
         serializedVersion: 2
-        x: 839
-        y: 439
-        width: 6
-        height: 6
+        x: 86
+        y: 0
+        width: 73
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,19 +152,105 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cfbe613e13767c1e0800000000000000
-      internalID: -2177658430849356804
+      spriteID: 0b567fc4d3340aad0800000000000000
+      internalID: -2693078646604208720
       vertices: []
       indices: 
       edges: []
       weights: []
-=======
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
+    - serializedVersion: 2
+      name: DEFEAT_2
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 0
+        width: 71
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd9eea015170e7d90800000000000000
+      internalID: -7098228175633716769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEFEAT_3
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 0
+        width: 72
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44587bc7ad52fe5e0800000000000000
+      internalID: -1878240899264707260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEFEAT_4
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 0
+        width: 83
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6febb9ab55e9fc6c0800000000000000
+      internalID: -4120901042980536586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEFEAT_5
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 0
+        width: 82
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a6e8fdafee2bdca0800000000000000
+      internalID: -5991143272335481184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -193,11 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Ellipse 47_0: 1429237409021251797
-<<<<<<< HEAD
-      Ellipse 47_1: -2177658430849356804
-=======
->>>>>>> 2573862be2befb30014539bfaef4e72840972c1a
+      DEFEAT_0: -2850398134756759706
+      DEFEAT_1: -2693078646604208720
+      DEFEAT_2: -7098228175633716769
+      DEFEAT_3: -1878240899264707260
+      DEFEAT_4: -4120901042980536586
+      DEFEAT_5: -5991143272335481184
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
