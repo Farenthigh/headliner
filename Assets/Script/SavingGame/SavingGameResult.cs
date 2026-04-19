@@ -78,7 +78,14 @@ public class SavingGameResult : MonoBehaviour
 
     }
     public void ShowVictoryResultDirect(int starCount)
-    {
+    {   
+
+        // ✅ mark ว่าเล่น Saving แล้ว
+        PlayerPrefs.SetInt("Played_Saving", 1);
+        PlayerPrefs.Save();
+
+        // ✅ เช็ค Double Expertise
+        AchievementManager.Instance.CheckDoubleExpertise();
         gameObject.SetActive(true);
         ShowVictoryStars(starCount);
         victoryResultUI.SetActive(true);

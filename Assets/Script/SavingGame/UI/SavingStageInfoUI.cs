@@ -9,12 +9,15 @@ public class SavingStageInfoManager : MonoBehaviour
     public TextMeshProUGUI objective1;
     public TextMeshProUGUI objective2;
     public TextMeshProUGUI objective3;
+    public Button closeButton;
     public Button startButton;
 
     private string nextScene;
 
+
     void Start()
     {
+        closeButton.onClick.AddListener(CloseStageInfo);
         int stage = SavingStageData.selectedStage;
         gameObject.SetActive(false);
         if (stage == 1)

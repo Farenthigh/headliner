@@ -28,6 +28,9 @@ public class AchievementManager : MonoBehaviour
     public GameObject mainAchievementPanel; 
     public GameObject achievementPrefab;   
     public Transform achievementContainer;
+    [Header("Hint Popup")]
+    public GameObject hintPopup;
+    public TextMeshProUGUI hintDescriptionText;
 
     void Awake()
     {
@@ -75,7 +78,7 @@ public class AchievementManager : MonoBehaviour
                 string jsonResponse = webRequest.downloadHandler.text;
                 Debug.Log("JSON จาก Backend: " + jsonResponse);
                 AchievementListResponse response = JsonUtility.FromJson<AchievementListResponse>(jsonResponse);
-
+                Debug.Log("ALL ACH COUNT: " + allAchievements.Count);
                 foreach (var ach in allAchievements) 
                 {
                     ach.isUnlocked = false; 
@@ -189,13 +192,16 @@ public class AchievementManager : MonoBehaviour
     }
 
     public void ShowPopup(AchievementData data)
-    {
-        popupNameText.text = data.achievementName;
-        popupDescriptionText.text = "Description: " + data.description;
-        popupDateText.text = "Date: " + data.unlockDate;
-        popupIconImage.sprite = data.icon;
-        popupPanel.SetActive(true);
-    }
+{
+    if (popupPanel == null) return;
+
+    popupNameText.text = data.achievementName;
+    popupDescriptionText.text = data.description;
+    popupDateText.text = data.unlockDate;
+    popupIconImage.sprite = data.icon;
+
+    popupPanel.SetActive(true);
+}
 
     public void ClosePopup()
     {
@@ -203,11 +209,17 @@ public class AchievementManager : MonoBehaviour
     }
 
     public void OpenAchievementUI()
-    {
+    {   Debug.Log("OPEN ACHIEVEMENT UI"); 
         if (mainAchievementPanel != null)
         {
             GenerateAchievementUI(); 
             mainAchievementPanel.SetActive(true);
+        }
+
+        AchievementData ach = allAchievements.Find(a => a.id == "18");
+        if (ach != null && !ach.isUnlocked)
+        {
+            AchievementManager.Instance.UnlockAchievement(18, "18");
         }
     }
 
@@ -233,6 +245,82 @@ public class AchievementManager : MonoBehaviour
             slotUI.SetupSlot(ach);
         }
     }
+
+    public void CheckToolMasterGlobal()
+    {
+        bool usedChat = PlayerPrefs.GetInt("Used_Chat", 0) == 1;
+        bool usedCalc = PlayerPrefs.GetInt("Used_Calculator", 0) == 1;
+        bool usedTips = PlayerPrefs.GetInt("Used_Tips", 0) == 1;
+
+        if (usedChat && usedCalc && usedTips)
+        {
+            AchievementData ach = allAchievements.Find(a => a.id == "22");
+
+            if (ach != null && !ach.isUnlocked)
+            {
+                UnlockAchievement(22, "22");
+
+                PlayerPrefs.DeleteKey("Used_Chat");
+                PlayerPrefs.DeleteKey("Used_Calculator");
+                PlayerPrefs.DeleteKey("Used_Tips");
+                PlayerPrefs.Save();
+            }
+        }
+    }
+
+    public void CheckTaxComebackKing()
+    {
+        int level = PlayerPrefs.GetInt("Tax_Level", 1);
+        int failed = PlayerPrefs.GetInt("Tax_Failed", 0);
+
+        if (level > 5 && failed == 0)
+        {
+            AchievementData ach = allAchievements.Find(a => a.id == "23");
+
+            if (ach != null && !ach.isUnlocked)
+            {
+                UnlockAchievement(23, "23");
+            }
+        }
+    }
+    public void CheckDoubleExpertise()
+    {
+        bool playedTax = PlayerPrefs.GetInt("Played_Tax", 0) == 1;
+        bool playedSaving = PlayerPrefs.GetInt("Played_Saving", 0) == 1;
+
+        if (playedTax && playedSaving)
+        {
+            AchievementData ach = allAchievements.Find(a => a.id == "25");
+
+            if (ach != null && !ach.isUnlocked)
+            {
+                UnlockAchievement(25, "25");
+
+            // reset กัน spam
+                PlayerPrefs.DeleteKey("Played_Tax");
+                PlayerPrefs.DeleteKey("Played_Saving");
+                PlayerPrefs.Save();
+            }
+        }
+    }
+   public void ShowHintPopup(AchievementData data)
+    {
+        Debug.Log("Show Hint Popup: " + data.name);
+
+        hintPopup.SetActive(true);
+
+        Debug.Log("Popup Active: " + hintPopup.activeSelf);
+        Debug.Log("Popup In Hierarchy: " + hintPopup.activeInHierarchy);
+
+        hintPopup.transform.SetAsLastSibling();
+
+        hintDescriptionText.text = data.description;
+    }   
+    public void CloseHintPopup()
+    {
+        Debug.Log("CLOSE POPUP");
+        hintPopup.SetActive(false);
+    }
 }
 
 [System.Serializable]
@@ -256,3 +344,4 @@ public class AchievementListResponse
     public string message;
     public List<UserAchievementResponse> data; 
 }
+

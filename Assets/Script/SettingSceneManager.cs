@@ -3,9 +3,15 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Networking;
+using System.Text;
 
 public class SettingSceneManager : MonoBehaviour
 {
+    private bool openedProfile;
+    private bool openedAudio;
+    private bool openedHelp;
+    private bool openedContact;
     [Header("Pages")]
     public GameObject profilePage;
     public GameObject editProfilePage;
@@ -47,6 +53,18 @@ public class SettingSceneManager : MonoBehaviour
     [Header("Success Popup")]
     public GameObject usernameSuccessPanel;
 
+    [Header("Contact Form")]
+    public TMP_InputField subjectInput;
+    public TMP_InputField descriptionInput;
+    public GameObject panelSuccessContact;
+    public GameObject panelFailedContact;
+    public float contactPopupTime = 5f;
+    [System.Serializable]
+    public class ContactData
+    {
+        public string Subject;
+        public string Description;
+    }
     private void Start()
     {
 #if UNITY_EDITOR
@@ -72,6 +90,11 @@ public class SettingSceneManager : MonoBehaviour
         ShowProfile();
         LoadProfileData();
         LoadAudioSetting();
+
+        openedProfile = PlayerPrefs.GetInt("Open_Profile", 0) == 1;
+        openedAudio = PlayerPrefs.GetInt("Open_Audio", 0) == 1;
+        openedHelp = PlayerPrefs.GetInt("Open_Help", 0) == 1;
+        openedContact = PlayerPrefs.GetInt("Open_Contact", 0) == 1;
     }
 
     // =========================
@@ -123,6 +146,10 @@ public class SettingSceneManager : MonoBehaviour
 
         profilePage.SetActive(true);
         profileHighlight.SetActive(true);
+
+        openedProfile = true;
+        PlayerPrefs.SetInt("Open_Profile", 1);
+        CheckFullExplorer();
     }
 
     public void ShowEditProfile()
@@ -150,6 +177,11 @@ public class SettingSceneManager : MonoBehaviour
 
         audioPage.SetActive(true);
         audioHighlight.SetActive(true);
+
+        openedAudio = true;
+        PlayerPrefs.SetInt("Open_Audio", 1);
+        PlayerPrefs.Save();
+        CheckFullExplorer();
     }
 
     public void ShowHelp()
@@ -159,6 +191,11 @@ public class SettingSceneManager : MonoBehaviour
 
         helpPage.SetActive(true);
         helpHighlight.SetActive(true);
+
+        openedHelp = true;
+        PlayerPrefs.SetInt("Open_Help", 1);
+        PlayerPrefs.Save();
+        CheckFullExplorer();    
     }
 
     public void ShowContact()
@@ -168,6 +205,11 @@ public class SettingSceneManager : MonoBehaviour
 
         contactPage.SetActive(true);
         contactHighlight.SetActive(true);
+
+        openedContact = true;
+        PlayerPrefs.SetInt("Open_Contact", 1);
+        PlayerPrefs.Save();
+        CheckFullExplorer();
     }
 
     // =========================
@@ -354,6 +396,62 @@ IEnumerator ShowSuccessPopup()
         PlayerPrefs.SetFloat("Music", musicSlider.value);
         PlayerPrefs.SetFloat("SFX", sfxSlider.value);
         PlayerPrefs.SetFloat("Master", masterSlider.value);
+    }
+    public void SubmitContact()
+    {
+        string subject = subjectInput.text.Trim();
+        string description = descriptionInput.text.Trim();
+
+        if (string.IsNullOrEmpty(subject) || string.IsNullOrEmpty(description))
+        {
+            ShowContactPanel(panelFailedContact);
+            return;
+        }
+
+        StartCoroutine(SendContactToAPI(subject, description));
+    }
+    void ShowContactPanel(GameObject panel)
+    {
+    // ปิดทั้งสองก่อน (กันซ้อน)
+        panelSuccessContact.SetActive(false);
+        panelFailedContact.SetActive(false);
+
+        panel.SetActive(true);
+        StartCoroutine(HideContactPanel(panel));
+    }
+    IEnumerator HideContactPanel(GameObject panel)
+    {
+        yield return new WaitForSeconds(contactPopupTime);
+        panel.SetActive(false);
+    }
+    IEnumerator SendContactToAPI(string subject, string description)
+    {
+        string url = "http://localhost:8080/contact"; // 🔥 เปลี่ยนตาม backend จริง
+
+    // JSON ที่จะส่ง (ต้องตรงกับ backend)
+        string json = JsonUtility.ToJson(new ContactData
+        {
+            Subject = subject,
+            Description = description
+        });
+
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            ShowContactPanel(panelSuccessContact);
+        }
+        else
+        {
+            ShowContactPanel(panelFailedContact);
+        }
     }
 }
 
