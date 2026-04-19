@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
-
-
+using UnityEngine.Networking;
+using System.Text;
 
 public class SettingSceneManager : MonoBehaviour
 {
@@ -53,6 +53,18 @@ public class SettingSceneManager : MonoBehaviour
     [Header("Success Popup")]
     public GameObject usernameSuccessPanel;
 
+    [Header("Contact Form")]
+    public TMP_InputField subjectInput;
+    public TMP_InputField descriptionInput;
+    public GameObject panelSuccessContact;
+    public GameObject panelFailedContact;
+    public float contactPopupTime = 5f;
+    [System.Serializable]
+    public class ContactData
+    {
+        public string Subject;
+        public string Description;
+    }
     private void Start()
     {
 #if UNITY_EDITOR
@@ -385,17 +397,60 @@ IEnumerator ShowSuccessPopup()
         PlayerPrefs.SetFloat("SFX", sfxSlider.value);
         PlayerPrefs.SetFloat("Master", masterSlider.value);
     }
-    void CheckFullExplorer()
+    public void SubmitContact()
     {
-        if (openedProfile && openedAudio && openedHelp && openedContact)
-        {
-            AchievementData ach = AchievementManager.Instance.allAchievements
-                .Find(a => a.id == "20");
+        string subject = subjectInput.text.Trim();
+        string description = descriptionInput.text.Trim();
 
-            if (ach != null && !ach.isUnlocked)
-            {
-                AchievementManager.Instance.UnlockAchievement(20, "20");
-            }
+        if (string.IsNullOrEmpty(subject) || string.IsNullOrEmpty(description))
+        {
+            ShowContactPanel(panelFailedContact);
+            return;
+        }
+
+        StartCoroutine(SendContactToAPI(subject, description));
+    }
+    void ShowContactPanel(GameObject panel)
+    {
+    // ปิดทั้งสองก่อน (กันซ้อน)
+        panelSuccessContact.SetActive(false);
+        panelFailedContact.SetActive(false);
+
+        panel.SetActive(true);
+        StartCoroutine(HideContactPanel(panel));
+    }
+    IEnumerator HideContactPanel(GameObject panel)
+    {
+        yield return new WaitForSeconds(contactPopupTime);
+        panel.SetActive(false);
+    }
+    IEnumerator SendContactToAPI(string subject, string description)
+    {
+        string url = "http://localhost:8080/contact"; // 🔥 เปลี่ยนตาม backend จริง
+
+    // JSON ที่จะส่ง (ต้องตรงกับ backend)
+        string json = JsonUtility.ToJson(new ContactData
+        {
+            Subject = subject,
+            Description = description
+        });
+
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            ShowContactPanel(panelSuccessContact);
+        }
+        else
+        {
+            ShowContactPanel(panelFailedContact);
         }
     }
 }

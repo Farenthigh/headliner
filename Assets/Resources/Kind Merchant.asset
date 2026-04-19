@@ -15,7 +15,7 @@ MonoBehaviour:
   eventType: 0
   eventValueType: 0
   eventValue: 10
-  rarity: 1
+  rarity: 0
   icon: {fileID: 6148624234843274970, guid: 0193e9825f09847ba92a2df7c989ac99, type: 3}
   eventName: Kind Merchant
   description: "\u0E1E\u0E48\u0E2D\u0E04\u0E49\u0E32\u0E40\u0E14\u0E34\u0E19\u0E17\u0E32\u0E07\u0E41\u0E27\u0E30\u0E17\u0E31\u0E01\u0E17\u0E32\u0E22\u0E41\u0E25\u0E30\n\u0E21\u0E2D\u0E1A\u0E02\u0E19\u0E21\u0E43\u0E2B\u0E49\n\n\n+10"

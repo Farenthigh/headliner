@@ -1,7 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;   // ถ้าใช้ Text / Image
+using UnityEngine.UI;   
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks; 
 public class GameResult : MonoBehaviour
 {
     [Header("Victory UI")]
@@ -58,12 +59,30 @@ public class GameResult : MonoBehaviour
         StartCoroutine(VictoryFlow(storyManager));
     }
 
-    public void TriggerDefeat()
+    // public void TriggerDefeat()
+    // {
+    //     gameObject.SetActive(true);   // 👈 เพิ่มบรรทัดนี้
+    //     StartCoroutine(DefeatFlow());
+    // }
+
+    public async void TriggerDefeat(int currentStage, int score, int timeUsed)
     {
-        gameObject.SetActive(true);   // 👈 เพิ่มบรรทัดนี้
-        StartCoroutine(DefeatFlow());
-        PlayerPrefs.SetInt("Tax_Failed", 1);
-        PlayerPrefs.Save();
+        gameObject.SetActive(true);
+        StartCoroutine(DefeatFlow()); 
+        Debug.Log("💀 เล่นแพ้... กำลังส่งข้อมูล (0 ดาว) ไปที่ Database...");
+
+        try
+        {
+            await APIManager.Instance.SaveGameResult(0, currentStage); 
+
+            await APIManager.Instance.SaveLeaderboardScore(0, score, 0, timeUsed); 
+            
+            Debug.Log("บันทึกประวัติการแพ้สำเร็จ!");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("ส่งข้อมูลตอนแพ้ไม่สำเร็จ: " + e.Message);
+        }
     }
 
     private IEnumerator VictoryFlow(StoryManager storyManager)
@@ -78,7 +97,7 @@ public class GameResult : MonoBehaviour
         if (storyManager != null)
             storyManager.OnClickNext();
     }
-    public void ShowVictoryResultDirect(int starCount)
+    public async void ShowVictoryResultDirect(int starCount, int currentStage, int score, int timeUsed)
     {
         // ✅ เพิ่ม level
         int level = PlayerPrefs.GetInt("Tax_Level", 1);
@@ -96,6 +115,24 @@ public class GameResult : MonoBehaviour
         gameObject.SetActive(true);
         ShowVictoryStars(starCount);
         victoryResultUI.SetActive(true);
+        Debug.Log("กำลังส่งข้อมูลเกมไปที่ Database...");
+
+        try
+        {
+            // บันทึก 1: ส่งดาวไปปลดล็อกด่าน (ลงตาราง stage_logs)
+            await APIManager.Instance.SaveGameResult(starCount, currentStage); 
+
+            // บันทึก 2: ส่งคะแนนไปลีดเดอร์บอร์ด (ลงตาราง leaderboard)
+            // จากปุ่ม Exit ของคุณที่ชี้ไป "TaxGameMap" ผมเลยถือว่านี่คือโหมดภาษีนะครับ 
+            // เลยใส่คะแนนที่ช่อง Tax (พารามิเตอร์ตัวที่ 2 และ 4) ส่วนช่อง Saving ใส่ 0
+            await APIManager.Instance.SaveLeaderboardScore(0, score, 0, timeUsed); 
+            
+            Debug.Log("บันทึกคะแนนและปลดล็อกด่านสำเร็จ!");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("ส่งข้อมูลไม่สำเร็จ: " + e.Message);
+        }
     }
 
     private IEnumerator DefeatFlow()

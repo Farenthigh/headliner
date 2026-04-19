@@ -22,6 +22,9 @@ public class ChatManager : MonoBehaviour
     public Button openButton;
     public Button closeButton;
 
+    [Header("Typing Settings")]
+    public float typingSpeed = 0.02f; 
+
     public static ChatManager instance;
 
     private string apiUrl = "http://localhost:8080/api/chat"; 
@@ -100,7 +103,7 @@ public class ChatManager : MonoBehaviour
 
     IEnumerator PostRequest(string message)
     {
-        GameObject aiBubble = CreateBubble(aiBubblePrefab, "กำลังค้นข้อมูล...");
+        GameObject aiBubble = CreateBubble(aiBubblePrefab, "กำลังพิมพ์...");
         TMP_Text aiText = aiBubble.GetComponentInChildren<TMP_Text>();
 
         if (aiText == null)
@@ -135,7 +138,8 @@ public class ChatManager : MonoBehaviour
                     
                     if (res != null && !string.IsNullOrEmpty(res.answer))
                     {
-                        aiText.text = res.answer;
+                        // +++ เปลี่ยนจากการใส่ข้อความพรวดเดียว เป็นการเรียกแอนิเมชันพิมพ์ +++
+                        StartCoroutine(TypeSentence(aiText, res.answer));
                     }
                     else
                     {
@@ -151,9 +155,23 @@ public class ChatManager : MonoBehaviour
             }
         }
 
-        StartCoroutine(ForceScrollDown());
-
         sendButton.interactable = true;
+    }
+
+    IEnumerator TypeSentence(TMP_Text textComponent, string sentence)
+    {
+        textComponent.text = ""; 
+
+        foreach (char letter in sentence.ToCharArray())
+        {
+            if (textComponent == null) yield break; 
+
+            textComponent.text += letter;
+
+            yield return new WaitForSeconds(typingSpeed); 
+        }
+
+        StartCoroutine(ForceScrollDown());
     }
 
     GameObject CreateBubble(GameObject prefab, string text)
