@@ -100,8 +100,8 @@ public class SelectCharacter : MonoBehaviour
             }
             PlayerPrefs.SetInt("SelectedCharacter", selectedCharacter);
             PlayerPrefs.Save();
-
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SelectGame");
+            
+            LoadingManager.Instance.LoadScene("SelectGame");
         }
         catch (System.Exception ex)
         {

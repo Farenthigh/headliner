@@ -37,14 +37,14 @@ public class ResultButtonPanelUI : MonoBehaviour
 
     public void OnExitButtonClicked()
     {
-        SceneManager.LoadScene("SelectGame");
+        LoadingManager.Instance.LoadScene("SelectGame");
     }
     public void OnPlayAgainButtonClicked()
     {
-        SceneManager.LoadScene("SavingGameMap");
+        LoadingManager.Instance.LoadScene("SavingGameMap");
     }
     public void OnNextGameButtonClicked()
     {
-        SceneManager.LoadScene(scene.name);
+        LoadingManager.Instance.LoadScene(scene.name);
     }
 }

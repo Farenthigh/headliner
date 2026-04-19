@@ -83,7 +83,7 @@ public class SettingSceneManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(APIManager.Token))
         {
-            SceneManager.LoadScene("LoginScene");
+            LoadingManager.Instance.LoadScene("LoginScene");
             return;
         }
 
@@ -316,7 +316,7 @@ IEnumerator ShowSuccessPopup()
             APIManager.Instance.Logout(); 
         }
 
-        SceneManager.LoadScene("LoginScene");
+        LoadingManager.Instance.LoadScene("LoginScene");
     }
 
     // =========================
@@ -350,7 +350,7 @@ IEnumerator ShowSuccessPopup()
             APIManager.Token = null; 
         }
 
-        SceneManager.LoadScene("LoginScene");
+        LoadingManager.Instance.LoadScene("LoginScene");
     }
 
     // =========================
@@ -362,17 +362,17 @@ IEnumerator ShowSuccessPopup()
         string previousScene = PlayerPrefs.GetString("PreviousScene", "");
         if (string.IsNullOrEmpty(previousScene) || previousScene == "-1")
         {
-            SceneManager.LoadScene(0); 
+            LoadingManager.Instance.LoadScene(0); 
             return;
         }
 
         if (int.TryParse(previousScene, out int sceneIndex))
         {
-            SceneManager.LoadScene(Mathf.Max(0, sceneIndex));
+            LoadingManager.Instance.LoadScene(Mathf.Max(0, sceneIndex));
         }
         else
         {
-            SceneManager.LoadScene(previousScene);
+            LoadingManager.Instance.LoadScene(previousScene);
         }
     }
 

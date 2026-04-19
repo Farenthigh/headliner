@@ -243,6 +243,6 @@ public class TaxMapManager : MonoBehaviour
 
     public void GoToSelectGame()
     {
-        SceneManager.LoadScene("SelectGame");
+        LoadingManager.Instance.LoadScene("SelectGame");
     }
 }
