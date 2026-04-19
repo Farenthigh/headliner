@@ -78,7 +78,14 @@ public class SavingGameResult : MonoBehaviour
 
     }
     public void ShowVictoryResultDirect(int starCount)
-    {
+    {   
+
+        // ✅ mark ว่าเล่น Saving แล้ว
+        PlayerPrefs.SetInt("Played_Saving", 1);
+        PlayerPrefs.Save();
+
+        // ✅ เช็ค Double Expertise
+        AchievementManager.Instance.CheckDoubleExpertise();
         gameObject.SetActive(true);
         ShowVictoryStars(starCount);
         victoryResultUI.SetActive(true);
@@ -151,7 +158,7 @@ public class SavingGameResult : MonoBehaviour
     {
         Debug.Log("Victory Play Again Clicked");
         Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        LoadingManager.Instance.LoadScene(currentScene.name);
     }
 
     public void OnClickNextGame()
@@ -165,7 +172,7 @@ public class SavingGameResult : MonoBehaviour
         // เช็คว่า Scene อยู่ใน Build Profiles หรือไม่
         if (Application.CanStreamedLevelBeLoaded(nextSceneName))
         {
-            SceneManager.LoadScene(nextSceneName);
+            LoadingManager.Instance.LoadScene(nextSceneName);
         }
         else
         {
@@ -184,7 +191,7 @@ public class SavingGameResult : MonoBehaviour
     {
         Debug.Log("Defeat Play Again Clicked");
         Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        LoadingManager.Instance.LoadScene(currentScene.name);
     }
 
 

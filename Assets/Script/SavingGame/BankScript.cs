@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [System.Serializable]
 public class Interest
@@ -31,6 +32,8 @@ public class BankScript : MonoBehaviour
     private bool isContractBroken = false;
     private void OnMouseDown()
     {
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
+
         if (HomePanel.Instance.GetHomePanel() || BankPanelUI.Instance.GetBankPanel()) return;
         BankPanelUI.Instance.OnOpenBankPanel(this);
     }

@@ -22,7 +22,7 @@ public class TaxGameMap : MonoBehaviour
     private void TaxGameMapOption(string stageNumber)
     {
         Debug.Log($"Tax Game Map Option Selected: {stageNumber}");
-        SceneManager.LoadScene(stageNumber);
+        LoadingManager.Instance.LoadScene(stageNumber);
     }
 
 }

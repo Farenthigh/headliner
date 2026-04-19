@@ -18,10 +18,19 @@ public class AchievementManager : MonoBehaviour
     public TextMeshProUGUI popupDateText;             
     public Image popupIconImage;
 
+    [Header("New Unlock Animation UI")]
+    public GameObject unlockPanel;         
+    public RectTransform cardRect;
+    public AchievementCard achievementCard;
+    public ParticleSystem sparkleParticle;
+
     [Header("Main UI")]
     public GameObject mainAchievementPanel; 
     public GameObject achievementPrefab;   
     public Transform achievementContainer;
+    [Header("Hint Popup")]
+    public GameObject hintPopup;
+    public TextMeshProUGUI hintDescriptionText;
 
     void Awake()
     {
@@ -32,6 +41,8 @@ public class AchievementManager : MonoBehaviour
     {
         if (popupPanel != null) popupPanel.SetActive(false);
         if (mainAchievementPanel != null) mainAchievementPanel.SetActive(false);
+        if (unlockPanel != null) unlockPanel.SetActive(false);
+        if (cardRect != null) cardRect.gameObject.SetActive(false);
 
         if (!string.IsNullOrEmpty(APIManager.Token))
         {
@@ -46,7 +57,6 @@ public class AchievementManager : MonoBehaviour
 
     IEnumerator LoadDataFromBackendRoutine()
     {
-        // แก้ไขการดัก Error: เปลี่ยนมาเช็ค Token แทนเพราะ UserData เป็น struct เช็ค null ไม่ได้
         if (string.IsNullOrEmpty(APIManager.Token)) yield break;
 
         uint myUserId = (uint)APIManager.myData.id;
@@ -68,7 +78,7 @@ public class AchievementManager : MonoBehaviour
                 string jsonResponse = webRequest.downloadHandler.text;
                 Debug.Log("JSON จาก Backend: " + jsonResponse);
                 AchievementListResponse response = JsonUtility.FromJson<AchievementListResponse>(jsonResponse);
-
+                Debug.Log("ALL ACH COUNT: " + allAchievements.Count);
                 foreach (var ach in allAchievements) 
                 {
                     ach.isUnlocked = false; 
@@ -102,10 +112,52 @@ public class AchievementManager : MonoBehaviour
             ach.isUnlocked = true;
             ach.unlockDate = System.DateTime.Now.ToString("dd/MM/yyyy");
             Debug.Log($"ปลดล็อก UI: {ach.achievementName}!");
-            ShowNotification(ach);
+            
+            StartCoroutine(PopupSequence(ach));
 
             StartCoroutine(SaveToBackendRoutine(backendAchievementId));
         }
+    }
+
+    private IEnumerator PopupSequence(AchievementData data)
+    {
+        unlockPanel.SetActive(true);
+        cardRect.gameObject.SetActive(true);
+        
+        achievementCard.SetupCard(data);
+
+        Vector2 startPos = new Vector2(0, -1500f);
+        Vector2 targetPos = Vector2.zero;
+        Vector3 startScale = new Vector3(0.5f, 0.5f, 0.5f);
+        Vector3 targetScale = Vector3.one;
+
+        float duration = 0.5f;
+        float time = 0;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+            float easeOutCubic = 1f - Mathf.Pow(1f - t, 3f);
+
+            cardRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, easeOutCubic);
+            cardRect.localScale = Vector3.Lerp(startScale, targetScale, easeOutCubic);
+            
+            yield return null;
+        }
+
+        cardRect.anchoredPosition = targetPos;
+        cardRect.localScale = targetScale;
+
+        if (sparkleParticle != null) sparkleParticle.Play();
+        
+        achievementCard.EnableInteraction();
+    }
+
+    public void CloseUnlockPanel()
+    {
+        unlockPanel.SetActive(false);
+        cardRect.gameObject.SetActive(false);
     }
 
     IEnumerator SaveToBackendRoutine(uint achievementId)
@@ -139,55 +191,17 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void ShowNotification(AchievementData data)
-    {
-        StartCoroutine(SlideNotificationRoutine(data));
-    }
-
-    private System.Collections.IEnumerator SlideNotificationRoutine(AchievementData data)
-    {
-        if (popupNameText != null) popupNameText.text = data.achievementName;
-        if (popupIconImage != null && data.icon != null) popupIconImage.sprite = data.icon;
-        if (popupPanel != null) popupPanel.SetActive(true);
-
-        RectTransform rect = popupPanel.GetComponent<RectTransform>();
-        Vector2 hiddenPos = new Vector2(rect.anchoredPosition.x, -150f); 
-        Vector2 showPos = new Vector2(rect.anchoredPosition.x, 20f);
-
-        rect.anchoredPosition = hiddenPos;
-
-        float time = 0;
-        while(time < 0.5f) 
-        {
-            rect.anchoredPosition = Vector2.Lerp(hiddenPos, showPos, time / 0.5f);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        rect.anchoredPosition = showPos;
-
-        yield return new WaitForSeconds(3f);
-
-        time = 0;
-        while(time < 0.5f) 
-        {
-            rect.anchoredPosition = Vector2.Lerp(showPos, hiddenPos, time / 0.5f);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        rect.anchoredPosition = hiddenPos;
-
-        popupPanel.SetActive(false);
-    }
-
-    // --- ส่วนที่ผมเผลอลบไป เอาคืนมาแล้วครับ! ---
     public void ShowPopup(AchievementData data)
-    {
-        popupNameText.text = data.achievementName;
-        popupDescriptionText.text = "Description: " + data.description;
-        popupDateText.text = "Date: " + data.unlockDate;
-        popupIconImage.sprite = data.icon;
-        popupPanel.SetActive(true);
-    }
+{
+    if (popupPanel == null) return;
+
+    popupNameText.text = data.achievementName;
+    popupDescriptionText.text = data.description;
+    popupDateText.text = data.unlockDate;
+    popupIconImage.sprite = data.icon;
+
+    popupPanel.SetActive(true);
+}
 
     public void ClosePopup()
     {
@@ -195,11 +209,17 @@ public class AchievementManager : MonoBehaviour
     }
 
     public void OpenAchievementUI()
-    {
+    {   Debug.Log("OPEN ACHIEVEMENT UI"); 
         if (mainAchievementPanel != null)
         {
             GenerateAchievementUI(); 
             mainAchievementPanel.SetActive(true);
+        }
+
+        AchievementData ach = allAchievements.Find(a => a.id == "18");
+        if (ach != null && !ach.isUnlocked)
+        {
+            AchievementManager.Instance.UnlockAchievement(18, "18");
         }
     }
 
@@ -225,9 +245,84 @@ public class AchievementManager : MonoBehaviour
             slotUI.SetupSlot(ach);
         }
     }
+
+    public void CheckToolMasterGlobal()
+    {
+        bool usedChat = PlayerPrefs.GetInt("Used_Chat", 0) == 1;
+        bool usedCalc = PlayerPrefs.GetInt("Used_Calculator", 0) == 1;
+        bool usedTips = PlayerPrefs.GetInt("Used_Tips", 0) == 1;
+
+        if (usedChat && usedCalc && usedTips)
+        {
+            AchievementData ach = allAchievements.Find(a => a.id == "22");
+
+            if (ach != null && !ach.isUnlocked)
+            {
+                UnlockAchievement(22, "22");
+
+                PlayerPrefs.DeleteKey("Used_Chat");
+                PlayerPrefs.DeleteKey("Used_Calculator");
+                PlayerPrefs.DeleteKey("Used_Tips");
+                PlayerPrefs.Save();
+            }
+        }
+    }
+
+    public void CheckTaxComebackKing()
+    {
+        int level = PlayerPrefs.GetInt("Tax_Level", 1);
+        int failed = PlayerPrefs.GetInt("Tax_Failed", 0);
+
+        if (level > 5 && failed == 0)
+        {
+            AchievementData ach = allAchievements.Find(a => a.id == "23");
+
+            if (ach != null && !ach.isUnlocked)
+            {
+                UnlockAchievement(23, "23");
+            }
+        }
+    }
+    public void CheckDoubleExpertise()
+    {
+        bool playedTax = PlayerPrefs.GetInt("Played_Tax", 0) == 1;
+        bool playedSaving = PlayerPrefs.GetInt("Played_Saving", 0) == 1;
+
+        if (playedTax && playedSaving)
+        {
+            AchievementData ach = allAchievements.Find(a => a.id == "25");
+
+            if (ach != null && !ach.isUnlocked)
+            {
+                UnlockAchievement(25, "25");
+
+            // reset กัน spam
+                PlayerPrefs.DeleteKey("Played_Tax");
+                PlayerPrefs.DeleteKey("Played_Saving");
+                PlayerPrefs.Save();
+            }
+        }
+    }
+   public void ShowHintPopup(AchievementData data)
+    {
+        Debug.Log("Show Hint Popup: " + data.name);
+
+        hintPopup.SetActive(true);
+
+        Debug.Log("Popup Active: " + hintPopup.activeSelf);
+        Debug.Log("Popup In Hierarchy: " + hintPopup.activeInHierarchy);
+
+        hintPopup.transform.SetAsLastSibling();
+
+        hintDescriptionText.text = data.description;
+    }   
+    public void CloseHintPopup()
+    {
+        Debug.Log("CLOSE POPUP");
+        hintPopup.SetActive(false);
+    }
 }
 
-// --- คลาสสำหรับใช้แกะ JSON ที่หายไป กลับมาแล้วครับ! ---
 [System.Serializable]
 public class UnlockRequest
 {
@@ -249,3 +344,4 @@ public class AchievementListResponse
     public string message;
     public List<UserAchievementResponse> data; 
 }
+

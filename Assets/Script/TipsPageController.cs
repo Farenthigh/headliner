@@ -19,6 +19,10 @@ public class TipsPageController : MonoBehaviour
     {
         if (nextButton != null) nextButton.onClick.AddListener(NextPage);
         if (prevButton != null) prevButton.onClick.AddListener(PreviousPage);
+        PlayerPrefs.SetInt("Used_Tips", 1);
+        PlayerPrefs.Save();
+
+        AchievementManager.Instance.CheckToolMasterGlobal();
     }
 
     private void Awake()

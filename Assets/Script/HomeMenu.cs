@@ -6,18 +6,18 @@ public class HomeMenu : MonoBehaviour
     public void PlayGame()
     {
         if (APIManager.myData.character == 0 && APIManager.myData.username == "")
-                UnityEngine.SceneManagement.SceneManager.LoadScene("SelectCharacterScene");
+                LoadingManager.Instance.LoadScene("SelectCharacterScene");
             else
-                UnityEngine.SceneManagement.SceneManager.LoadScene("SelectGame");
+                LoadingManager.Instance.LoadScene("SelectGame");
     }
 
     public void OpenSettings()
     {
-        SceneManager.LoadScene("SettingsScene");
+        LoadingManager.Instance.LoadScene("SettingsScene");
     }
 
     public void ExitGame()
     {
-        SceneManager.LoadScene("LoginScene");
+        LoadingManager.Instance.LoadScene("LoginScene");
     }
 }
