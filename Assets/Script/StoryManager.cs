@@ -8,18 +8,21 @@ using TMPro;
 
 public class StoryManager : MonoBehaviour
 {
-   public Text dialogueTextUI;
-   public Text speakerNameUI;
-   public Image backgroundImageUI;
-   public Image characterLeftUI;
-   public Image characterCenterUI;
-   public Image characterRightUI;
-   public Image speechBubbleUI;
-   public GameObject nextButton;
-   public List<StoryPage> allPages;
-   private int currentIndex = 0;
-   public GameResult gameResult;
+    [Header("Controllers")]
+    public TransitionController transitionController; // <--- นำกลับมาจาก Current
 
+    [Header("Story UI")]
+    public Text dialogueTextUI;
+    public Text speakerNameUI;
+    public Image backgroundImageUI;
+    public Image characterLeftUI;
+    public Image characterCenterUI;
+    public Image characterRightUI;
+    public Image speechBubbleUI;
+    public GameObject nextButton;
+    public List<StoryPage> allPages;
+    private int currentIndex = 0;
+    public GameResult gameResult;
 
     [Header("Quiz UI")]
     public Examlogic examSystem;
@@ -34,9 +37,9 @@ public class StoryManager : MonoBehaviour
 
     // +++ ส่วนของ VS Animation +++
     [Header("VS Animation Settings (ลากของมาใส่)")]
-    public GameObject vsPanel;         
-    public RectTransform vTransform;   
-    public RectTransform sTransform;   
+    public GameObject vsPanel;
+    public RectTransform vTransform;
+    public RectTransform sTransform;
     public RectTransform topCloud;     
     public RectTransform bottomCloud;  
     public ParticleSystem clashParticle; 
@@ -70,6 +73,9 @@ public class StoryManager : MonoBehaviour
     public VideoPlayer videoPlayer;
     public RawImage videoRawImage;
 
+    [Header("Player Characters")]
+    public Sprite[] availableCharacters;
+
     void Start()
     {
         if(vsPanel != null) vsPanel.SetActive(false);
@@ -83,11 +89,13 @@ public class StoryManager : MonoBehaviour
             videoRawImage.texture = videoPlayer.targetTexture;
         }
 
+        // ตั้งค่าปุ่ม Confirm Name
         if (confirmNameButton != null)
         {
             confirmNameButton.onClick.AddListener(ConfirmName);
         }
 
+        // เช็คชื่อเก่า
         if (PlayerPrefs.HasKey("ChatbotCustomName"))
         {
             currentChatbotName = PlayerPrefs.GetString("ChatbotCustomName");
@@ -106,15 +114,40 @@ public class StoryManager : MonoBehaviour
         if (isTyping)
         {
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-            dialogueTextUI.text = ProcessText(allPages[currentIndex].dialogueText);
+            // เปลี่ยนเป็น ProcessText เพื่อให้โชว์ชื่อแชทบอทตอน Skip (จาก Incoming)
+            dialogueTextUI.text = ProcessText(allPages[currentIndex].dialogueText); 
             isTyping = false;
         }
         else
         {
             if (currentIndex < allPages.Count - 1)
             {
-                currentIndex++;
-                UpdateUI();
+                // <--- ผสมลอจิก Fade เปลี่ยนฉาก (จาก Current) เข้ามาตรงนี้ --->
+                Sprite currentBg = allPages[currentIndex].background;
+                Sprite nextBg = allPages[currentIndex + 1].background;
+                bool isBgChanged = (currentBg != nextBg && nextBg != null);
+                bool isForcedFade = allPages[currentIndex + 1].forceTransition;
+
+                if ((isBgChanged || isForcedFade) && transitionController != null)
+                {
+                    Button btn = nextButton.GetComponent<Button>();
+                    if (btn != null) btn.interactable = false;
+                    
+                    transitionController.PlaySceneFade(
+                        onMidFade: () => {
+                            currentIndex++;
+                            UpdateUI(); 
+                        },
+                        onComplete: () => {
+                            if (btn != null) btn.interactable = true; 
+                        }
+                    );
+                }
+                else
+                {
+                    currentIndex++;
+                    UpdateUI();
+                }
             }
             else
             {
@@ -132,6 +165,7 @@ public class StoryManager : MonoBehaviour
         if (characterLeftUI != null) characterLeftUI.color = new Color(1, 1, 1, 1f);
     }
 
+    // ฟังก์ชันแปลงแท็ก {Name} ให้กลายเป็นชื่อที่ผู้เล่นตั้ง
     private string ProcessText(string rawText)
     {
         if (string.IsNullOrEmpty(rawText)) return "";
@@ -223,7 +257,6 @@ public class StoryManager : MonoBehaviour
         
         HandleCharacterLayout(currentPage);
 
-        // +++ เพิ่มการเรียกใช้แอนิเมชันขยับตัวละคร (จากโค้ดใหม่) +++
         if (!currentPage.isChoicePage)
         {
             UpdateCharacterAnimation(currentPage);
@@ -240,8 +273,6 @@ public class StoryManager : MonoBehaviour
             if (examSystem != null) examSystem.gameObject.SetActive(false);
         }
 
-        
-
         if(currentIndex == allPages.Count - 1)
         {
             Debug.Log("นี่คือหน้าสุดท้าย");
@@ -254,19 +285,17 @@ public class StoryManager : MonoBehaviour
                 {
                     stars = Manager.Instance.GetStarsFromExam();
                 }
-
-                gameResult.ShowVictoryResultDirect(stars);
-                SendResult(stars);
+                Debug.Log("⭐ จำนวนดาวที่จะส่งไปลีดเดอร์บอร์ดคือ: " + stars);
+                // ใช้การเรียกฟังก์ชันแบบ Incoming
+                gameResult.ShowVictoryResultDirect(stars, currentStage, stars, 0); 
             }
 
             if (nextButton != null) nextButton.SetActive(false);
         }
 
-        // ปิด tips ก่อนทุกครั้ง
         if (sceneLoader != null)
             sceneLoader.ExitTips();
 
-        // อัปเดตหน้าที่ควรเปิด — เอาอันที่ใกล้ที่สุดไม่เกิน currentIndex
         int bestPage = 0;
         int bestIndex = -1;
 
@@ -292,6 +321,7 @@ public class StoryManager : MonoBehaviour
             }
         }
     }
+    
     IEnumerator PlayVSEffectAndStartQuiz()
     {
         if(vsPanel != null) vsPanel.SetActive(true);
@@ -357,36 +387,82 @@ public class StoryManager : MonoBehaviour
         }
         isTyping = false; 
     }
+    
     void HandleCharacterLayout(StoryPage page)
     {
         if (characterLeftUI != null) characterLeftUI.gameObject.SetActive(false);
         if (characterCenterUI != null) characterCenterUI.gameObject.SetActive(false);
         if (characterRightUI != null) characterRightUI.gameObject.SetActive(false);
 
-        if (page.characterCenter != null && characterCenterUI != null) SetupCharacter(characterCenterUI, page.characterCenter);
+        Sprite centerSprite = page.characterCenter;
+        Sprite leftSprite = page.characterLeft;
+        Sprite rightSprite = page.characterRight;
+
+        if (page.isPlayer && availableCharacters.Length > 0)
+        {
+            int selectedCharID = 0; 
+            
+            if (APIManager.myData.id != 0) 
+            {
+                selectedCharID = APIManager.myData.character; 
+            }
+            else 
+            {
+                selectedCharID = PlayerPrefs.GetInt("SelectedCharacter", 0); 
+            }
+
+            if (selectedCharID >= 0 && selectedCharID < availableCharacters.Length)
+            {
+                Sprite playerSprite = availableCharacters[selectedCharID];
+
+                switch (page.speakerPosition)
+                {
+                    case SpeakerPosition.Left: leftSprite = playerSprite; break;
+                    case SpeakerPosition.Center: centerSprite = playerSprite; break;
+                    case SpeakerPosition.Right: rightSprite = playerSprite; break;
+                }
+            }
+        }
+
+        // ส่งตัวแปร page.forceCharacterFade (จาก Current) เข้าไปใช้ใน SetupCharacter ด้วย
+        if (centerSprite != null && characterCenterUI != null) 
+            SetupCharacter(characterCenterUI, centerSprite, page.forceCharacterFade);
         else
         {
-            if (page.characterLeft != null && characterLeftUI != null) SetupCharacter(characterLeftUI, page.characterLeft);
-            if (page.characterRight != null && characterRightUI != null) SetupCharacter(characterRightUI, page.characterRight);
+            if (leftSprite != null && characterLeftUI != null) 
+                SetupCharacter(characterLeftUI, leftSprite, page.forceCharacterFade);
+            if (rightSprite != null && characterRightUI != null) 
+                SetupCharacter(characterRightUI, rightSprite, page.forceCharacterFade);
         }
     }
 
-    void SetupCharacter(Image characterUI, Sprite characterSprite)
+    // อัปเดตให้รองรับ forceFade (นำกลับมาจาก Current)
+    void SetupCharacter(Image characterUI, Sprite characterSprite, bool forceFade)
     {
         characterUI.sprite = characterSprite;
         characterUI.gameObject.SetActive(true);
-    
+
+        if (forceFade && transitionController != null)
+        {
+            transitionController.FadeInCharacter(characterUI);
+        }
+        else
+        {
+            Color c = characterUI.color;
+            c.a = 1f;
+            characterUI.color = c;
+        }
     }
 
-   void StartMove(Image character)
-   {
-       if (character == null) return;
+    void StartMove(Image character)
+    {
+        if (character == null) return;
 
         CharacterBounce bounce = character.GetComponent<CharacterBounce>();
         if (bounce == null)
         {
             bounce = character.gameObject.AddComponent<CharacterBounce>();
-            bounce = character.gameObject.AddComponent<CharacterBounce>();
+            // ลบบรรทัดที่ AddComponent ซ้ำกันออกให้แล้วครับ
         }
 
         bounce.enabled = true; 
@@ -402,6 +478,7 @@ public class StoryManager : MonoBehaviour
             bounce.enabled = false; 
         }
     }
+
     void UpdateCharacterAnimation(StoryPage page)
     {
         Debug.Log("Animating: " + page.speakerPosition);
@@ -445,6 +522,7 @@ public class StoryManager : MonoBehaviour
         await APIManager.Instance.SaveGameResult(stars, currentStage);
     }
     
+    // ฟังก์ชันกดยืนยันตั้งชื่อ (จาก Incoming)
     public async void ConfirmName()
     {
         if (nameInputField != null && !string.IsNullOrEmpty(nameInputField.text))

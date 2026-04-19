@@ -15,7 +15,7 @@ MonoBehaviour:
   eventType: 0
   eventValueType: 0
   eventValue: 300
-  rarity: 0
-  icon: {fileID: 173308788069307242, guid: 1712c666492d541e9a19a601bb0ef012, type: 3}
+  rarity: 1
+  icon: {fileID: -7546658280021894128, guid: bdcc67723626140c8b60a7bc2df6454a, type: 3}
   eventName: Part-time Gig
   description: "\u0E21\u0E35\u0E0A\u0E32\u0E27\u0E1A\u0E49\u0E32\u0E19\u0E08\u0E49\u0E32\u0E07\u0E04\u0E38\u0E13\u0E44\u0E1B\u0E0A\u0E48\u0E27\u0E22\n\u0E02\u0E19\u0E02\u0E2D\u0E07\n\n\n+300"

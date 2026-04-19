@@ -15,8 +15,8 @@ MonoBehaviour:
   eventType: 0
   eventValueType: 0
   eventValue: -200
-  rarity: 0
-  icon: {fileID: 5468718515728873486, guid: 17be0c5c91c304b8cb362b21c76ab38c, type: 3}
+  rarity: 1
+  icon: {fileID: 3692519020086302851, guid: 5847ad75ad1c142a98893a2436449101, type: 3}
   eventName: Leaky Pouch
   description: "\u0E01\u0E23\u0E30\u0E40\u0E1B\u0E4B\u0E32\u0E15\u0E31\u0E07\u0E04\u0E4C\u0E04\u0E38\u0E13\u0E02\u0E32\u0E14
     \n\u0E40\u0E07\u0E34\u0E19\u0E44\u0E2B\u0E25\u0E2D\u0E2D\u0E01\u0E44\u0E21\u0E48\u0E23\u0E39\u0E49\u0E15\u0E31\u0E27\n\n\n-200"

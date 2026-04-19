@@ -15,7 +15,7 @@ MonoBehaviour:
   eventType: 0
   eventValueType: 0
   eventValue: 150
-  rarity: 0
-  icon: {fileID: -1743699092822578155, guid: 5fe6143c3c5914ff5849b6ce6ac96f42, type: 3}
+  rarity: 1
+  icon: {fileID: 7840746246206996261, guid: 7a395c101e1a1488c8a1a7c0ec53a9c5, type: 3}
   eventName: Guiding Stray
   description: "\u0E2A\u0E38\u0E19\u0E31\u0E02\u0E08\u0E23\u0E08\u0E31\u0E14\u0E1E\u0E32\u0E04\u0E38\u0E13\u0E44\u0E1B\u0E40\u0E08\u0E2D\n\u0E2B\u0E35\u0E1A\u0E44\u0E21\u0E49\u0E40\u0E01\u0E48\u0E32\n\n\n+150"

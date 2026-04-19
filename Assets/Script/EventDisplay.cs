@@ -9,156 +9,255 @@ public class EventDisplay : MonoBehaviour
 
     [Header("UI Objects")]
     public GameObject panel;
+    public Transform cardRoot; 
     public GameObject cardBack;
     public GameObject cardFront;
 
-    [Header("Rarity Front Sprites")]
-    public Sprite commonFrame;
-    public Sprite uncommonFrame;
-    public Sprite rareFrame;
-    public Image cardFrame;
-
-    [Header("Rarity Back Sprites")]
-    public Sprite commonBack;
-    public Sprite uncommonBack;
-    public Sprite rareBack;
-    public Image cardBackImage;
+    // 🔴 เพิ่มตัวแปรสำหรับแสงออร่า
+    [Header("Aura VFX")]
+    public Image auraGlowImage; 
+    public float auraSpeed = 2f; // ความเร็วในการขยายและจางหาย
 
     [Header("UI Elements")]
+    public Image cardFrame;
+    public Image cardBackImage;
     public Image iconImage;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
 
+    [Header("Hint Settings")]
+    public GameObject clickHintText; 
+    public TextMeshProUGUI hintTextComponent;
+    public string openHintMessage = "คลิกเพื่อเปิดการ์ด";
+    public string closeHintMessage = "คลิกเพื่อปิด";
+    public float waitTimeBeforeShake = 3f;  
+    public float shakeBurstDuration = 0.5f; 
 
-    private bool isWaitingForInput = false;
+    [Header("Rarity Sprites")]
+    public Sprite commonFrame; public Sprite uncommonFrame; public Sprite rareFrame;
+    public Sprite commonBack; public Sprite uncommonBack; public Sprite rareBack;
+
+    private bool isFlipped = false;
+    private bool isAnimating = false;
+    private Coroutine idleCoroutine; 
+
+    private Event currentEventData;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
     }
+    
     private void Start()
     {
         panel.SetActive(false);
+        if (cardFront != null)
+            cardFront.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            
+        if (clickHintText != null) clickHintText.SetActive(false);
+        
+        // ซ่อนออร่าไว้ตอนเริ่มเกม
+        if (auraGlowImage != null) auraGlowImage.gameObject.SetActive(false);
     }
 
     public void ShowEvent(Event eventData)
     {
-        Debug.Log("Showing Event: " + eventData.eventName);
-        // Set Front card details but hide it
-        // nameText.text = eventData.eventName;
-        // descriptionText.text = eventData.description;
-        // iconImage.sprite = eventData.icon;
+        // 🔴 1. เก็บข้อมูล Event ไว้ในตัวแปร
+        currentEventData = eventData; 
 
-        if (cardFrame != null)
-        {
-            if (eventData.rarity == EventRarity.Common)
-            {
-                if (cardFrame != null) cardFrame.sprite = commonFrame;
-                if (cardBackImage != null) cardBackImage.sprite = commonBack;
-            }
-            else if (eventData.rarity == EventRarity.Uncommon)
-            {
-                if (cardFrame != null) cardFrame.sprite = uncommonFrame;
-                if (cardBackImage != null) cardBackImage.sprite = uncommonBack;
-            }
-            else if (eventData.rarity == EventRarity.Rare)
-            {
-                if (cardFrame != null) cardFrame.sprite = rareFrame;
-                if (cardBackImage != null) cardBackImage.sprite = rareBack;
-            }
-        }
-        // Show panel and animate card flip start with back to front
-        panel.SetActive(true);
+        UpdateRarityUI(eventData.rarity);
+
+        if (nameText != null) nameText.text = eventData.eventName;
+        if (descriptionText != null) descriptionText.text = eventData.description;
+        if (iconImage != null) iconImage.sprite = eventData.icon;
+        
+        // 🔴 แสดงตัวเลขบนหน้าการ์ด (ถ้าคุณมีช่อง amount ใน Class Event)
+        // if (amountText != null) amountText.text = eventData.amount.ToString();
+
+        StopAllCoroutines(); 
+        if (clickHintText != null) clickHintText.SetActive(false);
+
+        cardRoot.localRotation = Quaternion.identity;
         cardBack.SetActive(true);
         cardFront.SetActive(false);
+        
+        isFlipped = false;
+        isAnimating = false;
+        panel.SetActive(true);
 
-        // cardBack.GetComponent<Image>().sprite = eventData.backcard;
-        // cardFront.GetComponent<Image>().sprite = eventData.frontcard;
-        iconImage.sprite = eventData.icon;
-        nameText.text = $"{eventData.eventName}";
-        descriptionText.text = $"{eventData.description}";
+        StartCoroutine(AuraPopUpCoroutine());
 
-
-        StartCoroutine(RevealProcess());
+        if (hintTextComponent != null) hintTextComponent.text = openHintMessage;
+        idleCoroutine = StartCoroutine(WaitAndShakeBurstCoroutine(0f));
     }
 
-    IEnumerator RevealProcess()
+    private void UpdateRarityUI(EventRarity rarity)
     {
-        // // Wait for 1 second before flipping
-        yield return new WaitForSeconds(1f);
-        // Flip the card to reveal front
-        RevealCard();
-        Debug.Log("Card Revealed!");
-        yield return new WaitForSeconds(0.2f);
-
-        yield return StartCoroutine(WaitPointerClick());
-        ClosePanel();
-        Debug.Log("Closing Panel Now...");
-    }
-
-    IEnumerator WaitPointerClick()
-    {
-        while (true)
+        switch (rarity)
         {
-            if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+            case EventRarity.Common:
+                cardFrame.sprite = commonFrame; cardBackImage.sprite = commonBack; break;
+            case EventRarity.Uncommon:
+                cardFrame.sprite = uncommonFrame; cardBackImage.sprite = uncommonBack; break;
+            case EventRarity.Rare:
+                cardFrame.sprite = rareFrame; cardBackImage.sprite = rareBack; break;
+        }
+    }
+
+    // 🔴 Coroutine ใหม่: ทำแอนิเมชันแสงออร่าเด้งขึ้นมาและจางหาย
+    private IEnumerator AuraPopUpCoroutine()
+    {
+        if (auraGlowImage == null) yield break;
+
+        auraGlowImage.gameObject.SetActive(true);
+        
+        // 1. ตั้งค่าเริ่มต้น: ขนาดเล็ก, สีทึบ
+        auraGlowImage.transform.localScale = Vector3.one; // ขนาดปกติของการ์ด
+        Color startColor = auraGlowImage.color;
+        startColor.a = 0.8f; // เริ่มต้นให้เห็นชัดหน่อย (0-1)
+        auraGlowImage.color = startColor;
+
+        float elapsed = 0f;
+        float duration = 1f / auraSpeed; // คำนวณเวลาจากความเร็ว
+
+        // 2. ค่อยๆ ขยายขนาดและจางหาย
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime; // 🔴 ใช้ unscaledDeltaTime เผื่อเกม Pause อยู่
+            float t = elapsed / duration;
+            
+            // ใช้ SmoothStep เพื่อให้แอนิเมชันดูนุ่มนวล
+            float smoothT = t * t * (3f - 2f * t);
+
+            // ขยายขนาดจาก 1x เป็น 2x (ปรับเลข 2f ได้ถ้าอยากให้ขยายใหญ่ขึ้น)
+            float scale = Mathf.Lerp(1f, 2f, smoothT);
+            auraGlowImage.transform.localScale = new Vector3(scale, scale, 1f);
+
+            // จางหายจาก Alpha 0.8f เป็น 0
+            float alpha = Mathf.Lerp(startColor.a, 0f, smoothT);
+            Color currentColor = auraGlowImage.color;
+            currentColor.a = alpha;
+            auraGlowImage.color = currentColor;
+
+            yield return null;
+        }
+
+        // 3. ทำเสร็จแล้ว ซ่อน GameObject เพื่อประหยัดเครื่อง
+        auraGlowImage.gameObject.SetActive(false);
+    }
+
+    public void OnCardClicked()
+    {
+        if (isAnimating) return;
+
+        if (idleCoroutine != null) StopCoroutine(idleCoroutine);
+        if (clickHintText != null) clickHintText.SetActive(false);
+
+        if (!isFlipped) StartCoroutine(FlipCoroutine());
+        else StartCoroutine(FlipBackAndCloseCoroutine());
+    }
+
+    private IEnumerator FlipCoroutine()
+    {
+        isAnimating = true;
+        float duration = 0.4f; 
+        float time = 0;
+        Quaternion startRot = cardRoot.localRotation;
+        Quaternion targetRot = Quaternion.Euler(0, 180, 0);
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+            float smoothT = t * t * (3f - 2f * t); 
+            cardRoot.localRotation = Quaternion.Lerp(startRot, targetRot, smoothT);
+
+            if (smoothT >= 0.5f && cardBack.activeSelf)
             {
-                yield break;
+                cardBack.SetActive(false);
+                cardFront.SetActive(true);
             }
             yield return null;
         }
+        
+        cardRoot.localRotation = targetRot;
+        isFlipped = true;
+        isAnimating = false;
+
+        // 🔴 2. จุดสำคัญ: เมื่อพลิกการ์ดเสร็จแล้ว ให้สั่งเพิ่ม/ลดเงินที่นี่!
+        ApplyEventMoneyEffect();
+
+        if (hintTextComponent != null) hintTextComponent.text = closeHintMessage;
+        idleCoroutine = StartCoroutine(WaitAndShakeBurstCoroutine(180f));
     }
 
-
-    // wait for player click to flip the card
-    // isWaitingForInput = true;
-
-    // Add a listener to the cardBack button to set isWaitingForInput to false when clicked
-    //     Button cardBackButton = cardBack.GetComponent<Button>();
-    //     void OnCardBackClicked()
-    //     {
-    //         isWaitingForInput = false;
-    //     }
-    //     cardBackButton.onClick.AddListener(OnCardBackClicked);
-
-    //     while (isWaitingForInput)
-    //     {
-    //         yield return null;
-    //     }
-
-    //     // Remove the listener after input is received
-    //     cardBackButton.onClick.RemoveListener(OnCardBackClicked);
-
-    //     // Flip the card to reveal front
-    //     RevealCard();
-    // }
-
-    void RevealCard()
+    // 🔴 3. ฟังก์ชันสำหรับคำนวณเงินจาก Event
+    private void ApplyEventMoneyEffect()
     {
-        cardBack.SetActive(false);
-        cardFront.SetActive(true);
-        // Button cardFrontButton = cardFront.GetComponent<Button>();
-        // cardFrontButton.onClick.AddListener(OnCardFrontClicked);
+        if (currentEventData != null)
+        {
+            currentEventData.TriggerEvent(); 
+        }
+    }
 
-        //Sound effect can be added here like "ฟึ่บ"
+    private IEnumerator WaitAndShakeBurstCoroutine(float baseYRotation)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTimeBeforeShake);
+            if (clickHintText != null) clickHintText.SetActive(true);
+
+            float elapsed = 0f;
+            float shakeSpeed = 30f; 
+            float shakeAngle = 4f;
+
+            while (elapsed < shakeBurstDuration)
+            {
+                elapsed += Time.deltaTime;
+                float zRot = Mathf.Sin(elapsed * shakeSpeed) * shakeAngle;
+                cardRoot.localRotation = Quaternion.Euler(0, baseYRotation, zRot);
+                yield return null;
+            }
+
+            cardRoot.localRotation = Quaternion.Euler(0, baseYRotation, 0);
+        }
+    }
+
+    private IEnumerator FlipBackAndCloseCoroutine()
+    {
+        isAnimating = true;
+        float duration = 0.4f; 
+        float time = 0;
+        Quaternion startRot = cardRoot.localRotation;
+        Quaternion targetRot = Quaternion.identity; 
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+            float smoothT = t * t * (3f - 2f * t); 
+            cardRoot.localRotation = Quaternion.Lerp(startRot, targetRot, smoothT);
+
+            if (smoothT >= 0.5f && cardFront.activeSelf)
+            {
+                cardFront.SetActive(false);
+                cardBack.SetActive(true);
+            }
+            yield return null;
+        }
+        
+        cardRoot.localRotation = targetRot;
+        isFlipped = false;
+        isAnimating = false;
+
+        ClosePanel();
     }
 
     public void ClosePanel()
     {
         panel.SetActive(false);
-        SavingGameLogicManager.Instance.SetIsPaused(false);
-        // Time.timeScale = 1f; // Resume the game,
-    }
-    public void OnCardFrontClicked()
-    {
-        // Close the panel and trigger the event effect
-        Debug.Log("Card front clicked, closing panel and triggering event effect.");
-        ClosePanel();
+        if (SavingGameLogicManager.Instance != null)
+            SavingGameLogicManager.Instance.SetIsPaused(false);
     }
 }
