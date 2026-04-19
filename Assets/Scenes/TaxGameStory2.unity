@@ -664,6 +664,78 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &338658615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 338658616}
+  - component: {fileID: 338658618}
+  - component: {fileID: 338658617}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &338658616
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338658615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1353792414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.49997, y: -8.6258}
+  m_SizeDelta: {x: 1921, y: 1097.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &338658617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338658615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 8400000, guid: 74cc0b724a1444b48ba8ffe4e533da00, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &338658618
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338658615}
+  m_CullTransparentMesh: 1
 --- !u!1 &358907845
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1211,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 0
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 0}
@@ -1153,6 +1226,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 0
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 0}
@@ -1165,6 +1239,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 2043750202028485465, guid: 77a1e28a02acd4d078ac85b3ff4dae11, type: 3}
@@ -1178,6 +1253,7 @@ MonoBehaviour:
     speakerName: "\u0E41\u0E14\u0E07"
     speakerPosition: 2
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 7066767661700882461, guid: aa2ed11eaea8f42669cc0efe25c69247, type: 3}
@@ -1192,6 +1268,7 @@ MonoBehaviour:
     speakerName: "\u0E1F\u0E49\u0E32"
     speakerPosition: 2
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 0}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -3308606394016433762, guid: 72f5494bd023144ccbecae486b7f23d3, type: 3}
@@ -1206,6 +1283,7 @@ MonoBehaviour:
     speakerName: "\u0E40\u0E02\u0E35\u0E22\u0E27"
     speakerPosition: 2
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 6521977408015004258, guid: 8ee06745bb3eb4a61a4f04483a616cdd, type: 3}
@@ -1221,6 +1299,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -5877542489834130860, guid: 8990e3b882d4541c4bbbd53a96af1fdd, type: 3}
@@ -1235,6 +1314,7 @@ MonoBehaviour:
     speakerName: "\u0E2A\u0E32\u0E21\u0E21\u0E31\u0E07\u0E01\u0E23\u0E1C\u0E39\u0E49\u0E23\u0E31\u0E01\u0E04\u0E27\u0E32\u0E21\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07"
     speakerPosition: 2
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -5877542489834130860, guid: 8990e3b882d4541c4bbbd53a96af1fdd, type: 3}
@@ -1250,6 +1330,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 0
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -7095936741910908937, guid: 86642b4b609eb4154a6a0c84aef45501, type: 3}
@@ -1262,6 +1343,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 0
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 0}
@@ -1274,6 +1356,7 @@ MonoBehaviour:
     speakerName: 
     speakerPosition: 0
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 6702529864026807125, guid: f280772fbd3274241a3720c78f362802, type: 3}
     characterCenter: {fileID: 0}
@@ -1286,6 +1369,7 @@ MonoBehaviour:
     speakerName: 
     speakerPosition: 0
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: -8159272815874631287, guid: 33b759066594f4a54b836c7177ccf537, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 1657508751735216009, guid: 551bffcd5e354410a85066d1a741ca7f, type: 3}
@@ -1299,6 +1383,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
@@ -1314,6 +1399,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
@@ -1329,6 +1415,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
@@ -1341,6 +1428,7 @@ MonoBehaviour:
     speakerName: 
     speakerPosition: 0
     background: {fileID: -6360116305524664329, guid: 5e9dbcf72597d41c9ae351efebf32e73, type: 3}
+    videoBackground: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
@@ -1372,6 +1460,8 @@ MonoBehaviour:
   - tipPageIndex: 9
     bookPageToOpen: 0
   sceneLoader: {fileID: 922609729}
+  videoPlayer: {fileID: 856366025}
+  videoRawImage: {fileID: 338658617}
 --- !u!1 &621750200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,6 +1975,78 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!1 &856366023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 856366024}
+  - component: {fileID: 856366025}
+  m_Layer: 5
+  m_Name: Video Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &856366024
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856366023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1353792414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!328 &856366025
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856366023}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: c2cb68049ab76e14b949a2855bc3cb1d, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 74cc0b724a1444b48ba8ffe4e533da00, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 01
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1 &894325004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1528984047988115501, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
@@ -3471,6 +3633,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 304693077}
+  - {fileID: 338658616}
   - {fileID: 645454359}
   - {fileID: 1714112208}
   - {fileID: 1128687893}
@@ -3483,6 +3646,7 @@ RectTransform:
   - {fileID: 158286593}
   - {fileID: 1262647939}
   - {fileID: 1998171787}
+  - {fileID: 856366024}
   - {fileID: 1851850423}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4117,7 +4281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 993454551553709125, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
       propertyPath: m_Size
-      value: 0.99997437
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 993454551553709125, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
       propertyPath: m_Value

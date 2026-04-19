@@ -1222,6 +1222,7 @@ MonoBehaviour:
     speakerName: 
     speakerPosition: 0
     background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    videoBackground: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
@@ -1236,6 +1237,7 @@ MonoBehaviour:
     speakerName: "\u0E08\u0E2D\u0E21\u0E21\u0E32\u0E23"
     speakerPosition: 2
     background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    videoBackground: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
@@ -1253,6 +1255,7 @@ MonoBehaviour:
     speakerName: "\u0E08\u0E2D\u0E21\u0E21\u0E32\u0E23"
     speakerPosition: 2
     background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    videoBackground: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
@@ -1267,6 +1270,7 @@ MonoBehaviour:
     speakerName: "\u0E1E\u0E23\u0E30\u0E23\u0E32\u0E0A\u0E32"
     speakerPosition: 0
     background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    videoBackground: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
@@ -1284,6 +1288,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 0
     background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    videoBackground: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
@@ -1297,6 +1302,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 0
     background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    videoBackground: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -1127933441503263673, guid: 562bff66c52fa4b28878ec5cc5464d59, type: 3}
@@ -1309,6 +1315,7 @@ MonoBehaviour:
     speakerName: 
     speakerPosition: 0
     background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    videoBackground: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 0}
@@ -1321,6 +1328,7 @@ MonoBehaviour:
     speakerName: 
     speakerPosition: 0
     background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    videoBackground: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 0}
@@ -1336,6 +1344,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 0
     background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    videoBackground: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 0}
@@ -1348,6 +1357,7 @@ MonoBehaviour:
     speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    videoBackground: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
     speechBubble: {fileID: -3577410830333116246, guid: 07a2f4f693d024cf7b5556e9e450e381, type: 3}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: -6681590667965283290, guid: 167e449df7df747e794e9d8d78f80164, type: 3}
@@ -1360,6 +1370,7 @@ MonoBehaviour:
     speakerName: 
     speakerPosition: 0
     background: {fileID: -1675273491431618826, guid: 9a9a4ac6a0a864f62b26d4d3f4b46795, type: 3}
+    videoBackground: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
     speechBubble: {fileID: 0}
     characterLeft: {fileID: 0}
     characterCenter: {fileID: 0}
@@ -1391,6 +1402,8 @@ MonoBehaviour:
   - tipPageIndex: 6
     bookPageToOpen: 4
   sceneLoader: {fileID: 1441504109}
+  videoPlayer: {fileID: 827037241}
+  videoRawImage: {fileID: 911830018}
 --- !u!1 &405451057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,6 +2045,78 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d9974fe7af304e1cb932f3212a400d4, type: 3}
+--- !u!1 &827037239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 827037240}
+  - component: {fileID: 827037241}
+  m_Layer: 5
+  m_Name: Video Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &827037240
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827037239}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1128641245}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!328 &827037241
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827037239}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: e02a61847e4acac4a801a6121c8282e0, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 74cc0b724a1444b48ba8ffe4e533da00, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1001 &834358824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2237,6 +2322,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!1 &911830016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 911830017}
+  - component: {fileID: 911830019}
+  - component: {fileID: 911830018}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &911830017
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911830016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1128641245}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.99998}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &911830018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911830016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 8400000, guid: 74cc0b724a1444b48ba8ffe4e533da00, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &911830019
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911830016}
+  m_CullTransparentMesh: 1
 --- !u!1 &928406608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1979568730234370021, guid: cafe3349724c8074693e00f69232ffcd, type: 3}
@@ -2971,6 +3128,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 249493818}
+  - {fileID: 911830017}
   - {fileID: 454577000}
   - {fileID: 89863823}
   - {fileID: 744242913}
@@ -2984,6 +3142,7 @@ RectTransform:
   - {fileID: 177199763}
   - {fileID: 142996852}
   - {fileID: 115549939}
+  - {fileID: 827037240}
   - {fileID: 1269566781}
   - {fileID: 834358825}
   m_Father: {fileID: 0}

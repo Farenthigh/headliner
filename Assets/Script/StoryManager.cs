@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.SceneManagement; 
+using UnityEngine.Video;
 using TMPro;
 
 public class StoryManager : MonoBehaviour
@@ -68,6 +69,10 @@ public class StoryManager : MonoBehaviour
     public List<TipBook> tipBooks;
     public SceneLoader sceneLoader;
 
+    [Header("Video Background")]
+    public VideoPlayer videoPlayer;
+    public RawImage videoRawImage;
+
     [Header("Player Characters")]
     public Sprite[] availableCharacters;
 
@@ -78,6 +83,10 @@ public class StoryManager : MonoBehaviour
         {
             clashParticle.Stop();
             clashParticle.Clear();
+        }
+        if (videoPlayer != null && videoRawImage != null)
+        {
+            videoRawImage.texture = videoPlayer.targetTexture;
         }
 
         // ตั้งค่าปุ่ม Confirm Name
@@ -185,6 +194,53 @@ public class StoryManager : MonoBehaviour
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
             typingCoroutine = StartCoroutine(TypeSentence(processedDialogue));
         }
+
+        if (speakerNameUI != null) speakerNameUI.text = currentPage.speakerName;
+
+        // รีเซ็ตก่อนทุกครั้ง
+        if (backgroundImageUI != null)
+            backgroundImageUI.gameObject.SetActive(false);
+
+        if (videoRawImage != null)
+            videoRawImage.gameObject.SetActive(false);
+
+        if (videoPlayer != null)
+        {
+            videoPlayer.Stop();
+            videoPlayer.clip = null;
+        }
+
+        // ถ้ามีวิดีโอ ให้ใช้วิดีโอก่อน
+        if (currentPage.videoBackground != null)
+        {
+            Debug.Log("VIDEO PAGE => " + currentIndex + " / " + currentPage.videoBackground.name);
+
+            if (videoPlayer != null)
+            {
+                videoPlayer.clip = currentPage.videoBackground;
+                videoPlayer.isLooping = true;
+                videoPlayer.Prepare();
+                videoPlayer.Play();
+            }
+
+            if (videoRawImage != null && videoPlayer != null)
+            {
+                videoRawImage.texture = videoPlayer.targetTexture;
+                videoRawImage.gameObject.SetActive(true);
+            }
+        }
+        // ถ้าไม่มีวิดีโอ แต่มีรูป ให้ใช้รูป
+        else if (currentPage.background != null)
+        {
+            Debug.Log("IMAGE PAGE => " + currentIndex + " / " + currentPage.background.name);
+
+            if (backgroundImageUI != null)
+            {
+                backgroundImageUI.sprite = currentPage.background;
+                backgroundImageUI.gameObject.SetActive(true);
+            }
+        }
+        
         
         if (speakerNameUI != null) speakerNameUI.text = processedSpeaker;
         if (backgroundImageUI != null && currentPage.background != null) backgroundImageUI.sprite = currentPage.background;
