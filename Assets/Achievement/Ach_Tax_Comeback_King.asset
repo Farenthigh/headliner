@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee818a639afe48a6bed3ab334b65d55, type: 3}
+  m_Name: Ach_Tax_Comeback_King
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementData
+  id: 23
+  achievementName: Tax Comeback King
+  description: "\u0E01\u0E25\u0E31\u0E1A\u0E21\u0E32\u0E2D\u0E35\u0E01\u0E04\u0E23\u0E31\u0E49\u0E07\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E41\u0E02\u0E47\u0E07\u0E41\u0E01\u0E23\u0E48\u0E07
+    \u0E41\u0E25\u0E30\u0E1E\u0E34\u0E0A\u0E34\u0E15\u0E17\u0E31\u0E49\u0E07 5 \u0E14\u0E48\u0E32\u0E19\u0E23\u0E27\u0E14\u0E41\u0E1A\u0E1A\u0E44\u0E21\u0E48\u0E21\u0E35\u0E1E\u0E25\u0E32\u0E14"
+  icon: {fileID: -7716358058020212565, guid: 60f1b374d01c3487c88e584d85df493d, type: 3}
+  gameType: 0
+  isUnlocked: 1
+  unlockDate: 

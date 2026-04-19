@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AchievementData
   id: 1
   achievementName: Heart on fire
-  description: won the game without losing any life
+  description: "\u0E0A\u0E19\u0E30\u0E40\u0E01\u0E21\u0E42\u0E14\u0E22\u0E44\u0E21\u0E48\u0E40\u0E2A\u0E35\u0E22\u0E40\u0E25\u0E37\u0E2D\u0E14\u0E41\u0E21\u0E49\u0E41\u0E15\u0E48\u0E2B\u0E22\u0E14\u0E40\u0E14\u0E35\u0E22\u0E27"
   icon: {fileID: -5882268080932716463, guid: 0064ef1365e914d6d8fdd8da9ac694f1, type: 3}
   gameType: 0
-  isUnlocked: 1
-  unlockDate: 01/03/2026
+  isUnlocked: 0
+  unlockDate: 

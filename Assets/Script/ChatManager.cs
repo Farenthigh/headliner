@@ -82,10 +82,23 @@ public class ChatManager : MonoBehaviour
         sendButton.interactable = false;
 
         string msg = messageInput.text;
+        AchievementData ach = AchievementManager.Instance.allAchievements
+            .Find(a => a.id == "19"); // <-- ใช้ ID ของเธอ
+
+        if (ach != null && !ach.isUnlocked)
+        {
+            AchievementManager.Instance.UnlockAchievement(19, "19");
+        }
+
         CreateBubble(userBubblePrefab, msg); 
         messageInput.text = ""; 
 
         StartCoroutine(PostRequest(msg));
+
+        PlayerPrefs.SetInt("Used_Chat", 1);
+        PlayerPrefs.Save();
+
+        AchievementManager.Instance.CheckToolMasterGlobal();
     }
 
     IEnumerator PostRequest(string message)

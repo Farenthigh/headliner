@@ -17,5 +17,5 @@ MonoBehaviour:
   description: "\u0E17\u0E33 Goal Saving \u0E2A\u0E33\u0E40\u0E23\u0E47\u0E08\u0E04\u0E23\u0E1A\u0E40\u0E1B\u0E49\u0E32\u0E2B\u0E21\u0E32\u0E22\u0E04\u0E23\u0E31\u0E49\u0E07\u0E41\u0E23\u0E01"
   icon: {fileID: -1886156388885881694, guid: f0cfe9e8be2e7451da0d9a4849275955, type: 3}
   gameType: 0
-  isUnlocked: 0
+  isUnlocked: 1
   unlockDate: 

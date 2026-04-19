@@ -45,6 +45,13 @@ public class GameResult : MonoBehaviour
 
         defeatIntroUI.SetActive(false);
         defeatResultUI.SetActive(false);
+
+        if (!PlayerPrefs.HasKey("Tax_Level"))
+        {
+            PlayerPrefs.SetInt("Tax_Level", 1);
+            PlayerPrefs.SetInt("Tax_Failed", 0);
+            PlayerPrefs.Save();
+        }
     }
     public void TriggerVictory(StoryManager storyManager)
     {
@@ -92,6 +99,19 @@ public class GameResult : MonoBehaviour
     }
     public async void ShowVictoryResultDirect(int starCount, int currentStage, int score, int timeUsed)
     {
+        // ✅ เพิ่ม level
+        int level = PlayerPrefs.GetInt("Tax_Level", 1);
+        level++;
+
+        PlayerPrefs.SetInt("Tax_Level", level);
+        PlayerPrefs.SetInt("Played_Tax", 1);
+        PlayerPrefs.Save();
+        AchievementManager.Instance.CheckDoubleExpertise();
+        // ✅ เช็ค achievement
+        if (level > 5)
+        {
+        AchievementManager.Instance.CheckTaxComebackKing();
+        }
         gameObject.SetActive(true);
         ShowVictoryStars(starCount);
         victoryResultUI.SetActive(true);
@@ -175,12 +195,23 @@ public class GameResult : MonoBehaviour
 
     public void OnClickExit()
     {
+    
         Debug.Log("Victory Exit Clicked");
         SceneManager.LoadScene("TaxGameMap");
     }
 
     public void OnClickPlayAgain()
-    {
+    {   
+        AchievementData ach = AchievementManager.Instance.allAchievements
+            .Find(a => a.id == "24");
+
+        if (ach != null && !ach.isUnlocked)
+        {
+            AchievementManager.Instance.UnlockAchievement(24, "24");
+        }
+        PlayerPrefs.SetInt("Tax_Level", 1);
+        PlayerPrefs.SetInt("Tax_Failed", 0);
+        PlayerPrefs.Save();
         Debug.Log("Victory Play Again Clicked");
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
