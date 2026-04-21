@@ -58,7 +58,7 @@ public class SavingGameLogicManager : MonoBehaviour
 
     public void AdvanceMonth()
     {   
-        Debug.Log("UI Manager: " + SavingGameUIManager.Instance);
+        
 
         currentMonth++;
         if (SavingGameUIManager.Instance != null)

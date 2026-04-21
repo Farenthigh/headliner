@@ -89,6 +89,11 @@ private bool isTyping = false;
         }
 
         dialogueText.text = "";
+        
+        if (amountInput != null)
+        {
+            amountInput.text = "";
+        }
 
         bankScript = null;
         bankPanel.SetActive(false);;
