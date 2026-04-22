@@ -31,11 +31,11 @@ public class SettingSceneManager : MonoBehaviour
 
     [Header("Edit Profile")]
     public TMP_InputField newUsernameInput;
-    public TMP_InputField emailInput; 
+    public TMP_InputField emailInput;
     public TMP_InputField currentPasswordInput;
     public TMP_InputField newPasswordInput;
     public TMP_InputField repeatPasswordInput;
-   
+
 
     public TMP_Text errorText;
 
@@ -149,7 +149,7 @@ public class SettingSceneManager : MonoBehaviour
 
         openedProfile = true;
         PlayerPrefs.SetInt("Open_Profile", 1);
-        CheckFullExplorer();
+        // CheckFullExplorer();
     }
 
     public void ShowEditProfile()
@@ -159,7 +159,7 @@ public class SettingSceneManager : MonoBehaviour
 
         editProfilePage.SetActive(true);
         profileHighlight.SetActive(true);
-        
+
         errorText.text = "";
         newUsernameInput.text = APIManager.myData.username;
         emailInput.text = APIManager.myData.email;
@@ -167,7 +167,7 @@ public class SettingSceneManager : MonoBehaviour
         currentPasswordInput.text = "";
         newPasswordInput.text = "";
         repeatPasswordInput.text = "";
-        
+
     }
 
     public void ShowAudio()
@@ -181,7 +181,7 @@ public class SettingSceneManager : MonoBehaviour
         openedAudio = true;
         PlayerPrefs.SetInt("Open_Audio", 1);
         PlayerPrefs.Save();
-        CheckFullExplorer();
+        // CheckFullExplorer();
     }
 
     public void ShowHelp()
@@ -195,7 +195,7 @@ public class SettingSceneManager : MonoBehaviour
         openedHelp = true;
         PlayerPrefs.SetInt("Open_Help", 1);
         PlayerPrefs.Save();
-        CheckFullExplorer();    
+        // CheckFullExplorer();    
     }
 
     public void ShowContact()
@@ -209,90 +209,90 @@ public class SettingSceneManager : MonoBehaviour
         openedContact = true;
         PlayerPrefs.SetInt("Open_Contact", 1);
         PlayerPrefs.Save();
-        CheckFullExplorer();
+        // CheckFullExplorer();
     }
 
     // =========================
     public async void SaveChanges()
-{   
-    Debug.Log("SAVE PRESSED");
-    errorText.text = "";
-
-    bool usernameChanged = newUsernameInput.text.Trim() != APIManager.myData.username;
-    bool passwordChanged = !string.IsNullOrEmpty(newPasswordInput.text);
-
-    if (!usernameChanged && !passwordChanged)
     {
-        errorText.text = "No changes made";
-        return;
+        Debug.Log("SAVE PRESSED");
+        errorText.text = "";
+
+        bool usernameChanged = newUsernameInput.text.Trim() != APIManager.myData.username;
+        bool passwordChanged = !string.IsNullOrEmpty(newPasswordInput.text);
+
+        if (!usernameChanged && !passwordChanged)
+        {
+            errorText.text = "No changes made";
+            return;
+        }
+
+        if (usernameChanged)
+        {
+            string username = newUsernameInput.text.Trim();
+
+            bool success = await APIManager.Instance.UpdateUsername(username);
+
+            if (!success)
+            {
+                errorText.text = "Username already taken";
+                return;
+            }
+        }
+
+        if (passwordChanged)
+        {
+            if (string.IsNullOrEmpty(currentPasswordInput.text))
+            {
+                errorText.text = "Enter current password";
+                return;
+            }
+
+            if (newPasswordInput.text != repeatPasswordInput.text)
+            {
+                errorText.text = "Passwords do not match";
+                return;
+            }
+
+            bool success = await APIManager.Instance.UpdatePassword(
+                currentPasswordInput.text,
+                newPasswordInput.text
+            );
+
+            if (!success)
+            {
+                errorText.text = "Incorrect current password";
+                return;
+            }
+        }
+
+        await APIManager.Instance.GetMyData();
+        LoadProfileData();
+
+        currentPasswordInput.text = "";
+        newPasswordInput.text = "";
+        repeatPasswordInput.text = "";
+
+        ShowProfile();
+        StartCoroutine(ShowSuccessPopup());
+    }
+    public void CancelEditProfile()
+    {
+        ShowProfile();
     }
 
-    if (usernameChanged)
+    IEnumerator ShowSuccessPopup()
     {
-        string username = newUsernameInput.text.Trim();
+        usernameSuccessPanel.SetActive(true);
 
-        bool success = await APIManager.Instance.UpdateUsername(username);
+        yield return new WaitForSeconds(3f);
 
-        if (!success)
-        {
-            errorText.text = "Username already taken";
-            return;
-        }
+        usernameSuccessPanel.SetActive(false);
     }
 
-    if (passwordChanged)
-    {
-        if (string.IsNullOrEmpty(currentPasswordInput.text))
-        {
-            errorText.text = "Enter current password";
-            return;
-        }
-
-        if (newPasswordInput.text != repeatPasswordInput.text)
-        {
-            errorText.text = "Passwords do not match";
-            return;
-        }
-
-        bool success = await APIManager.Instance.UpdatePassword(
-            currentPasswordInput.text,
-            newPasswordInput.text
-        );
-
-        if (!success)
-        {
-            errorText.text = "Incorrect current password";
-            return;
-        }
-    }
-
-    await APIManager.Instance.GetMyData();
-    LoadProfileData();
-
-    currentPasswordInput.text = "";
-    newPasswordInput.text = "";
-    repeatPasswordInput.text = "";
-
-    ShowProfile();
-    StartCoroutine(ShowSuccessPopup());
-}
-public void CancelEditProfile()
-{
-    ShowProfile();
-}
-
-IEnumerator ShowSuccessPopup()
-{
-    usernameSuccessPanel.SetActive(true);
-
-    yield return new WaitForSeconds(3f);
-
-    usernameSuccessPanel.SetActive(false);
-}
 
 
-
-     // =========================
+    // =========================
     // Delete Account
     // =========================
 
@@ -313,7 +313,7 @@ IEnumerator ShowSuccessPopup()
         await APIManager.Instance.DeleteAccount();
         if (APIManager.Instance != null)
         {
-            APIManager.Instance.Logout(); 
+            APIManager.Instance.Logout();
         }
 
         LoadingManager.Instance.LoadScene("LoginScene");
@@ -347,7 +347,7 @@ IEnumerator ShowSuccessPopup()
         }
         else
         {
-            APIManager.Token = null; 
+            APIManager.Token = null;
         }
 
         LoadingManager.Instance.LoadScene("LoginScene");
@@ -362,7 +362,7 @@ IEnumerator ShowSuccessPopup()
         string previousScene = PlayerPrefs.GetString("PreviousScene", "");
         if (string.IsNullOrEmpty(previousScene) || previousScene == "-1")
         {
-            LoadingManager.Instance.LoadScene(0); 
+            LoadingManager.Instance.LoadScene(0);
             return;
         }
 
@@ -412,7 +412,7 @@ IEnumerator ShowSuccessPopup()
     }
     void ShowContactPanel(GameObject panel)
     {
-    // ปิดทั้งสองก่อน (กันซ้อน)
+        // ปิดทั้งสองก่อน (กันซ้อน)
         panelSuccessContact.SetActive(false);
         panelFailedContact.SetActive(false);
 
@@ -428,7 +428,7 @@ IEnumerator ShowSuccessPopup()
     {
         string url = "http://localhost:8080/contact"; // 🔥 เปลี่ยนตาม backend จริง
 
-    // JSON ที่จะส่ง (ต้องตรงกับ backend)
+        // JSON ที่จะส่ง (ต้องตรงกับ backend)
         string json = JsonUtility.ToJson(new ContactData
         {
             Subject = subject,
