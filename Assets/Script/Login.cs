@@ -70,9 +70,9 @@ public class login : MonoBehaviour
             await APIManager.Instance.Login(email, password);
             await APIManager.Instance.GetMyData();
             if (APIManager.myData.character == 0 && APIManager.myData.username == "")
-                UnityEngine.SceneManagement.SceneManager.LoadScene("SelectCharacterScene");
+                LoadingManager.Instance.LoadScene("SelectCharacterScene");
             else
-                UnityEngine.SceneManagement.SceneManager.LoadScene("HomeScene");
+                LoadingManager.Instance.LoadScene("HomeScene");
         }
         catch (System.Exception ex)
         {
@@ -86,6 +86,6 @@ public class login : MonoBehaviour
 
     private void HandleRegister()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("RegisterScene");
+        LoadingManager.Instance.LoadScene("RegisterScene");
     }
 }

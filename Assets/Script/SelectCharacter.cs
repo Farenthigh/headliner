@@ -51,7 +51,7 @@ public class SelectCharacter : MonoBehaviour
     {
         selectedCharacter = character;
 
-        if (character == 1)
+        if (character == 0)
         {
             triangle1.SetActive(true);
             triangle2.SetActive(false);
@@ -100,8 +100,8 @@ public class SelectCharacter : MonoBehaviour
             }
             PlayerPrefs.SetInt("SelectedCharacter", selectedCharacter);
             PlayerPrefs.Save();
-
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SelectGame");
+            
+            LoadingManager.Instance.LoadScene("SelectGame");
         }
         catch (System.Exception ex)
         {

@@ -17,5 +17,5 @@ MonoBehaviour:
   description: "\u0E1C\u0E48\u0E32\u0E19\u0E14\u0E48\u0E32\u0E19\u0E42\u0E14\u0E22\u0E43\u0E0A\u0E49\u0E2D\u0E2D\u0E21\u0E17\u0E23\u0E31\u0E1E\u0E22\u0E4C\u0E2B\u0E23\u0E37\u0E2D\u0E1D\u0E32\u0E01\u0E1B\u0E23\u0E30\u0E08\u0E33\u0E40\u0E17\u0E48\u0E32\u0E19\u0E31\u0E49\u0E19"
   icon: {fileID: 338924229452715050, guid: a2b8684af22fb4e209d3ef22df623d69, type: 3}
   gameType: 0
-  isUnlocked: 0
+  isUnlocked: 1
   unlockDate: 

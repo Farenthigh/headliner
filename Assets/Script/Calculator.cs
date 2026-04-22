@@ -10,6 +10,7 @@ public class Calculator : MonoBehaviour
     void Start()
     {
     calculatorPanel.SetActive(false);
+    calculatorCount = PlayerPrefs.GetInt("CalculatorCount", 0);
     }
     
     public void OpenCalculator()
@@ -23,7 +24,7 @@ public class Calculator : MonoBehaviour
     }
 
     
-
+    private int calculatorCount = 0;
     private string expression = "";
 
     // กดตัวเลข
@@ -96,6 +97,25 @@ public class Calculator : MonoBehaviour
             var result = new DataTable().Compute(expression, null);
             expression = result.ToString();
             displayText.text = expression;
+
+        // ✅ นับเฉพาะตอนคำนวณสำเร็จ
+            calculatorCount++;
+            PlayerPrefs.SetInt("CalculatorCount", calculatorCount);
+
+            if (calculatorCount >= 10)
+            {
+                AchievementData ach = AchievementManager.Instance.allAchievements
+                    .Find(a => a.id == "21");
+
+                if (ach != null && !ach.isUnlocked)
+                {
+                    AchievementManager.Instance.UnlockAchievement(21, "21");
+                }
+            }
+            PlayerPrefs.SetInt("Used_Calculator", 1);
+            PlayerPrefs.Save();
+
+            AchievementManager.Instance.CheckToolMasterGlobal();
         }
         catch
         {
@@ -103,7 +123,6 @@ public class Calculator : MonoBehaviour
             expression = "";
         }
     }
-
     // เช็คว่าเป็น operator ไหม
     private bool IsOperator(char c)
     {

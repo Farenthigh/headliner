@@ -24,6 +24,6 @@ public class LogoutController : MonoBehaviour
 
         // 2. โหลดกลับไปหน้า Login
         // (*** อย่าลืมเปลี่ยนคำว่า "LoginScene" เป็นชื่อหน้าล็อกอินของคุณจริงๆ นะครับ ***)
-        SceneManager.LoadScene("LoginScene"); 
+        LoadingManager.Instance.LoadScene("LoginScene"); 
     }
 }

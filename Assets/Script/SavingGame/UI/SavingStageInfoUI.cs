@@ -85,12 +85,12 @@ public class SavingStageInfoManager : MonoBehaviour
 
     public void StartStage()
     {
-        SceneManager.LoadScene(nextScene);
+        LoadingManager.Instance.LoadScene(nextScene);
     }
 
     public void CloseStageInfo()
     {
-        gameObject.SetActive(false);
+        LoadingManager.Instance.LoadScene("SavingGameMap");
     }
 
 }

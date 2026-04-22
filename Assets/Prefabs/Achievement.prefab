@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00003980686, y: 0.000063136875}
+  m_AnchoredPosition: {x: -387.19952, y: 141.63184}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5004001983217588190
@@ -1521,6 +1521,10 @@ MonoBehaviour:
   popupDescriptionText: {fileID: 2151492287988745229}
   popupDateText: {fileID: 6615396129550885082}
   popupIconImage: {fileID: 6754982109799373948}
+  unlockPanel: {fileID: 0}
+  cardRect: {fileID: 0}
+  achievementCard: {fileID: 0}
+  sparkleParticle: {fileID: 0}
   mainAchievementPanel: {fileID: 5362996467319191705}
   achievementPrefab: {fileID: 2168963801517738421, guid: 87c70fae54abc4db9924c2e73da17fa7, type: 3}
   achievementContainer: {fileID: 258127083575344760}

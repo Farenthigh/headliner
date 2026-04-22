@@ -38,7 +38,7 @@ public class Register : MonoBehaviour
     }
     private void HandleLogin()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("LoginScene");
+        LoadingManager.Instance.LoadScene("LoginScene");
     }
 
     private async void HandleRegister()
@@ -80,7 +80,7 @@ public class Register : MonoBehaviour
                 confirm_password = confirmpass
             });
 
-            UnityEngine.SceneManagement.SceneManager.LoadScene("LoginScene");
+            LoadingManager.Instance.LoadScene("LoginScene");
         }
         catch (System.Exception ex)
         {

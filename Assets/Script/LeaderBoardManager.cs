@@ -32,9 +32,20 @@ public class LeaderBoardManager : MonoBehaviour
         UpdateDisplay();
     }
 
-    public void CloseLeaderBoardToTaxGameMap() { SceneManager.LoadScene("TaxGameMap"); }
-    public void CloseLeaderBoardToSelectGame() { SceneManager.LoadScene("SelectGame"); }
-    public void CloseLeaderBoardToSavingGameMap() { SceneManager.LoadScene("SavingGameMap"); }
+    public void CloseLeaderBoardToTaxGameMap()
+    {
+        LoadingManager.Instance.LoadScene("TaxGameMap");
+    }
+    public void CloseLeaderBoardToSelectGame()
+    {
+        LoadingManager.Instance.LoadScene("SelectGame");
+    }
+    public void CloseLeaderBoardToSavingGameMap()
+    {
+        LoadingManager.Instance.LoadScene("SavingGameStageInfo");
+    }
+    
+
 
     private async void RefreshData()
     {

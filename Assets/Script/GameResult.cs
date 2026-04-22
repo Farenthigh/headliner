@@ -45,6 +45,13 @@ public class GameResult : MonoBehaviour
 
         defeatIntroUI.SetActive(false);
         defeatResultUI.SetActive(false);
+
+        if (!PlayerPrefs.HasKey("Tax_Level"))
+        {
+            PlayerPrefs.SetInt("Tax_Level", 1);
+            PlayerPrefs.SetInt("Tax_Failed", 0);
+            PlayerPrefs.Save();
+        }
     }
     public void TriggerVictory(StoryManager storyManager)
     {
@@ -82,7 +89,7 @@ public class GameResult : MonoBehaviour
     {
         victoryIntroUI.SetActive(true);
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
 
         victoryIntroUI.SetActive(false);
 
@@ -92,9 +99,24 @@ public class GameResult : MonoBehaviour
     }
     public async void ShowVictoryResultDirect(int starCount, int currentStage, int score, int timeUsed)
     {
+        // ✅ เพิ่ม level
+        int level = PlayerPrefs.GetInt("Tax_Level", 1);
+        level++;
+
+        PlayerPrefs.SetInt("Tax_Level", level);
+        PlayerPrefs.SetInt("Played_Tax", 1);
+        PlayerPrefs.Save();
+        AchievementManager.Instance.CheckDoubleExpertise();
+        // ✅ เช็ค achievement
+        if (level > 5)
+        {
+        AchievementManager.Instance.CheckTaxComebackKing();
+        }
         gameObject.SetActive(true);
-        ShowVictoryStars(starCount);
+        // ShowVictoryStars(starCount);
+        victoryIntroUI.SetActive(false);
         victoryResultUI.SetActive(true);
+        StartCoroutine(ShowVictoryStarsSequence(starCount));
         Debug.Log("กำลังส่งข้อมูลเกมไปที่ Database...");
 
         try
@@ -118,7 +140,7 @@ public class GameResult : MonoBehaviour
     private IEnumerator DefeatFlow()
     {
         defeatIntroUI.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
 
         defeatIntroUI.SetActive(false);
         ShowDefeatStars();
@@ -134,6 +156,41 @@ public class GameResult : MonoBehaviour
         v_priority1.SetActive(starCount >= 1);
         v_priority2.SetActive(starCount >= 2);
         v_priority3.SetActive(starCount >= 3);
+    }
+
+        IEnumerator ShowVictoryStarsSequence(int starCount)
+    {
+        // ปิดก่อน (กันค้าง)
+        v_star1.SetActive(false);
+        v_star2.SetActive(false);
+        v_star3.SetActive(false);
+
+        v_priority1.SetActive(false);
+        v_priority2.SetActive(false);
+        v_priority3.SetActive(false);
+
+        // ⭐ ดวงที่ 1
+        if (starCount >= 1)
+        {
+            v_star1.SetActive(true);
+            v_priority1.SetActive(true);
+            yield return new WaitForSeconds(0.6f);
+        }
+
+        // ⭐ ดวงที่ 2
+        if (starCount >= 2)
+        {
+            v_star2.SetActive(true);
+            v_priority2.SetActive(true);
+            yield return new WaitForSeconds(0.6f);
+        }
+
+        // ⭐ ดวงที่ 3
+        if (starCount >= 3)
+        {
+            v_star3.SetActive(true);
+            v_priority3.SetActive(true);
+        }
     }
     // private void ShowVictoryStars()
     // {
@@ -175,15 +232,26 @@ public class GameResult : MonoBehaviour
 
     public void OnClickExit()
     {
+    
         Debug.Log("Victory Exit Clicked");
-        SceneManager.LoadScene("TaxGameMap");
+        LoadingManager.Instance.LoadScene("TaxGameMap");
     }
 
     public void OnClickPlayAgain()
-    {
+    {   
+        AchievementData ach = AchievementManager.Instance.allAchievements
+            .Find(a => a.id == "24");
+
+        if (ach != null && !ach.isUnlocked)
+        {
+            AchievementManager.Instance.UnlockAchievement(24, "24");
+        }
+        PlayerPrefs.SetInt("Tax_Level", 1);
+        PlayerPrefs.SetInt("Tax_Failed", 0);
+        PlayerPrefs.Save();
         Debug.Log("Victory Play Again Clicked");
         Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        LoadingManager.Instance.LoadScene(currentScene.name);
     }
 
     public void OnClickNextGame()
@@ -197,7 +265,7 @@ public class GameResult : MonoBehaviour
         // เช็คว่า Scene อยู่ใน Build Profiles หรือไม่
         if (Application.CanStreamedLevelBeLoaded(nextSceneName))
         {
-            SceneManager.LoadScene(nextSceneName);
+            LoadingManager.Instance.LoadScene(nextSceneName);
         }
         else
         {
@@ -210,14 +278,14 @@ public class GameResult : MonoBehaviour
     public void OnClickDefeatExit()
     {
         Debug.Log("Defeat Exit Clicked");
-         SceneManager.LoadScene("TaxGameMap");
+         LoadingManager.Instance.LoadScene("TaxGameMap");
     }
 
     public void OnClickDefeatPlayAgain()
     {
         Debug.Log("Defeat Play Again Clicked");
         Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        LoadingManager.Instance.LoadScene(currentScene.name);
     }
 
 

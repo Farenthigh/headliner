@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.Video; // 👈 เพิ่มบรรทัดนี้ด้วย
 
 public enum SpeakerPosition
 {
@@ -14,7 +14,8 @@ public class StoryPage
     [TextArea(3,5)] public string dialogueText; 
     public string speakerName; 
     public SpeakerPosition speakerPosition;
-    public Sprite background;   
+    public Sprite background;
+    public VideoClip videoBackground; // 👈 เพิ่มตรงนี้ 
     public Sprite speechBubble;
     public Sprite characterLeft;
     public Sprite characterCenter;
@@ -23,6 +24,9 @@ public class StoryPage
     [Header("Quiz Settings")]
     public bool isChoicePage;
 
+    [Header("Scene Settings")]
+    public bool forceTransition;
+    public bool forceCharacterFade;
     public bool isNamingPage;
     public bool isPlayer;
 

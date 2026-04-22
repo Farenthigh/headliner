@@ -3,9 +3,15 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Networking;
+using System.Text;
 
 public class SettingSceneManager : MonoBehaviour
 {
+    private bool openedProfile;
+    private bool openedAudio;
+    private bool openedHelp;
+    private bool openedContact;
     [Header("Pages")]
     public GameObject profilePage;
     public GameObject editProfilePage;
@@ -25,11 +31,11 @@ public class SettingSceneManager : MonoBehaviour
 
     [Header("Edit Profile")]
     public TMP_InputField newUsernameInput;
-    public TMP_InputField emailInput; 
+    public TMP_InputField emailInput;
     public TMP_InputField currentPasswordInput;
     public TMP_InputField newPasswordInput;
     public TMP_InputField repeatPasswordInput;
-   
+
 
     public TMP_Text errorText;
 
@@ -47,6 +53,18 @@ public class SettingSceneManager : MonoBehaviour
     [Header("Success Popup")]
     public GameObject usernameSuccessPanel;
 
+    [Header("Contact Form")]
+    public TMP_InputField subjectInput;
+    public TMP_InputField descriptionInput;
+    public GameObject panelSuccessContact;
+    public GameObject panelFailedContact;
+    public float contactPopupTime = 5f;
+    [System.Serializable]
+    public class ContactData
+    {
+        public string Subject;
+        public string Description;
+    }
     private void Start()
     {
 #if UNITY_EDITOR
@@ -65,13 +83,18 @@ public class SettingSceneManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(APIManager.Token))
         {
-            SceneManager.LoadScene("LoginScene");
+            LoadingManager.Instance.LoadScene("LoginScene");
             return;
         }
 
         ShowProfile();
         LoadProfileData();
         LoadAudioSetting();
+
+        openedProfile = PlayerPrefs.GetInt("Open_Profile", 0) == 1;
+        openedAudio = PlayerPrefs.GetInt("Open_Audio", 0) == 1;
+        openedHelp = PlayerPrefs.GetInt("Open_Help", 0) == 1;
+        openedContact = PlayerPrefs.GetInt("Open_Contact", 0) == 1;
     }
 
     // =========================
@@ -123,6 +146,10 @@ public class SettingSceneManager : MonoBehaviour
 
         profilePage.SetActive(true);
         profileHighlight.SetActive(true);
+
+        openedProfile = true;
+        PlayerPrefs.SetInt("Open_Profile", 1);
+        // CheckFullExplorer();
     }
 
     public void ShowEditProfile()
@@ -132,7 +159,7 @@ public class SettingSceneManager : MonoBehaviour
 
         editProfilePage.SetActive(true);
         profileHighlight.SetActive(true);
-        
+
         errorText.text = "";
         newUsernameInput.text = APIManager.myData.username;
         emailInput.text = APIManager.myData.email;
@@ -140,7 +167,7 @@ public class SettingSceneManager : MonoBehaviour
         currentPasswordInput.text = "";
         newPasswordInput.text = "";
         repeatPasswordInput.text = "";
-        
+
     }
 
     public void ShowAudio()
@@ -150,6 +177,11 @@ public class SettingSceneManager : MonoBehaviour
 
         audioPage.SetActive(true);
         audioHighlight.SetActive(true);
+
+        openedAudio = true;
+        PlayerPrefs.SetInt("Open_Audio", 1);
+        PlayerPrefs.Save();
+        // CheckFullExplorer();
     }
 
     public void ShowHelp()
@@ -159,6 +191,11 @@ public class SettingSceneManager : MonoBehaviour
 
         helpPage.SetActive(true);
         helpHighlight.SetActive(true);
+
+        openedHelp = true;
+        PlayerPrefs.SetInt("Open_Help", 1);
+        PlayerPrefs.Save();
+        // CheckFullExplorer();    
     }
 
     public void ShowContact()
@@ -168,89 +205,94 @@ public class SettingSceneManager : MonoBehaviour
 
         contactPage.SetActive(true);
         contactHighlight.SetActive(true);
+
+        openedContact = true;
+        PlayerPrefs.SetInt("Open_Contact", 1);
+        PlayerPrefs.Save();
+        // CheckFullExplorer();
     }
 
     // =========================
     public async void SaveChanges()
-{   
-    Debug.Log("SAVE PRESSED");
-    errorText.text = "";
-
-    bool usernameChanged = newUsernameInput.text.Trim() != APIManager.myData.username;
-    bool passwordChanged = !string.IsNullOrEmpty(newPasswordInput.text);
-
-    if (!usernameChanged && !passwordChanged)
     {
-        errorText.text = "No changes made";
-        return;
+        Debug.Log("SAVE PRESSED");
+        errorText.text = "";
+
+        bool usernameChanged = newUsernameInput.text.Trim() != APIManager.myData.username;
+        bool passwordChanged = !string.IsNullOrEmpty(newPasswordInput.text);
+
+        if (!usernameChanged && !passwordChanged)
+        {
+            errorText.text = "No changes made";
+            return;
+        }
+
+        if (usernameChanged)
+        {
+            string username = newUsernameInput.text.Trim();
+
+            bool success = await APIManager.Instance.UpdateUsername(username);
+
+            if (!success)
+            {
+                errorText.text = "Username already taken";
+                return;
+            }
+        }
+
+        if (passwordChanged)
+        {
+            if (string.IsNullOrEmpty(currentPasswordInput.text))
+            {
+                errorText.text = "Enter current password";
+                return;
+            }
+
+            if (newPasswordInput.text != repeatPasswordInput.text)
+            {
+                errorText.text = "Passwords do not match";
+                return;
+            }
+
+            bool success = await APIManager.Instance.UpdatePassword(
+                currentPasswordInput.text,
+                newPasswordInput.text
+            );
+
+            if (!success)
+            {
+                errorText.text = "Incorrect current password";
+                return;
+            }
+        }
+
+        await APIManager.Instance.GetMyData();
+        LoadProfileData();
+
+        currentPasswordInput.text = "";
+        newPasswordInput.text = "";
+        repeatPasswordInput.text = "";
+
+        ShowProfile();
+        StartCoroutine(ShowSuccessPopup());
+    }
+    public void CancelEditProfile()
+    {
+        ShowProfile();
     }
 
-    if (usernameChanged)
+    IEnumerator ShowSuccessPopup()
     {
-        string username = newUsernameInput.text.Trim();
+        usernameSuccessPanel.SetActive(true);
 
-        bool success = await APIManager.Instance.UpdateUsername(username);
+        yield return new WaitForSeconds(3f);
 
-        if (!success)
-        {
-            errorText.text = "Username already taken";
-            return;
-        }
+        usernameSuccessPanel.SetActive(false);
     }
 
-    if (passwordChanged)
-    {
-        if (string.IsNullOrEmpty(currentPasswordInput.text))
-        {
-            errorText.text = "Enter current password";
-            return;
-        }
-
-        if (newPasswordInput.text != repeatPasswordInput.text)
-        {
-            errorText.text = "Passwords do not match";
-            return;
-        }
-
-        bool success = await APIManager.Instance.UpdatePassword(
-            currentPasswordInput.text,
-            newPasswordInput.text
-        );
-
-        if (!success)
-        {
-            errorText.text = "Incorrect current password";
-            return;
-        }
-    }
-
-    await APIManager.Instance.GetMyData();
-    LoadProfileData();
-
-    currentPasswordInput.text = "";
-    newPasswordInput.text = "";
-    repeatPasswordInput.text = "";
-
-    ShowProfile();
-    StartCoroutine(ShowSuccessPopup());
-}
-public void CancelEditProfile()
-{
-    ShowProfile();
-}
-
-IEnumerator ShowSuccessPopup()
-{
-    usernameSuccessPanel.SetActive(true);
-
-    yield return new WaitForSeconds(3f);
-
-    usernameSuccessPanel.SetActive(false);
-}
 
 
-
-     // =========================
+    // =========================
     // Delete Account
     // =========================
 
@@ -271,10 +313,10 @@ IEnumerator ShowSuccessPopup()
         await APIManager.Instance.DeleteAccount();
         if (APIManager.Instance != null)
         {
-            APIManager.Instance.Logout(); 
+            APIManager.Instance.Logout();
         }
 
-        SceneManager.LoadScene("LoginScene");
+        LoadingManager.Instance.LoadScene("LoginScene");
     }
 
     // =========================
@@ -305,10 +347,10 @@ IEnumerator ShowSuccessPopup()
         }
         else
         {
-            APIManager.Token = null; 
+            APIManager.Token = null;
         }
 
-        SceneManager.LoadScene("LoginScene");
+        LoadingManager.Instance.LoadScene("LoginScene");
     }
 
     // =========================
@@ -320,17 +362,17 @@ IEnumerator ShowSuccessPopup()
         string previousScene = PlayerPrefs.GetString("PreviousScene", "");
         if (string.IsNullOrEmpty(previousScene) || previousScene == "-1")
         {
-            SceneManager.LoadScene(0); 
+            LoadingManager.Instance.LoadScene(0);
             return;
         }
 
         if (int.TryParse(previousScene, out int sceneIndex))
         {
-            SceneManager.LoadScene(Mathf.Max(0, sceneIndex));
+            LoadingManager.Instance.LoadScene(Mathf.Max(0, sceneIndex));
         }
         else
         {
-            SceneManager.LoadScene(previousScene);
+            LoadingManager.Instance.LoadScene(previousScene);
         }
     }
 
@@ -354,6 +396,62 @@ IEnumerator ShowSuccessPopup()
         PlayerPrefs.SetFloat("Music", musicSlider.value);
         PlayerPrefs.SetFloat("SFX", sfxSlider.value);
         PlayerPrefs.SetFloat("Master", masterSlider.value);
+    }
+    public void SubmitContact()
+    {
+        string subject = subjectInput.text.Trim();
+        string description = descriptionInput.text.Trim();
+
+        if (string.IsNullOrEmpty(subject) || string.IsNullOrEmpty(description))
+        {
+            ShowContactPanel(panelFailedContact);
+            return;
+        }
+
+        StartCoroutine(SendContactToAPI(subject, description));
+    }
+    void ShowContactPanel(GameObject panel)
+    {
+        // ปิดทั้งสองก่อน (กันซ้อน)
+        panelSuccessContact.SetActive(false);
+        panelFailedContact.SetActive(false);
+
+        panel.SetActive(true);
+        StartCoroutine(HideContactPanel(panel));
+    }
+    IEnumerator HideContactPanel(GameObject panel)
+    {
+        yield return new WaitForSeconds(contactPopupTime);
+        panel.SetActive(false);
+    }
+    IEnumerator SendContactToAPI(string subject, string description)
+    {
+        string url = "http://localhost:8080/contact"; // 🔥 เปลี่ยนตาม backend จริง
+
+        // JSON ที่จะส่ง (ต้องตรงกับ backend)
+        string json = JsonUtility.ToJson(new ContactData
+        {
+            Subject = subject,
+            Description = description
+        });
+
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            ShowContactPanel(panelSuccessContact);
+        }
+        else
+        {
+            ShowContactPanel(panelFailedContact);
+        }
     }
 }
 
