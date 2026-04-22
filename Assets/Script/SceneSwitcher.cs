@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
-    public string settingSceneName = "SettingsScene"; 
+    public string settingSceneName = "SettingsScene";
 
     public void GoToSettings()
     {
