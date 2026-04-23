@@ -24,7 +24,7 @@ public class ResultButtonPanelUI : MonoBehaviour
     }
     private void Start()
     {
-        resultButtonPanel.SetActive(false);
+        resultButtonPanel.SetActive(true);
         ExitButton.onClick.AddListener(OnExitButtonClicked);
         PlayAgainButton.onClick.AddListener(OnPlayAgainButtonClicked);
         NextGameButton.onClick.AddListener(OnNextGameButtonClicked);
@@ -37,14 +37,14 @@ public class ResultButtonPanelUI : MonoBehaviour
 
     public void OnExitButtonClicked()
     {
-        LoadingManager.Instance.LoadScene("SelectGame");
+        SceneManager.LoadScene("SelectGame");
     }
     public void OnPlayAgainButtonClicked()
     {
-        LoadingManager.Instance.LoadScene("SavingGameMap");
+        SceneManager.LoadScene("SavingGameMap");
     }
     public void OnNextGameButtonClicked()
     {
-        LoadingManager.Instance.LoadScene(scene.name);
+        SceneManager.LoadScene(scene.name);
     }
 }
