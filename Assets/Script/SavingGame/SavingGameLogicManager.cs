@@ -57,7 +57,9 @@ public class SavingGameLogicManager : MonoBehaviour
     }
 
     public void AdvanceMonth()
-    {
+    {   
+        
+
         currentMonth++;
         if (SavingGameUIManager.Instance != null)
         {

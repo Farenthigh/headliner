@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;  
 public class BankPanelUI : MonoBehaviour
 {
     public static BankPanelUI Instance { get; private set; }
@@ -17,6 +17,14 @@ public class BankPanelUI : MonoBehaviour
     [SerializeField] private Transform descriptionParent;
     [SerializeField] private GameObject descriptionText;
     // [SerializeField] private TMP_Text FailedText;
+
+    [SerializeField] private Image characterImageUI;
+    [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private GameObject dialogueBox;
+    
+
+private Coroutine typingCoroutine;
+private bool isTyping = false;
     private BankScript bankScript;
     private void Awake()
     {
@@ -52,35 +60,43 @@ public class BankPanelUI : MonoBehaviour
     {
         this.bankScript = bankScript;
         bankPanel.SetActive(true);
+
+    // ❗ ของเดิม (อย่าไปยุ่ง)
         ShowBankDescription(bankScript.GetDescription());
-    }
-    public void ShowBankDescription(List<string> descriptions)
-    {
-        // ลบข้อความเก่า
-        foreach (Transform child in descriptionParent)
+
+    // ✅ เพิ่มตัวละคร
+        characterImageUI.sprite = bankScript.GetCharacterImage();
+
+    // ✅ เพิ่ม dialogue 1 ประโยค
+        string dialogue = bankScript.GetDialogue();
+
+        if (!string.IsNullOrEmpty(dialogue))
         {
-            Destroy(child.gameObject);
+            dialogueBox.SetActive(true);
+            StartTyping(dialogue);
         }
-        // สร้างข้อความใหม่
-        foreach (string desc in descriptions)
+        else
         {
-            GameObject newTextObj = Instantiate(descriptionText, descriptionParent);
-            TMP_Text tmpText = newTextObj.GetComponent<TMP_Text>();
-            if (tmpText != null)
-            {
-                tmpText.text = desc;
-            }
+            dialogueBox.SetActive(false);
         }
     }
     public void OnCloseBankPanel()
     {
         Debug.Log("Closing Bank Panel");
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        dialogueText.text = "";
+        
         if (amountInput != null)
         {
             amountInput.text = "";
         }
+
         bankScript = null;
-        bankPanel.SetActive(false);
+        bankPanel.SetActive(false);;
     }
     public void OnDepositButton()
     {
@@ -128,5 +144,44 @@ public class BankPanelUI : MonoBehaviour
         // FailedText.text = message;
         /* The line `FailedText.gameObject.SetActive(true);` is attempting to set the `gameObject` property of the `FailedText` object to be active, making it visible in the UI. However, it seems that the `FailedText` variable is currently commented out in the code, so this line will result in an error because `FailedText` is not defined or accessible in the current context. */
         // FailedText.gameObject.SetActive(true);
+    }
+    IEnumerator TypeText(string text)
+    {
+        dialogueText.text = "";
+
+        foreach (char c in text)
+        {
+            dialogueText.text += c;
+            yield return new WaitForSeconds(0.02f);
+        }
+    }
+    void StartTyping(string text)
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        typingCoroutine = StartCoroutine(TypeText(text));
+    }
+    public void ShowBankDescription(List<string> descriptions)
+    {
+    // ลบของเก่า
+        foreach (Transform child in descriptionParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+    // สร้างใหม่
+        foreach (string desc in descriptions)
+        {
+            GameObject newTextObj = Instantiate(descriptionText, descriptionParent);
+            TMP_Text tmpText = newTextObj.GetComponent<TMP_Text>();
+
+            if (tmpText != null)
+            {
+                tmpText.text = desc;
+            }
+        }
     }
 }
