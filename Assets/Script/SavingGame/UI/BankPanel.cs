@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;  
+using System.Collections;
 public class BankPanelUI : MonoBehaviour
 {
     public static BankPanelUI Instance { get; private set; }
@@ -21,10 +21,10 @@ public class BankPanelUI : MonoBehaviour
     [SerializeField] private Image characterImageUI;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private GameObject dialogueBox;
-    
 
-private Coroutine typingCoroutine;
-private bool isTyping = false;
+
+    private Coroutine typingCoroutine;
+    private bool isTyping = false;
     private BankScript bankScript;
     private void Awake()
     {
@@ -61,13 +61,13 @@ private bool isTyping = false;
         this.bankScript = bankScript;
         bankPanel.SetActive(true);
 
-    // ❗ ของเดิม (อย่าไปยุ่ง)
+        // ❗ ของเดิม (อย่าไปยุ่ง)
         ShowBankDescription(bankScript.GetDescription());
 
-    // ✅ เพิ่มตัวละคร
+        // ✅ เพิ่มตัวละคร
         characterImageUI.sprite = bankScript.GetCharacterImage();
 
-    // ✅ เพิ่ม dialogue 1 ประโยค
+        // ✅ เพิ่ม dialogue 1 ประโยค
         string dialogue = bankScript.GetDialogue();
 
         if (!string.IsNullOrEmpty(dialogue))
@@ -89,14 +89,14 @@ private bool isTyping = false;
         }
 
         dialogueText.text = "";
-        
+
         if (amountInput != null)
         {
             amountInput.text = "";
         }
 
         bankScript = null;
-        bankPanel.SetActive(false);;
+        bankPanel.SetActive(false); ;
     }
     public void OnDepositButton()
     {
@@ -105,21 +105,21 @@ private bool isTyping = false;
             OnFailedAction("กรุณาใส่จำนวนเงินที่ถูกต้อง");
             return;
         }
-        if (bankScript.GetMinimumDeposit() > amount)
-        {
-            OnFailedAction($"ไม่สามารถฝากได้ เนื่องจากยอดฝากขั้นต่ำคือ {bankScript.GetMinimumDeposit()}");
-            return;
-        }
-        if (bankScript.GetMaximumDeposit() < amount)
-        {
-            OnFailedAction($"ไม่สามารถฝากได้ เนื่องจากยอดฝากขั้นสูงคือ {bankScript.GetMaximumDeposit()}");
-            return;
-        }
-        if (bankScript.GetBalance() < amount)
-        {
-            OnFailedAction("ไม่สามารถฝากได้ เนื่องจากยอดเงินในมือไม่เพียงพอ");
-            return;
-        }
+        // if (bankScript.GetMinimumDeposit() > amount)
+        // {
+        //     OnFailedAction($"ไม่สามารถฝากได้ เนื่องจากยอดฝากขั้นต่ำคือ {bankScript.GetMinimumDeposit()}");
+        //     return;
+        // }
+        // if (bankScript.GetMaximumDeposit() < amount)
+        // {
+        //     OnFailedAction($"ไม่สามารถฝากได้ เนื่องจากยอดฝากขั้นสูงคือ {bankScript.GetMaximumDeposit()}");
+        //     return;
+        // }
+        // if (bankScript.GetBalance() < amount)
+        // {
+        //     OnFailedAction("ไม่สามารถฝากได้ เนื่องจากยอดเงินในมือไม่เพียงพอ");
+        //     return;
+        // }
         bankScript.Deposit(amount);
         amountInput.text = "";
     }
@@ -166,13 +166,13 @@ private bool isTyping = false;
     }
     public void ShowBankDescription(List<string> descriptions)
     {
-    // ลบของเก่า
+        // ลบของเก่า
         foreach (Transform child in descriptionParent)
         {
             Destroy(child.gameObject);
         }
 
-    // สร้างใหม่
+        // สร้างใหม่
         foreach (string desc in descriptions)
         {
             GameObject newTextObj = Instantiate(descriptionText, descriptionParent);

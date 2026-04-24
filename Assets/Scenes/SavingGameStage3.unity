@@ -909,6 +909,7 @@ GameObject:
   - component: {fileID: 171271017}
   - component: {fileID: 171271016}
   - component: {fileID: 171271015}
+  - component: {fileID: 171271019}
   m_Layer: 0
   m_Name: "\u0E2D\u0E2D\u0E21\u0E40\u0E1B\u0E49\u0E32\u0E2B\u0E21\u0E32\u0E22"
   m_TagString: Untagged
@@ -1067,6 +1068,62 @@ Transform:
   - {fileID: 1371311619}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &171271019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171271014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 873233738}
+        m_TargetAssemblyTypeName: BankPanelUI, Assembly-CSharp
+        m_MethodName: OnOpenBankPanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 171271016}
+          m_ObjectArgumentAssemblyTypeName: BankScript, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &215809353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,6 +2020,66 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 686c209c78e75488a835353f692aeb0f, type: 3}
+--- !u!114 &313907096 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8180844261921787347, guid: 686c209c78e75488a835353f692aeb0f, type: 3}
+  m_PrefabInstance: {fileID: 313907095}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!224 &313907097 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2408580496819120423, guid: 686c209c78e75488a835353f692aeb0f, type: 3}
+  m_PrefabInstance: {fileID: 313907095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &313907098 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1882175594855880809, guid: 686c209c78e75488a835353f692aeb0f, type: 3}
+  m_PrefabInstance: {fileID: 313907095}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
+--- !u!114 &313907099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3919017505332853133, guid: 686c209c78e75488a835353f692aeb0f, type: 3}
+  m_PrefabInstance: {fileID: 313907095}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &313907100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2786049943436642392, guid: 686c209c78e75488a835353f692aeb0f, type: 3}
+  m_PrefabInstance: {fileID: 313907095}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &313907101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4875390882251617955, guid: 686c209c78e75488a835353f692aeb0f, type: 3}
+  m_PrefabInstance: {fileID: 313907095}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &356526813
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,6 +2194,7 @@ GameObject:
   - component: {fileID: 384657410}
   - component: {fileID: 384657409}
   - component: {fileID: 384657408}
+  - component: {fileID: 384657412}
   m_Layer: 0
   m_Name: "\u0E1D\u0E32\u0E01\u0E14\u0E34\u0E08\u0E34\u0E17\u0E31\u0E25"
   m_TagString: Untagged
@@ -2235,6 +2353,62 @@ Transform:
   - {fileID: 1285792577}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &384657412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384657407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 873233738}
+        m_TargetAssemblyTypeName: BankPanelUI, Assembly-CSharp
+        m_MethodName: OnOpenBankPanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 384657409}
+          m_ObjectArgumentAssemblyTypeName: BankScript, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &411774765
 GameObject:
   m_ObjectHideFlags: 0
@@ -3650,7 +3824,7 @@ MonoBehaviour:
   ResultBackground2: {fileID: 1781265575}
   ResultBackground3: {fileID: 1982294429}
   defeatBackground2: {fileID: 354164613583611052, guid: 538c5693438a648a4b179ec0a6c89cf7, type: 3}
-  passStar: {fileID: 21300000, guid: c54804dc802f74486b107705b5f6836a, type: 3}
+  passStar: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
   exit: {fileID: 851793781}
   playAgain: {fileID: 1279696956}
   nextGame: {fileID: 713458912}
@@ -5052,6 +5226,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872512401}
   m_CullTransparentMesh: 1
+--- !u!114 &873233738 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5657975288149665146, guid: 686c209c78e75488a835353f692aeb0f, type: 3}
+  m_PrefabInstance: {fileID: 313907095}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0971530efc2f542de84668276fde25ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BankPanelUI
 --- !u!1 &877783263
 GameObject:
   m_ObjectHideFlags: 0
@@ -5064,6 +5249,7 @@ GameObject:
   - component: {fileID: 877783266}
   - component: {fileID: 877783265}
   - component: {fileID: 877783264}
+  - component: {fileID: 877783268}
   m_Layer: 0
   m_Name: "\u0E1A\u0E49\u0E32\u0E19"
   m_TagString: Untagged
@@ -5204,6 +5390,62 @@ Transform:
   - {fileID: 356526814}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &877783268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877783263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2118697037}
+        m_TargetAssemblyTypeName: HomePanel, Assembly-CSharp
+        m_MethodName: OnOpenHomePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &887284378
 GameObject:
   m_ObjectHideFlags: 0
@@ -6427,6 +6669,7 @@ GameObject:
   - component: {fileID: 1049121931}
   - component: {fileID: 1049121930}
   - component: {fileID: 1049121929}
+  - component: {fileID: 1049121933}
   m_Layer: 0
   m_Name: "\u0E01\u0E23\u0E30\u0E1B\u0E38\u0E01\u0E2D\u0E2D\u0E21\u0E40\u0E07\u0E34\u0E19"
   m_TagString: Untagged
@@ -6584,6 +6827,62 @@ Transform:
   - {fileID: 956642976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1049121933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049121928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 873233738}
+        m_TargetAssemblyTypeName: BankPanelUI, Assembly-CSharp
+        m_MethodName: OnOpenBankPanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1049121930}
+          m_ObjectArgumentAssemblyTypeName: BankScript, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1069791959
 GameObject:
   m_ObjectHideFlags: 0
@@ -6631,6 +6930,7 @@ GameObject:
   - component: {fileID: 1087378510}
   - component: {fileID: 1087378509}
   - component: {fileID: 1087378508}
+  - component: {fileID: 1087378512}
   m_Layer: 0
   m_Name: "\u0E1D\u0E32\u0E01\u0E1B\u0E23\u0E30\u0E08\u0E33"
   m_TagString: Untagged
@@ -6791,6 +7091,62 @@ Transform:
   - {fileID: 515355824}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1087378512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087378507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 873233738}
+        m_TargetAssemblyTypeName: BankPanelUI, Assembly-CSharp
+        m_MethodName: OnOpenBankPanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1087378509}
+          m_ObjectArgumentAssemblyTypeName: BankScript, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1099014941
 GameObject:
   m_ObjectHideFlags: 0
@@ -7959,6 +8315,7 @@ GameObject:
   - component: {fileID: 1312628607}
   - component: {fileID: 1312628606}
   - component: {fileID: 1312628605}
+  - component: {fileID: 1312628609}
   m_Layer: 0
   m_Name: "\u0E1D\u0E32\u0E01\u0E2D\u0E2D\u0E21\u0E17\u0E23\u0E31\u0E1E\u0E22\u0E4C"
   m_TagString: Untagged
@@ -8118,6 +8475,62 @@ Transform:
   - {fileID: 1876972440}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312628609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312628604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 873233738}
+        m_TargetAssemblyTypeName: BankPanelUI, Assembly-CSharp
+        m_MethodName: OnOpenBankPanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1312628605}
+          m_ObjectArgumentAssemblyTypeName: BankScript, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1318180173
 GameObject:
   m_ObjectHideFlags: 0
@@ -9670,14 +10083,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447d62f3aa030479b894cf684ea4f743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGameUIManager
-  BalanceText: {fileID: 0}
-  amountInput: {fileID: 0}
+  BalanceText: {fileID: 313907096}
+  amountInput: {fileID: 313907098}
   bankNameText: {fileID: 495710054}
-  bankPanel: {fileID: 0}
-  depositButton: {fileID: 0}
-  withdrawButton: {fileID: 0}
-  closeBankPanelButton: {fileID: 0}
-  descriptionParent: {fileID: 0}
+  bankPanel: {fileID: 1893929409}
+  depositButton: {fileID: 313907100}
+  withdrawButton: {fileID: 313907101}
+  closeBankPanelButton: {fileID: 313907099}
+  descriptionParent: {fileID: 313907097}
   descriptionText: {fileID: 5051348126395700699, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
   roundTimeImage: {fileID: 1359764329}
   roundTimeText: {fileID: 1945270050}
@@ -9689,7 +10102,7 @@ MonoBehaviour:
   floatingTimePrefab: {fileID: 7588156403525753714, guid: 228a556b7344e47b89db73b2fa19cf39, type: 3}
   floatingTimeSpawnPoint: {fileID: 1877717767}
   floatingRoundPrefab: {fileID: 7588156403525753714, guid: 412236c4873314c449fff218e6aa37de, type: 3}
-  floatingRoundSpawnPoint: {fileID: 0}
+  floatingRoundSpawnPoint: {fileID: 1431497174}
 --- !u!4 &1544525010
 Transform:
   m_ObjectHideFlags: 0
@@ -11236,12 +11649,12 @@ MonoBehaviour:
   cashPerMonth: 1000
   goalMonth: 12
   banks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1049121930}
+  - {fileID: 384657409}
+  - {fileID: 1087378509}
+  - {fileID: 1913477719}
+  - {fileID: 1312628605}
+  - {fileID: 171271016}
 --- !u!4 &1893929411
 Transform:
   m_ObjectHideFlags: 0
@@ -11344,6 +11757,7 @@ GameObject:
   - component: {fileID: 1913477721}
   - component: {fileID: 1913477720}
   - component: {fileID: 1913477719}
+  - component: {fileID: 1913477723}
   m_Layer: 0
   m_Name: "\u0E1D\u0E32\u0E01\u0E1B\u0E23\u0E30\u0E08\u0E332"
   m_TagString: Untagged
@@ -11504,6 +11918,62 @@ Transform:
   - {fileID: 596914450}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1913477723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913477718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 873233738}
+        m_TargetAssemblyTypeName: BankPanelUI, Assembly-CSharp
+        m_MethodName: OnOpenBankPanel
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1913477719}
+          m_ObjectArgumentAssemblyTypeName: BankScript, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1926843295
 GameObject:
   m_ObjectHideFlags: 0
