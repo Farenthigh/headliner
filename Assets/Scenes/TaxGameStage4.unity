@@ -1743,6 +1743,10 @@ PrefabInstance:
       value: AchievementAnimation
       objectReference: {fileID: 0}
     - target: {fileID: 1491557247915749135, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491557247915749135, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1947725302}
@@ -1877,6 +1881,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1340158315880827003, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
   m_PrefabInstance: {fileID: 618972893}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &618972898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5362489761072358465, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+  m_PrefabInstance: {fileID: 618972893}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &618972899 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4112171654433427987, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+  m_PrefabInstance: {fileID: 618972893}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618972898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &623066211
 GameObject:
   m_ObjectHideFlags: 0
@@ -4079,7 +4099,7 @@ MonoBehaviour:
   characterCenterUI: {fileID: 1971264183}
   characterRightUI: {fileID: 1623526795}
   speechBubbleUI: {fileID: 1274592875}
-  nextButton: {fileID: 0}
+  nextButton: {fileID: 1832760308}
   allPages:
   - dialogueText: 
     speakerName: 
@@ -4312,6 +4332,7 @@ MonoBehaviour:
   - tipPageIndex: 6
     bookPageToOpen: 2
   sceneLoader: {fileID: 1398615791}
+  achievementTriggers: []
   videoPlayer: {fileID: 1466944661}
   videoRawImage: {fileID: 1218729976}
   availableCharacters: []
@@ -5729,7 +5750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1250823364525071665, guid: 2b37329ce0d564968919e432fff48c03, type: 3}
+  m_Sprite: {fileID: 1076937931140676086, guid: 3bcb7b8bec7804081b33e93a0db8fb49, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5909,8 +5930,8 @@ MonoBehaviour:
   mainAchievementPanel: {fileID: 0}
   achievementPrefab: {fileID: 0}
   achievementContainer: {fileID: 0}
-  hintPopup: {fileID: 0}
-  hintDescriptionText: {fileID: 0}
+  hintPopup: {fileID: 618972898}
+  hintDescriptionText: {fileID: 618972899}
 --- !u!4 &1947725303
 Transform:
   m_ObjectHideFlags: 0

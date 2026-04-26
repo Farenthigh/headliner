@@ -1384,7 +1384,7 @@ MonoBehaviour:
   characterCenterUI: {fileID: 2079868933}
   characterRightUI: {fileID: 1667988345}
   speechBubbleUI: {fileID: 1329620609}
-  nextButton: {fileID: 0}
+  nextButton: {fileID: 2049463628}
   allPages:
   - dialogueText: "\u0E42\u0E2B... \u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E27\u0E38\u0E48\u0E19\u0E27\u0E32\u0E22\u0E01\u0E27\u0E48\u0E32\u0E2B\u0E19\u0E49\u0E32\u0E1B\u0E23\u0E30\u0E15\u0E39\u0E40\u0E21\u0E37\u0E2D\u0E07\u0E2D\u0E35\u0E01!
       \u0E14\u0E39\u0E19\u0E31\u0E48\u0E19\u0E2A\u0E34 \u0E1E\u0E48\u0E2D\u0E04\u0E49\u0E32\u0E02\u0E32\u0E22\u0E22\u0E32\u0E27\u0E34\u0E40\u0E28\u0E29\u0E01\u0E33\u0E25\u0E31\u0E07\u0E17\u0E30\u0E40\u0E25\u0E32\u0E30\u0E01\u0E31\u0E1A\u0E19\u0E31\u0E01\u0E23\u0E1A\u0E23\u0E31\u0E1A\u0E08\u0E49\u0E32\u0E07\u0E40\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E2A\u0E48\u0E27\u0E19\u0E41\u0E1A\u0E48\u0E07!"
@@ -1656,6 +1656,7 @@ MonoBehaviour:
   - tipPageIndex: 9
     bookPageToOpen: 0
   sceneLoader: {fileID: 922609729}
+  achievementTriggers: []
   videoPlayer: {fileID: 856366025}
   videoRawImage: {fileID: 338658617}
   availableCharacters: []
@@ -2689,6 +2690,10 @@ PrefabInstance:
       value: AchievementAnimation
       objectReference: {fileID: 0}
     - target: {fileID: 1491557247915749135, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491557247915749135, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1280014815}
@@ -2776,6 +2781,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5816421934468517651, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+      propertyPath: cardRoot
+      value: 
+      objectReference: {fileID: 1046275321}
+    - target: {fileID: 5816421934468517651, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+      propertyPath: starsGroup
+      value: 
+      objectReference: {fileID: 1046275326}
+    - target: {fileID: 5816421934468517651, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+      propertyPath: auraGlowImage
+      value: 
+      objectReference: {fileID: 1046275325}
     - target: {fileID: 7364555499663575080, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
       propertyPath: m_Color.a
       value: 0.8666667
@@ -2821,6 +2838,22 @@ MonoBehaviour:
 --- !u!1 &1046275324 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1340158315880827003, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+  m_PrefabInstance: {fileID: 1046275320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1046275325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7043380326310753571, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+  m_PrefabInstance: {fileID: 1046275320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!4 &1046275326 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 489483019356958182, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
   m_PrefabInstance: {fileID: 1046275320}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1055356279 stripped
@@ -3363,10 +3396,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4198074876855414624, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -221243922556094474, guid: 04720baf76f474e22b8851a9f11948c5, type: 3}
     - target: {fileID: 6785949477337076363, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -221243922556094474, guid: 04720baf76f474e22b8851a9f11948c5, type: 3}
+    - target: {fileID: 7111736548374326350, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 89f1419e504234334a9f0b648d2c0fcb, type: 3}
     - target: {fileID: 7660995672047020517, guid: 62049c4134ba5f44c85caf01351af05d, type: 3}
       propertyPath: m_Name
       value: GameResult
@@ -3451,8 +3492,8 @@ MonoBehaviour:
   mainAchievementPanel: {fileID: 0}
   achievementPrefab: {fileID: 0}
   achievementContainer: {fileID: 0}
-  hintPopup: {fileID: 0}
-  hintDescriptionText: {fileID: 0}
+  hintPopup: {fileID: 2009385554}
+  hintDescriptionText: {fileID: 2009385555}
 --- !u!4 &1280014816
 Transform:
   m_ObjectHideFlags: 0
@@ -5338,6 +5379,22 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5758676706343129304, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
   m_PrefabInstance: {fileID: 449400143}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2009385554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5362489761072358465, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+  m_PrefabInstance: {fileID: 1046275320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2009385555 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4112171654433427987, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+  m_PrefabInstance: {fileID: 1046275320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009385554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &2009598770
 GameObject:
   m_ObjectHideFlags: 0
@@ -5822,7 +5879,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1250823364525071665, guid: 2b37329ce0d564968919e432fff48c03, type: 3}
+  m_Sprite: {fileID: 1076937931140676086, guid: 3bcb7b8bec7804081b33e93a0db8fb49, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

@@ -1275,6 +1275,7 @@ MonoBehaviour:
   - tipPageIndex: 5
     bookPageToOpen: 2
   sceneLoader: {fileID: 1969140324}
+  achievementTriggers: []
   videoPlayer: {fileID: 1425501778}
   videoRawImage: {fileID: 1629688481}
   availableCharacters: []
@@ -4884,8 +4885,8 @@ MonoBehaviour:
   mainAchievementPanel: {fileID: 0}
   achievementPrefab: {fileID: 0}
   achievementContainer: {fileID: 0}
-  hintPopup: {fileID: 0}
-  hintDescriptionText: {fileID: 0}
+  hintPopup: {fileID: 1987757439}
+  hintDescriptionText: {fileID: 1987757440}
 --- !u!4 &1493728578
 Transform:
   m_ObjectHideFlags: 0
@@ -5877,6 +5878,10 @@ PrefabInstance:
       value: AchievementAnimation
       objectReference: {fileID: 0}
     - target: {fileID: 1491557247915749135, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491557247915749135, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1493728577}
@@ -6033,12 +6038,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1987757439 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2302794634060599936, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5362489761072358465, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
   m_PrefabInstance: {fileID: 1987757434}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1987757440 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9123070048085115153, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4112171654433427987, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
   m_PrefabInstance: {fileID: 1987757434}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987757439}
@@ -6049,7 +6054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1987757441 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5947496154240324456, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7043380326310753571, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
   m_PrefabInstance: {fileID: 1987757434}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -6060,7 +6065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!4 &1987757442 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3890022785931430829, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 489483019356958182, guid: d423694e1f0e24be891c24c3d8a51ec9, type: 3}
   m_PrefabInstance: {fileID: 1987757434}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2001392785
@@ -6252,7 +6257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1250823364525071665, guid: 2b37329ce0d564968919e432fff48c03, type: 3}
+  m_Sprite: {fileID: 1076937931140676086, guid: 3bcb7b8bec7804081b33e93a0db8fb49, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
