@@ -119,14 +119,23 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
+// (ส่วนอื่นๆ ของ AchievementManager ยังเหมือนเดิม)
+
     private IEnumerator PopupSequence(AchievementData data)
     {
+       // ใน PopupSequence เพิ่ม debug เพิ่มเติม
+        achievementCard.SetupCard(data);
         unlockPanel.SetActive(true);
         cardRect.gameObject.SetActive(true);
-        
-        achievementCard.SetupCard(data);
 
-        Vector2 startPos = new Vector2(0, -1500f);
+        // เพิ่มบรรทัดนี้
+        Debug.Log($"unlockPanel active: {unlockPanel.activeInHierarchy}, cardRect active: {cardRect.gameObject.activeInHierarchy}, scale: {cardRect.localScale}");
+        
+        // บังคับให้ Scale กลับมาเป็น 1 เผื่อกรณีที่มันค้างเป็น 0
+        cardRect.localScale = Vector3.one; 
+
+        // ลองเปลี่ยนพิกัดเริ่มให้สูงขึ้นหน่อย จะได้เห็นตอนมันวิ่ง
+        Vector2 startPos = new Vector2(0, -800f); 
         Vector2 targetPos = Vector2.zero;
         Vector3 startScale = new Vector3(0.5f, 0.5f, 0.5f);
         Vector3 targetScale = Vector3.one;
@@ -134,6 +143,7 @@ public class AchievementManager : MonoBehaviour
         float duration = 0.5f;
         float time = 0;
 
+        // แอนิเมชันเลื่อนขึ้นจากขอบจอด้านล่าง (ของคุณเดิม)
         while (time < duration)
         {
             time += Time.deltaTime;
@@ -149,9 +159,10 @@ public class AchievementManager : MonoBehaviour
         cardRect.anchoredPosition = targetPos;
         cardRect.localScale = targetScale;
 
-        if (sparkleParticle != null) sparkleParticle.Play();
+       // if (sparkleParticle != null) sparkleParticle.Play();
         
-        achievementCard.EnableInteraction();
+        // 👉 เปลี่ยนจากการแค่ EnableInteraction เป็นการเรียกเล่นเอฟเฟกต์ทั้งหมด (ซึ่งมันจะ EnableInteraction ให้เอง)
+        achievementCard.PlayUnlockVFX(); 
     }
 
     public void CloseUnlockPanel()
@@ -296,7 +307,6 @@ public class AchievementManager : MonoBehaviour
             {
                 UnlockAchievement(25, "25");
 
-            // reset กัน spam
                 PlayerPrefs.DeleteKey("Played_Tax");
                 PlayerPrefs.DeleteKey("Played_Saving");
                 PlayerPrefs.Save();

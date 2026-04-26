@@ -4799,6 +4799,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a03c432142b49f9996f86e550f5a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGameResult
+  victoryIntroUI: {fileID: 0}
+  victoryResultUI: {fileID: 0}
+  Exit: {fileID: 0}
+  Play_again: {fileID: 0}
+  Next_game: {fileID: 0}
+  defeatIntroUI: {fileID: 0}
+  defeatResultUI: {fileID: 0}
+  d_Exit: {fileID: 0}
+  d_Play_again: {fileID: 0}
+  v_star1: {fileID: 0}
+  v_star2: {fileID: 0}
+  v_star3: {fileID: 0}
+  v_priority1: {fileID: 0}
+  v_priority2: {fileID: 0}
+  v_priority3: {fileID: 0}
+  d_star1: {fileID: 0}
+  d_star2: {fileID: 0}
+  d_star3: {fileID: 0}
+  nextSceneName: 
 --- !u!1 &748253788
 GameObject:
   m_ObjectHideFlags: 0
