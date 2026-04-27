@@ -1457,11 +1457,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 258127083575344760, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00009066727
+      value: -0.00041183943
       objectReference: {fileID: 0}
     - target: {fileID: 258127083575344760, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00000008970302
+      value: 0.00025298735
       objectReference: {fileID: 0}
     - target: {fileID: 371390906615535851, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
       propertyPath: m_SizeDelta.x
