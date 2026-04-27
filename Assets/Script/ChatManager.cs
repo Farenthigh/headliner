@@ -206,7 +206,7 @@ public class ChatManager : MonoBehaviour
     void OpenChat()
     {
         chatWindow.SetActive(true);
-        openButton.gameObject.SetActive(false);
+        //openButton.gameObject.SetActive(false);
         
         StartCoroutine(ForceScrollDown());
     }

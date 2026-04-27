@@ -69,6 +69,20 @@ public class StoryManager : MonoBehaviour
     public List<TipBook> tipBooks;
     public SceneLoader sceneLoader;
 
+        [System.Serializable]
+    public class StoryAchievementTrigger
+    {
+        public int pageIndex;          // หน้าไหนจะ unlock
+        public uint backendAchievementId;
+        public string localAchievementId;
+    }
+
+    [Header("Achievement Triggers")]
+    public List<StoryAchievementTrigger> achievementTriggers;
+
+    // ✅ ป้องกันกดปุ่ม Next ขณะ Achievement panel กำลังแสดงอยู่
+    private bool _isWaitingForAchievement = false;
+
     [Header("Video Background")]
     public VideoPlayer videoPlayer;
     public RawImage videoRawImage;
@@ -111,10 +125,12 @@ public class StoryManager : MonoBehaviour
 
     public void OnClickNext()
     {
+        // ✅ ถ้า Achievement panel กำลังเปิดอยู่ → ไม่ให้กดผ่าน
+        if (_isWaitingForAchievement) return;
+
         if (isTyping)
         {
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
-            // เปลี่ยนเป็น ProcessText เพื่อให้โชว์ชื่อแชทบอทตอน Skip (จาก Incoming)
             dialogueTextUI.text = ProcessText(allPages[currentIndex].dialogueText); 
             isTyping = false;
         }
@@ -122,38 +138,77 @@ public class StoryManager : MonoBehaviour
         {
             if (currentIndex < allPages.Count - 1)
             {
-                // <--- ผสมลอจิก Fade เปลี่ยนฉาก (จาก Current) เข้ามาตรงนี้ --->
-                Sprite currentBg = allPages[currentIndex].background;
-                Sprite nextBg = allPages[currentIndex + 1].background;
-                bool isBgChanged = (currentBg != nextBg && nextBg != null);
-                bool isForcedFade = allPages[currentIndex + 1].forceTransition;
-
-                if ((isBgChanged || isForcedFade) && transitionController != null)
-                {
-                    Button btn = nextButton.GetComponent<Button>();
-                    if (btn != null) btn.interactable = false;
-                    
-                    transitionController.PlaySceneFade(
-                        onMidFade: () => {
-                            currentIndex++;
-                            UpdateUI(); 
-                        },
-                        onComplete: () => {
-                            if (btn != null) btn.interactable = true; 
-                        }
-                    );
-                }
-                else
-                {
-                    currentIndex++;
-                    UpdateUI();
-                }
+                AdvanceToPage(currentIndex + 1);
             }
             else
             {
                 Debug.Log("ไป Chapter ต่อไป");
             }
         }
+    }
+
+    // ✅ แยก logic advance ออกมาเป็น method ให้ทั้ง OnClickNext และ achievement callback เรียกได้
+    private void AdvanceToPage(int nextIndex)
+    {
+        // ✅ เช็ค Achievement trigger ก่อนเปลี่ยนหน้า
+        //    ถ้ามี trigger ที่ pageIndex == nextIndex → แสดงการ์ดก่อน แล้วค่อยเปลี่ยนหน้าใน callback
+        StoryAchievementTrigger trigger = achievementTriggers?.Find(t => t.pageIndex == nextIndex);
+        if (trigger != null && AchievementManager.Instance != null)
+        {
+            _isWaitingForAchievement = true;
+            SetNextButtonInteractable(false);
+
+            AchievementManager.Instance.UnlockAchievementThenContinue(
+                trigger.backendAchievementId,
+                trigger.localAchievementId,
+                onClosed: () =>
+                {
+                    _isWaitingForAchievement = false;
+                    SetNextButtonInteractable(true);
+                    DoPageTransition(nextIndex);
+                }
+            );
+            return;
+        }
+
+        DoPageTransition(nextIndex);
+    }
+
+    // ✅ helper แยก transition ออกมาให้ AdvanceToPage และ achievement callback เรียกได้เหมือนกัน
+    private void DoPageTransition(int nextIndex)
+    {
+        Sprite currentBg = allPages[currentIndex].background;
+        Sprite nextBg    = allPages[nextIndex].background;
+        bool isBgChanged  = (currentBg != nextBg && nextBg != null);
+        bool isForcedFade = allPages[nextIndex].forceTransition;
+
+        if ((isBgChanged || isForcedFade) && transitionController != null)
+        {
+            SetNextButtonInteractable(false);
+
+            transitionController.PlaySceneFade(
+                onMidFade: () => {
+                    currentIndex = nextIndex;
+                    UpdateUI();
+                },
+                onComplete: () => {
+                    SetNextButtonInteractable(true);
+                }
+            );
+        }
+        else
+        {
+            currentIndex = nextIndex;
+            UpdateUI();
+        }
+    }
+
+    // ✅ helper ตั้ง interactable ปุ่ม Next อย่างปลอดภัย
+    private void SetNextButtonInteractable(bool interactable)
+    {
+        if (nextButton == null) return;
+        Button btn = nextButton.GetComponent<Button>();
+        if (btn != null) btn.interactable = interactable;
     }
 
     public void SetOnlyEnemySpeaking()
