@@ -52,7 +52,9 @@ public class Event : ScriptableObject
             }
             else if (eventValueType == EventValueType.Percent)
             {
-                SavingGameLogicManager.Instance.AddCash(SavingGameLogicManager.Instance.GetCurrentCash() * (eventValue + 1));
+                // eventValue = เปอร์เซ็นต์ที่จะเพิ่ม/ลด เช่น 0.1 = +10%, -0.2 = -20%
+                // AddCash แค่ส่วนต่าง ไม่ใช่ทั้งก้อน
+                SavingGameLogicManager.Instance.AddCash(SavingGameLogicManager.Instance.GetCurrentCash() * eventValue);
             }
         }
         if (eventType == EventType.Time)
@@ -80,7 +82,7 @@ public class Event : ScriptableObject
             }
             else if (eventValueType == EventValueType.Percent)
             {
-                SavingGoalManager.Instance.AddGoal(SavingGoalManager.Instance.GetGoalAmount() * (eventValue + 1));
+                SavingGoalManager.Instance.AddGoal(SavingGoalManager.Instance.GetGoalAmount() * eventValue);
             }
         }
         // Implement event effects here

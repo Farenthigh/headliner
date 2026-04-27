@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Event
   eventType: 0
   eventValueType: 1
-  eventValue: -10
+  eventValue: -0.1
   rarity: 1
   icon: {fileID: 71420511171701985, guid: fd6a8cb932a3a4ed197e84742328ee34, type: 3}
   eventName: Royal Levy
-  description: "\u0E17\u0E32\u0E07\u0E01\u0E32\u0E23\u0E40\u0E23\u0E35\u0E22\u0E01\u0E40\u0E01\u0E47\u0E1A\u0E20\u0E32\u0E29\u0E35\u0E1A\u0E33\u0E23\u0E38\u0E07\u0E17\u0E49\u0E2D\u0E07\u0E17\u0E35\u0E48\n\n-10%"
+  description: "\u0E17\u0E32\u0E07\u0E01\u0E32\u0E23\u0E40\u0E23\u0E35\u0E22\u0E01\u0E40\u0E01\u0E47\u0E1A\u0E20\u0E32\u0E29\u0E35\u0E1A\u0E33\u0E23\u0E38\u0E07\u0E17\u0E49\u0E2D\u0E07\u0E17\u0E35\u0E48\n\n-10%
+    \u0E02\u0E2D\u0E07\u0E40\u0E2B\u0E23\u0E35\u0E22\u0E0D\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14"

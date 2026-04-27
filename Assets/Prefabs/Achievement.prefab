@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -387.19952, y: 141.63184}
+  m_AnchoredPosition: {x: -0.0014785235, y: 0.00074168073}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5004001983217588190
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5821147446650411546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1528,6 +1528,8 @@ MonoBehaviour:
   mainAchievementPanel: {fileID: 5362996467319191705}
   achievementPrefab: {fileID: 2168963801517738421, guid: 87c70fae54abc4db9924c2e73da17fa7, type: 3}
   achievementContainer: {fileID: 258127083575344760}
+  hintPopup: {fileID: 0}
+  hintDescriptionText: {fileID: 0}
 --- !u!1 &8064493857552399123
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Event
   eventType: 0
   eventValueType: 1
-  eventValue: 20
+  eventValue: -0.2
   rarity: 2
   icon: {fileID: 6276576260338002099, guid: a5550ec412efe40ee973f8442c15dd74, type: 3}
   eventName: Eternal Curse
-  description: "\u0E04\u0E38\u0E13\u0E44\u0E1B\u0E41\u0E15\u0E30\u0E15\u0E49\u0E2D\u0E07\u0E27\u0E31\u0E15\u0E16\u0E38\u0E42\u0E1A\u0E23\u0E32\u0E13\n\u0E15\u0E49\u0E2D\u0E07\u0E04\u0E33\u0E2A\u0E32\u0E1B\n\n-20%"
+  description: "\u0E04\u0E38\u0E13\u0E44\u0E1B\u0E41\u0E15\u0E30\u0E15\u0E49\u0E2D\u0E07\u0E27\u0E31\u0E15\u0E16\u0E38\u0E42\u0E1A\u0E23\u0E32\u0E13\n\u0E15\u0E49\u0E2D\u0E07\u0E04\u0E33\u0E2A\u0E32\u0E1B\n\n-\u0E450%
+    \u0E02\u0E2D\u0E07\u0E40\u0E2B\u0E23\u0E35\u0E22\u0E0D\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14"

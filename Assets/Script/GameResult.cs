@@ -93,7 +93,10 @@ public class GameResult : MonoBehaviour
 
         victoryIntroUI.SetActive(false);
 
-        // 👉 ค่อยเปลี่ยนหน้า Story ตอนนี้
+        // ✅ รอจนกว่า Achievement panel จะปิดก่อน แล้วค่อยเดินเรื่องต่อ
+        if (AchievementManager.Instance != null)
+            yield return new WaitWhile(() => AchievementManager.Instance.IsShowingUnlockPanel);
+
         if (storyManager != null)
             storyManager.OnClickNext();
     }

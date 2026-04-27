@@ -18,4 +18,5 @@ MonoBehaviour:
   rarity: 2
   icon: {fileID: -53716006586487231, guid: 1feb0f50c4f68486cb40264151dcadff, type: 3}
   eventName: Ambush
-  description: "\u0E04\u0E38\u0E13\u0E16\u0E39\u0E01\u0E1B\u0E25\u0E49\u0E19\u0E43\u0E19\u0E15\u0E2D\u0E19\u0E01\u0E25\u0E32\u0E07\u0E04\u0E37\u0E19\n\n-2000"
+  description: "\u0E04\u0E38\u0E13\u0E16\u0E39\u0E01\u0E1B\u0E25\u0E49\u0E19\u0E43\u0E19\u0E15\u0E2D\u0E19\u0E01\u0E25\u0E32\u0E07\u0E04\u0E37\u0E19\n\n-2000
+    \u0E40\u0E2B\u0E23\u0E35\u0E22\u0E0D"

@@ -77,8 +77,13 @@ public class SavingGameResult : MonoBehaviour
         victoryIntroUI.SetActive(false);
 
     }
-    public void ShowVictoryResultDirect(int starCount)
+    public async void ShowVictoryResultDirect(int starCount)
     {   
+        // ✅ Save คะแนนก่อน แล้วค่อยแสดง UI
+        // เพื่อให้ข้อมูลอยู่ใน DB แล้วตอนผู้เล่นเปิด Leaderboard
+        int score = (int)SavingGameLogicManager.Instance.GetAllAssets();
+        int time = (int)SavingGameLogicManager.Instance.GetFullTimeInSeconds();
+        await APIManager.Instance.SaveLeaderboardScore(score, 0, time, 0);
 
         // ✅ mark ว่าเล่น Saving แล้ว
         PlayerPrefs.SetInt("Played_Saving", 1);

@@ -71,20 +71,13 @@ public class LeaderBoardManager : MonoBehaviour
         foreach (Transform child in container)
             Destroy(child.gameObject);
 
-        // ถ้าเป็นโหมด Saving ให้ซ่อนไปก่อน
-        if (currentMode == GameMode.SavingGame)
-        {
-            myRankBar.SetActive(false); 
-            return;
-        }
-
         if (cachedData == null || cachedData.Count == 0)
         {
             myRankBar.SetActive(false);
             return;
         }
 
-        // 2. สร้าง List ใหม่และจัดเรียงคะแนนโหมดภาษีจากมากไปน้อย
+        // 2. สร้าง List ใหม่และจัดเรียงคะแนนจากมากไปน้อยตาม mode
         List<LeaderboardEntry> sortedList = new List<LeaderboardEntry>(cachedData);
         sortedList.Sort((a, b) => 
         {
@@ -104,34 +97,31 @@ public class LeaderBoardManager : MonoBehaviour
                 bool isTimeBGood = System.DateTime.TryParse(b.updated_at, out timeB);
                 
                 if (isTimeAGood && isTimeBGood) {
-                    // เรียงเวลาจาก อดีต ไป ปัจจุบัน 
-                    // (ใครเวลาเก่ากว่า = ส่งคะแนนเข้า DB ก่อน = ชนะได้ขึ้นแรงค์สูงกว่า)
                     return timeA.CompareTo(timeB); 
                 }
             }
 
-            // ถ้าคะแนนไม่เท่ากัน ก็ยึดตามคะแนนปกติได้เลย
             return scoreComparison;
         });
 
         int myRankIndex = -1;
         int myScore = 0;
         
-        // 🚨 ดึงชื่อของเรามาเตรียมเทียบ
         string myName = APIManager.myData.username; 
 
         // 3. วนลูปสร้าง UI แถวรายชื่อ และเช็กหาชื่อตัวเอง
         for (int i = 0; i < sortedList.Count; i++)
         {
             var data = sortedList[i];
-            int currentRank = i + 1; 
-            int currentScore = data.tax_game_score;
+            int currentRank = i + 1;
+            // ✅ เลือก score ตาม mode ที่กำลังดูอยู่
+            int currentScore = currentMode == GameMode.TaxGame
+                ? data.tax_game_score
+                : data.saving_game_score;
 
-            // สร้าง UI แต่ละแถว
             var item = Instantiate(rowPrefab, container).GetComponent<LeaderBoardItemUI>();
             item.SetData(currentRank, data.username, currentScore);
 
-            // เช็กว่านี่คือชื่อของเราหรือเปล่า? 
             if (!string.IsNullOrEmpty(myName) && data.username == myName)
             {
                 myRankIndex = currentRank;
@@ -156,14 +146,6 @@ public class LeaderBoardManager : MonoBehaviour
     public void OnDropdownChanged(int index)
     {
         currentMode = (GameMode)index;
-        if (currentMode == GameMode.SavingGame)
-        {
-            cachedData = null;
-            UpdateDisplay();
-        }
-        else if (currentMode == GameMode.TaxGame)
-        {
-            RefreshData();
-        }
+        RefreshData(); // ดึงข้อมูลใหม่และแสดงผลทุก mode
     }
 }
