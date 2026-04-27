@@ -206,22 +206,21 @@ public class OAuth : MonoBehaviour
         else
         {
             // ดึงข้อมูลตัวละครต่อ
-
-
             // เช็คเงื่อนไขเปลี่ยนฉาก
-            if (APIManager.myData.character == 0 && string.IsNullOrEmpty(APIManager.myData.username))
+
+            Debug.Log("API Data: " + APIManager.myData.character + ", " + APIManager.myData.username);
+            if (currentAuthMode == AuthMode.Signup)
+                UnityEngine.SceneManagement.SceneManager.LoadScene("LoginScene");
+            else if (currentAuthMode == AuthMode.Login)
             {
-                if (currentAuthMode == AuthMode.Signup)
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("LoginScene");
-                else if (currentAuthMode == AuthMode.Login)
-                {
-                    var dataTask = APIManager.Instance.GetMyData();
-                    while (!dataTask.IsCompleted) yield return null;
+                var dataTask = APIManager.Instance.GetMyData();
+                while (!dataTask.IsCompleted) yield return null;
+                if (APIManager.myData.character == 0 && APIManager.myData.username == "")
                     UnityEngine.SceneManagement.SceneManager.LoadScene("SelectCharacterScene");
-                }
+                else
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("HomeScene");
+
             }
-            else
-                UnityEngine.SceneManagement.SceneManager.LoadScene("HomeScene");
         }
     }
 }
