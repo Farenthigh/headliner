@@ -3099,6 +3099,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Achievement
       objectReference: {fileID: 0}
+    - target: {fileID: 4867477706546820928, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7273927474555158832, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -4216,7 +4220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1167849410
 RectTransform:
   m_ObjectHideFlags: 0

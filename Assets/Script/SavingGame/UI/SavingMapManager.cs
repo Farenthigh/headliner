@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SavingMapManager : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class SavingMapManager : MonoBehaviour
     public void OpenStage1()
     {
         SavingStageData.selectedStage = 1;
-
+        StartCoroutine(BounceEffect(stageInfoManager.transform));
         stageInfoManager.ShowStageInfo(
             "Stage 1",
             "มีทรัพย์สินทั้งหมด 12,300 บาท",
@@ -69,5 +71,38 @@ public class SavingMapManager : MonoBehaviour
             "SavingGameStage5"
         );
         stageInfoManager.gameObject.SetActive(true);
+    }
+
+    IEnumerator BounceEffect(Transform target)
+    {
+        gameObject.GetComponent<Button>().interactable = false; // ปิดการกดปุ่มระหว่างแอนิเมชัน
+        Vector3 original = target.localScale;
+        Vector3 big = original * 1.25f;
+
+        float duration = 0.15f;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            float t = Mathf.Sin((time / duration) * Mathf.PI * 0.6f);
+            target.localScale = Vector3.Lerp(original, big, t);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        time = 0f;
+
+        while (time < duration)
+        {
+            float t = 1 - Mathf.Cos((time / duration) * Mathf.PI * 0.6f);
+            target.localScale = Vector3.Lerp(big, original, t);
+
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        target.localScale = original;
+        gameObject.GetComponent<Button>().interactable = true; // เปิดการกดปุ่มหลังแอนิเมชัน
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,11 +26,14 @@ public class SavingGameStage : MonoBehaviour
             star = await APIManager.Instance.GetSavingGameStar(stage);
             int latestStage = await APIManager.Instance.GetlatestStage();
             Debug.Log($"Stage {stage} has {star} stars latest stage: {latestStage}");
-            if (star == -1)
+            if (star == -1 && stage > latestStage)
             {
-                star1.gameObject.SetActive(false);
-                star2.gameObject.SetActive(false);
-                star3.gameObject.SetActive(false);
+                Color c = star1.color;
+                c.a = 0.3f;
+                star1.color = c;
+                star2.color = c;
+                star3.color = c;
+
             }
             if (stage > latestStage)
             {
@@ -45,4 +49,5 @@ public class SavingGameStage : MonoBehaviour
             Debug.LogError($"Error fetching star data: {ex.Message}");
         }
     }
+
 }
