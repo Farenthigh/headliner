@@ -1278,7 +1278,9 @@ MonoBehaviour:
   achievementTriggers: []
   videoPlayer: {fileID: 1425501778}
   videoRawImage: {fileID: 1629688481}
-  availableCharacters: []
+  availableCharacters:
+  - {fileID: 6083806894379148034, guid: 645e441df10aa4f8d9a253899ed2ed1e, type: 3}
+  - {fileID: 8821616558950248791, guid: 5ca1340a4e4924b4aba1a201ae461fd3, type: 3}
 --- !u!1 &314679636
 GameObject:
   m_ObjectHideFlags: 0

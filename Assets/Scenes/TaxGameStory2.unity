@@ -1555,7 +1555,7 @@ MonoBehaviour:
     forceTransition: 0
     forceCharacterFade: 1
     isNamingPage: 0
-    isPlayer: 0
+    isPlayer: 1
   - dialogueText: "\u0E21\u0E31\u0E07\u0E01\u0E23\u0E17\u0E31\u0E49\u0E07 3 \u0E2B\u0E25\u0E2D\u0E21\u0E23\u0E27\u0E21\u0E01\u0E31\u0E19\u0E01\u0E25\u0E32\u0E22\u0E40\u0E1B\u0E47\u0E19\u0E23\u0E39\u0E1B\u0E1B\u0E31\u0E49\u0E19\u0E17\u0E2D\u0E07\u0E04\u0E33\u0E1B\u0E23\u0E30\u0E14\u0E31\u0E1A\u0E15\u0E25\u0E32\u0E14"
     speakerName: 
     speakerPosition: 0
@@ -1659,7 +1659,9 @@ MonoBehaviour:
   achievementTriggers: []
   videoPlayer: {fileID: 856366025}
   videoRawImage: {fileID: 338658617}
-  availableCharacters: []
+  availableCharacters:
+  - {fileID: 6083806894379148034, guid: 645e441df10aa4f8d9a253899ed2ed1e, type: 3}
+  - {fileID: 8821616558950248791, guid: 5ca1340a4e4924b4aba1a201ae461fd3, type: 3}
 --- !u!1 &645454358
 GameObject:
   m_ObjectHideFlags: 0

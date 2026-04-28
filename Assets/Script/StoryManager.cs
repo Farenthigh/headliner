@@ -379,6 +379,11 @@ public class StoryManager : MonoBehaviour
     
     IEnumerator PlayVSEffectAndStartQuiz()
     {
+
+        if (characterLeftUI != null) characterLeftUI.gameObject.SetActive(false);
+        if (characterCenterUI != null) characterCenterUI.gameObject.SetActive(false);
+        if (characterRightUI != null) characterRightUI.gameObject.SetActive(false);
+
         if(vsPanel != null) vsPanel.SetActive(true);
         if(clashParticle != null) 
         {
@@ -423,6 +428,8 @@ public class StoryManager : MonoBehaviour
         if (bottomCloud != null) bottomCloud.anchoredPosition = bottomCloudStartPos;
 
         if(clashParticle != null) clashParticle.Stop();
+
+        ForceUpdateExamCharacter();
 
         if (examSystem != null) 
         {
@@ -591,6 +598,39 @@ public class StoryManager : MonoBehaviour
         {
             currentIndex++;
             UpdateUI();
+        }
+    }
+
+    public void ForceUpdateExamCharacter()
+    {
+        StoryPage currentPage = allPages[currentIndex];
+
+        int selectedCharID = 0;
+        if (APIManager.myData.id != 0) {
+            selectedCharID = APIManager.myData.character;
+        } else {
+            selectedCharID = PlayerPrefs.GetInt("SelectedCharacter", 0);
+        }
+
+        if (availableCharacters != null && selectedCharID < availableCharacters.Length) {
+            Sprite playerSprite = availableCharacters[selectedCharID];
+            if (characterLeftUI != null) {
+                characterLeftUI.sprite = playerSprite;
+                characterLeftUI.gameObject.SetActive(true);
+                
+                Color c = characterLeftUI.color;
+                c.a = 1f;
+                characterLeftUI.color = c;
+            }
+        }
+
+        if (currentPage.characterRight != null && characterRightUI != null) {
+            characterRightUI.sprite = currentPage.characterRight;
+            characterRightUI.gameObject.SetActive(true);
+
+            Color c = characterRightUI.color;
+            c.a = 1f;
+            characterRightUI.color = c;
         }
     }
 }

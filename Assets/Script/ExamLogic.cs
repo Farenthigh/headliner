@@ -106,7 +106,10 @@ public class Examlogic : MonoBehaviour // ใช้ชื่อคลาสเ�
     
         if (enemyhearts.Length > 0 && enemyhearts[0].transform.parent != null)
             enemyhearts[0].transform.parent.gameObject.SetActive(true);
-            
+
+        if (storyManager != null) 
+            storyManager.ForceUpdateExamCharacter();
+
         playercurrentheart = maxheart;
         enemycurrentheart = maxheart;
         isProcessing = false;

@@ -4217,7 +4217,7 @@ MonoBehaviour:
   - dialogueText: "\u0E08\u0E33\u0E44\u0E27\u0E49\u0E19\u0E30! \u0E2B\u0E31\u0E01\u0E04\u0E48\u0E32\u0E43\u0E0A\u0E49\u0E08\u0E48\u0E32\u0E22
       -> \u0E2B\u0E31\u0E01\u0E04\u0E48\u0E32\u0E25\u0E14\u0E2B\u0E22\u0E48\u0E2D\u0E19
       -> \u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E40\u0E17\u0E48\u0E32\u0E44\u0E2B\u0E23\u0E48\u0E04\u0E48\u0E2D\u0E22\u0E40\u0E2D\u0E32\u0E44\u0E1B\u0E04\u0E34\u0E14\u0E20\u0E32\u0E29\u0E35!"
-    speakerName: "\u0E42\u0E01\u0E40\u0E25\u0E21\u0E28\u0E34\u0E25\u0E32"
+    speakerName: '{Name}'
     speakerPosition: 2
     background: {fileID: -1371252455819440678, guid: a0d955e860ae240d094bbb283457d79a, type: 3}
     videoBackground: {fileID: 32900000, guid: 717ce628a85ce0745a1e7f7bf1fca3a3, type: 3}
@@ -4335,7 +4335,9 @@ MonoBehaviour:
   achievementTriggers: []
   videoPlayer: {fileID: 1466944661}
   videoRawImage: {fileID: 1218729976}
-  availableCharacters: []
+  availableCharacters:
+  - {fileID: 6083806894379148034, guid: 645e441df10aa4f8d9a253899ed2ed1e, type: 3}
+  - {fileID: 8821616558950248791, guid: 5ca1340a4e4924b4aba1a201ae461fd3, type: 3}
 --- !u!1 &1398615790
 GameObject:
   m_ObjectHideFlags: 0
