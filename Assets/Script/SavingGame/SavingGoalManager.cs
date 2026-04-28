@@ -27,10 +27,10 @@ public class SavingGoalManager : MonoBehaviour
     [SerializeField] private GameObject PriorityParent3;
     [SerializeField] private TMP_Text PriorityText3;
     [SerializeField] private Image PriorityImage3;
-    
+
     [SerializeField] private Image ResultBackground2;
     [SerializeField] private Image ResultBackground3;
-    
+
     [SerializeField] private Sprite defeatBackground2;
     [SerializeField] private Sprite passStar;
     [SerializeField] private Button exit;
@@ -114,15 +114,17 @@ public class SavingGoalManager : MonoBehaviour
         {
             victoryBackground.SetActive(true);
             StartCoroutine(ShowResults(starsEarned)); // ✅ ส่งค่า
-            
+
         }
         Debug.Log($"Total Assets: {totalAssets}, Stars Earned: {starsEarned}");
-        
+
         try
         {
             if (starsEarned > 0)
             {
                 APIManager.Instance.SavingGameResult(stage, starsEarned);
+                APIManager.Instance.SaveLeaderboardScore(starsEarned, 0, 0, 0);
+
             }
         }
         catch (System.Exception ex)
@@ -144,9 +146,9 @@ public class SavingGoalManager : MonoBehaviour
 
         baseGoal += goal;
     }
-     private IEnumerator ShowResults_defeat()
+    private IEnumerator ShowResults_defeat()
     {
-       yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f);
         defeatBackground.SetActive(false);
         ResultBackground2.gameObject.SetActive(true);
         PriorityParent1.SetActive(true);
@@ -155,7 +157,7 @@ public class SavingGoalManager : MonoBehaviour
     }
     private IEnumerator ShowResults(int starsEarned)
     {
-        
+
         yield return new WaitForSeconds(3f);
         victoryBackground.SetActive(false);
         // ResultBackground1.gameObject.SetActive(false);
@@ -170,7 +172,7 @@ public class SavingGoalManager : MonoBehaviour
         // yield return new WaitForSeconds(0.5f);
         PriorityParent3.SetActive(true);
         // yield return new WaitForSeconds(1f);
-        
+
     }
     private void OnExitClick()
     {
@@ -198,7 +200,7 @@ public class SavingGoalManager : MonoBehaviour
         if (starsEarned >= 3)
             yield return StartCoroutine(AnimateStar(StarGoal3, PriorityImage3));
     }
-    
+
     private IEnumerator AnimateStar(Image star, Image priority)
     {
         // เปลี่ยน sprite ทั้งคู่
