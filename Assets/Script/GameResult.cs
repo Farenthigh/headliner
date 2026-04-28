@@ -291,6 +291,16 @@ public class GameResult : MonoBehaviour
         LoadingManager.Instance.LoadScene(currentScene.name);
     }
 
+    void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            Debug.Log("Mouse Click Detected at: " + Input.mousePosition);
+            if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) {
+                Debug.Log("Clicked on UI: " + UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject);
+            } else {
+                Debug.Log("Clicked on NOTHING (UI is not catching it)");
+            }
+        }
+    }
 
 
 }
