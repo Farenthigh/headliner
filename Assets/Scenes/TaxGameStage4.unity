@@ -160,6 +160,7 @@ RectTransform:
   - {fileID: 1832760309}
   - {fileID: 636931264}
   - {fileID: 1450977144}
+  - {fileID: 63671431}
   - {fileID: 1689718842}
   - {fileID: 396579409}
   - {fileID: 1321598014}
@@ -239,6 +240,138 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &63671430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63671431}
+  - component: {fileID: 63671434}
+  - component: {fileID: 63671433}
+  - component: {fileID: 63671432}
+  m_Layer: 5
+  m_Name: settinglogo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &63671431
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63671430}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -245.0114}
+  m_LocalScale: {x: 2.722349, y: 2.722349, z: 2.722349}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7741589}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 892.99976, y: 475.99988}
+  m_SizeDelta: {x: 37.082, y: 31.768}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &63671432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63671430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 63671433}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2016292859}
+        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
+        m_MethodName: GoToSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &63671433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63671430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -4488215591179138382, guid: cac92d522e59f4a05b5f33e2e5a81d8c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &63671434
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63671430}
+  m_CullTransparentMesh: 1
 --- !u!1 &117603541
 GameObject:
   m_ObjectHideFlags: 0
@@ -4115,6 +4248,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: 
     speakerName: 
     speakerPosition: 0
@@ -4129,6 +4265,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: "\u0E42\u0E2D\u0E49\u0E42\u0E2B... \u0E15\u0E31\u0E27\u0E40\u0E25\u0E02\u0E40\u0E15\u0E47\u0E21\u0E44\u0E1B\u0E2B\u0E21\u0E14\u0E40\u0E25\u0E22!
       \u0E17\u0E35\u0E48\u0E19\u0E35\u0E48\u0E04\u0E37\u0E2D '\u0E2B\u0E2D\u0E04\u0E2D\u0E22\u0E19\u0E31\u0E01\u0E04\u0E33\u0E19\u0E27\u0E13'
       \u0E2A\u0E16\u0E32\u0E19\u0E17\u0E35\u0E48\u0E28\u0E31\u0E01\u0E14\u0E34\u0E4C\u0E2A\u0E34\u0E17\u0E18\u0E34\u0E4C\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49\u0E15\u0E31\u0E14\u0E2A\u0E34\u0E19\u0E27\u0E48\u0E32\u0E43\u0E04\u0E23\u0E15\u0E49\u0E2D\u0E07\u0E08\u0E48\u0E32\u0E22\u0E20\u0E32\u0E29\u0E35\u0E40\u0E17\u0E48\u0E32\u0E44\u0E2B\u0E23\u0E48"
@@ -4145,6 +4284,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: "\u0E40\u0E08\u0E49\u0E32\u0E01\u0E49\u0E2D\u0E19\u0E2B\u0E34\u0E19\u0E19\u0E31\u0E48\u0E19\u0E04\u0E37\u0E2D
       '\u0E42\u0E01\u0E40\u0E25\u0E21\u0E2B\u0E34\u0E19\u0E28\u0E34\u0E25\u0E32'
       \u0E21\u0E31\u0E19\u0E40\u0E1D\u0E49\u0E32\u0E1A\u0E31\u0E19\u0E44\u0E14\u0E2D\u0E22\u0E39\u0E48
@@ -4164,6 +4306,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: "\u0E15\u0E23\u0E27\u0E08\u0E1E\u0E1A\u0E1C\u0E39\u0E49\u0E1A\u0E38\u0E01\u0E23\u0E38\u0E01...
       \u0E17\u0E33\u0E01\u0E32\u0E23\u0E2A\u0E41\u0E01\u0E19\u0E2A\u0E16\u0E32\u0E19\u0E30\u0E01\u0E32\u0E23\u0E40\u0E07\u0E34\u0E19...
       \u0E15\u0E34\u0E4A\u0E14... \u0E15\u0E34\u0E4A\u0E14... \u0E23\u0E30\u0E1A\u0E1A\u0E25\u0E49\u0E21\u0E40\u0E2B\u0E25\u0E27...
@@ -4183,6 +4328,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: "\u0E41\u0E22\u0E48\u0E41\u0E25\u0E49\u0E27! \u0E21\u0E31\u0E19\u0E08\u0E30\u0E42\u0E08\u0E21\u0E15\u0E35\u0E04\u0E19\u0E17\u0E35\u0E48\u0E04\u0E33\u0E19\u0E27\u0E13\u0E40\u0E25\u0E02\u0E44\u0E21\u0E48\u0E40\u0E2A\u0E23\u0E47\u0E08!
       \u0E17\u0E48\u0E32\u0E19\u0E1C\u0E39\u0E49\u0E01\u0E25\u0E49\u0E32 \u0E1F\u0E31\u0E07\u0E02\u0E49\u0E32\u0E19\u0E30...
       \u0E01\u0E32\u0E23\u0E04\u0E33\u0E19\u0E27\u0E13\u0E20\u0E32\u0E29\u0E35\u0E21\u0E35\u0E2A\u0E39\u0E15\u0E23\u0E25\u0E31\u0E1A\u0E2D\u0E22\u0E39\u0E48\u0E2A\u0E39\u0E15\u0E23\u0E40\u0E14\u0E35\u0E22\u0E27
@@ -4200,6 +4348,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: 
     speakerName: 
     speakerPosition: 0
@@ -4214,6 +4365,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: "\u0E08\u0E33\u0E44\u0E27\u0E49\u0E19\u0E30! \u0E2B\u0E31\u0E01\u0E04\u0E48\u0E32\u0E43\u0E0A\u0E49\u0E08\u0E48\u0E32\u0E22
       -> \u0E2B\u0E31\u0E01\u0E04\u0E48\u0E32\u0E25\u0E14\u0E2B\u0E22\u0E48\u0E2D\u0E19
       -> \u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E40\u0E17\u0E48\u0E32\u0E44\u0E2B\u0E23\u0E48\u0E04\u0E48\u0E2D\u0E22\u0E40\u0E2D\u0E32\u0E44\u0E1B\u0E04\u0E34\u0E14\u0E20\u0E32\u0E29\u0E35!"
@@ -4230,6 +4384,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: "\u0E40\u0E23\u0E34\u0E48\u0E21\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A...
       \u0E08\u0E07\u0E1E\u0E34\u0E2A\u0E39\u0E08\u0E19\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E1A\u0E23\u0E34\u0E2A\u0E38\u0E17\u0E18\u0E34\u0E4C\u0E02\u0E2D\u0E07\u0E15\u0E31\u0E27\u0E40\u0E25\u0E02!"
     speakerName: "\u0E42\u0E01\u0E40\u0E25\u0E21\u0E28\u0E34\u0E25\u0E32"
@@ -4245,6 +4402,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: 
     speakerName: 
     speakerPosition: 0
@@ -4259,6 +4419,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: "\u0E2A\u0E38\u0E14\u0E22\u0E2D\u0E14! \u0E17\u0E48\u0E32\u0E19\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E2B\u0E31\u0E27\u0E43\u0E08\u0E02\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E04\u0E33\u0E19\u0E27\u0E13\u0E41\u0E25\u0E49\u0E27...
       \u0E20\u0E32\u0E29\u0E35\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E19\u0E48\u0E32\u0E01\u0E25\u0E31\u0E27\u0E16\u0E49\u0E32\u0E40\u0E23\u0E32\u0E23\u0E39\u0E49\u0E27\u0E48\u0E32
       '\u0E40\u0E07\u0E34\u0E19\u0E44\u0E14\u0E49\u0E2A\u0E38\u0E17\u0E18\u0E34'
@@ -4276,6 +4439,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: "\u0E15\u0E2D\u0E19\u0E19\u0E35\u0E49\u0E17\u0E32\u0E07\u0E2A\u0E30\u0E14\u0E27\u0E01\u0E41\u0E25\u0E49\u0E27...
       \u0E23\u0E35\u0E1A\u0E02\u0E36\u0E49\u0E19\u0E44\u0E1B\u0E1A\u0E19\u0E14\u0E32\u0E14\u0E1F\u0E49\u0E32\u0E01\u0E31\u0E19\u0E40\u0E16\u0E2D\u0E30
       '\u0E08\u0E2D\u0E21\u0E21\u0E32\u0E23\u0E40\u0E14\u0E14\u0E44\u0E25\u0E19\u0E4C'
@@ -4295,6 +4461,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   - dialogueText: 
     speakerName: 
     speakerPosition: 0
@@ -4309,6 +4478,9 @@ MonoBehaviour:
     forceCharacterFade: 0
     isNamingPage: 0
     isPlayer: 0
+    isItemPage: 0
+    itemName: 
+    itemSubName: 
   gameResult: {fileID: 722724186}
   examSystem: {fileID: 531727793}
   currentStage: 4
@@ -4328,6 +4500,11 @@ MonoBehaviour:
   namingPanel: {fileID: 0}
   nameInputField: {fileID: 0}
   confirmNameButton: {fileID: 0}
+  itemPanel: {fileID: 0}
+  itemSpriteUI: {fileID: 0}
+  itemSprite: {fileID: 0}
+  itemNameText: {fileID: 0}
+  itemSubNameText: {fileID: 0}
   tipBooks:
   - tipPageIndex: 6
     bookPageToOpen: 2
@@ -6198,6 +6375,51 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5784811080146751818, guid: 731c1db0c6c4240d98a9573ca4f4fb12, type: 3}
   m_PrefabInstance: {fileID: 882281625}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2016292858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2016292860}
+  - component: {fileID: 2016292859}
+  m_Layer: 0
+  m_Name: SceneSwitcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2016292859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016292858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700d92ac1ffe74e3a9469efa2a316e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneSwitcher
+  settingSceneName: SettingsScene
+--- !u!4 &2016292860
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016292858}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1210.1758, y: 286.97543, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2071656517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6537,5 +6759,6 @@ SceneRoots:
   - {fileID: 1398615792}
   - {fileID: 294486286}
   - {fileID: 377310858}
+  - {fileID: 2016292860}
   - {fileID: 520249727}
   - {fileID: 1559270052}

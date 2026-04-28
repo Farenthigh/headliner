@@ -291,13 +291,22 @@ public class GameResult : MonoBehaviour
         LoadingManager.Instance.LoadScene(currentScene.name);
     }
 
-    void Update() {
+    void Update() 
+    {
         if (Input.GetMouseButtonDown(0)) {
-            Debug.Log("Mouse Click Detected at: " + Input.mousePosition);
-            if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) {
-                Debug.Log("Clicked on UI: " + UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject);
-            } else {
-                Debug.Log("Clicked on NOTHING (UI is not catching it)");
+            // หา GraphicRaycaster ในฉาก
+            var raycaster = FindObjectOfType<UnityEngine.UI.GraphicRaycaster>();
+            var eventData = new UnityEngine.EventSystems.PointerEventData(
+                UnityEngine.EventSystems.EventSystem.current);
+            eventData.position = Input.mousePosition;
+
+            var results = new System.Collections.Generic.List<UnityEngine.EventSystems.RaycastResult>();
+            raycaster.Raycast(eventData, results);
+
+            // แสดงทุก object ที่โดน raycast เรียงจากบนสุด
+            Debug.Log($"=== Raycast hit {results.Count} objects ===");
+            foreach (var r in results) {
+                Debug.Log($"  → [{r.depth}] {r.gameObject.name} (parent: {r.gameObject.transform.parent?.name})");
             }
         }
     }

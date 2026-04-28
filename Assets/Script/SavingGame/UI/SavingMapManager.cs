@@ -77,7 +77,7 @@ public class SavingMapManager : MonoBehaviour
     {
         gameObject.GetComponent<Button>().interactable = false; // ปิดการกดปุ่มระหว่างแอนิเมชัน
         Vector3 original = target.localScale;
-        Vector3 big = original * 1.25f;
+        Vector3 big = original * 1.25f; 
 
         float duration = 0.15f;
         float time = 0f;

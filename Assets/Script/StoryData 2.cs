@@ -30,5 +30,8 @@ public class StoryPage
     public bool isNamingPage;
     public bool isPlayer;
 
-
+    [Header("Item Page")]
+    public bool isItemPage;
+    public string itemName;
+    public string itemSubName;
 }
