@@ -4150,6 +4150,11 @@ MonoBehaviour:
   namingPanel: {fileID: 1643542226}
   nameInputField: {fileID: 1031406922}
   confirmNameButton: {fileID: 1807879782}
+  itemPanel: {fileID: 0}
+  itemSpriteUI: {fileID: 0}
+  itemSprite: {fileID: 0}
+  itemNameText: {fileID: 0}
+  itemSubNameText: {fileID: 0}
   tipBooks:
   - tipPageIndex: 24
     bookPageToOpen: 0
@@ -5219,8 +5224,8 @@ RectTransform:
   - {fileID: 1650503366}
   - {fileID: 1643542227}
   - {fileID: 1266874367}
-  - {fileID: 1393347366}
   - {fileID: 35994884}
+  - {fileID: 1393347366}
   - {fileID: 780270928}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
