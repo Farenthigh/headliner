@@ -105,4 +105,10 @@ public class SavingMapManager : MonoBehaviour
         target.localScale = original;
         gameObject.GetComponent<Button>().interactable = true; // เปิดการกดปุ่มหลังแอนิเมชัน
     }
+
+    public void BackToSelectGame()
+    {
+        LoadingManager.Instance.LoadScene("SelectGame");
+    }
+    
 }
