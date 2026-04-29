@@ -58,6 +58,13 @@ public class StoryManager : MonoBehaviour
     public Button confirmNameButton;
     private string currentChatbotName = "Chatbot";
 
+    [Header("Item Page")]
+    public GameObject itemPanel;
+    public Image itemSpriteUI;    // Image ใน itemPanel
+    public Sprite itemSprite;     // รูปไอเทม (ใส่ใน Inspector ครั้งเดียว)
+    public TMP_Text itemNameText;
+    public TMP_Text itemSubNameText;
+
     [System.Serializable]
     public class TipBook
     {
@@ -108,6 +115,7 @@ public class StoryManager : MonoBehaviour
         {
             confirmNameButton.onClick.AddListener(ConfirmName);
         }
+        if (itemPanel != null) itemPanel.SetActive(false);
 
         // เช็คชื่อเก่า
         if (PlayerPrefs.HasKey("ChatbotCustomName"))
@@ -237,6 +245,28 @@ public class StoryManager : MonoBehaviour
             if (nextButton != null) nextButton.SetActive(false);
             return; 
         }
+
+        // ✅ Item Page
+        if (currentPage.isItemPage)
+        {
+            if (itemPanel != null)
+            {
+                itemPanel.SetActive(true);
+                if (itemSpriteUI != null && itemSprite != null)
+                    itemSpriteUI.sprite = itemSprite;
+                if (itemNameText != null)
+                    itemNameText.text = currentPage.itemName;
+                if (itemSubNameText != null)
+                    itemSubNameText.text = currentPage.itemSubName;
+            }
+            if (nextButton != null) nextButton.SetActive(true);
+            return;
+        }
+
+        // ออกจาก item page → เปิด story UI กลับมา
+        if (dialogueTextUI != null) dialogueTextUI.gameObject.SetActive(true);
+        if (speakerNameUI != null) speakerNameUI.gameObject.SetActive(true);
+        if (itemPanel != null) itemPanel.SetActive(false);
 
         if (namingPanel != null) namingPanel.SetActive(false);
         if (nextButton != null) nextButton.SetActive(true);
@@ -584,6 +614,7 @@ public class StoryManager : MonoBehaviour
         await APIManager.Instance.SaveGameResult(stars, currentStage);
     }
     
+
     // ฟังก์ชันกดยืนยันตั้งชื่อ (จาก Incoming)
     public async void ConfirmName()
     {
