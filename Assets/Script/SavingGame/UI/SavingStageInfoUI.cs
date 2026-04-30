@@ -24,9 +24,9 @@ public class SavingStageInfoManager : MonoBehaviour
         {
             ShowStageInfo(
                 "Stage 1",
-                "มีทรัพย์สินทั้งหมด 12,300 บาท",
-                "มีทรัพย์สินทั้งหมด 12,400 บาท",
                 "มีทรัพย์สินทั้งหมด 12,500 บาท",
+                "มีทรัพย์สินทั้งหมด 12,600 บาท",
+                "มีทรัพย์สินทั้งหมด 12,700 บาท",
                 "SavingGameStage1"
             );
         }
