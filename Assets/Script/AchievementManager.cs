@@ -9,7 +9,7 @@ public class AchievementManager : MonoBehaviour
 {
     public static AchievementManager Instance;
 
-    public string backendUrl = "http://localhost:8080";
+    public string backendUrl = "https://headliner-be.onrender.com";
     public List<AchievementData> allAchievements;
 
     [Header("Popup UI")]
@@ -50,10 +50,10 @@ public class AchievementManager : MonoBehaviour
 
     void Start()
     {
-        if (popupPanel        != null) popupPanel.SetActive(false);
+        if (popupPanel != null) popupPanel.SetActive(false);
         if (mainAchievementPanel != null) mainAchievementPanel.SetActive(false);
-        if (unlockPanel       != null) unlockPanel.SetActive(false);
-        if (cardRect          != null) cardRect.gameObject.SetActive(false);
+        if (unlockPanel != null) unlockPanel.SetActive(false);
+        if (cardRect != null) cardRect.gameObject.SetActive(false);
 
         if (!string.IsNullOrEmpty(APIManager.Token))
             StartCoroutine(LoadDataFromBackendRoutine());
@@ -161,9 +161,9 @@ public class AchievementManager : MonoBehaviour
         cardRect.gameObject.SetActive(true);
         cardRect.localScale = Vector3.one;
 
-        Vector2 startPos  = new Vector2(0, -800f);
+        Vector2 startPos = new Vector2(0, -800f);
         Vector2 targetPos = Vector2.zero;
-        Vector3 startScale  = new Vector3(0.5f, 0.5f, 0.5f);
+        Vector3 startScale = new Vector3(0.5f, 0.5f, 0.5f);
         Vector3 targetScale = Vector3.one;
 
         float duration = 0.5f, time = 0f;
@@ -173,12 +173,12 @@ public class AchievementManager : MonoBehaviour
             time += Time.deltaTime;
             float t = 1f - Mathf.Pow(1f - (time / duration), 3f); // easeOutCubic
             cardRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, t);
-            cardRect.localScale       = Vector3.Lerp(startScale, targetScale, t);
+            cardRect.localScale = Vector3.Lerp(startScale, targetScale, t);
             yield return null;
         }
 
         cardRect.anchoredPosition = targetPos;
-        cardRect.localScale       = targetScale;
+        cardRect.localScale = targetScale;
 
         achievementCard.PlayUnlockVFX();
     }
@@ -210,7 +210,7 @@ public class AchievementManager : MonoBehaviour
         using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
         {
             byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
-            webRequest.uploadHandler   = new UploadHandlerRaw(bodyRaw);
+            webRequest.uploadHandler = new UploadHandlerRaw(bodyRaw);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
             webRequest.SetRequestHeader("Content-Type", "application/json");
             webRequest.SetRequestHeader("Authorization", "Bearer " + APIManager.Token);
@@ -228,10 +228,10 @@ public class AchievementManager : MonoBehaviour
     public void ShowPopup(AchievementData data)
     {
         if (popupPanel == null) return;
-        popupNameText.text        = data.achievementName;
+        popupNameText.text = data.achievementName;
         popupDescriptionText.text = data.description;
-        popupDateText.text        = data.unlockDate;
-        popupIconImage.sprite     = data.icon;
+        popupDateText.text = data.unlockDate;
+        popupIconImage.sprite = data.icon;
         popupPanel.SetActive(true);
     }
 
@@ -303,7 +303,7 @@ public class AchievementManager : MonoBehaviour
 
     public void CheckTaxComebackKing()
     {
-        int level  = PlayerPrefs.GetInt("Tax_Level", 1);
+        int level = PlayerPrefs.GetInt("Tax_Level", 1);
         int failed = PlayerPrefs.GetInt("Tax_Failed", 0);
 
         if (level > 5 && failed == 0)
@@ -316,7 +316,7 @@ public class AchievementManager : MonoBehaviour
 
     public void CheckDoubleExpertise()
     {
-        bool playedTax    = PlayerPrefs.GetInt("Played_Tax", 0) == 1;
+        bool playedTax = PlayerPrefs.GetInt("Played_Tax", 0) == 1;
         bool playedSaving = PlayerPrefs.GetInt("Played_Saving", 0) == 1;
 
         if (!playedTax || !playedSaving) return;
@@ -343,8 +343,8 @@ public class UnlockRequest
 [System.Serializable]
 public class UserAchievementResponse
 {
-    public uint   user_id;
-    public uint   achievement_id;
+    public uint user_id;
+    public uint achievement_id;
     public string unlocked_at;
 }
 
