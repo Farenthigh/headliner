@@ -2231,7 +2231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &422845194192314240
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2381,6 +2381,9 @@ MonoBehaviour:
   pages:
   - {fileID: 1261002717391757460}
   - {fileID: 4692754393301482368}
+  flipDuration: 0.4
+  nextButton: {fileID: 0}
+  prevButton: {fileID: 0}
 --- !u!1 &5997713501507922146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3019,6 +3022,8 @@ MonoBehaviour:
   taxGameTips: {fileID: 1845290257994944992}
   icon: {fileID: 2446405794099981183}
   bg: {fileID: 1292321091322114720}
+  tipsPageController: {fileID: 0}
+  defaultPageToOpen: 0
 --- !u!1 &6952966943150690373
 GameObject:
   m_ObjectHideFlags: 0

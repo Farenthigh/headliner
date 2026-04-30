@@ -1569,6 +1569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8357384670296773838, guid: ff218d2abb39e40c7baec5f483697686, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8535791964388544552, guid: ff218d2abb39e40c7baec5f483697686, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -3075,8 +3079,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736c8a794004d4ac5a7f1e0a3f5ceeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGameLogicManager
-  secondsInOneMonth: 10
-  startingCash: 0
+  secondsInOneMonth: 30
+  startingCash: 1000
   cashPerMonth: 1000
   goalMonth: 12
   banks:
@@ -5033,25 +5037,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a03c432142b49f9996f86e550f5a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGameResult
-  victoryIntroUI: {fileID: 0}
-  victoryResultUI: {fileID: 0}
-  Exit: {fileID: 0}
-  Play_again: {fileID: 0}
-  Next_game: {fileID: 0}
-  defeatIntroUI: {fileID: 0}
-  defeatResultUI: {fileID: 0}
-  d_Exit: {fileID: 0}
-  d_Play_again: {fileID: 0}
-  v_star1: {fileID: 0}
-  v_star2: {fileID: 0}
-  v_star3: {fileID: 0}
-  v_priority1: {fileID: 0}
-  v_priority2: {fileID: 0}
-  v_priority3: {fileID: 0}
-  d_star1: {fileID: 0}
-  d_star2: {fileID: 0}
-  d_star3: {fileID: 0}
-  nextSceneName: 
 --- !u!1 &748253788
 GameObject:
   m_ObjectHideFlags: 0
@@ -5375,7 +5360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &764975248
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7336,6 +7321,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978631286}
   m_CullTransparentMesh: 1
+--- !u!1 &994520005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 994520007}
+  - component: {fileID: 994520006}
+  m_Layer: 0
+  m_Name: AchievementManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &994520006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994520005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3fd258d897b4875824c1a043bc148d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementManager
+  backendUrl: http://localhost:8080
+  allAchievements:
+  - {fileID: 11400000, guid: 47deae0b78f4d43fbaed1b8c170d2bc7, type: 2}
+  - {fileID: 11400000, guid: f761f23d40f2f4277b2416fe8035634d, type: 2}
+  - {fileID: 11400000, guid: 0ef441c319797470db027c4023103c43, type: 2}
+  - {fileID: 11400000, guid: 14a25228b274b452296ef3820a9510b9, type: 2}
+  - {fileID: 11400000, guid: 648ff7007dd144d85916ca48c4fab7bd, type: 2}
+  - {fileID: 11400000, guid: 965d21a06ee9042cebdc7e7018c0ae91, type: 2}
+  - {fileID: 11400000, guid: 0547e4d3ef3bb47039749be08bb73431, type: 2}
+  - {fileID: 11400000, guid: 9e1da8cc596644a2a80b3851b04ec670, type: 2}
+  - {fileID: 11400000, guid: 7d0c086bb4dbd4755845e32885ab725e, type: 2}
+  - {fileID: 11400000, guid: 1ac20ebd9245b4670a8444c5abf7c28b, type: 2}
+  - {fileID: 11400000, guid: 1204f0383aed24433a0b3bb4869f0b04, type: 2}
+  - {fileID: 11400000, guid: be6802cc7034843328df5e7ab728172d, type: 2}
+  - {fileID: 11400000, guid: c56ec88ccdbb24816a714a2e1b8e3aa0, type: 2}
+  - {fileID: 11400000, guid: dd1014bef09634a24bab7975a058c062, type: 2}
+  - {fileID: 11400000, guid: cfd90d6aa468649d8b5c77aef3693b94, type: 2}
+  - {fileID: 11400000, guid: 5ca495a8fc761462abd34174ba0080f5, type: 2}
+  popupPanel: {fileID: 0}
+  popupNameText: {fileID: 0}
+  popupDescriptionText: {fileID: 0}
+  popupDateText: {fileID: 0}
+  popupIconImage: {fileID: 0}
+  unlockPanel: {fileID: 0}
+  cardRect: {fileID: 0}
+  achievementCard: {fileID: 0}
+  sparkleParticle: {fileID: 0}
+  mainAchievementPanel: {fileID: 0}
+  achievementPrefab: {fileID: 0}
+  achievementContainer: {fileID: 0}
+  hintPopup: {fileID: 0}
+  hintDescriptionText: {fileID: 0}
+--- !u!4 &994520007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994520005}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 967.20087, y: 491.9148, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1002270188
 GameObject:
   m_ObjectHideFlags: 0
@@ -7500,7 +7561,7 @@ Transform:
   m_GameObject: {fileID: 1002270188}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.67, y: 3.16, z: 0}
+  m_LocalPosition: {x: 3.55, y: 1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9394,22 +9455,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGoalManager
   stage: 0
-  baseGoal: 12600
+  baseGoal: 12800
   goalAmount2: 12700
-  goalAmount3: 12800
+  goalAmount3: 12600
   goalMonth: 12
   StarGoal1: {fileID: 2100478827}
   StarGoal2: {fileID: 697404958}
   StarGoal3: {fileID: 1526407734}
-  Priority1: test 1
+  Priority1: "\u0E21\u0E35\u0E17\u0E23\u0E31\u0E1E\u0E22\u0E4C\u0E2A\u0E34\u0E19
+    12,600 \u0E1A\u0E32\u0E17"
   PriorityParent1: {fileID: 1755029728}
   PriorityText1: {fileID: 1389274136}
   PriorityImage1: {fileID: 878450040}
-  Priority2: test 2
+  Priority2: "\u0E21\u0E35\u0E17\u0E23\u0E31\u0E1E\u0E22\u0E4C\u0E2A\u0E34\u0E19
+    12,700 \u0E1A\u0E32\u0E17"
   PriorityParent2: {fileID: 1723505930}
   PriorityText2: {fileID: 1032552440}
   PriorityImage2: {fileID: 203034663}
-  Priority3: test 3
+  Priority3: "\u0E21\u0E35\u0E17\u0E23\u0E31\u0E1E\u0E22\u0E4C\u0E2A\u0E34\u0E19
+    12,800 \u0E1A\u0E32\u0E17"
   PriorityParent3: {fileID: 2020185390}
   PriorityText3: {fileID: 434440380}
   PriorityImage3: {fileID: 117278460}
@@ -14803,3 +14867,4 @@ SceneRoots:
   - {fileID: 1353686350}
   - {fileID: 123307668}
   - {fileID: 1497619830}
+  - {fileID: 994520007}

@@ -4270,22 +4270,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGoalManager
   stage: 2
-  baseGoal: 15500
+  baseGoal: 15700
   goalAmount2: 15600
-  goalAmount3: 15700
+  goalAmount3: 15500
   goalMonth: 6
   StarGoal1: {fileID: 837029736}
   StarGoal2: {fileID: 1834570674}
   StarGoal3: {fileID: 1356617249}
-  Priority1: test 1
+  Priority1: "\u0E21\u0E35\u0E17\u0E23\u0E31\u0E1E\u0E22\u0E4C\u0E2A\u0E34\u0E19
+    15,500 \u0E1A\u0E32\u0E17"
   PriorityParent1: {fileID: 1651566788}
   PriorityText1: {fileID: 856312426}
   PriorityImage1: {fileID: 570405843}
-  Priority2: test 2
+  Priority2: "\u0E21\u0E35\u0E17\u0E23\u0E31\u0E1E\u0E22\u0E4C\u0E2A\u0E34\u0E19
+    15,600 \u0E1A\u0E32\u0E17"
   PriorityParent2: {fileID: 1304425513}
   PriorityText2: {fileID: 438376642}
   PriorityImage2: {fileID: 1838537531}
-  Priority3: test 3
+  Priority3: "\u0E21\u0E35\u0E17\u0E23\u0E31\u0E1E\u0E22\u0E4C\u0E2A\u0E34\u0E19
+    15,700 \u0E1A\u0E32\u0E17"
   PriorityParent3: {fileID: 128920714}
   PriorityText3: {fileID: 6222784}
   PriorityImage3: {fileID: 1406040204}
@@ -7879,7 +7882,7 @@ Transform:
   m_GameObject: {fileID: 1260478013}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.67, y: 3.16, z: 0}
+  m_LocalPosition: {x: 2.99, y: 1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8150,7 +8153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1289294325
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9822,7 +9825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736c8a794004d4ac5a7f1e0a3f5ceeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGameLogicManager
-  secondsInOneMonth: 10
+  secondsInOneMonth: 60
   startingCash: 3000
   cashPerMonth: 2000
   goalMonth: 6
@@ -11169,6 +11172,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543517169}
   m_CullTransparentMesh: 1
+--- !u!1 &1558128176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558128178}
+  - component: {fileID: 1558128177}
+  m_Layer: 0
+  m_Name: AchievementManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1558128177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558128176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3fd258d897b4875824c1a043bc148d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementManager
+  backendUrl: http://localhost:8080
+  allAchievements:
+  - {fileID: 11400000, guid: 47deae0b78f4d43fbaed1b8c170d2bc7, type: 2}
+  - {fileID: 11400000, guid: f761f23d40f2f4277b2416fe8035634d, type: 2}
+  - {fileID: 11400000, guid: 0ef441c319797470db027c4023103c43, type: 2}
+  - {fileID: 11400000, guid: 14a25228b274b452296ef3820a9510b9, type: 2}
+  - {fileID: 11400000, guid: 648ff7007dd144d85916ca48c4fab7bd, type: 2}
+  - {fileID: 11400000, guid: 965d21a06ee9042cebdc7e7018c0ae91, type: 2}
+  - {fileID: 11400000, guid: 0547e4d3ef3bb47039749be08bb73431, type: 2}
+  - {fileID: 11400000, guid: 9e1da8cc596644a2a80b3851b04ec670, type: 2}
+  - {fileID: 11400000, guid: 7d0c086bb4dbd4755845e32885ab725e, type: 2}
+  - {fileID: 11400000, guid: 1ac20ebd9245b4670a8444c5abf7c28b, type: 2}
+  - {fileID: 11400000, guid: 1204f0383aed24433a0b3bb4869f0b04, type: 2}
+  - {fileID: 11400000, guid: be6802cc7034843328df5e7ab728172d, type: 2}
+  - {fileID: 11400000, guid: c56ec88ccdbb24816a714a2e1b8e3aa0, type: 2}
+  - {fileID: 11400000, guid: dd1014bef09634a24bab7975a058c062, type: 2}
+  - {fileID: 11400000, guid: cfd90d6aa468649d8b5c77aef3693b94, type: 2}
+  - {fileID: 11400000, guid: 5ca495a8fc761462abd34174ba0080f5, type: 2}
+  popupPanel: {fileID: 0}
+  popupNameText: {fileID: 0}
+  popupDescriptionText: {fileID: 0}
+  popupDateText: {fileID: 0}
+  popupIconImage: {fileID: 0}
+  unlockPanel: {fileID: 0}
+  cardRect: {fileID: 0}
+  achievementCard: {fileID: 0}
+  sparkleParticle: {fileID: 0}
+  mainAchievementPanel: {fileID: 0}
+  achievementPrefab: {fileID: 0}
+  achievementContainer: {fileID: 0}
+  hintPopup: {fileID: 0}
+  hintDescriptionText: {fileID: 0}
+--- !u!4 &1558128178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558128176}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 967.20087, y: 491.9148, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569432439
 GameObject:
   m_ObjectHideFlags: 0
@@ -14706,3 +14785,4 @@ SceneRoots:
   - {fileID: 1332256922}
   - {fileID: 968928904}
   - {fileID: 577236474}
+  - {fileID: 1558128178}
