@@ -4305,6 +4305,7 @@ GameObject:
   - component: {fileID: 1245182821}
   - component: {fileID: 1245182820}
   - component: {fileID: 1245182819}
+  - component: {fileID: 1245182822}
   m_Layer: 5
   m_Name: StageButton3
   m_TagString: Untagged
@@ -4444,6 +4445,24 @@ MonoBehaviour:
           m_StringArgument: click
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1245182822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245182817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9220e99c91c124d7aa99001a7880c901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavingGameStage
+  stage: 3
+  star1: {fileID: 614284322}
+  star2: {fileID: 616906333}
+  star3: {fileID: 750690113}
+  filledStar: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+  stageButton: {fileID: 1245182821}
 --- !u!1001 &1292875113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5720,6 +5739,7 @@ GameObject:
   - component: {fileID: 1573849219}
   - component: {fileID: 1573849218}
   - component: {fileID: 1573849217}
+  - component: {fileID: 1573849220}
   m_Layer: 5
   m_Name: StageButton4
   m_TagString: Untagged
@@ -5859,6 +5879,24 @@ MonoBehaviour:
           m_StringArgument: click
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1573849220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573849215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9220e99c91c124d7aa99001a7880c901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavingGameStage
+  stage: 4
+  star1: {fileID: 466901362}
+  star2: {fileID: 1977282360}
+  star3: {fileID: 1958402103}
+  filledStar: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+  stageButton: {fileID: 1573849219}
 --- !u!114 &1577608735 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2643423186466171137, guid: 99b4884ab4aa546f1bd0227831737aa5, type: 3}
@@ -5882,6 +5920,7 @@ GameObject:
   - component: {fileID: 1579482663}
   - component: {fileID: 1579482662}
   - component: {fileID: 1579482661}
+  - component: {fileID: 1579482664}
   m_Layer: 5
   m_Name: SatgeButton2
   m_TagString: Untagged
@@ -6021,6 +6060,24 @@ MonoBehaviour:
           m_StringArgument: click
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1579482664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579482659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9220e99c91c124d7aa99001a7880c901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavingGameStage
+  stage: 2
+  star1: {fileID: 1671596096}
+  star2: {fileID: 86811366}
+  star3: {fileID: 726914492}
+  filledStar: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+  stageButton: {fileID: 1579482663}
 --- !u!1 &1590346226
 GameObject:
   m_ObjectHideFlags: 0
@@ -6842,6 +6899,7 @@ GameObject:
   - component: {fileID: 1756313242}
   - component: {fileID: 1756313241}
   - component: {fileID: 1756313240}
+  - component: {fileID: 1756313243}
   m_Layer: 5
   m_Name: StageButton1
   m_TagString: Untagged
@@ -6981,6 +7039,24 @@ MonoBehaviour:
           m_StringArgument: click
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1756313243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756313238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9220e99c91c124d7aa99001a7880c901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavingGameStage
+  stage: 1
+  star1: {fileID: 1885324700}
+  star2: {fileID: 1721971572}
+  star3: {fileID: 599587135}
+  filledStar: {fileID: -4412553690540655260, guid: 95605ec3325bf46b8bc78105f1731bc1, type: 3}
+  stageButton: {fileID: 1756313242}
 --- !u!1 &1792207353
 GameObject:
   m_ObjectHideFlags: 0

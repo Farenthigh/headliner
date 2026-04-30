@@ -24,6 +24,7 @@ public class SavingMapManager : MonoBehaviour
     public void OpenStage2()
     {
         SavingStageData.selectedStage = 2;
+        StartCoroutine(BounceEffect(stageInfoManager.transform));
         stageInfoManager.ShowStageInfo(
             "Stage 2",
             "มีทรัพย์สินทั้งหมด 15,500 บาท",
@@ -37,6 +38,7 @@ public class SavingMapManager : MonoBehaviour
     public void OpenStage3()
     {
         SavingStageData.selectedStage = 3;
+        StartCoroutine(BounceEffect(stageInfoManager.transform));
         stageInfoManager.ShowStageInfo(
             "Stage 3",
             "มีทรัพย์สินทั้งหมด 22,500 บาท",
@@ -50,6 +52,7 @@ public class SavingMapManager : MonoBehaviour
     public void OpenStage4()
     {
         SavingStageData.selectedStage = 4;
+        StartCoroutine(BounceEffect(stageInfoManager.transform));
         stageInfoManager.ShowStageInfo(
             "Stage 4",
             "มีทรัพย์สินทั้งหมด 12,600 บาท",
@@ -63,6 +66,7 @@ public class SavingMapManager : MonoBehaviour
     public void OpenStage5()
     {
         SavingStageData.selectedStage = 5;
+        StartCoroutine(BounceEffect(stageInfoManager.transform));
         stageInfoManager.ShowStageInfo(
             "Stage 5",
             "มีทรัพย์สินทั้งหมด 18,500 บาท",
