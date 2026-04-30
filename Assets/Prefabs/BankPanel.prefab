@@ -59,6 +59,7 @@ MonoBehaviour:
   closeBankPanelButton: {fileID: 3919017505332853133}
   descriptionParent: {fileID: 2408580496819120423}
   descriptionText: {fileID: 5051348126395700699, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
+  FailedText: {fileID: 0}
   characterImageUI: {fileID: 7875203215581357867}
   dialogueText: {fileID: 3604877081639779034}
   dialogueBox: {fileID: 5543203777928512144}
@@ -445,7 +446,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0.6555176, w: 0}
+  m_margin: {x: 0, y: 0, z: -36.930298, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -963,8 +964,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -63, y: 98}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: -63, y: 97.086426}
+  m_SizeDelta: {x: 1920, y: 1081.8271}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3477380437704942059
 CanvasRenderer:
@@ -2063,7 +2064,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 2.857788, w: 0}
+  m_margin: {x: 0, y: 0, z: -393.104, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2702,7 +2703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3346548408627606833, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
       propertyPath: m_margin.z
-      value: 1.3920898
+      value: -84.97351
       objectReference: {fileID: 0}
     - target: {fileID: 5051348126395700699, guid: 47930cbb5bcdd494db05bb5af9b0fe14, type: 3}
       propertyPath: m_Name

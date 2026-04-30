@@ -2344,10 +2344,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3586,6 +3586,10 @@ PrefabInstance:
     - target: {fileID: 4931958950475770240, guid: ff218d2abb39e40c7baec5f483697686, type: 3}
       propertyPath: minLoadTime
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965035081456712135, guid: ff218d2abb39e40c7baec5f483697686, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6219459514232966570, guid: ff218d2abb39e40c7baec5f483697686, type: 3}
       propertyPath: m_Color.a

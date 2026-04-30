@@ -46,23 +46,23 @@ public class DeleteAccountUI : MonoBehaviour
             return;
         }
 
-#if UNITY_EDITOR
-        Debug.Log("Delete Account (Test Mode)");
-#else
-        bool success = await APIManager.Instance.DeleteAccount(passwordInput.text);
+        // #if UNITY_EDITOR
+        //         Debug.Log("Delete Account (Test Mode)");
+        // #else
+        //         bool success = await APIManager.Instance.DeleteAccount(passwordInput.text);
 
-        if (!success)
-        {
-            errorText.text = "Password is incorrect";
-            errorText.gameObject.SetActive(true);
-            return;
-        }
-#endif
+        //         if (!success)
+        //         {
+        //             errorText.text = "Password is incorrect";
+        //             errorText.gameObject.SetActive(true);
+        //             return;
+        //         }
+        // #endif
 
-        Debug.Log("Account Deleted");
+        //         Debug.Log("Account Deleted");
 
-        passwordPopup.SetActive(false);
+        //         passwordPopup.SetActive(false);
 
-        LoadingManager.Instance.LoadScene("LoginScene");
+        //         LoadingManager.Instance.LoadScene("LoginScene");
     }
 }
