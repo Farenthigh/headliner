@@ -176,6 +176,7 @@ public class SavingGoalManager : MonoBehaviour
     }
     private void OnExitClick()
     {
+        Debug.Log("Exit button clicked, loading SavingGameStageInfo scene.");
         SceneManager.LoadScene("SavingGameStageInfo");
     }
     private void OnPlayAgainClick()
