@@ -89,19 +89,19 @@ public struct LeaderboardResponse
 public struct LeaderboardData
 {
     // ชื่อตัวแปรต้องตรงกับที่ Go ส่งมา (leaderBoard)
-    public LeaderboardEntry[] leaderBoard; 
+    public LeaderboardEntry[] leaderBoard;
 }
 
 [System.Serializable]
 public struct LeaderboardEntry
 {
-    public int rank; 
+    public int rank;
     public string username;
 
     public int saving_game_score;
     public int tax_game_score;
 
-    public int total_stars; 
+    public int total_stars;
     public string updated_at;
 }
 
@@ -162,7 +162,7 @@ public class APIManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            client.BaseAddress = new Uri("http://localhost:8080/");
+            client.BaseAddress = new Uri("https://headliner-be.onrender.com/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -381,13 +381,13 @@ public class APIManager : MonoBehaviour
         Debug.Log("Leaderboard JSON: " + json);
 
         var jsonResponse = JsonUtility.FromJson<LeaderboardResponse>(json);
-        
+
         if (jsonResponse.data.leaderBoard != null)
         {
             return new List<LeaderboardEntry>(jsonResponse.data.leaderBoard);
         }
-        
-        return new List<LeaderboardEntry>(); 
+
+        return new List<LeaderboardEntry>();
     }
 
     public async Task<LeaderboardEntry> GetMyRank()
@@ -478,7 +478,7 @@ public class APIManager : MonoBehaviour
 
         // ยิงไปที่ Route /leaderboard ที่เราเพิ่งสร้างเมื่อกี้
         HttpResponseMessage response = await client.PostAsync(
-            "leaderboard", 
+            "leaderboard",
             new StringContent(json, System.Text.Encoding.UTF8, "application/json")
         );
 
@@ -487,9 +487,9 @@ public class APIManager : MonoBehaviour
             string error = await response.Content.ReadAsStringAsync();
             Debug.LogError("บันทึกคะแนนลีดเดอร์บอร์ดล้มเหลว: " + error);
         }
-        
+
         response.EnsureSuccessStatusCode();
     }
-    
-    
+
+
 }
