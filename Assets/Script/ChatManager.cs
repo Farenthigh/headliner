@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class ChatManager : MonoBehaviour
 {
     [Header("UI References")]
-    public Transform chatContent;       
-    public TMP_InputField messageInput; 
-    public Button sendButton;           
-    public ScrollRect scrollRect;     
+    public Transform chatContent;
+    public TMP_InputField messageInput;
+    public Button sendButton;
+    public ScrollRect scrollRect;
 
     [Header("Prefabs")]
     public GameObject userBubblePrefab;
@@ -23,11 +23,11 @@ public class ChatManager : MonoBehaviour
     public Button closeButton;
 
     [Header("Typing Settings")]
-    public float typingSpeed = 0.02f; 
+    public float typingSpeed = 0.02f;
 
     public static ChatManager instance;
 
-    private string apiUrl = "http://localhost:8080/api/chat"; 
+    private string apiUrl = "https://headliner-be.onrender.com/api/chat";
     private string currentPlayerID;
 
     [System.Serializable]
@@ -59,7 +59,7 @@ public class ChatManager : MonoBehaviour
         }
         else
         {
-            currentPlayerID = System.Guid.NewGuid().ToString(); 
+            currentPlayerID = System.Guid.NewGuid().ToString();
             PlayerPrefs.SetString("PlayerID", currentPlayerID);
             PlayerPrefs.Save();
         }
@@ -90,8 +90,8 @@ public class ChatManager : MonoBehaviour
             AchievementManager.Instance.UnlockAchievement(19, "19");
         }
 
-        CreateBubble(userBubblePrefab, msg); 
-        messageInput.text = ""; 
+        CreateBubble(userBubblePrefab, msg);
+        messageInput.text = "";
 
         StartCoroutine(PostRequest(msg));
 
@@ -132,10 +132,10 @@ public class ChatManager : MonoBehaviour
             }
             else
             {
-                try 
+                try
                 {
                     ChatResponse res = JsonUtility.FromJson<ChatResponse>(request.downloadHandler.text);
-                    
+
                     if (res != null && !string.IsNullOrEmpty(res.answer))
                     {
                         // +++ เปลี่ยนจากการใส่ข้อความพรวดเดียว เป็นการเรียกแอนิเมชันพิมพ์ +++
@@ -150,7 +150,7 @@ public class ChatManager : MonoBehaviour
                 catch (System.Exception ex)
                 {
                     Debug.LogError("JSON Parse Error: " + ex.Message);
-                    aiText.text = "<color=red>Data Error</color>"; 
+                    aiText.text = "<color=red>Data Error</color>";
                 }
             }
         }
@@ -160,15 +160,15 @@ public class ChatManager : MonoBehaviour
 
     IEnumerator TypeSentence(TMP_Text textComponent, string sentence)
     {
-        textComponent.text = ""; 
+        textComponent.text = "";
 
         foreach (char letter in sentence.ToCharArray())
         {
-            if (textComponent == null) yield break; 
+            if (textComponent == null) yield break;
 
             textComponent.text += letter;
 
-            yield return new WaitForSeconds(typingSpeed); 
+            yield return new WaitForSeconds(typingSpeed);
         }
 
         StartCoroutine(ForceScrollDown());
@@ -194,12 +194,12 @@ public class ChatManager : MonoBehaviour
 
     IEnumerator ForceScrollDown()
     {
-        yield return new WaitForEndOfFrame(); 
-        
+        yield return new WaitForEndOfFrame();
+
         LayoutRebuilder.ForceRebuildLayoutImmediate(chatContent.GetComponent<RectTransform>());
-        
-        yield return new WaitForEndOfFrame(); 
-        
+
+        yield return new WaitForEndOfFrame();
+
         scrollRect.verticalNormalizedPosition = 0f;
     }
 
@@ -207,7 +207,7 @@ public class ChatManager : MonoBehaviour
     {
         chatWindow.SetActive(true);
         //openButton.gameObject.SetActive(false);
-        
+
         StartCoroutine(ForceScrollDown());
     }
 
