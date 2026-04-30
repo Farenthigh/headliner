@@ -10566,7 +10566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736c8a794004d4ac5a7f1e0a3f5ceeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SavingGameLogicManager
-  secondsInOneMonth: 1
+  secondsInOneMonth: 60
   startingCash: 2000
   cashPerMonth: 2000
   goalMonth: 12
