@@ -3975,7 +3975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3fd258d897b4875824c1a043bc148d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AchievementManager
-  backendUrl: http://localhost:8080
+  backendUrl: https://headliner-be.onrender.com
   allAchievements:
   - {fileID: 11400000, guid: 47deae0b78f4d43fbaed1b8c170d2bc7, type: 2}
   - {fileID: 11400000, guid: f761f23d40f2f4277b2416fe8035634d, type: 2}

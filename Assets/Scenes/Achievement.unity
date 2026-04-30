@@ -1684,6 +1684,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9144961182526593467, guid: 4305abf5c4b3d4d95a59ddb6c32463e2, type: 3}
     - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
+      propertyPath: backendUrl
+      value: https://headliner-be.onrender.com
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756709946079425878, guid: 441c8cf4ea8d84d38ae0ae886d4a0548, type: 3}
       propertyPath: popupPanel
       value: 
       objectReference: {fileID: 21633334}
